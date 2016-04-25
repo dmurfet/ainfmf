@@ -55,6 +55,7 @@
 \def\N{\mathbf{N}}
 \def\LG{\mathcal{LG}}
 \def\Ab{\operatorname{Ab}}
+\def\stab{\operatorname{stab}}
 \def\Hom{\operatorname{Hom}}
 \def\modd{\operatorname{mod}}
 \def\Modd{\operatorname{Mod}}
@@ -99,13 +100,135 @@
 
 \maketitle
 
-Hi
+\begin{abstract}
+We study $A_\infty$-minimal models of the differential graded algebras obtained from endomorphisms of generators of triangulated categories of matrix factorisations, giving explicit higher products for the cases of simple singularities. 
+\end{abstract}
+
+\section{Introduction}
+
+Let $k$ be a characteristic zero field, and $W \in k[x_1,\ldots,x_n]$ a potential in the sense of \cite[\S 2.2]{lgdual} which has the origin as its only critical point. Choose a presentation of $W$ as a sum $W = x_1 W^1 + \cdots + x_n W^n$ with $W^i \in \mf{m}$. Then the generator of the homotopy category of matrix factorisations is the stabilised diagonal
+\begin{equation}\label{eq:kstab}
+k^{\operatorname{stab}} = \Big( k[x] \otimes_k \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n ), \sum_i x_i \psi_i^* + \sum_i W^i \psi_i \Big)\,.
+\end{equation}
+We calculate the $A_\infty$-minimal model $\md{A}_W$ of the differential graded algebra $\End_{k[x]}(k^{\operatorname{stab}})$. This is a finite-dimensional $\nZ_2$-graded vector space, with a family of odd $k$-linear maps
+\[
+\left\{ r_q: \big(\md{A}_W[1]\big)^{\otimes q} \lto \md{A}_W[1] \right\}_{q \ge 2}
+\]
+satisfying the forward suspended $A_\infty$-constraints \cite{lazaroiu}. 
+
+\section{Perturbation and Koszul complexes}
+
+Set $R =  k[x_1,\ldots,x_n]$. To apply the $A_\infty$-minimal model construction to the DG-algebra $\End_R(k^{\stab})$, we would usually begin by finding a $k$-linear homotopy retract of this complex onto its cohomology. However, for our purposes it is better to first enlarge the DG-algebra to $S \otimes_k \End_R(k^{\stab})$, where
+\be
+S = \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n )
+\ee
+is viewed as a DG-algebra with zero differential, and $\nZ_2$-grading determined by $|\theta_i| = 1$. We show $S \otimes_k \End_R(k^{\stab})$ is homotopy equivalent to the finite-dimensional DG-algebra
+\[
+\underline{\End}(k^{\stab}) = R/\mf{m} \otimes_k \End_R(k^{\stab}) \cong \End_k\big( \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n) \big)
+\]
+where $\mf{m} = (x_1,\ldots,x_n)$, and the corresponding homotopy retract is our starting point for the minimal model construction.
+
+For this we will use the Koszul complex over $R$ of $x_1,\ldots,x_n$,
+\be\label{eq:defnkoszulK}
+K = \Big( R \otimes_k \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n ), d_K = \sum_i x_i \theta_i^* \Big)\,.
+\ee
+and the following diagram of $\nZ_2$-graded complexes over $k$:
+\be\label{eq:first_he}
+\xymatrix@C+3pc{
+S \otimes_k \End_R(k^{\stab}) \ar@<1ex>[r]^-{\exp(-\delta)} & K \otimes_R \End_R(k^{\stab}) \ar@<1ex>[l]^-{ \exp(-\delta) } \ar@<1ex>[r]^-{\pi} & \underline{\End}(k^{\stab})\,.\ar@<1ex>[l]^-{ \sigma_\infty }
+}
+\ee
+The notation is as follows:
+\begin{itemize}
+\item The operator $\psi_j = \psi_j \wedge -$ on $k^{\stab}$ satisfies
+\[
+[ \psi_j, d_{k^{\stab}} ] = \big[ \psi_j, \sum_i x_i \psi_i^* \big] = x_j \cdot 1\,,
+\]
+where $[-,-]$ always denotes the graded commutator. That is, $\psi_j$ is a homotopy for the action of $x_j$ on $k^{\stab}$. It is then easy to check that the odd operator $\alpha \mapsto \psi_j \circ \alpha$ on $\End_R(k^{\stab})$ is also a homotopy for $x_j$, and where it will not cause confusion we will also write $\psi_j$ for this operator of post-composition.
+
+\item Both $S \otimes_k \End_R(k^{\stab})$ and $K \otimes_R \End_R(k^{\stab})$ have the same underlying $\nZ_2$-graded $k$-module, namely
+\[
+R \otimes_k \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n ) \otimes_k \End_k\big( \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n ) \big)\,.
+\]
+On this space we define the even operator
+\be
+\delta = \sum_{i=1}^n \psi_i \theta_i^*\,,
+\ee
+where $\psi_i$ is the operator on $\End_R(k^{\stab})$ discussed above, given by $\alpha \mapsto (\psi_i \wedge -) \circ \alpha$, and $\theta_i^*$ acts by contraction on $S$. Note that in \eqref{eq:first_he} the complex on the very left has differential $1 \otimes d_{k^{\stab}}$ while the middle complex has differential $1 \otimes d_{k^{\stab}} + d_K \otimes 1$. It is easy to check that $\exp(\delta),\exp(-\delta)$ intertwines these differentials and gives an isomorphism of complexes \cite[Proposition 4.11]{murfet}.
+\item The morphism of complexes $\pi: K \lto R/\mf{m}$ is defined by composing the projection of $K$ onto the submodule $R \cdot 1$ of $\theta$-degree zero forms, with the quotient $R \lto R/\mf{m}$. We also write $\pi$ for the result of tensoring this morphism with $\End_R(k^{\stab})$ to obtain
+\[
+\xymatrix@C+2pc{
+K \otimes_R \End_R(k^{\stab}) \ar[r]^-{\pi \otimes 1} & R/\mf{m} \otimes_R \End_R(k^{\stab}) = \underline{\End}(k^{\stab})\,.
+}
+\]
+\item The $k$-linear homotopy inverse $\sigma_\infty$ to $\pi$ is defined in terms of the following ingredients. Firstly, the $k$-linear connection
+\[
+\Delta: K \lto K\,, \Delta = \sum_i \partial_{x_i} \theta_i
+\]
+and the degree $-1$ (with respect to the $\theta$-degree) $k$-linear operator
+\[
+H = [d_K, \Delta]^{-1} \Delta\,.
+\]
+Then
+\[
+\sigma_\infty = \sum_{m \ge 0} (-1)^m (H d
+\]
+\end{itemize}
+By \cite{murfet} there is a diagram of $k$-linear homotopy equivalences
+
+and an odd $k$-linear map
+\[
+H_\infty: K \otimes_R \End_R(k^{\stab}) \lto K \otimes_R \End_R(k^{\stab})
+\]
+with
+\begin{align*}
+\,\\
+\sigma_\infty &= \sum_{s \ge 0} \sum_{p_1,\ldots,p_s} (-1)^{\binom{s+1}{2}} \frac{1}{s!} \At_{p_1} \cdots \At_{p_s} \theta_{p_1} \cdots \theta_{p_s} \qquad (\operatorname{mod}\; \mf{m})
+\end{align*}
+\newpage
+
+
+\section{Examples}
+
+To describe the higher multiplications it is convenient to write $[ \psi_i, - ]$ for the natural operator on $\md{A}$ (giving $\psi_i, \psi_j^*$ the usual anticommutation relations for fermionic creation and annhiliation operators), that is
+\begin{align*}
+[ \psi_i, \psi_{j_1}^* \cdots \psi_{j_t}^* ] &= \sum_{l=1}^t (-1)^{l-1} \psi_{j_1}^* \cdots [\psi_i, \psi_{j_l}^* ] \cdots psi_{j_t}^*\\
+&= \sum_{l=1}^t (-1)^{l-1} \delta_{i=j_l} \psi_{j_1}^* \cdots \psi_{j_t}^*\,.
+\end{align*}
+A general fact is that the higher multiplications on $\md{A}$ are linear combinations of products of such operators. For example, when $n = 2$ a standard term in $r_3$ would look like
+\[
+\Phi_0 \otimes \Phi_1 \otimes \Phi_2 \mapsto \lambda \cdot [ \psi_1, [ \psi_2, \Phi_0 ] ] \cdot [ \psi_1, \Phi_1 ] \cdot [ \psi_2, \Phi_2 ]\,.
+\]
+The coefficient $\lambda$ is computed as a Feynman amplitude on a binary planar tree with with incoming fermion states $\psi_1 \psi_2, \psi_1, \psi_2$ in the three leaves (respectively) and a simple list of allowed interactions, the most significant of which is a trivalent interaction vertex with an incoming fermion $\psi_j$ and outgoing fermion $\theta_i$ and bosons $\partial_{x_i}( x^\gamma )$ whenever the polynomial $W^j$ has a nonzero coefficient for the monomial $x^\gamma = x_1^{\gamma_1} x_2^{\gamma_2}$ (the fermions $\theta_i$ are the auxiliary spinor representation generators as in \cite{murfet}). There are two other interactions which do not depend on $W$, and which take place only at internal edges or internal vertices (respectively).
+
+\begin{example} Let $W = x^d$ so that $\md{A} = k \oplus k \psi^*$. Then only $r_2$ and $r_d$ are nonzero and on $(\md{A}[1])^{\otimes d}$ the only basis element with a nonzero value under $r_d$ is
+\[
+r_d( \psi^* \otimes \cdots \otimes \psi^* ) = 1\,.
+\]
+Another way to say this is
+\[
+r_d( \Phi_0 \otimes \cdots \otimes \Phi_{d-1} ) = \prod_{i=0}^{d-1} [ \psi, \Phi_i ]\,.
+\]
+This $A_\infty$-structure is cyclic with respect to the trace form on $\md{A}$ which projects onto the $k \psi^*$-summand. Note that all such products are expanded such that the index $i$ increases from left to right.
+\end{example}
 
 \bibliographystyle{amsalpha}
 \providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
 \providecommand{\href}[2]{#2}
 \begin{thebibliography}{BHLS03}
   
+\bibitem{lazaroiu}
+C.~I.~Lazaroiu, \textsl{Generating the superpotential on a D-brane category: I}, [arXiv:hep-th/0610120].
+  
+\bibitem{murfet}
+D.~Murfet, \textsl{Computing with cut systems}, \href{http://arxiv.org/abs/1402.4541}{[arXiv:1402.4541]}.
+
+\bibitem{lgdual}
+N.~Carqueville and D.~Murfet, \textsl{Adjunctions and defects in Landau-Ginzburg models}, Adv. Math. \textbf{289} (2016), 480--566.
+
+\bibitem{dm1102.2957}
+T.~Dyckerhoff and D.~Murfet, \textsl{Pushing forward matrix factorisations}, Duke Math. J. \textbf{162} (2013), 1249--1311.
+
 \end{thebibliography}
 
 \end{document}
