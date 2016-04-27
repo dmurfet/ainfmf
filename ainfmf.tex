@@ -106,34 +106,38 @@ We study $A_\infty$-minimal models of the differential graded algebras obtained 
 
 \section{Introduction}
 
-Let $k$ be a characteristic zero field, and $W \in k[x_1,\ldots,x_n]$ a potential in the sense of \cite[\S 2.2]{lgdual} which has the origin as its only critical point. Choose a presentation of $W$ as a sum $W = x_1 W^1 + \cdots + x_n W^n$ with $W^i \in \mf{m}$. Then the generator of the homotopy category of matrix factorisations is the stabilised diagonal
+Let $k$ be a characteristic zero field, and $W \in k[x_1,\ldots,x_n]$ a potential in the sense of \cite[\S 2.2]{lgdual} which has the origin as its only critical point. Choose a presentation of $W$ as a sum $W = x_1 W^1 + \cdots + x_n W^n$ with $W^i \in \mf{m}$. Then the generator of the homotopy category of matrix factorisations of $W$ is the stabilised diagonal
 \begin{equation}\label{eq:kstab}
-k^{\operatorname{stab}} = \Big( k[x] \otimes_k \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n ), \sum_i x_i \psi_i^* + \sum_i W^i \psi_i \Big)\,.
+k^{\operatorname{stab}} = \Big( k[x] \otimes_k \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n ), \;d_{k^{\stab}} = \sum_i x_i \psi_i^* + \sum_i W^i \psi_i \Big)\,.
 \end{equation}
-We calculate the $A_\infty$-minimal model $\md{A}_W$ of the differential graded algebra $\End_{k[x]}(k^{\operatorname{stab}})$. This is a finite-dimensional $\nZ_2$-graded vector space, with a family of odd $k$-linear maps
+We calculate the $A_\infty$-minimal model of the $\nZ_2$-graded differential graded algebra
+\be
+\md{A}_W = \Big( \End_{k[x]}(k^{\operatorname{stab}}), \; \partial = [-, d_{k^{\stab}}] \; \Big)\,.
+\ee 
+The minimal model is a finite-dimensional $\nZ_2$-graded vector space $\md{M}_W$ with a family 
 \[
-\left\{ r_q: \big(\md{A}_W[1]\big)^{\otimes q} \lto \md{A}_W[1] \right\}_{q \ge 2}
+\left\{ r_q: \big(\md{M}_W[1]\big)^{\otimes q} \lto \md{M}_W[1] \right\}_{q \ge 2}
 \]
-satisfying the forward suspended $A_\infty$-constraints \cite{lazaroiu}. 
+of odd $k$-linear maps satisfying the forward suspended $A_\infty$-constraints \cite{lazaroiu}. 
 
 \section{Perturbation and Koszul complexes}
 
-Set $R =  k[x_1,\ldots,x_n]$. To apply the $A_\infty$-minimal model construction to the DG-algebra $\End_R(k^{\stab})$, we would usually begin by finding a $k$-linear homotopy retract of this complex onto its cohomology. However, for our purposes it is better to first enlarge the DG-algebra to $S \otimes_k \End_R(k^{\stab})$, where
+Set $R =  k[x_1,\ldots,x_n]$. To apply the $A_\infty$-minimal model construction to the DG-algebra $\End_R(k^{\stab})$, we would usually begin by finding a $k$-linear homotopy retract of this complex onto its cohomology. However, for our purposes it is better to first enlarge the DG-algebra to $S \otimes_k \End_R(k^{\stab})$, where $S$ is the $\nZ_2$-graded vector space
 \be
 S = \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n )
 \ee
-is viewed as a DG-algebra with zero differential, and $\nZ_2$-grading determined by $|\theta_i| = 1$. We make the tensor product $S \otimes_k \End_R(k^{\stab})$ into a DG-algebra in the usual way, and show that it is homotopy equivalent to the following DG-algebra:
+with grading determined by $|\theta_i| = 1$. We make the tensor product $S \otimes_k \End_R(k^{\stab})$ into a DG-algebra in the usual way, giving $S$ zero differential.
 
-\begin{definition} We define $\underline{\End}(k^{\stab})$ to be the finite-dimensional algebra
+\begin{definition} We define the finite-dimensional $\nZ_2$-graded vector space
 \be\label{eq:defnunderlineend}
-\underline{\End}(k^{\stab}) = R/\mf{m} \otimes_k \End_R(k^{\stab}) \cong \End_k\big( \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n) \big)
+\underline{\End}(k^{\stab}) = R/\mf{m} \otimes_k \End_R(k^{\stab}) \cong \End_k\Big( \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n) \Big)
 \ee
-where $\mf{m} = (x_1,\ldots,x_n)$, which we view as a DG-algebra with differential zero (since $W \in \mf{m}^2$ this differential on $\underline{\End}(k^{\stab})$ is the one inherited from $\End_R(k^{\stab})$).
+where $\mf{m} = (x_1,\ldots,x_n)$.
 \end{definition}
 
-The corresponding homotopy retract (see Proposition \ref{prop:he_start} below) is our starting point for the minimal model construction. For this we use the Koszul complex of $x_1,\ldots,x_n$,
+We will show that $S \otimes_k \End_R(k^{\stab})$ is homotopy equivalent to $\underline{\End}(k^{\stab})$ viewed as a complex with zero differential. The corresponding homotopy retract (see Proposition \ref{prop:he_start} below) is our starting point for the minimal model construction. For this we use the Koszul complex of $x_1,\ldots,x_n$,
 \be\label{eq:defnkoszulK}
-K = \Big( R \otimes_k \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n ), d_K = \sum_i x_i \theta_i^* \Big)\,.
+K = \Big( R \otimes_k \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n ), \; d_K = \sum_i x_i \theta_i^*\; \Big)
 \ee
 and the following diagram of $\nZ_2$-graded complexes and homotopy equivalences over $k$:
 \be\label{eq:first_he}
@@ -143,6 +147,12 @@ S \otimes_k \End_R(k^{\stab}) \ar@<1ex>[r]^-{\exp(-\delta)} & K \otimes_R \End_R
 \ee
 The notation is as follows:
 \begin{itemize}
+\item The complexes involved here are
+\begin{gather*}
+\big( S \otimes_k \End_R(k^{\stab}), \; \partial = [-,d_{k^{\stab}}] \,\big)\\
+\big( K \otimes_R \End_R(k^{\stab}), \; d_K + \partial\, \big)\\
+\big( \underline{\End}(k^{\stab}), 0 \big)\,.
+\end{gather*}
 \item The operator $\psi_j = \psi_j \wedge -$ on $k^{\stab}$ satisfies
 \[
 [ \psi_j, d_{k^{\stab}} ] = \big[ \psi_j, \sum_i x_i \psi_i^* \big] = x_j \cdot 1\,,
@@ -157,13 +167,14 @@ On this space we define the even operator
 \be
 \delta = \sum_{i=1}^n \psi_i \theta_i^*\,,
 \ee
-where $\psi_i$ is the operator on $\End_R(k^{\stab})$ discussed above, given by $\alpha \mapsto (\psi_i \wedge -) \circ \alpha$, and $\theta_i^*$ acts by contraction on $S$. Note that in \eqref{eq:first_he} the complex on the very left has differential $1 \otimes d_{k^{\stab}}$ while the middle complex has differential $1 \otimes d_{k^{\stab}} + d_K \otimes 1$. It is easy to check that $\exp(\delta),\exp(-\delta)$ intertwines these differentials and gives an isomorphism of complexes \cite[Proposition 4.11]{murfet}.
+where $\psi_i$ is the operator on $\End_R(k^{\stab})$ discussed above, given by $\alpha \mapsto (\psi_i \wedge -) \circ \alpha$, and $\theta_i^*$ acts by contraction on $S$. It is easy to check that $\exp(\delta),\exp(-\delta)$ intertwines the differentials $\partial$ and $d_K + \partial$ and therefore gives an isomorphism between the first two complexes in \eqref{eq:first_he} \cite[Proposition 4.11]{murfet}.
 \item The morphism of complexes $\pi: K \lto R/\mf{m}$ is defined by composing the projection of $K$ onto the submodule $R \cdot 1$ of $\theta$-degree zero forms, with the quotient $R \lto R/\mf{m}$. We also write $\pi$ for the result of tensoring this morphism with $\End_R(k^{\stab})$ to obtain
 \[
 \xymatrix@C+2pc{
 K \otimes_R \End_R(k^{\stab}) \ar[r]^-{\pi \otimes 1} & R/\mf{m} \otimes_R \End_R(k^{\stab}) = \underline{\End}(k^{\stab})\,.
 }
 \]
+This is a morphism of complexes, because the differential on $\End_R(k^{\stab})$ vanishes on the quotient $\underline{\End}(k^{\stab})$ by the hypothesis that $W \in \mf{m}^2$.
 \item The $k$-linear homotopy inverse $\sigma_\infty$ to $\pi$ in \eqref{eq:first_he} is defined in terms of the following ingredients. The first is the $k$-linear connection (viewing $\theta_i$ as a $1$-form)
 \be
 \Delta: K \lto K\,, \qquad \Delta = \sum_i \partial_{x_i} \theta_i
@@ -172,15 +183,15 @@ and the degree $-1$ (with respect to the $\theta$-degree) $k$-linear operator
 \be
 H = [d_K, \Delta]^{-1} \Delta\,.
 \ee
-We write $d_{\End}$ for the differential on $\End_R(k^{\stab})$, and $\sigma: k \lto K$ for the map which sends $\lambda \in k$ to $\lambda \cdot 1 \in K$, and define $k$-linear maps
+We write $\partial$ for the differential on $\End_R(k^{\stab})$, and $\sigma: k \lto K$ for the map which sends $\lambda \in k$ to $\lambda \cdot 1 \in K$, and define $k$-linear maps
 \begin{align}
-\sigma_\infty = \sum_{m \ge 0} (-1)^m (H d_{\End})^m \sigma\,,\\
-H_\infty = \sum_{m \ge 0} (-1)^m (H d_{\End})^m H\,.
+\sigma_\infty = \sum_{m \ge 0} (-1)^m (H \partial)^m \sigma\,,\\
+H_\infty = \sum_{m \ge 0} (-1)^m (H \partial)^m H\,.
 \end{align}
 Here $H_\infty$ is an odd operator on $K \otimes_R \End_R(k^{\stab})$. These maps satisfy:
 \begin{align}
 \pi \sigma_\infty &= 1\,,\\
- \sigma_\infty \pi &= 1 - [d_K + d_{\End}, H_\infty]\,.
+ \sigma_\infty \pi &= 1 - [d_K + \partial, H_\infty]\,.
 \end{align}
 \end{itemize}
 
@@ -189,16 +200,19 @@ By inspection of \eqref{eq:first_he}, we therefore have the following:
 \begin{proposition}\label{prop:he_start} There is a diagram of morphisms of $\nZ_2$-graded $k$-complexes
 \be
 \xymatrix@C+5pc{
-S \otimes_k \End_R(k^{\stab}) \ar@<1ex>[r]^-{\Phi} & \underline{\End}(k^{\stab})\,.\ar@<1ex>[l]^-{\Phi^{-1}}
+\big( S \otimes_k \End_R(k^{\stab}), \;\partial\, \big) \ar@<1ex>[r]^-{\Phi} & \big( \underline{\End}(k^{\stab}), 0 \big)\,.\ar@<1ex>[l]^-{\Phi^{-1}}
 }
 \ee
 where $\Phi = \pi \exp(-\delta), \Phi^{-1} = \exp(\delta) \sigma_\infty$ and $\widehat{H} = \exp(\delta) H_\infty \exp(-\delta)$ satisfy
 \be
-\Phi \Phi^{-1} = 1\,, \qquad \Phi^{-1} \Phi = 1 - [d_{\End}, \widehat{H}]\,.
+\Phi \Phi^{-1} = 1\,, \qquad \Phi^{-1} \Phi = 1 - [\partial, \widehat{H}]\,.
 \ee
+Thus, $\Phi$ and $\Phi^{-1}$ are mutually inverse homotopy equivalences over $k$.
 \end{proposition}
 
-Recall that the differential on $\underline{\End}(k^{\stab})$ is zero, so that the above homotopy equivalence actually computes the cohomology of the DG-algebra on the left hand side.
+\section{The minimal model}
+
+We now take the homotopy retract from Proposition \ref{prop:he_start} as the input to the usual algorithm for the construction of an $A_\infty$-minimal model of the DG-algebra $S \otimes \End_R(k^{\stab})$.
 
 \newpage
 
