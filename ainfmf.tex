@@ -108,50 +108,55 @@ We study $A_\infty$-minimal models of the differential graded algebras obtained 
 
 Let $k$ be a characteristic zero field, and $W \in k[x_1,\ldots,x_n]$ a potential in the sense of \cite[\S 2.2]{lgdual} which has the origin as its only critical point. Choose a presentation of $W$ as a sum $W = x_1 W^1 + \cdots + x_n W^n$ with $W^i \in \mf{m}$. Then the generator of the homotopy category of matrix factorisations of $W$ is the stabilised diagonal
 \begin{equation}\label{eq:kstab}
-k^{\operatorname{stab}} = \Big( k[x] \otimes_k \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n ), \;d_{k^{\stab}} = \sum_i x_i \psi_i^* + \sum_i W^i \psi_i \Big)\,.
+k^{\operatorname{stab}} = \Big( k[x] \otimes_k \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n ), \;d_{k^{\stab}} = \sum_{i=1}^n x_i \psi_i^* + \sum_{i=1}^n W^i \psi_i \Big)
 \end{equation}
-We calculate the $A_\infty$-minimal model of the $\nZ_2$-graded differential graded algebra
+where $\psi_i^*$ and $\psi_i$ act respectively by contraction and wedge product on the exterior algebra underlying $k^{\stab}$. The purpose of this paper is to calculate the $A_\infty$-minimal model of the $\nZ_2$-graded differential graded algebra
 \be
-\md{A}_W = \Big( \End_{k[x]}(k^{\operatorname{stab}}), \; \partial = [-, d_{k^{\stab}}] \; \Big)\,.
+\md{A}_W = \Big( \End_{k[x]}(k^{\operatorname{stab}}), \; \partial = [d_{k^{\stab}},-] \; \Big)
 \ee 
+with differential (throughout all commutators are graded commutators)
+\begin{align}
+\partial &= \Big[\sum_i x_i \psi_i^* + \sum_i W^i \psi_i, -\Big]\\
+&= \sum_i x_i [\psi_i^*,-] + \sum_i W^i [\psi_i,-]\,.
+\end{align}
 The minimal model is a finite-dimensional $\nZ_2$-graded vector space $\md{M}_W$ with a family 
 \[
 \left\{ r_q: \big(\md{M}_W[1]\big)^{\otimes q} \lto \md{M}_W[1] \right\}_{q \ge 2}
 \]
-of odd $k$-linear maps satisfying the forward suspended $A_\infty$-constraints \cite{lazaroiu}. 
+of odd $k$-linear maps satisfying the forward suspended $A_\infty$-constraints \cite{lazaroiu}, and having the property that there is an $A_\infty$-quasi-isomorphism $\md{A}_W \lto \md{M}_W$.
 
 \section{Perturbation and Koszul complexes}
 
-Set $R =  k[x_1,\ldots,x_n]$. To apply the $A_\infty$-minimal model construction to the DG-algebra $\End_R(k^{\stab})$, we would usually begin by finding a $k$-linear homotopy retract of this complex onto its cohomology. However, for our purposes it is better to first enlarge the DG-algebra to $S \otimes_k \End_R(k^{\stab})$, where $S$ is the $\nZ_2$-graded vector space
+Set $R =  k[x_1,\ldots,x_n]$ and let $W$ be a potential as above. To apply the $A_\infty$-minimal model construction to $\md{A}_W$, we would usually begin by finding a $k$-linear homotopy retract of this complex onto its cohomology. However, for our purposes it is better to first enlarge the DG-algebra to $S \otimes_k \md{A}_W$, where $S$ is the $\nZ_2$-graded vector space
 \be
 S = \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n )
 \ee
-with grading determined by $|\theta_i| = 1$. We make the tensor product $S \otimes_k \End_R(k^{\stab})$ into a DG-algebra in the usual way, giving $S$ zero differential.
+with grading determined by $|\theta_i| = 1$. We make the tensor product $S \otimes_k \md{A}_W$ into a DG-algebra in the usual way, giving $S$ zero differential.
 
 \begin{definition} We define the finite-dimensional $\nZ_2$-graded vector space
 \be\label{eq:defnunderlineend}
-\underline{\End}(k^{\stab}) = R/\mf{m} \otimes_k \End_R(k^{\stab}) \cong \End_k\Big( \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n) \Big)
+\md{M} = R/\mf{m} \otimes_k \End_R(k^{\stab}) \cong \End_k\Big( \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n) \Big)
 \ee
 where $\mf{m} = (x_1,\ldots,x_n)$.
 \end{definition}
 
-We will show that $S \otimes_k \End_R(k^{\stab})$ is homotopy equivalent to $\underline{\End}(k^{\stab})$ viewed as a complex with zero differential. The corresponding homotopy retract (see Proposition \ref{prop:he_start} below) is our starting point for the minimal model construction. For this we use the Koszul complex of $x_1,\ldots,x_n$,
+We will show that $S \otimes_k \md{A}_W$ is homotopy equivalent to $\md{M}$ viewed as a complex with zero differential (observe that $\md{M}$ does not depend on $W$). The corresponding homotopy retract (see Proposition \ref{prop:he_start} below) is our starting point for the minimal model construction. For this we use the Koszul complex of $x_1,\ldots,x_n$,
 \be\label{eq:defnkoszulK}
 K = \Big( R \otimes_k \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n ), \; d_K = \sum_i x_i \theta_i^*\; \Big)
 \ee
 and the following diagram of $\nZ_2$-graded complexes and homotopy equivalences over $k$:
 \be\label{eq:first_he}
 \xymatrix@C+3pc{
-S \otimes_k \End_R(k^{\stab}) \ar@<1ex>[r]^-{\exp(-\delta)} & K \otimes_R \End_R(k^{\stab}) \ar@<1ex>[l]^-{ \exp(-\delta) } \ar@<1ex>[r]^-{\pi} & \underline{\End}(k^{\stab})\,.\ar@<1ex>[l]^-{ \sigma_\infty }
+S \otimes_k \md{A}_W \ar@<1ex>[r]^-{\exp(-\delta)} & K \otimes_R \md{A}_W \ar@<1ex>[l]^-{ \exp(-\delta) } \ar@<1ex>[r]^-{\pi} & \md{M}\,.\ar@<1ex>[l]^-{ \sigma_\infty }
 }
 \ee
 The notation is as follows:
 \begin{itemize}
 \item The complexes involved here are
 \begin{gather*}
-\big( S \otimes_k \End_R(k^{\stab}), \; \partial = [-,d_{k^{\stab}}] \,\big)\\
+\big( S \otimes_k \End_R(k^{\stab}), \; \partial = [d_{k^{\stab}},-] \,\big)\\
 \big( K \otimes_R \End_R(k^{\stab}), \; d_K + \partial\, \big)\\
-\big( \underline{\End}(k^{\stab}), 0 \big)\,.
+\big( \md{M}, 0 \big)\,.
 \end{gather*}
 \item The operator $\psi_j = \psi_j \wedge -$ on $k^{\stab}$ satisfies
 \[
@@ -159,7 +164,7 @@ The notation is as follows:
 \]
 where $[-,-]$ always denotes the graded commutator. That is, $\psi_j$ is a homotopy for the action of $x_j$ on $k^{\stab}$. It is then easy to check that the odd operator $\alpha \mapsto \psi_j \circ \alpha$ on $\End_R(k^{\stab})$ is also a homotopy for $x_j$, and where it will not cause confusion we will also write $\psi_j$ for this operator of post-composition.
 
-\item Both $S \otimes_k \End_R(k^{\stab})$ and $K \otimes_R \End_R(k^{\stab})$ have the same underlying $\nZ_2$-graded $k$-module, namely
+\item Both $S \otimes_k \md{A}_W$ and $K \otimes_R \md{A}_W$ have the same underlying $\nZ_2$-graded $k$-module, namely
 \[
 R \otimes_k \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n ) \otimes_k \End_k\big( \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n ) \big)\,.
 \]
@@ -198,9 +203,9 @@ Here $H_\infty$ is an odd operator on $K \otimes_R \End_R(k^{\stab})$. These map
 By inspection of \eqref{eq:first_he}, we therefore have the following:
 
 \begin{proposition}\label{prop:he_start} There is a diagram of morphisms of $\nZ_2$-graded $k$-complexes
-\be
+\be\label{eq:he_start}
 \xymatrix@C+5pc{
-\big( S \otimes_k \End_R(k^{\stab}), \;\partial\, \big) \ar@<1ex>[r]^-{\Phi} & \big( \underline{\End}(k^{\stab}), 0 \big)\,.\ar@<1ex>[l]^-{\Phi^{-1}}
+S \otimes_k \md{A}_W \ar@<1ex>[r]^-{\Phi} & \md{M}\,.\ar@<1ex>[l]^-{\Phi^{-1}}
 }
 \ee
 where $\Phi = \pi \exp(-\delta), \Phi^{-1} = \exp(\delta) \sigma_\infty$ and $\widehat{H} = \exp(\delta) H_\infty \exp(-\delta)$ satisfy
@@ -209,6 +214,30 @@ where $\Phi = \pi \exp(-\delta), \Phi^{-1} = \exp(\delta) \sigma_\infty$ and $\w
 \ee
 Thus, $\Phi$ and $\Phi^{-1}$ are mutually inverse homotopy equivalences over $k$.
 \end{proposition}
+
+The endomorphism algebra $C = \End_k(S)$ is a Clifford algebra generated by the contraction $\theta_i^*$ and wedge product $\theta_i$ operators. It is observed in \cite{murfet} that \eqref{eq:he_start} is an isomorphism of Clifford representations (in the homotopy category) when the complex $\md{M}$ is equipped with the action induced by Atiyah classes:
+
+\begin{definition}
+The Atiyah classes of $\md{A}_W$ are the $R$-linear odd operators
+\[
+\At_i = [\partial, \partial_{x_i}]: \End_R(k^{\stab}) \lto \End_R(k^{\stab})\,,
+\]
+\end{definition}
+
+\begin{lemma} We have
+\[
+\At_i = -[\psi_i^*, -] - \sum_{q=1}^n \partial_{x_i}(W^q) [ \psi_q, - ]\,.
+\]
+\end{lemma}
+\begin{proof}
+By direct calculation:
+\begin{align*}
+\At_i &= \big[ [d_{k^{\stab}},-], \partial_{x_i} \big]\\
+&= \sum_q \big[x_q [\psi_q^*,-], \partial_{x_i}\big] + \sum_q \big[W^q [\psi_q,-], \partial_{x_i}\big]\\
+&= -\sum_q \partial_{x_i}(x_q) [\psi_q^*,-] - \sum_q \partial_{x_i}(W^q) [\psi_q,-]\\
+&= -[\psi_i^*,-] - \sum_q \partial_{x_i}(W^q) [\psi_q, -]\,.
+\end{align*}
+\end{proof}
 
 \section{The minimal model}
 
