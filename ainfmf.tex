@@ -106,12 +106,12 @@ We study $A_\infty$-minimal models of the differential graded algebras obtained 
 
 \section{Introduction}
 
-Let $k$ be a characteristic zero field, and $W \in k[x_1,\ldots,x_n]$ a potential in the sense of \cite[\S 2.2]{lgdual} which has the origin as its only critical point. Choose a presentation of $W$ as a sum $W = x_1 W^1 + \cdots + x_n W^n$ with $W^i \in \mf{m}$. Then the generator of the homotopy category of matrix factorisations of $W$ is the stabilised diagonal
+Let $k$ be a characteristic zero field, and $W \in k[x_1,\ldots,x_n]$ a potential in the sense of \cite[\S 2.2]{lgdual} which has the origin as its only critical point. Choose a presentation of $W$ as a sum $W = x_1 W^1 + \cdots + x_n W^n$ with $W^i \in \mf{m} = (x_1,\ldots,x_n)$. Then the generator of the homotopy category of matrix factorisations of $W$ is the stabilised diagonal
 \begin{equation}\label{eq:kstab}
 k^{\operatorname{stab}} = \Big( k[x] \otimes_k \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n ), \;d_{k^{\stab}} = \sum_{i=1}^n x_i \psi_i^* + \sum_{i=1}^n W^i \psi_i \Big)
 \end{equation}
-where $\psi_i^*$ and $\psi_i$ act respectively by contraction and wedge product on the exterior algebra underlying $k^{\stab}$. The purpose of this paper is to calculate the $A_\infty$-minimal model of the $\nZ_2$-graded differential graded algebra
-\be
+where $\psi_i^*$ and $\psi_i$ act respectively by contraction and wedge product on the exterior algebra underlying $k^{\stab}$ \cite{d0904.4713}. The purpose of this paper is to calculate the $A_\infty$-minimal model of the $\nZ_2$-graded differential graded endomorphism algebra of $k^{\operatorname{\stab}}$
+\be\label{eq:defnaw}
 \md{A}_W = \Big( \End_{k[x]}(k^{\operatorname{stab}}), \; \partial = [d_{k^{\stab}},-] \; \Big)
 \ee 
 with differential (throughout all commutators are graded commutators)
@@ -125,38 +125,52 @@ The minimal model is a finite-dimensional $\nZ_2$-graded vector space $\md{M}_W$
 \]
 of odd $k$-linear maps satisfying the forward suspended $A_\infty$-constraints \cite{lazaroiu}, and having the property that there is an $A_\infty$-quasi-isomorphism $\md{A}_W \lto \md{M}_W$.
 
+\section{Background}
+
+\subsection{A-infinity algebras}
+
+The \emph{tilde grading} is defined by $\widetilde{x} = |x| - 1$.
+
+Throughout $\otimes = \otimes_k$.
+
 \section{Perturbation and Koszul complexes}
 
-Set $R =  k[x_1,\ldots,x_n]$ and let $W$ be a potential as above. To apply the $A_\infty$-minimal model construction to $\md{A}_W$, we would usually begin by finding a $k$-linear homotopy retract of this complex onto its cohomology. However, for our purposes it is better to first enlarge the DG-algebra to $S \otimes_k \md{A}_W$, where $S$ is the $\nZ_2$-graded vector space
+Let $k$ be a characteristic zero field, $R =  k[x_1,\ldots,x_n]$ and let $W \in \mf{m}^2$ be a potential with chosen decomposition $W = \sum_{i=1}^n x_i W^i$. To apply the $A_\infty$-minimal model construction to the DG-algebra $\md{A}_W$ from \eqref{eq:defnaw} we would usually begin by finding a $k$-linear homotopy retract of this complex onto its cohomology. However, for our purposes it is better to first enlarge the DG-algebra to $S \otimes \md{A}_W$, where $S$ is the $\nZ_2$-graded vector space
 \be
 S = \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n )
 \ee
-with grading determined by $|\theta_i| = 1$. We make the tensor product $S \otimes_k \md{A}_W$ into a DG-algebra in the usual way, giving $S$ zero differential.
+with grading $|\theta_i| = 1$. We make the tensor product $S \otimes \md{A}_W$ into a DG-algebra in the usual way, giving the exterior algebra $S$ the zero differential.
 
 \begin{definition} We define the finite-dimensional $\nZ_2$-graded vector space
 \be\label{eq:defnunderlineend}
-\md{M} = R/\mf{m} \otimes_k \End_R(k^{\stab}) \cong \End_k\Big( \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n) \Big)
+\md{E} = R/\mf{m} \otimes \End_R(k^{\stab}) \cong \End_k\Big( \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n) \Big)
 \ee
 where $\mf{m} = (x_1,\ldots,x_n)$.
 \end{definition}
 
-We will show that $S \otimes_k \md{A}_W$ is homotopy equivalent to $\md{M}$ viewed as a complex with zero differential (observe that $\md{M}$ does not depend on $W$). The corresponding homotopy retract (see Proposition \ref{prop:he_start} below) is our starting point for the minimal model construction. For this we use the Koszul complex of $x_1,\ldots,x_n$,
+We will show that $S \otimes \md{A}_W$ is homotopy equivalent to $\md{E}$ viewed as a complex with zero differential (observe that $\md{E}$ does not depend on $W$). The corresponding homotopy retract (see Proposition \ref{prop:he_start} below) is our starting point for the minimal model construction. For this we use the Koszul complex of $x_1,\ldots,x_n$,
 \be\label{eq:defnkoszulK}
-K = \Big( R \otimes_k \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n ), \; d_K = \sum_i x_i \theta_i^*\; \Big)
+K = \Big( R \otimes \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n ), \; d_K = \sum_i x_i \theta_i^*\; \Big)
 \ee
-and the following diagram of $\nZ_2$-graded complexes and homotopy equivalences over $k$:
+
+\begin{theorem} There is a diagram of $\nZ_2$-graded complexes and homotopy equivalences over $k$
 \be\label{eq:first_he}
 \xymatrix@C+3pc{
-S \otimes_k \md{A}_W \ar@<1ex>[r]^-{\exp(-\delta)} & K \otimes_R \md{A}_W \ar@<1ex>[l]^-{ \exp(-\delta) } \ar@<1ex>[r]^-{\pi} & \md{M}\,.\ar@<1ex>[l]^-{ \sigma_\infty }
+S \otimes \md{A}_W \ar@<1ex>[r]^-{\exp(-\delta)} & K \otimes_R \md{A}_W \ar@<1ex>[l]^-{ \exp(-\delta) } \ar@<1ex>[r]^-{\pi} & \md{E}\,.\ar@<1ex>[l]^-{ \sigma_\infty }
 }
 \ee
+\end{theorem}
+\begin{proof}
+See \cite{murfet}.
+\end{proof}
+
 The notation is as follows:
 \begin{itemize}
 \item The complexes involved here are
 \begin{gather*}
-\big( S \otimes_k \End_R(k^{\stab}), \; \partial = [d_{k^{\stab}},-] \,\big)\\
+\big( S \otimes \End_R(k^{\stab}), \; \partial \,\big)\\
 \big( K \otimes_R \End_R(k^{\stab}), \; d_K + \partial\, \big)\\
-\big( \md{M}, 0 \big)\,.
+\big( \md{E}, 0 \big)\,.
 \end{gather*}
 \item The operator $\psi_j = \psi_j \wedge -$ on $k^{\stab}$ satisfies
 \[
@@ -164,10 +178,10 @@ The notation is as follows:
 \]
 where $[-,-]$ always denotes the graded commutator. That is, $\psi_j$ is a homotopy for the action of $x_j$ on $k^{\stab}$. It is then easy to check that the odd operator $\alpha \mapsto \psi_j \circ \alpha$ on $\End_R(k^{\stab})$ is also a homotopy for $x_j$, and where it will not cause confusion we will also write $\psi_j$ for this operator of post-composition.
 
-\item Both $S \otimes_k \md{A}_W$ and $K \otimes_R \md{A}_W$ have the same underlying $\nZ_2$-graded $k$-module, namely
-\[
-R \otimes_k \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n ) \otimes_k \End_k\big( \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n ) \big)\,.
-\]
+\item Both $S \otimes \md{A}_W$ and $K \otimes_R \md{A}_W$ have the same underlying $\nZ_2$-graded $k$-module, namely
+\be\label{eq:same_underlying}
+R \otimes \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n ) \otimes \End_k\big( \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n ) \big)\,.
+\ee
 On this space we define the even operator
 \be
 \delta = \sum_{i=1}^n \psi_i \theta_i^*\,,
@@ -205,7 +219,7 @@ By inspection of \eqref{eq:first_he}, we therefore have the following:
 \begin{proposition}\label{prop:he_start} There is a diagram of morphisms of $\nZ_2$-graded $k$-complexes
 \be\label{eq:he_start}
 \xymatrix@C+5pc{
-S \otimes_k \md{A}_W \ar@<1ex>[r]^-{\Phi} & \md{M}\,.\ar@<1ex>[l]^-{\Phi^{-1}}
+S \otimes \md{A}_W \ar@<1ex>[r]^-{\Phi} & \md{E}\ar@<1ex>[l]^-{\Phi^{-1}}
 }
 \ee
 where $\Phi = \pi \exp(-\delta), \Phi^{-1} = \exp(\delta) \sigma_\infty$ and $\widehat{H} = \exp(\delta) H_\infty \exp(-\delta)$ satisfy
@@ -215,7 +229,7 @@ where $\Phi = \pi \exp(-\delta), \Phi^{-1} = \exp(\delta) \sigma_\infty$ and $\w
 Thus, $\Phi$ and $\Phi^{-1}$ are mutually inverse homotopy equivalences over $k$.
 \end{proposition}
 
-The endomorphism algebra $C = \End_k(S)$ is a Clifford algebra generated by the contraction $\theta_i^*$ and wedge product $\theta_i$ operators. It is observed in \cite{murfet} that \eqref{eq:he_start} is an isomorphism of Clifford representations (in the homotopy category) when the complex $\md{M}$ is equipped with the action induced by Atiyah classes:
+The endomorphism algebra $C = \End_k(S)$ is a Clifford algebra generated by the contraction $\theta_i^*$ and wedge product $\theta_i$ operators. It is observed in \cite{murfet} that \eqref{eq:he_start} is an isomorphism of Clifford representations (in the homotopy category) when the complex $\md{E}$ is equipped with the action induced by Atiyah classes:
 
 \begin{definition}
 The Atiyah classes of $\md{A}_W$ are the $R$-linear odd operators
@@ -241,10 +255,93 @@ By direct calculation:
 
 \section{The minimal model}
 
-We now take the homotopy retract from Proposition \ref{prop:he_start} as the input to the usual algorithm for the construction of an $A_\infty$-minimal model of the DG-algebra $S \otimes \End_R(k^{\stab})$.
-
+We now take the homotopy retract from Proposition \ref{prop:he_start} as the input to the usual algorithm for the construction of an $A_\infty$-minimal model of the DG-algebra $S \otimes \md{A}_W$. We make use of the forward suspended products for this DG-algebra, which are
+\be
+r_q: \left( S \otimes \md{A}_W [1] \right)^{\otimes q} \lto S \otimes \md{A}_W[1]
+\ee
+defined to be zero except for $r_1 = \partial$ and 
+\be
+r_2( \alpha \otimes \beta ) = (-1)^{\widetilde{\alpha} \widetilde{\beta} + \widetilde{\beta} + 1} \beta \alpha
+\ee
+where $\beta \alpha$ is the usual product in $S \otimes_ k \md{A}_W$ and $\widetilde{\alpha} = |\alpha| - 1$. Applying the algorithm described in Section \ref{??} to the data of the $A_\infty$-algebra $\big( S \otimes \md{A}_W, \{ r_1, r_2 \} \big)$ and the strong homotopy retract of Proposition \ref{prop:he_start} produces a minimal $A_\infty$-algebra
+\[
+\big( \md{E}, \{ \rho_q \}_{q \ge 2} \big)\,.
+\]
+The products are defined by sums over trees, for example: one tree contributing to $\rho_3$ is:
+\begin{center}
+\includegraphics[scale=0.35]{diagram-1}
+\end{center}
+For this particular tree $T$ the associated operator is
+\[
+\rho_T = (-1)^1 \Phi \circ r_2 \circ ( \Phi^{-1} \otimes \widehat{H} ) \circ ( 1 \otimes r_2 ) \circ (1 \otimes \Phi^{-1} \otimes \Phi^{-1} ) \,.
+\]
+We first describe the final algorithm which allows us to compute the operations $\rho_q$ in terms of the Feynman rules, and then we will justify this algorithm in the remainder of the paper. Here we stick to $W \in \mf{m}^3$ and consider the subalgebra of $\md{E}$ generated by the contraction operators
+\[
+\md{M} = \bigwedge( k\psi_1^* \oplus \cdots \oplus k \psi_n^* ) \subseteq \md{E}\,.
+\]
+The formula is expressed in terms of \emph{vacuum amplitudes} which are functionals defined for every tree $T$ with $q$ input vertices
+\[
+\cat{O}(T) \in (\md{M}^{\otimes q})^*
+\]
+This amplitude is defined to be a sum over \emph{configurations}
+\[
+\cat{O}(T) = \sum_{c \in \cat{C}} \cat{O}(T, c)\,.
+\]
 \newpage
 
+We define the even operator $\delta_i = \psi_i \theta_i^*$ on the underlying module $\eqref{eq:same_underlying}$ of $S \otimes \md{A}_W$, so that $\delta = \sum_i \delta_i$. Since $[ \delta_i, \delta_j ] = 0$ for all $i,j$ we have
+\be
+\exp(\pm \delta) = \exp(\pm \delta_1) \cdots \exp(\pm \delta_n)\,.
+\ee
+
+\begin{lemma} For $1 \le i \le n$ there is a commutative diagram
+\be
+\xymatrix@C+3pc@R+1pc{
+(S \otimes \md{A}_W) \otimes (S \otimes \md{A}_W) \ar[d]_-{\delta_i \otimes 1 + 1 \otimes \delta_i + [\psi_i,-] \otimes \theta_i^*} \ar[r]^-{m_2} & S \otimes \md{A}_W \ar[d]^-{\delta_i}\\
+(S \otimes \md{A}_W) \otimes (S \otimes \md{A}_W) \ar[r]_-{m_2} & S \otimes \md{A}_W
+}
+\ee
+\end{lemma}
+
+\begin{definition} We define
+\be
+\Xi_i = [ \psi_i, - ] \otimes \theta_i^* : S \otimes \md{A}_W \lto S \otimes \md{A}_W\,.
+\ee
+and
+\be
+\Xi = \sum_i \Xi_i\,.
+\ee
+\end{definition}
+
+\begin{proposition} There is a commutative diagram
+\be
+\xymatrix@C+3pc@R+2pc{
+(S \otimes \md{A}_W) \otimes (S \otimes \md{A}_W) \ar[d]_-{\exp(-\delta) \otimes \exp(-\delta)} \ar[r]^-{m_2} & S \otimes \md{A}_W \ar[dd]^-{\exp(-\delta)}\\
+(S \otimes \md{A}_W) \otimes (S \otimes \md{A}_W) \ar[d]_-{\exp(-\Xi)}\\
+(S \otimes \md{A}_W) \otimes (S \otimes \md{A}_W) \ar[r]_-{m_2} & S \otimes \md{A}_W
+}
+\ee
+\end{proposition}
+
+\begin{definition} $\eval_T$ is the operator associated to the tree $T$ with $\sigma_\infty$ on all input vertices, $m_2 \exp(-\Xi)$ on all internal vertices and $H_\infty$ on internal edges.
+\end{definition}
+
+\begin{lemma} For any tree $T$
+\[
+\rho_T( \alpha_1 \otimes \cdots \otimes \alpha_q ) = (-1)^{S(T, \ell)} \eval_{\widehat{T}}( \alpha_q \otimes \cdots \otimes \alpha_1 )
+\]
+where $\ell = (\widetilde{\alpha}_1,\ldots,\widetilde{\alpha}_q)$.
+\end{lemma}
+
+
+\begin{center}
+\includegraphics[scale=0.35]{diagram-2}
+\end{center}
+
+\section{Notes}
+
+\begin{remark} Varying the potential $W$ affects only the relative ``strength'' of the triple-vertex interactions, which are indexed by the monomials $\gamma$. Thus we can, for example, examine the degeneration from $x^{d+1}$ to $x^d$ (bundles of minimal $A_\infty$-algebras).
+\end{remark}
 
 \section{Examples}
 
@@ -274,6 +371,11 @@ This $A_\infty$-structure is cyclic with respect to the trace form on $\md{A}$ w
 \providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
 \providecommand{\href}[2]{#2}
 \begin{thebibliography}{BHLS03}
+  
+  \bibitem[Dyc11]{d0904.4713}
+T.~Dyckerhoff, \textsl{Compact generators in categories of matrix factorizations},
+  Duke Math. J. \textbf{159} (2011), 223--274,
+  \href{http://arxiv.org/abs/0904.4713}{[arXiv:0904.4713]}.
   
 \bibitem{lazaroiu}
 C.~I.~Lazaroiu, \textsl{Generating the superpotential on a D-brane category: I}, [arXiv:hep-th/0610120].

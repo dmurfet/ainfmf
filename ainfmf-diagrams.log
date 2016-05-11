@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.7.21)  9 MAY 2016 15:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.7.21)  9 MAY 2016 21:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**ainfmf.tex
-(./ainfmf.tex
+**ainfmf-diagrams.tex
+(./ainfmf-diagrams.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
@@ -704,8 +704,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \c@theorem=\count142
 
-(./ainfmf.aux)
-\openout1 = `ainfmf.aux'.
+(./ainfmf-diagrams.aux)
+\openout1 = `ainfmf-diagrams.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 83.
 LaTeX Font Info:    ... okay on input line 83.
@@ -722,9 +722,11 @@ LaTeX Font Info:    ... okay on input line 83.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 83.
 LaTeX Font Info:    ... okay on input line 83.
 LaTeX Font Info:    Try loading font information for U+stmry on input line 83.
- (/usr/local/texlive/2015/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 LaTeX Font Info:    Try loading font information for U+msa on input line 83.
- (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 83.
@@ -783,165 +785,38 @@ LaTeX Info: Redefining \ref on input line 83.
 LaTeX Info: Redefining \pageref on input line 83.
 LaTeX Info: Redefining \nameref on input line 83.
 
-(./ainfmf.out) (./ainfmf.out)
+(./ainfmf-diagrams.out) (./ainfmf-diagrams.out)
 \@outlinefile=\write5
-\openout5 = `ainfmf.out'.
+\openout5 = `ainfmf-diagrams.out'.
 
+ [1
 
-
-LaTeX Warning: Citation `lgdual' on page 1 undefined on input line 109.
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 109.
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 109.
-LaTeX Font Info:    Try loading font information for U+euf on input line 109.
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/ueuf.fd
-File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-)
-
-LaTeX Warning: Citation `d0904.4713' on page 1 undefined on input line 113.
-
-LaTeX Font Info:    Try loading font information for U+dsrom on input line 113.
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/doublestroke/Udsrom.fd
-File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-)
-
-LaTeX Warning: Citation `lazaroiu' on page 1 undefined on input line 126.
-
-[1
-
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Reference `eq:defnaw' on page 2 undefined on input line 138.
-
-
-LaTeX Warning: Reference `prop:he_start' on page 2 undefined on input line 151.
-
-
-<xymatrix 3x1 194>
-
-LaTeX Warning: Citation `murfet' on page 2 undefined on input line 164.
-
-[2]
-
-LaTeX Warning: Reference `eq:first_he' on page 3 undefined on input line 189.
-
-
-LaTeX Warning: Citation `murfet' on page 3 undefined on input line 189.
-
-<xymatrix 2x1 54>
-
-LaTeX Warning: Reference `eq:first_he' on page 3 undefined on input line 197.
-
-[3]
-
-LaTeX Warning: Reference `eq:first_he' on page 4 undefined on input line 217.
-
-<xymatrix 2x1 100>
-
-LaTeX Warning: Citation `murfet' on page 4 undefined on input line 232.
-
-
-LaTeX Warning: Reference `eq:he_start' on page 4 undefined on input line 232.
-
-[4]
-
-LaTeX Warning: Reference `prop:he_start' on page 5 undefined on input line 258.
-
-
-
-LaTeX Warning: Reference `??' on page 5 undefined on input line 266.
-
-
-LaTeX Warning: Reference `prop:he_start' on page 5 undefined on input line 266.
-
-
-<diagram-1.pdf, id=72, 468.96666pt x 486.94792pt>
-File: diagram-1.pdf Graphic file (type pdf)
- <use diagram-1.pdf>
-Package pdftex.def Info: diagram-1.pdf used on input line 272.
-(pdftex.def)             Requested size: 164.14078pt x 170.43431pt.
- [5 <./diagram-1.pdf>] [6] [7] [8] [9]
-
-LaTeX Warning: Reference `eq:same_underlying' on page 10 undefined on input lin
-e 574.
-
-<xymatrix 2x2 194> <xymatrix 2x3 242>
-<diagram-2.pdf, id=138, 982.74704pt x 384.88531pt>
-File: diagram-2.pdf Graphic file (type pdf)
- <use diagram-2.pdf>
-Package pdftex.def Info: diagram-2.pdf used on input line 620.
-(pdftex.def)             Requested size: 343.96661pt x 134.71187pt.
- [10]
-
-LaTeX Warning: Citation `murfet' on page 11 undefined on input line 639.
-
-[11 <./diagram-2.pdf>] [12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 676.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 676.
- (./ainfmf.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 676.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 676.
-
-
-Package rerunfilecheck Warning: File `ainfmf.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `ainfmf.out':
-(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
-(rerunfilecheck)             After:  80691C972BAC6EDCD9443D88A501E299;363.
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 676.
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 377.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 377.
+ (./ainfmf-diagrams.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 377.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 377.
+Package rerunfilecheck Info: File `ainfmf-diagrams.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 377.
  ) 
 Here is how much of TeX's memory you used:
- 19067 strings out of 493089
- 337189 string characters out of 6134842
- 442045 words of memory out of 5000000
- 22098 multiletter control sequences out of 15000+600000
- 22511 words of font info for 97 fonts, out of 8000000 for 9000
+ 18904 strings out of 493089
+ 335468 string characters out of 6134842
+ 447149 words of memory out of 5000000
+ 22018 multiletter control sequences out of 15000+600000
+ 16750 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,14n,54p,3236b,667s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pf
-b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/texlive/
-2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/201
-5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/2015/texmf-di
-st/fonts/type1/public/xypic/xycmat12.pfb></usr/local/texlive/2015/texmf-dist/fo
-nts/type1/public/xypic/xycmbt12.pfb>
-Output written on ainfmf.pdf (12 pages, 397796 bytes).
+ 55i,6n,54p,3245b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on ainfmf-diagrams.pdf (2 pages, 36938 bytes).
 PDF statistics:
- 331 PDF objects out of 1000 (max. 8388607)
- 270 compressed objects within 3 object streams
- 63 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 PDF objects out of 1000 (max. 8388607)
+ 27 compressed objects within 1 object stream
+ 3 named destinations out of 1000 (max. 500000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
