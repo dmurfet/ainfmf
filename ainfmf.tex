@@ -106,24 +106,40 @@ We study $A_\infty$-minimal models of the differential graded algebras obtained 
 
 \section{Introduction}
 
-Let $k$ be a commutative $\mathbb{Q}$-algebra, and $W \in k[x_1,\ldots,x_n]$ a potential in the sense of \cite[\S 2.2]{lgdual} which has the origin as its only critical point. Choose a presentation of $W$ as a sum $W = x_1 W^1 + \cdots + x_n W^n$ with $W^i \in \mf{m} = (x_1,\ldots,x_n)$. Then the generator of the homotopy category of matrix factorisations of $W$ is the stabilised diagonal
+Let $k$ be a commutative $\mathbb{Q}$-algebra and $W \in k[x_1,\ldots,x_n]$ a polynomial which is a potential over $k$ in the sense of \cite[\S 2.2]{lgdual}. For example, $k = \mathbb{C}$ and $W$ has isolated critical points. The $\nZ_2$-graded DG-category $\cat{A} = \operatorname{mf}(R, W)$ has for its objects finite-rank matrix factorisations of $W$ over $R = k[x_1,\ldots,x_n]$. In this paper we study the minimal model problem for $\cat{A}$, the aim being to produce models that are finitely-generated and projective over $k$.
+
+When $k$ is a field, the standard minimal model theorem \cite{??} constructs the structure of an $A_\infty$-category on the cohomology $\cat{B} = H^* \cat{A}$ in such a way that $\cat{B}$ is quasi-isomorphic to $\cat{A}$. Moreover, this $A_\infty$-category has finite-dimensional Hom-spaces and is therefore a good finite model of $\cat{A}$. The problem in this case is to have sufficient control over the inputs to the minimal model theorem that the $A_\infty$-products on $H^* \cat{A}(X,X)$ can be reasonably calculated, for a given matrix factorisation $X$. In order to understand deformations of matrix factorisations \cite{??,??,??} it is important to do this for generic $X$, but the special case where $X = k^{\stab}$, the generator of $\cat{A}$ studied by Dyckerhoff in the case of a single isolated singularity at the origin \cite{d0904.4713}, is of particular interest.
+
+Since one of our goals is to understand how matrix factorisation categories vary along unfoldings of singularities, we also need to consider the case where $k$ is not a field. For example take $k = \mathbb{C}[t]$ and $R = \mathbb{C}[x_1,\ldots,x_n, t]$ so that $W = W_t(x)$ is a potential with parameter. In this case we want an $A_\infty$-category $\cat{B}$ quasi-isomorphic to $\cat{A}$ over $k$, with $\cat{B}(a,b)$ a finitely-generated projective $k$-module for each pair of objects $a,b$. 
+\vspace{0.2cm}
+
+These two desiderata, understanding the $A_\infty$-products on $H^*\cat{A}(X,X)$ for generic $X$, and the case where $k$ is not a field, lead us naturally to a slightly non-standard use of the minimal model theorem. Following the ideas developed in \cite{??,??,??} we prove that, writing $\iota: R \lto R/(\partial_{x_1} W, \ldots, \partial_{x_n} W)$ for the quotient, there is a $k$-linear homotopy retract
+\be\label{eq:intro_he}
+\xymatrix@C+4pc{
+\iota^* \cat{A} \ar@<0.7ex>[r] & \cat{A} \otimes_k \bigwedge\big( k^{\oplus n}[1] \big) \ar@<0.7ex>[l]\,.
+}
+\ee
+
+Suppose $W \in \mf{m}^2$ where $\mf{m} = (x_1,\ldots,x_n)$ and choose a presentation $W = x_1 W^1 + \cdots + x_n W^n$ with $W^i \in \mf{m}$ and consider the following pair
 \begin{equation}\label{eq:kstab}
 k^{\operatorname{stab}} = \Big( k[x] \otimes_k \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n ), \;d_{k^{\stab}} = \sum_{i=1}^n x_i \psi_i^* + \sum_{i=1}^n W^i \psi_i \Big)
 \end{equation}
-where $\psi_i^*$ and $\psi_i$ act respectively by contraction and wedge product on the exterior algebra underlying $k^{\stab}$ \cite{d0904.4713}. The purpose of this paper is to calculate the $A_\infty$-minimal model of the $\nZ_2$-graded differential graded endomorphism algebra of $k^{\operatorname{\stab}}$
+where $\psi_i^*$ and $\psi_i$ act respectively by contraction and wedge product on the exterior algebra underlying $k^{\stab}$. It is easy to see that $d_{k^{\stab}}^2 = W$, so $k^{\stab}$ is a matrix factorisation. When $k$ is a field and $W$ has an isolated critical point at the origin, $k^{\stab}$ is the representative in the homotopy category of matrix factorisations of the structure sheaf of the singular point at the origin, and was first studied by Dyckerhoff \cite{d0904.4713}. 
+
+The purpose of this paper is to show how to calculate the $A_\infty$-minimal model of the $\nZ_2$-graded differential graded endomorphism algebra of this matrix factorisation
 \be\label{eq:defnaw}
-\md{A}_W = \Big( \End_{k[x]}(k^{\operatorname{stab}}), \; \partial = [d_{k^{\stab}},-] \; \Big)
+\Big( \End_{k[x]}(k^{\operatorname{stab}}), \; \partial = [d_{k^{\stab}},-] \; \Big)\,.
 \ee 
-with differential (throughout all commutators are graded commutators)
-\begin{align}
-\partial &= \Big[\sum_i x_i \psi_i^* + \sum_i W^i \psi_i, -\Big]\\
+The differential here is (throughout all commutators are graded commutators)
+\begin{align*}
+\partial = [d_{k^{\stab}},-] &= \Big[\sum_i x_i \psi_i^* + \sum_i W^i \psi_i, -\Big]\\
 &= \sum_i x_i [\psi_i^*,-] + \sum_i W^i [\psi_i,-]\,.
-\end{align}
+\end{align*}
 The minimal model is a finite-dimensional $\nZ_2$-graded vector space $\md{M}_W$ with a family 
 \[
 \left\{ r_q: \big(\md{M}_W[1]\big)^{\otimes q} \lto \md{M}_W[1] \right\}_{q \ge 2}
 \]
-of odd $k$-linear maps satisfying the forward suspended $A_\infty$-constraints \cite{lazaroiu}, and having the property that there is an $A_\infty$-quasi-isomorphism $\md{A}_W \lto \md{M}_W$.
+of odd $k$-linear maps satisfying the forward suspended $A_\infty$-constraints \cite{lazaroiu}, and having the property that there is an $A_\infty$-quasi-isomorphism $\md{M}_W \lto \End_{k[x]}(k^{\stab})$.
 
 \section{Background}
 
@@ -342,6 +358,83 @@ where $\ell = (\widetilde{\alpha}_1,\ldots,\widetilde{\alpha}_q)$.
 
 \begin{remark} Varying the potential $W$ affects only the relative ``strength'' of the triple-vertex interactions, which are indexed by the monomials $\gamma$. Thus we can, for example, examine the degeneration from $x^{d+1}$ to $x^d$ (bundles of minimal $A_\infty$-algebras).
 \end{remark}
+
+\section{Algorithm}
+% from p.17 (ainfmf9)
+
+Let $T \in \cat{T}_q$ be a valid plane tree with $q$ inputs and $e_i(T)$ internal edges, and let $A(T)$ be the augmented plane tree. Recall that the vertices of $A(T)$ may be partitioned into the following subsets: the root, the non-root leaves (called \emph{inputs}), the vertices coming from internal edges of $T$, and those internal vertices coming from internal vertices of $T$. The integer $n$ is the number of variables in the ambient ring $R = k[x_1,\ldots,x_n]$. 
+
+Consider the tensor product
+\[
+\mathscr{H} = R \otimes_k \bigwedge\big( \oplus_{i=1}^n k \theta_i \,\big) \otimes_k \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big) \Big)
+\]
+on which we have the following natural operators:
+\[
+x_i\,, \partial_i = \partial_{x_i}\,, \theta_i\,, \theta_i^*\,, \psi_i\,, \psi_i^*\,.
+\]
+
+\begin{definition} A \emph{configuration} $\mathscr{C}$ of the plane tree $T$ consists of the following data, for each non-root vertex $x$ of $A(T)$:
+\begin{itemize}
+\item An integer $m(x) \ge 0$.
+\item A subset $J(x) \subseteq \{ 1,\ldots, n \}$ with $|J(x)| = m(x)$. 
+\item If $x$ is an input, or comes from an internal edge of $T$, a pair
+\[
+( a_j(x), \gamma_j(x) ) \in \{ 1, \ldots, n \} \times \mathbb{N}^n
+\]
+for each $j \in J(x)$.
+\item If $x$ comes from an internal edge of $T$, an integer $t(x) \in \{1,\ldots,n\}$.
+\end{itemize}
+Let $\operatorname{Con}(T)$ denote the set of all configurations. For each vertex $x$ of $A(T)$ coming from an internal edge of $T$ we define
+\[
+w(x) = \sum_{y < x} \sum_{j \in J(y)} | \gamma_j(y) | - \sum_{z < x} m(z)
+\]
+where the sum is over all internal edges and input vertices $y$ above $x$ in the tree, i.e. for each $x$ is on the unique path from $y$ to the root, and $z$ ranges over internal vertices. We define in addition
+\[
+F(x) = \frac{1}{w(x)} C( w(x), \{ |\gamma_j(x)| \}_{j \in J(x)} )\,.
+\]
+\end{definition} 
+
+\begin{remark} How does $A$ sit inside $\mathscr{H}$?
+\end{remark}
+
+We define
+\[
+\mathscr{B} = \bigwedge\big( k \psi_1^* \oplus \cdots \oplus k \psi_n^* \big)\,.
+\]
+
+\begin{definition} Given $T \in \cat{T}_q$ and $\mathscr{C} \in \operatorname{Con}(T)$ we define the $k$-linear operator
+\[
+\cat{O}^{pre}(T, \mathscr{C}): \mathscr{B}^{\otimes q} \lto \mathscr{B}
+\]
+by making the following assignments
+\begin{itemize}
+\item to an input vertex of $T$ labelled with $m, J$ and $\{ (a_j, \gamma_j) \}_{j \in J}$ we assign the operator
+\[
+(-1)^m \prod_{j \in J}\Big\{ \frac{1}{|\gamma_j|} W^j( \gamma_j) \partial_{a_j}( x^{\gamma_j} ) \theta_{a_j} \big[ \psi_j, - \big] \Big\}
+\]
+on $\mathscr{H}$. Note that the operator under the product is even, so the order of the product is irrelevant.
+\item to each vertex coming from an internal edge of $T$ labelled with $m,J$ and $\{ (a_j, \gamma_j) \}_{j \in J}$ and $t$ the operator
+\be
+(-1)^m \prod_{j \in J} \Big\{ \frac{1}{|\gamma_j|} W^j( \gamma_j) \partial_{a_j}( x^{\gamma_j} ) \theta_{a_j} \big[ \psi_j, - \big] \Big\} \circ \theta_t \partial_t
+\ee
+on $\mathscr{H}$.
+\item to an internal vertex of $T$ labelled with $m,J$ the operator
+\be
+(-1)^m m_2 \circ \prod_{j \in J} \Big\{ \big[ \psi_j, - \big] \otimes \theta_j^* \Big\}
+\ee
+which is a map $\mathscr{H}^{\otimes 2} \lto \mathscr{H} \lto \mathscr{B}$.
+\end{itemize}
+We define $F = \prod_{e \in E_i(T)} F(e)$ and
+\[
+\cat{O}(T, \mathscr{C}) = F \cdot \cat{O}^{pre}(T, \mathscr{C})\,.
+\]
+\end{definition}
+
+\begin{definition} We define $\rho_q: \mathscr{B}[1]^{\otimes q} \lto \mathscr{B}[1]$ by
+\[
+\rho_q( \Lambda_1 \otimes \cdots \otimes \Lambda_q ) = \sum_{T \in \cat{T}_q} (-1)^{S(T, \Lambda)} \sum_{\mathscr{C} \in \operatorname{Con}(\widehat{T})} \cat{O}(\widehat{T}, \mathscr{C})( \Lambda_q \otimes \cdots \otimes \Lambda_1 )\,.
+\]
+\end{definition}
 
 \section{Examples}
 
