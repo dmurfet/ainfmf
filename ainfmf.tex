@@ -370,7 +370,11 @@ Consider the tensor product
 \]
 on which we have the following natural operators:
 \[
-x_i\,, \partial_i = \partial_{x_i}\,, \theta_i\,, \theta_i^*\,, \psi_i\,, \psi_i^*\,.
+x_i\,, \partial_i = \partial_{x_i}\,, \theta_i\,, \theta_i^*\,, \big[\psi_i\,,-\big]
+\]
+where $\psi_i$ denotes the operator $\psi_i \wedge (-)$ on $\bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big)$ and $[ \psi_i, - ]$ the graded commutator with this operator, defined on a homogeneous operator $\beta$ by
+\[
+\big[ \psi_i, \beta \big] = \psi_i \circ \beta - (-1)^{|\beta|} \beta \circ \psi_i\,.
 \]
 
 \begin{definition} A \emph{configuration} $\mathscr{C}$ of the plane tree $T$ consists of the following data, for each non-root vertex $x$ of $A(T)$:
