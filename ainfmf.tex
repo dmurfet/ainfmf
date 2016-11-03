@@ -339,28 +339,28 @@ for each $j \in J(v)$.
 Let $\operatorname{Con}(T)$ denote the set of all configurations.
 \end{definition} 
 
-\begin{definition} We define
+\begin{definition} We define the $\nZ_2$-graded $k$-module
 \[
-\mathscr{B} = \bigwedge\big( k \psi_1^* \oplus \cdots \oplus k \psi_n^* \big)
+\mathscr{B} = \bigwedge\big( \oplus_{i=1}^n k \psi_i^* \,\big)
 \]
-which we view as a subalgebra
+which we view as a submodule
 \[
 \mathscr{B} \subset \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big) \Big)
 \]
-by identifying $\psi_i^*$ with the operation of contraction $\psi_i^*\, \lrcorner\, (-)$ on the exterior algebra. In this way we may also identify $\mathscr{B}$ with a subalgebra of $\mathscr{H}$, and we write $\iota: \mathscr{B} \lto \mathscr{H}$ for the inclusion. Note that the operator $[\psi_j, -]$ on $\mathscr{H}$ defined above acts on the subalgebra $\mathscr{B}$ as contraction with $\psi_j = (\psi_j^*)^*$, that is,
+by identifying $\psi_i^* \in \mathscr{B}$ with the operation of contraction $\psi_i^*\, \lrcorner\, (-)$ on the exterior algebra. In this way we may also identify $\mathscr{B}$ with a submodule of $\mathscr{H}$, and we write $\iota: \mathscr{B} \lto \mathscr{H}$ for the inclusion. Note that the operator $[\psi_j, -]$ on $\mathscr{H}$ defined above acts on the submodule $\mathscr{B}$ as contraction with $\psi_j = (\psi_j^*)^*$, that is,
 \be\label{eq:comm_is_ann}
-\Big[ \psi_j, \psi_{i_1}^* \wedge \cdots \wedge \psi_{i_r}^* \Big] = \sum_{l=1}^r (-1)^{l-1} \delta_{j, i_l} \psi_{i_1}^* \wedge \cdots \wedge \widehat{ \psi_{i_l}^* } \wedge \cdots \wedge \psi_{i_r}^*\,.
+\Big[ \psi_j, \iota\big(\psi_{i_1}^* \wedge \cdots \wedge \psi_{i_r}^*\big) \Big] = \sum_{l=1}^r (-1)^{l-1} \delta_{j, i_l} \iota\big(\psi_{i_1}^* \wedge \cdots \wedge \widehat{ \psi_{i_l}^* } \wedge \cdots \wedge \psi_{i_r}^*\big)\,.
 \ee
 \end{definition}
 
-Given $\gamma \in \mathbb{N}^n,f \in R$ we write $x^\gamma = \prod_{i=1}^n x_i^{\gamma_i}$ and $f(\gamma)$ for the coefficient of $x^\gamma$ in $f$. Recall the decomposition $W = \sum_j x_j W^j$ with $W^i \in \mf{m}^2$. The products in the $A_\infty$-algebra $\mathscr{B}$ will depend on $W$ through the coefficients $W^j(\gamma) \in k$.
+Given $\gamma \in \mathbb{N}^n,f \in R$ we write $x^\gamma = \prod_{i=1}^n x_i^{\gamma_i}$ and $f(\gamma)$ for the coefficient of $x^\gamma$ in $f$. Recall the decomposition $W = \sum_j x_j W^j$ with $W^i \in \mf{m}^2$. The products in the $A_\infty$-algebra structure on $\mathscr{B}$ will depend on $W$ through the coefficients $W^j(\gamma) \in k$.
 
-\begin{definition} Given a tree $T \in \cat{T}_q$ and configuration $C \in \operatorname{Con}(T)$ we define a decoration $D_{T,C}$ of $A(T)$ by the assignment of
+\begin{definition} Given a tree $T \in \cat{T}_q$ and configuration $C \in \operatorname{Con}(T)$ we define a decoration $D_{T,C}$ of $A(T)$ by the assignment of the modules
 \begin{itemize}
-\item $\mathscr{B}$ as the input at each non-root leaf and the output at the root, and
-\item $\mathscr{H}$ as the label on each edge.
+\item $\mathscr{B}$ to the input at each non-root leaf and the output at the root, and
+\item $\mathscr{H}$ to each edge.
 \end{itemize}
-To each vertex $v$ of $A(T)$ we associate an operator $\phi_v$ as follows, writing $m, J, \{ (a_j, \gamma_j) \}_{j \in J}, t$ for the data associated to $v$:
+To each vertex $v$ of $A(T)$ we associate an operator $\phi_v$ as follows, writing $m, J, \{ (a_j, \gamma_j) \}_{j \in J}, t$ for the data associated to $v$ by the configuration $C$:
 \begin{itemize}
 \item if $v$ is an input, then $\phi_v$ is the linear map $\mathscr{B} \lto \mathscr{H}$ given by
 \be\label{eq:int_input}
@@ -375,7 +375,7 @@ Note that the operator under the product is even, so the order is irrelevant.
 \be\label{eq:int_intvert}
 \phi_v = (-1)^m m_2 \circ \prod_{j \in J} \Big\{ \big[ \psi_j, - \big] \otimes \theta_j^* \Big\}
 \ee
-which is a map $\mathscr{H}^{\otimes 2} \lto \mathscr{H}$. Here $m_2$ denotes the usual product on the tensor product of algebras $\mathscr{H}$.
+which is a map $\mathscr{H}^{\otimes 2} \lto \mathscr{H}$. Here $m_2$ denotes the product on $\mathscr{H}$.
 \end{itemize}
 \end{definition}
 
@@ -409,11 +409,17 @@ to be the denotation $\cat{O}(T,C) = \langle D_{T,C} \rangle$, defined without K
 
 \begin{definition} We define $\rho_q: \mathscr{B}[1]^{\otimes q} \lto \mathscr{B}[1]$ by
 \[
-\rho_q( \Lambda_1 \otimes \cdots \otimes \Lambda_q ) = \sum_{T \in \cat{T}_q} \sum_{C \in \operatorname{Con}(\widehat{T})} (-1)^{Q(T, \underline{\Lambda})} S(C) \cdot \cat{O}(\widehat{T}, C)( \Lambda_q \otimes \cdots \otimes \Lambda_1 )\,.
+\rho_q( \Lambda_1 \otimes \cdots \otimes \Lambda_q ) = \sum_{T \in \cat{T}_q} \sum_{C \in \operatorname{Con}(T)} (-1)^{Q(T, \underline{\Lambda})} S(C) \cdot \cat{O}(T, C)( \Lambda_q \otimes \cdots \otimes \Lambda_1 )\,.
+\]
+where
+\[
+Q(T, \underline{\Lambda}) = sign\,.
 \]
 \end{definition}
 
-From the physics point of view, $\mathscr{H}$ is the tensor product of the bosonic Fock space $R$ with creation and annihilation operators $x_i, \partial_i$, fermionic Fock space $\wedge( \oplus_{i=1}^n k \theta_i )$ with creation and annihilation operators $\theta_i, \theta_i^*$ and the third factor, of which the calculations of the $A_\infty$-structure only involve the subalgebra $\mathscr{B} = \wedge( \oplus_{i=1}^n k \psi_i^* )$ which is another fermionic Fock space with states the products of $\psi_i^*$'s and annihilation operators $[\psi_i, -]$. The operators in \eqref{eq:int_input}, \eqref{eq:int_intedge}, \eqref{eq:int_intvert} are given as products of these creation and annihilation operators, and may be interpreted as particle interactions in the usual way. The associated diagrams are the following:
+From the physics point of view, $\mathscr{H}$ is the tensor product of the bosonic Fock space $R$ with creation and annihilation operators $x_i, \partial_i$, fermionic Fock space $\wedge( \oplus_{i=1}^n k \theta_i )$ with creation and annihilation operators $\theta_i, \theta_i^*$ and the third factor, of which the calculations of the $A_\infty$-structure only involve the submodule $\mathscr{B} = \wedge( \oplus_{i=1}^n k \psi_i^* )$ which is another fermionic Fock space. The inputs to the Feynman diagrams are tensor products of states in $\mathscr{B}$, that is, wedge products of $\psi_i^*$'s, on which the $[\psi_i, -]$ act as annihilation operators.
+
+The operators in \eqref{eq:int_input}, \eqref{eq:int_intedge}, \eqref{eq:int_intvert} are given as products of these creation and annihilation operators, and may be interpreted as particle interactions in the usual way. The associated diagrams are the following:
 
 \begin{center}
 \includegraphics[scale=0.4]{dia2}
