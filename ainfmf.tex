@@ -83,6 +83,7 @@
 \DeclareMathOperator{\At}{At}
 \DeclareMathOperator{\Cat}{Cat}
 \DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\id}{id}
 
 \begin{document}
 
@@ -283,15 +284,15 @@ By direct calculation:
 
 The integer $n$ is the number of variables in the ambient ring $R = k[x_1,\ldots,x_n]$. 
 
-\begin{definition} Consider the tensor product
+\begin{definition} Consider the $\nZ_2$-graded algebra defined by the tensor product
 \[
 \mathscr{H} = R \otimes_k \bigwedge\big( \oplus_{i=1}^n k \theta_i \,\big) \otimes_k \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big) \Big)
 \]
-on which we have the following homogeneous operators:
+with degrees $|\theta_i| = |\psi_i| = 1$. On this space we have the homogeneous operators
 \[
-x_i\,, \partial_i = \partial_{x_i}\,, \theta_i\,, \theta_i^*\,, \big[\psi_i\,,-\big]
+x_i\,, \partial_i = \partial_{x_i}\,, \theta_i\,, \theta_i^*\,, \big[\psi_i\,,-\big]\,.
 \]
-where $\psi_i$ denotes the operator $\psi_i \wedge (-)$ on $\bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big)$ and $[ \psi_i, - ]$ the graded commutator with this operator, defined on a homogeneous operator $\beta$ by
+Here $\psi_i$ denotes the operator $\psi_i \wedge (-)$ on $\bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big)$ and $[ \psi_i, - ]$ the graded commutator with this operator, defined on a homogeneous operator $\beta$ by
 \[
 \big[ \psi_i, \beta \big] = \psi_i \circ \beta - (-1)^{|\beta|} \beta \circ \psi_i\,.
 \]
@@ -307,6 +308,7 @@ by identifying $\psi_i^* \in \mathscr{B}$ with the operation of contraction $\ps
 \be\label{eq:comm_is_ann}
 \Big[ \psi_j, \iota\big(\psi_{i_1}^* \wedge \cdots \wedge \psi_{i_r}^*\big) \Big] = \sum_{l=1}^r (-1)^{l-1} \delta_{j, i_l} \iota\big(\psi_{i_1}^* \wedge \cdots \wedge \widehat{ \psi_{i_l}^* } \wedge \cdots \wedge \psi_{i_r}^*\big)\,.
 \ee
+We write $p: \mathscr{H} \lto \mathscr{B}$ for the natural projection (todo).
 \end{definition}
 
 We view $\mathscr{H}$ as the tensor product of the bosonic Fock space $R$ with creation and annihilation operators $x_i, \partial_i$, fermionic Fock space $\wedge( \oplus_{i=1}^n k \theta_i )$ with creation and annihilation operators $\theta_i, \theta_i^*$ and the third factor, of which the calculations of the $A_\infty$-structure only involve the submodule $\mathscr{B} = \wedge( \oplus_{i=1}^n k \psi_i^* )$ which is another fermionic Fock space. The inputs to the Feynman diagrams are tensor products of states in $\mathscr{B}$, that is, wedge products of $\psi_i^*$'s, on which the $[\psi_i, -]$ act as annihilation operators.
@@ -347,46 +349,47 @@ $1 \le t \le n$
 &
 \includegraphics[scale=0.4]{dia4}
 &
-$m_2 \circ \big( \big[\psi_j,-\big] \otimes \theta_j^* \big) \in \Hom_k( \mathscr{H}^{\otimes 2}, \mathscr{H} )$\\
+$m_2 \big( \big[\psi_j,-\big] \otimes \theta_j^* \big) \in \Hom_k( \mathscr{H}^{\otimes 2}, \mathscr{H} )$\\
 \vspace{0.5cm}
 $1 \le j \le n$
 &
 \tagarray{\label{interaction_3}}
 \end{tabular}
 \end{center}
-Here $m_2$ is the multiplication in the tensor product of algebras $\mathscr{H}$ and given $\gamma \in \mathbb{N}^n$ we write $x^\gamma = x_1^{\gamma_1} \cdots x_n^{\gamma_n}$, with $e_i \in \mathbb{N}^n$ the unit vector with $x^{e_i} = x_i$. By convention if $\gamma_a = 0$ then $x^{\gamma - e_a} = 0$. Finally, note that in the Feynman diagrams, bosonic particles are depicted with dotted lines, and fermionic particles with solid lines.
+Here $m_2$ is the multiplication in $\mathscr{H}$ and, given $\gamma \in \mathbb{N}^n$, we write $x^\gamma = x_1^{\gamma_1} \cdots x_n^{\gamma_n}$, with $e_i \in \mathbb{N}^n$ the unit vector with $x^{e_i} = x_i$. By convention if $\gamma_a = 0$ then $x^{\gamma - e_a} = 0$. Finally, note that in the Feynman diagrams, bosonic particles are depicted with dotted lines, and fermionic particles with solid lines.
 
 These interactions ``take place'' at vertices of the tree $A(T)$ for some $T \in \cat{T}_q$, and come with the following constraints, which will be formalised below in terms of combinatorial data called \emph{configurations}. We write $f(\gamma)$ for the coefficient of $x^\gamma$ in a polynomial $f \in R$ and recall the chosen decomposition $W = \sum_j x_j W^j$. 
 
 \begin{itemize}
-\item A-type interactions occur at input vertices and internal edges of $T$.
-\item B-type interactions occur at internal edges of $T$, and moreover there is \emph{precisely one} at each internal edge.
-\item C-type interactions occur at internal vertices of $T$ (i.e. where two branches merge).
+\item A-type interactions only occur at input vertices and internal edges of $T$.
+\item B-type interactions only occur at internal edges of $T$, and moreover there is \emph{precisely one} at each internal edge.
+\item C-type interactions only occur at internal vertices of $T$.
 \item The A-type interaction with indices $a,j, \gamma$ appears with the coefficient
 \be\label{eq:coeff_a}
 -\frac{\gamma_a}{|\gamma|} W^j( \gamma)
 \ee
-where $|\gamma| = \sum_i \gamma_i$, and each B- and C-type interaction appears with coefficient $(-1)$.
+where $|\gamma| = \sum_i \gamma_i$. Each B- and C-type interaction appears with coefficient $(-1)$.
 \end{itemize}
 
-Note that the coefficient \eqref{eq:coeff_a} is the only way that $W$ enters the rules, and thus the definition of the $A_\infty$-products on $\mathscr{B}$. The precise definition of the Feynman rules will be given in Definition \ref{defn:config} below, but first we give an example of a tree with interactions inserted, to illustrate the various ingredients.
+As we will see, the coefficient \eqref{eq:coeff_a} is the only way that $W$ enters the rules, and thus the definition of the $A_\infty$-products on $\mathscr{B}$. The precise definition of the Feynman rules will be given in Definition \ref{defn:config} below, but first we give an example of a tree with interactions inserted, to illustrate the various ingredients.
 
-\begin{example} Consider the tree $T \in \cat{T}_3$ whose augmented tree $A(T)$ is depicted below, together with labels for its vertices:
+\begin{example} Consider the tree $T \in \cat{T}_3$ whose augmented tree $A(T)$ is depicted below, together with labels for its vertices, where we label by $e$ the vertex corresponding to the internal edge of $T$:
 \begin{center}
-\includegraphics[scale=0.3]{diagram-1}
+\includegraphics[scale=0.25]{dia7}
 \end{center}
-Here we label by $e$ the vertex of $A(T)$ corresponding to the internal edge of $T$. Set $W = x^3 \in \mathbb{C}[x]$ so that $W^1 = x^2$ and the only possible A-type interaction has $a = 1, j = 1, \gamma = 2$ and coefficient $1$, as in the diagram
-\[
-blah\,.
-\]
-Writing $\psi = \psi_1$ consider the input state $\psi^* \otimes \psi^* \otimes \psi^*$ in $\mathscr{B}^{\otimes 3}$, consisting of one fermion in each input channel. One possible pattern of interactions (called a configuration, below) has a single A-type interaction at the input vertex $i_3$, a B-type interaction at $e$, and two C-type interactions at $v_1,v_2$, as shown in the Feynman diagram
-\[
-blah\,.
-\]
-Let $p: \mathscr{H} \lto \mathscr{B}$ denote the projection of $R$ onto constants, and the exterior algebras onto $k$. The above diagram corresponds to the following evaluation of an operator derived from the interactions, on the input state
+Set $W = x^3 \in \mathbb{C}[x]$ so that $W^1 = x^2$ and the only A-type interaction has $a = 1, j = 1, \gamma = 2$ and coefficient $1$, as in the diagram (we write $\theta = \theta_1, \psi = \psi_1$)
+\begin{center}
+\includegraphics[scale=0.3]{dia5}
+\end{center}
+Consider the input state $\Psi = \psi^* \otimes \psi^* \otimes \psi^*$ in $\mathscr{B}^{\otimes 3}$. One possible pattern of interactions (called a configuration, below) has a single A-type interaction at the input vertex $i_3$, a B-type interaction at $e$, and two C-type interactions at $v_1,v_2$, as shown in
+\begin{center}
+\includegraphics[scale=0.3]{dia6}
+\end{center}
+This ``topological'' Feynman diagram depicts the value of the linear map
 \begin{align*}
-p \circ m_2 \circ ( \psi^* \otimes b m_2 ( \psi^* \otimes \psi^* ) ) = fh
+(-1)^3 p \circ m_2 \big([\psi, -] \otimes \theta^*\big) \circ \big( \iota \otimes \theta \partial_x \circ m_2 ([\psi, -] \otimes \theta^*)\big( \iota \otimes \theta x [\psi, -] \iota \big)\big)
 \end{align*}
+on the input state $\Psi$, which may be checked is $-1 \in \mathscr{B}$.
 \end{example}
 
 Now we give a precise definition of the Feynman rules. Let $T \in \cat{T}_q$ be a valid plane tree with $q$ inputs and $e_i(T)$ internal edges, and let $A(T)$ be the augmented plane tree. 
