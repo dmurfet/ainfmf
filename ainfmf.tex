@@ -1,4 +1,5 @@
 \documentclass[english,letter paper,12pt,leqno]{article}
+\usepackage{array}
 \usepackage{stmaryrd}
 \usepackage{amsmath, amscd, amssymb, mathrsfs, accents, amsfonts,amsthm}
 \usepackage[all]{xy}
@@ -26,6 +27,9 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{setup}[theorem]{Setup}
+
+% Labels in tabular
+\newcommand{\tagarray}{\mbox{}\refstepcounter{equation}$(\theequation)$}
 
 \newtheoremstyle{example}{\topsep}{\topsep}
 	{}
@@ -269,6 +273,209 @@ By direct calculation:
 \end{align*}
 \end{proof}
 
+\section{Trees and decorations}
+
+\begin{example}
+\end{example}
+
+\section{Feynman diagrams}
+% from p.17 (ainfmf9)
+
+The integer $n$ is the number of variables in the ambient ring $R = k[x_1,\ldots,x_n]$. 
+
+\begin{definition} Consider the tensor product
+\[
+\mathscr{H} = R \otimes_k \bigwedge\big( \oplus_{i=1}^n k \theta_i \,\big) \otimes_k \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big) \Big)
+\]
+on which we have the following homogeneous operators:
+\[
+x_i\,, \partial_i = \partial_{x_i}\,, \theta_i\,, \theta_i^*\,, \big[\psi_i\,,-\big]
+\]
+where $\psi_i$ denotes the operator $\psi_i \wedge (-)$ on $\bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big)$ and $[ \psi_i, - ]$ the graded commutator with this operator, defined on a homogeneous operator $\beta$ by
+\[
+\big[ \psi_i, \beta \big] = \psi_i \circ \beta - (-1)^{|\beta|} \beta \circ \psi_i\,.
+\]
+We define the $\nZ_2$-graded $k$-module
+\[
+\mathscr{B} = \bigwedge\big( \oplus_{i=1}^n k \psi_i^* \,\big)
+\]
+which we view as a submodule
+\[
+\mathscr{B} \subset \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big) \Big)
+\]
+by identifying $\psi_i^* \in \mathscr{B}$ with the operation of contraction $\psi_i^*\, \lrcorner\, (-)$ on the exterior algebra. In this way we may also identify $\mathscr{B}$ with a submodule of $\mathscr{H}$, and we write $\iota: \mathscr{B} \lto \mathscr{H}$ for the inclusion. Note that the operator $[\psi_j, -]$ on $\mathscr{H}$ defined above acts on the submodule $\mathscr{B}$ as contraction with $\psi_j = (\psi_j^*)^*$, that is,
+\be\label{eq:comm_is_ann}
+\Big[ \psi_j, \iota\big(\psi_{i_1}^* \wedge \cdots \wedge \psi_{i_r}^*\big) \Big] = \sum_{l=1}^r (-1)^{l-1} \delta_{j, i_l} \iota\big(\psi_{i_1}^* \wedge \cdots \wedge \widehat{ \psi_{i_l}^* } \wedge \cdots \wedge \psi_{i_r}^*\big)\,.
+\ee
+\end{definition}
+
+We view $\mathscr{H}$ as the tensor product of the bosonic Fock space $R$ with creation and annihilation operators $x_i, \partial_i$, fermionic Fock space $\wedge( \oplus_{i=1}^n k \theta_i )$ with creation and annihilation operators $\theta_i, \theta_i^*$ and the third factor, of which the calculations of the $A_\infty$-structure only involve the submodule $\mathscr{B} = \wedge( \oplus_{i=1}^n k \psi_i^* )$ which is another fermionic Fock space. The inputs to the Feynman diagrams are tensor products of states in $\mathscr{B}$, that is, wedge products of $\psi_i^*$'s, on which the $[\psi_i, -]$ act as annihilation operators.
+
+The linear maps in \eqref{eq:int_input}, \eqref{eq:int_intedge}, \eqref{eq:int_intvert} below which determine the $A_\infty$ products $\rho_q$ on $\mathscr{B}$ will be defined in terms of these creation and annihilation operators on $\mathscr{H}$, and may be interpreted as particle interactions in the usual way. The interactions that appear are the following ones, depicted on the left as Feynman diagrams and on the right as operators. We call these respectively \emph{A-, B- and C-type interactions}:
+
+\begin{center}
+\begin{tabular}{ >{\centering}m{1cm} >{\centering}m{4cm} >{\centering}m{8cm} >{\centering}m{1cm}}
+\textbf{A}
+&
+\includegraphics[scale=0.4]{dia2}
+&
+$\theta_a x^{\gamma - e_a} \big[\psi_j, -\big] \in \End_k( \mathscr{H} )$\\
+\vspace{0.5cm}
+$1 \le a,j \le n\,, \gamma \in \mathbb{N}^n$
+&
+\tagarray{\label{interaction_1}}
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ >{\centering}m{1cm} >{\centering}m{4cm} >{\centering}m{8cm} >{\centering}m{1cm}}
+\textbf{B}
+&
+\includegraphics[scale=0.4]{dia3}
+&
+$\theta_t \partial_t \in \End_k( \mathscr{H} )$\\
+\vspace{0.5cm}
+$1 \le t \le n$
+&
+\tagarray{\label{interaction_2}}
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ >{\centering}m{1cm} >{\centering}m{4cm} >{\centering}m{8cm} >{\centering}m{1cm}}
+\textbf{C}
+&
+\includegraphics[scale=0.4]{dia4}
+&
+$m_2 \circ \big( \big[\psi_j,-\big] \otimes \theta_j^* \big) \in \Hom_k( \mathscr{H}^{\otimes 2}, \mathscr{H} )$\\
+\vspace{0.5cm}
+$1 \le j \le n$
+&
+\tagarray{\label{interaction_3}}
+\end{tabular}
+\end{center}
+Here $m_2$ is the multiplication in the tensor product of algebras $\mathscr{H}$ and given $\gamma \in \mathbb{N}^n$ we write $x^\gamma = x_1^{\gamma_1} \cdots x_n^{\gamma_n}$, with $e_i \in \mathbb{N}^n$ the unit vector with $x^{e_i} = x_i$. By convention if $\gamma_a = 0$ then $x^{\gamma - e_a} = 0$. Finally, note that in the Feynman diagrams, bosonic particles are depicted with dotted lines, and fermionic particles with solid lines.
+
+These interactions ``take place'' at vertices of the tree $A(T)$ for some $T \in \cat{T}_q$, and come with the following constraints, which will be formalised below in terms of combinatorial data called \emph{configurations}. We write $f(\gamma)$ for the coefficient of $x^\gamma$ in a polynomial $f \in R$ and recall the chosen decomposition $W = \sum_j x_j W^j$. 
+
+\begin{itemize}
+\item A-type interactions occur at input vertices and internal edges of $T$.
+\item B-type interactions occur at internal edges of $T$, and moreover there is \emph{precisely one} at each internal edge.
+\item C-type interactions occur at internal vertices of $T$ (i.e. where two branches merge).
+\item The A-type interaction with indices $a,j, \gamma$ appears with the coefficient
+\be\label{eq:coeff_a}
+-\frac{\gamma_a}{|\gamma|} W^j( \gamma)
+\ee
+where $|\gamma| = \sum_i \gamma_i$, and each B- and C-type interaction appears with coefficient $(-1)$.
+\end{itemize}
+
+Note that the coefficient \eqref{eq:coeff_a} is the only way that $W$ enters the rules, and thus the definition of the $A_\infty$-products on $\mathscr{B}$. The precise definition of the Feynman rules will be given in Definition \ref{defn:config} below, but first we give an example of a tree with interactions inserted, to illustrate the various ingredients.
+
+\begin{example} Consider the tree $T \in \cat{T}_3$ whose augmented tree $A(T)$ is depicted below, together with labels for its vertices:
+\begin{center}
+\includegraphics[scale=0.3]{diagram-1}
+\end{center}
+Here we label by $e$ the vertex of $A(T)$ corresponding to the internal edge of $T$. Set $W = x^3 \in \mathbb{C}[x]$ so that $W^1 = x^2$ and the only possible A-type interaction has $a = 1, j = 1, \gamma = 2$ and coefficient $1$, as in the diagram
+\[
+blah\,.
+\]
+Writing $\psi = \psi_1$ consider the input state $\psi^* \otimes \psi^* \otimes \psi^*$ in $\mathscr{B}^{\otimes 3}$, consisting of one fermion in each input channel. One possible pattern of interactions (called a configuration, below) has a single A-type interaction at the input vertex $i_3$, a B-type interaction at $e$, and two C-type interactions at $v_1,v_2$, as shown in the Feynman diagram
+\[
+blah\,.
+\]
+Let $p: \mathscr{H} \lto \mathscr{B}$ denote the projection of $R$ onto constants, and the exterior algebras onto $k$. The above diagram corresponds to the following evaluation of an operator derived from the interactions, on the input state
+\begin{align*}
+p \circ m_2 \circ ( \psi^* \otimes b m_2 ( \psi^* \otimes \psi^* ) ) = fh
+\end{align*}
+\end{example}
+
+Now we give a precise definition of the Feynman rules. Let $T \in \cat{T}_q$ be a valid plane tree with $q$ inputs and $e_i(T)$ internal edges, and let $A(T)$ be the augmented plane tree. 
+
+\begin{definition}\label{defn:config} A \emph{configuration} $C$ of a valid plane tree $T$ consists of the following data, for each non-root vertex $v$ of $A(T)$:
+\begin{itemize}
+\item An integer $m(v) \ge 0$.
+\item A subset $J(v) \subseteq \{ 1,\ldots, n \}$ with $|J(v)| = m(v)$. 
+\item If $v$ is an input, or comes from an internal edge of $T$, a pair
+\[
+( a_j(v), \gamma_j(v) ) \in \{ 1, \ldots, n \} \times \mathbb{N}^n
+\]
+for each $j \in J(v)$.
+\item If $v$ comes from an internal edge of $T$, an integer $t(v) \in \{1,\ldots,n\}$.
+\end{itemize}
+Let $\operatorname{Con}(T)$ denote the set of all configurations.
+\end{definition} 
+
+\begin{remark} The integer $m(v)$ counts \emph{how many} interactions take place at $v$. The set $J(v)$ consists of all $j$-indices appearing in interactions at $v$. The interactions of A-type (at inputs and internal edges) are defined by indices $a_j(v), \gamma_j(v)$ while at each internal edge $e$ of $T$, $t(e)$ is the index of the C-type interaction.
+\end{remark}
+
+\begin{definition} Given a tree $T \in \cat{T}_q$ and configuration $C \in \operatorname{Con}(T)$ we define a decoration $D_{T,C}$ of $A(T)$ by the assignment of the modules
+\begin{itemize}
+\item $\mathscr{B}$ to the input at each non-root leaf and the output at the root, and
+\item $\mathscr{H}$ to each edge.
+\end{itemize}
+To each vertex $v$ of $A(T)$ we associate an operator $\phi_v$ as follows, writing $m, J, \{ (a_j, \gamma_j) \}_{j \in J}, t$ for the data associated to $v$ by the configuration $C$:
+\begin{itemize}
+\item if $v$ is an input, then $\phi_v$ is the linear map $\mathscr{B} \lto \mathscr{H}$ given by
+\be\label{eq:int_input}
+\phi_v = (-1)^m \prod_{j \in J}\Big\{ \frac{(\gamma_j)_a}{|\gamma_j|} W^j( \gamma_j)  \theta_{a_j} x^{\gamma_j - e_{a_j}} \big[ \psi_j, - \big] \Big\} \circ \iota\,.
+\ee
+Note that the operator under the product is even, so the order is irrelevant.
+\item if $v$ comes from an internal edge of $T$, then
+\be\label{eq:int_intedge}
+\phi_v = (-1)^m \prod_{j \in J} \Big\{ \frac{(\gamma_j)_a}{|\gamma_j|} W^j( \gamma_j)  \theta_{a_j} x^{\gamma_j - e_{a_j}} \big[ \psi_j, - \big] \Big\} \circ \theta_t \partial_t\,.
+\ee
+\item if $v$ comes from an internal vertex of $T$, then
+\be\label{eq:int_intvert}
+\phi_v = (-1)^m m_2 \circ \prod_{j \in J} \Big\{ \big[ \psi_j, - \big] \otimes \theta_j^* \Big\}
+\ee
+which is a map $\mathscr{H}^{\otimes 2} \lto \mathscr{H}$. Here $m_2$ denotes the product on $\mathscr{H}$.
+\item if $v = r$ is the root, $\phi_v = p: \mathscr{H} \lto \mathscr{B}$ is the projection defined in \eqref{??}.
+\end{itemize}
+\end{definition}
+
+Finally, there is a symmetry factor.
+
+\begin{definition} Given a sequence $a_1,\ldots,a_m \ge 1$ of integers and $a \ge 0$ we define
+\begin{align*}
+\tau(a, a_1, \ldots, a_m) &= a_1 \cdots a_m \sum_{\sigma \in \mathfrak{S}_m} \prod_{i=0}^{m-1} \frac{1}{a + \sum_{j=m-i}^m a_{\sigma(j)}}\\
+&= a_1 \cdots a_m \sum_{\sigma \in \mathfrak{S}_m} \frac{1}{a + a_{\sigma(m)}} \cdots \frac{1}{a + a_{\sigma(1)} + \cdots + a_{\sigma(m)}}\,.
+\end{align*}
+\end{definition}
+
+\begin{definition} Given $T \in \cat{T}_q, C \in \operatorname{Con}(T)$ and an internal edge $e$ of $T$ we define
+\[
+\omega(C, e) = \sum_{e' < e} \sum_{j \in J(e')} | \gamma_j(e') | - \sum_{z < e} m(z)
+\]
+where the sum is over all internal edges and input vertices $e'$ above $e$ in $A(T)$ i.e. for each $e$ is on the unique path from $e'$ to the root, and $z$ ranges over internal vertices. 
+
+We define in addition a symmetry factor
+\begin{gather*}
+S(C, e) = \frac{1}{\omega(C,e)} \tau\big( \omega(C,e), \{ |\gamma_j(e)| \}_{j \in J(e)} \big) \in \mathbb{Q}\,,\\
+S(C) = \prod_{e \in E_i(T)} S(C,e)
+\end{gather*}
+where $E_i(T)$ is the set of internal edges $e$ of $T$.
+\end{definition}
+
+\begin{definition} Given $T \in \cat{T}_q$ and $C \in \operatorname{Con}(T)$ we define the $k$-linear operator
+\[
+\cat{O}(T, C): \mathscr{B}^{\otimes q} \lto \mathscr{B}
+\]
+to be the denotation $\cat{O}(T,C) = \langle D_{T,C} \rangle$, defined without Koszul signs.
+\end{definition}
+
+\begin{definition} We define $\rho_q: \mathscr{B}[1]^{\otimes q} \lto \mathscr{B}[1]$ by
+\[
+\rho_q( \Lambda_1 \otimes \cdots \otimes \Lambda_q ) = \sum_{T \in \cat{T}_q} \sum_{C \in \operatorname{Con}(T)} (-1)^{Q(T, \underline{\Lambda})} S(C) \cdot \cat{O}(T, C)( \Lambda_q \otimes \cdots \otimes \Lambda_1 )\,.
+\]
+where
+\[
+Q(T, \underline{\Lambda}) = sign\,.
+\]
+\end{definition}
+
+\begin{theorem} The operators $\rho_q$ satisfy the forward suspended $A_\infty$-constraints, so that $(\mathscr{B}, \{ \rho_q \}_{q \ge 2})$ is an $A_\infty$-algebra, and it is quasi-isomorphic to $\End_k(k^{\stab})$.
+\end{theorem}
+
 \section{The minimal model}
 
 We define the even operator $\delta_i = \psi_i \theta_i^*$ on the underlying module $\eqref{eq:same_underlying}$ of $S \otimes \md{A}_W$, so that $\delta = \sum_i \delta_i$. Since $[ \delta_i, \delta_j ] = 0$ for all $i,j$ we have
@@ -304,136 +511,6 @@ and
 }
 \ee
 \end{proposition}
-
-\section{Trees and decorations}
-
-\section{Algorithm}
-% from p.17 (ainfmf9)
-
-Let $T \in \cat{T}_q$ be a valid plane tree with $q$ inputs and $e_i(T)$ internal edges, and let $A(T)$ be the augmented plane tree. Recall that the vertices of $A(T)$ may be partitioned into the following subsets: the root, the non-root leaves (called \emph{inputs}), the vertices coming from internal edges of $T$, and those internal vertices coming from internal vertices of $T$. The integer $n$ is the number of variables in the ambient ring $R = k[x_1,\ldots,x_n]$. 
-
-Consider the tensor product
-\[
-\mathscr{H} = R \otimes_k \bigwedge\big( \oplus_{i=1}^n k \theta_i \,\big) \otimes_k \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big) \Big)
-\]
-on which we have the following homogeneous operators:
-\[
-x_i\,, \partial_i = \partial_{x_i}\,, \theta_i\,, \theta_i^*\,, \big[\psi_i\,,-\big]
-\]
-where $\psi_i$ denotes the operator $\psi_i \wedge (-)$ on $\bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big)$ and $[ \psi_i, - ]$ the graded commutator with this operator, defined on a homogeneous operator $\beta$ by
-\[
-\big[ \psi_i, \beta \big] = \psi_i \circ \beta - (-1)^{|\beta|} \beta \circ \psi_i\,.
-\]
-
-\begin{definition} A \emph{configuration} $C$ of a valid plane tree $T$ consists of the following data, for each non-root vertex $v$ of $A(T)$:
-\begin{itemize}
-\item An integer $m(v) \ge 0$.
-\item A subset $J(v) \subseteq \{ 1,\ldots, n \}$ with $|J(v)| = m(v)$. 
-\item If $v$ is an input, or comes from an internal edge of $T$, a pair
-\[
-( a_j(v), \gamma_j(v) ) \in \{ 1, \ldots, n \} \times \mathbb{N}^n
-\]
-for each $j \in J(v)$.
-\item If $v$ comes from an internal edge of $T$, an integer $t(v) \in \{1,\ldots,n\}$.
-\end{itemize}
-Let $\operatorname{Con}(T)$ denote the set of all configurations.
-\end{definition} 
-
-\begin{definition} We define the $\nZ_2$-graded $k$-module
-\[
-\mathscr{B} = \bigwedge\big( \oplus_{i=1}^n k \psi_i^* \,\big)
-\]
-which we view as a submodule
-\[
-\mathscr{B} \subset \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big) \Big)
-\]
-by identifying $\psi_i^* \in \mathscr{B}$ with the operation of contraction $\psi_i^*\, \lrcorner\, (-)$ on the exterior algebra. In this way we may also identify $\mathscr{B}$ with a submodule of $\mathscr{H}$, and we write $\iota: \mathscr{B} \lto \mathscr{H}$ for the inclusion. Note that the operator $[\psi_j, -]$ on $\mathscr{H}$ defined above acts on the submodule $\mathscr{B}$ as contraction with $\psi_j = (\psi_j^*)^*$, that is,
-\be\label{eq:comm_is_ann}
-\Big[ \psi_j, \iota\big(\psi_{i_1}^* \wedge \cdots \wedge \psi_{i_r}^*\big) \Big] = \sum_{l=1}^r (-1)^{l-1} \delta_{j, i_l} \iota\big(\psi_{i_1}^* \wedge \cdots \wedge \widehat{ \psi_{i_l}^* } \wedge \cdots \wedge \psi_{i_r}^*\big)\,.
-\ee
-\end{definition}
-
-Given $\gamma \in \mathbb{N}^n,f \in R$ we write $x^\gamma = \prod_{i=1}^n x_i^{\gamma_i}$ and $f(\gamma)$ for the coefficient of $x^\gamma$ in $f$. Recall the decomposition $W = \sum_j x_j W^j$ with $W^i \in \mf{m}^2$. The products in the $A_\infty$-algebra structure on $\mathscr{B}$ will depend on $W$ through the coefficients $W^j(\gamma) \in k$.
-
-\begin{definition} Given a tree $T \in \cat{T}_q$ and configuration $C \in \operatorname{Con}(T)$ we define a decoration $D_{T,C}$ of $A(T)$ by the assignment of the modules
-\begin{itemize}
-\item $\mathscr{B}$ to the input at each non-root leaf and the output at the root, and
-\item $\mathscr{H}$ to each edge.
-\end{itemize}
-To each vertex $v$ of $A(T)$ we associate an operator $\phi_v$ as follows, writing $m, J, \{ (a_j, \gamma_j) \}_{j \in J}, t$ for the data associated to $v$ by the configuration $C$:
-\begin{itemize}
-\item if $v$ is an input, then $\phi_v$ is the linear map $\mathscr{B} \lto \mathscr{H}$ given by
-\be\label{eq:int_input}
-\phi_v = (-1)^m \prod_{j \in J}\Big\{ \frac{1}{|\gamma_j|} W^j( \gamma_j) \partial_{a_j}( x^{\gamma_j} ) \theta_{a_j} \big[ \psi_j, - \big] \Big\} \circ \iota\,.
-\ee
-Note that the operator under the product is even, so the order is irrelevant.
-\item if $v$ comes from an internal edge of $T$, then
-\be\label{eq:int_intedge}
-\phi_v = (-1)^m \prod_{j \in J} \Big\{ \frac{1}{|\gamma_j|} W^j( \gamma_j) \partial_{a_j}( x^{\gamma_j} ) \theta_{a_j} \big[ \psi_j, - \big] \Big\} \circ \theta_t \partial_t\,.
-\ee
-\item if $v$ comes from an internal vertex of $T$, then
-\be\label{eq:int_intvert}
-\phi_v = (-1)^m m_2 \circ \prod_{j \in J} \Big\{ \big[ \psi_j, - \big] \otimes \theta_j^* \Big\}
-\ee
-which is a map $\mathscr{H}^{\otimes 2} \lto \mathscr{H}$. Here $m_2$ denotes the product on $\mathscr{H}$.
-\end{itemize}
-\end{definition}
-
-\begin{definition} Given a sequence $a_1,\ldots,a_m \ge 1$ of integers and $a \ge 0$ we define
-\begin{align*}
-\tau(a, a_1, \ldots, a_m) &= a_1 \cdots a_m \sum_{\sigma \in \mathfrak{S}_m} \prod_{i=0}^{m-1} \frac{1}{a + \sum_{j=m-i}^m a_{\sigma(j)}}\\
-&= a_1 \cdots a_m \sum_{\sigma \in \mathfrak{S}_m} \frac{1}{a + a_{\sigma(m)}} \cdots \frac{1}{a + a_{\sigma(1)} + \cdots + a_{\sigma(m)}}\,.
-\end{align*}
-\end{definition}
-
-\begin{definition} Given $T \in \cat{T}_q, C \in \operatorname{Con}(T)$ and vertex $v$ of $A(T)$ coming from an internal edge of $T$ we define
-\[
-\omega(C, v) = \sum_{v' < v} \sum_{j \in J(v')} | \gamma_j(v') | - \sum_{z < v} m(z)
-\]
-where the sum is over all internal edges and input vertices $v'$ above $v$ in the tree, i.e. for each $v$ is on the unique path from $v'$ to the root, and $z$ ranges over internal vertices. 
-
-We define in addition a symmetry factor
-\begin{gather*}
-S(C, v) = \frac{1}{\omega(C,v)} \tau\big( \omega(C,v), \{ |\gamma_j(v)| \}_{j \in J(v)} \big) \in \mathbb{Q}\,,\\
-S(C) = \prod_{e \in E_i(T)} S(C,v_e)
-\end{gather*}
-where $E_i(T)$ is the set of internal edges $e$ of $T$, and $v_e$ the associated vertex of $A(T)$.
-\end{definition}
-
-\begin{definition} Given $T \in \cat{T}_q$ and $C \in \operatorname{Con}(T)$ we define the $k$-linear operator
-\[
-\cat{O}(T, C): \mathscr{B}^{\otimes q} \lto \mathscr{B}
-\]
-to be the denotation $\cat{O}(T,C) = \langle D_{T,C} \rangle$, defined without Koszul signs.
-\end{definition}
-
-\begin{definition} We define $\rho_q: \mathscr{B}[1]^{\otimes q} \lto \mathscr{B}[1]$ by
-\[
-\rho_q( \Lambda_1 \otimes \cdots \otimes \Lambda_q ) = \sum_{T \in \cat{T}_q} \sum_{C \in \operatorname{Con}(T)} (-1)^{Q(T, \underline{\Lambda})} S(C) \cdot \cat{O}(T, C)( \Lambda_q \otimes \cdots \otimes \Lambda_1 )\,.
-\]
-where
-\[
-Q(T, \underline{\Lambda}) = sign\,.
-\]
-\end{definition}
-
-From the physics point of view, $\mathscr{H}$ is the tensor product of the bosonic Fock space $R$ with creation and annihilation operators $x_i, \partial_i$, fermionic Fock space $\wedge( \oplus_{i=1}^n k \theta_i )$ with creation and annihilation operators $\theta_i, \theta_i^*$ and the third factor, of which the calculations of the $A_\infty$-structure only involve the submodule $\mathscr{B} = \wedge( \oplus_{i=1}^n k \psi_i^* )$ which is another fermionic Fock space. The inputs to the Feynman diagrams are tensor products of states in $\mathscr{B}$, that is, wedge products of $\psi_i^*$'s, on which the $[\psi_i, -]$ act as annihilation operators.
-
-The operators in \eqref{eq:int_input}, \eqref{eq:int_intedge}, \eqref{eq:int_intvert} are given as products of these creation and annihilation operators, and may be interpreted as particle interactions in the usual way. The associated diagrams are the following:
-
-\begin{center}
-\includegraphics[scale=0.4]{dia2}
-\end{center}
-
-\begin{center}
-\includegraphics[scale=0.4]{dia3}
-\end{center}
-
-\begin{center}
-\includegraphics[scale=0.4]{dia4}
-\end{center}
-
-Here we present incoming particle states at the top of the diagram, and read $\psi_i^*$ as states, $[\psi_i,-]$ as the annihilation operator, $\theta_a$ as creation and $\theta_a^*$ as annihilation, $x_i$ as creation and $\partial_i$ as annihilation.
 
 \bibliographystyle{amsalpha}
 \providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
