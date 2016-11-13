@@ -99,6 +99,9 @@
 \def\sus{\l}
 \def\l{\,|\,}
 \def\sgn{\textup{sgn}}
+\def\samp{Z}
+\def\Samp{Z}
+\def\traff{N}
 
 \title{$A_\infty$-minimal models of matrix factorisations}
 \author{Daniel Murfet}
@@ -127,7 +130,7 @@ These two desiderata, understanding the $A_\infty$-products on $H^*\cat{A}(X,X)$
 
 Suppose $W \in \mf{m}^2$ where $\mf{m} = (x_1,\ldots,x_n)$ and choose a presentation $W = x_1 W^1 + \cdots + x_n W^n$ with $W^i \in \mf{m}$ and consider the following pair
 \begin{equation}\label{eq:kstab}
-k^{\operatorname{stab}} = \Big( k[x] \otimes_k \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n ), \;d_{k^{\stab}} = \sum_{i=1}^n x_i \psi_i^* + \sum_{i=1}^n W^i \psi_i \Big)
+k^{\operatorname{stab}} = \Big( k[x] \otimes_k \bigwedge( \oplus_{i=1}^n k\psi_i ), \;d_{k^{\stab}} = \sum_{i=1}^n x_i \psi_i^* + \sum_{i=1}^n W^i \psi_i \Big)
 \end{equation}
 where $\psi_i^*$ and $\psi_i$ act respectively by contraction and wedge product on the exterior algebra underlying $k^{\stab}$. It is easy to see that $d_{k^{\stab}}^2 = W$, so $k^{\stab}$ is a matrix factorisation. When $k$ is a field and $W$ has an isolated critical point at the origin, $k^{\stab}$ is the representative in the homotopy category of matrix factorisations of the structure sheaf of the singular point at the origin, and was first studied by Dyckerhoff \cite{d0904.4713}. 
 
@@ -140,149 +143,16 @@ The differential here is (throughout all commutators are graded commutators)
 \partial = [d_{k^{\stab}},-] &= \Big[\sum_i x_i \psi_i^* + \sum_i W^i \psi_i, -\Big]\\
 &= \sum_i x_i [\psi_i^*,-] + \sum_i W^i [\psi_i,-]\,.
 \end{align*}
-The minimal model is a finite-dimensional $\nZ_2$-graded vector space $\md{M}_W$ with a family 
+The minimal model is a finite-dimensional $\nZ_2$-graded vector space $\mathscr{B}$ with a family 
 \[
-\left\{ r_q: \big(\md{M}_W[1]\big)^{\otimes q} \lto \md{M}_W[1] \right\}_{q \ge 2}
+\left\{ r_q: \big(\mathscr{B}[1]\big)^{\otimes q} \lto \mathscr{B}[1] \right\}_{q \ge 2}
 \]
-of odd $k$-linear maps satisfying the forward suspended $A_\infty$-constraints \cite{lazaroiu}, and having the property that there is an $A_\infty$-quasi-isomorphism $\md{M}_W \lto \End_{k[x]}(k^{\stab})$.
-
-\section{Background}
-
-\subsection{A-infinity algebras}
-
-The \emph{tilde grading} is defined by $\widetilde{x} = |x| - 1$.
-
-Throughout $\otimes = \otimes_k$.
-
-\section{Perturbation and Koszul complexes}
-
-Let $k$ be a characteristic zero field, $R =  k[x_1,\ldots,x_n]$ and let $W \in \mf{m}^2$ be a potential with chosen decomposition $W = \sum_{i=1}^n x_i W^i$. To apply the $A_\infty$-minimal model construction to the DG-algebra $\md{A}_W$ from \eqref{eq:defnaw} we would usually begin by finding a $k$-linear homotopy retract of this complex onto its cohomology. However, for our purposes it is better to first enlarge the DG-algebra to $S \otimes \md{A}_W$, where $S$ is the $\nZ_2$-graded vector space
-\be
-S = \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n )
-\ee
-with grading $|\theta_i| = 1$. We make the tensor product $S \otimes \md{A}_W$ into a DG-algebra in the usual way, giving the exterior algebra $S$ the zero differential.
-
-\begin{definition} We define the finite-dimensional $\nZ_2$-graded vector space
-\be\label{eq:defnunderlineend}
-\md{E} = R/\mf{m} \otimes \End_R(k^{\stab}) \cong \End_k\Big( \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n) \Big)
-\ee
-where $\mf{m} = (x_1,\ldots,x_n)$.
-\end{definition}
-
-We will show that $S \otimes \md{A}_W$ is homotopy equivalent to $\md{E}$ viewed as a complex with zero differential (observe that $\md{E}$ does not depend on $W$). The corresponding homotopy retract (see Proposition \ref{prop:he_start} below) is our starting point for the minimal model construction. For this we use the Koszul complex of $x_1,\ldots,x_n$,
-\be\label{eq:defnkoszulK}
-K = \Big( R \otimes \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n ), \; d_K = \sum_i x_i \theta_i^*\; \Big)
-\ee
-
-\begin{theorem} There is a diagram of $\nZ_2$-graded complexes and homotopy equivalences over $k$
-\be\label{eq:first_he}
-\xymatrix@C+3pc{
-S \otimes \md{A}_W \ar@<1ex>[r]^-{\exp(-\delta)} & K \otimes_R \md{A}_W \ar@<1ex>[l]^-{ \exp(-\delta) } \ar@<1ex>[r]^-{\pi} & \md{E}\,.\ar@<1ex>[l]^-{ \sigma_\infty }
-}
-\ee
-\end{theorem}
-\begin{proof}
-See \cite{murfet}.
-\end{proof}
-
-The notation is as follows:
-\begin{itemize}
-\item The complexes involved here are
-\begin{gather*}
-\big( S \otimes \End_R(k^{\stab}), \; \partial \,\big)\\
-\big( K \otimes_R \End_R(k^{\stab}), \; d_K + \partial\, \big)\\
-\big( \md{E}, 0 \big)\,.
-\end{gather*}
-\item The operator $\psi_j = \psi_j \wedge -$ on $k^{\stab}$ satisfies
-\[
-[ \psi_j, d_{k^{\stab}} ] = \big[ \psi_j, \sum_i x_i \psi_i^* \big] = x_j \cdot 1\,,
-\]
-where $[-,-]$ always denotes the graded commutator. That is, $\psi_j$ is a homotopy for the action of $x_j$ on $k^{\stab}$. It is then easy to check that the odd operator $\alpha \mapsto \psi_j \circ \alpha$ on $\End_R(k^{\stab})$ is also a homotopy for $x_j$, and where it will not cause confusion we will also write $\psi_j$ for this operator of post-composition.
-
-\item Both $S \otimes \md{A}_W$ and $K \otimes_R \md{A}_W$ have the same underlying $\nZ_2$-graded $k$-module, namely
-\be\label{eq:same_underlying}
-R \otimes \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n ) \otimes \End_k\big( \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n ) \big)\,.
-\ee
-On this space we define the even operator
-\be
-\delta = \sum_{i=1}^n \psi_i \theta_i^*\,,
-\ee
-where $\psi_i$ is the operator on $\End_R(k^{\stab})$ discussed above, given by $\alpha \mapsto (\psi_i \wedge -) \circ \alpha$, and $\theta_i^*$ acts by contraction on $S$. It is easy to check that $\exp(\delta),\exp(-\delta)$ intertwines the differentials $\partial$ and $d_K + \partial$ and therefore gives an isomorphism between the first two complexes in \eqref{eq:first_he} \cite[Proposition 4.11]{murfet}.
-\item The morphism of complexes $\pi: K \lto R/\mf{m}$ is defined by composing the projection of $K$ onto the submodule $R \cdot 1$ of $\theta$-degree zero forms, with the quotient $R \lto R/\mf{m}$. We also write $\pi$ for the result of tensoring this morphism with $\End_R(k^{\stab})$ to obtain
-\[
-\xymatrix@C+2pc{
-K \otimes_R \End_R(k^{\stab}) \ar[r]^-{\pi \otimes 1} & R/\mf{m} \otimes_R \End_R(k^{\stab}) = \underline{\End}(k^{\stab})\,.
-}
-\]
-This is a morphism of complexes, because the differential on $\End_R(k^{\stab})$ vanishes on the quotient $\underline{\End}(k^{\stab})$ by the hypothesis that $W \in \mf{m}^2$.
-\item The $k$-linear homotopy inverse $\sigma_\infty$ to $\pi$ in \eqref{eq:first_he} is defined in terms of the following ingredients. The first is the $k$-linear connection (viewing $\theta_i$ as a $1$-form)
-\be
-\Delta: K \lto K\,, \qquad \Delta = \sum_i \partial_{x_i} \theta_i
-\ee
-and the degree $-1$ (with respect to the $\theta$-degree) $k$-linear operator
-\be
-H = [d_K, \Delta]^{-1} \Delta\,.
-\ee
-We write $\partial$ for the differential on $\End_R(k^{\stab})$, and $\sigma: k \lto K$ for the map which sends $\lambda \in k$ to $\lambda \cdot 1 \in K$, and define $k$-linear maps
-\begin{align}
-\sigma_\infty = \sum_{m \ge 0} (-1)^m (H \partial)^m \sigma\,,\\
-H_\infty = \sum_{m \ge 0} (-1)^m (H \partial)^m H\,.
-\end{align}
-Here $H_\infty$ is an odd operator on $K \otimes_R \End_R(k^{\stab})$. These maps satisfy:
-\begin{align}
-\pi \sigma_\infty &= 1\,,\\
- \sigma_\infty \pi &= 1 - [d_K + \partial, H_\infty]\,.
-\end{align}
-\end{itemize}
-
-By inspection of \eqref{eq:first_he}, we therefore have the following:
-
-\begin{proposition}\label{prop:he_start} There is a diagram of morphisms of $\nZ_2$-graded $k$-complexes
-\be\label{eq:he_start}
-\xymatrix@C+5pc{
-S \otimes \md{A}_W \ar@<1ex>[r]^-{\Phi} & \md{E}\ar@<1ex>[l]^-{\Phi^{-1}}
-}
-\ee
-where $\Phi = \pi \exp(-\delta), \Phi^{-1} = \exp(\delta) \sigma_\infty$ and $\widehat{H} = \exp(\delta) H_\infty \exp(-\delta)$ satisfy
-\be
-\Phi \Phi^{-1} = 1\,, \qquad \Phi^{-1} \Phi = 1 - [\partial, \widehat{H}]\,.
-\ee
-Thus, $\Phi$ and $\Phi^{-1}$ are mutually inverse homotopy equivalences over $k$.
-\end{proposition}
-
-The endomorphism algebra $C = \End_k(S)$ is a Clifford algebra generated by the contraction $\theta_i^*$ and wedge product $\theta_i$ operators. It is observed in \cite{murfet} that \eqref{eq:he_start} is an isomorphism of Clifford representations (in the homotopy category) when the complex $\md{E}$ is equipped with the action induced by Atiyah classes:
-
-\begin{definition}
-The Atiyah classes of $\md{A}_W$ are the $R$-linear odd operators
-\[
-\At_i = [\partial, \partial_{x_i}]: \End_R(k^{\stab}) \lto \End_R(k^{\stab})\,,
-\]
-\end{definition}
-
-\begin{lemma} We have
-\[
-\At_i = -[\psi_i^*, -] - \sum_{q=1}^n \partial_{x_i}(W^q) [ \psi_q, - ]\,.
-\]
-\end{lemma}
-\begin{proof}
-By direct calculation:
-\begin{align*}
-\At_i &= \big[ [d_{k^{\stab}},-], \partial_{x_i} \big]\\
-&= \sum_q \big[x_q [\psi_q^*,-], \partial_{x_i}\big] + \sum_q \big[W^q [\psi_q,-], \partial_{x_i}\big]\\
-&= -\sum_q \partial_{x_i}(x_q) [\psi_q^*,-] - \sum_q \partial_{x_i}(W^q) [\psi_q,-]\\
-&= -[\psi_i^*,-] - \sum_q \partial_{x_i}(W^q) [\psi_q, -]\,.
-\end{align*}
-\end{proof}
-
-\section{Trees and decorations}
-
-\begin{example}
-\end{example}
+of odd $k$-linear maps satisfying the forward suspended $A_\infty$-constraints \cite{lazaroiu}, and having the property that there is an $A_\infty$-quasi-isomorphism $\mathscr{B} \lto \End_{k[x]}(k^{\stab})$.
 
 \section{Feynman diagrams}
 % from p.17 (ainfmf9)
 
-The integer $n$ is the number of variables in the ambient ring $R = k[x_1,\ldots,x_n]$. 
+The \emph{tilde grading} is defined by $\widetilde{x} = |x| - 1$. Throughout $\otimes = \otimes_k$. Our reference for general background on Feynman diagrams is \cite[Ch. 6]{weinberg}. The integer $n$ is the number of variables in the ambient ring $R = k[x_1,\ldots,x_n]$. 
 
 \begin{definition} Consider the $\nZ_2$-graded algebra defined by the tensor product
 \[
@@ -356,7 +226,7 @@ $1 \le j \le n$
 \tagarray{\label{interaction_3}}
 \end{tabular}
 \end{center}
-Here $m_2$ is the multiplication in $\mathscr{H}$ and, given $\gamma \in \mathbb{N}^n$, we write $x^\gamma = x_1^{\gamma_1} \cdots x_n^{\gamma_n}$, with $e_i \in \mathbb{N}^n$ the unit vector with $x^{e_i} = x_i$. By convention if $\gamma_a = 0$ then $x^{\gamma - e_a} = 0$. Finally, note that in the Feynman diagrams, bosons are depicted with dotted lines, and fermions with solid lines.
+Here $m_2$ is the multiplication in $\mathscr{H}$ and, given $\gamma \in \mathbb{N}^n$, we write $x^\gamma = x_1^{\gamma_1} \cdots x_n^{\gamma_n}$, with $e_i \in \mathbb{N}^n$ the unit vector with $x^{e_i} = x_i$. By convention if $\gamma_a = 0$ then $x^{\gamma - e_a} = 0$, which ensures that we always have $\gamma_a x^{\gamma - e_a} = \partial_a(x^\gamma)$. Finally note that bosons are depicted with dotted lines, and fermions with solid lines.
 
 These interactions ``take place'' at vertices of the tree $A(T)$ for some $T \in \cat{T}_q$, and come with the following constraints, which will be formalised below in terms of combinatorial data called \emph{configurations}. We write $f(\gamma)$ for the coefficient of $x^\gamma$ in a polynomial $f \in R$ and recall the chosen decomposition $W = \sum_j x_j W^j$. 
 
@@ -366,9 +236,9 @@ These interactions ``take place'' at vertices of the tree $A(T)$ for some $T \in
 \item C-type interactions only occur at internal vertices of $T$.
 \item The A-type interaction with indices $a,j, \gamma$ appears with the coefficient
 \be\label{eq:coeff_a}
--\frac{\gamma_a}{|\gamma|} W^j( \gamma)
+-\gamma_a W^j( \gamma)\,.
 \ee
-where $|\gamma| = \sum_i \gamma_i$. Each B- and C-type interaction appears with coefficient $(-1)$.
+Each B- and C-type interaction appears with coefficient $(-1)$.
 \end{itemize}
 
 As we will see, the coefficient \eqref{eq:coeff_a} is the only way that $W$ enters the rules, and thus the definition of the $A_\infty$-products on $\mathscr{B}$. The precise definition of the Feynman rules will be given in Definition \ref{defn:config} below, but first we give an example of a tree with interactions inserted, to illustrate the various ingredients.
@@ -385,14 +255,21 @@ Consider the input state $\Psi = \psi^* \otimes \psi^* \otimes \psi^*$ in $\math
 \begin{center}
 \includegraphics[scale=0.3]{dia6}
 \end{center}
-This ``topological'' Feynman diagram depicts the value of the linear map
+The amplitude of this ``topological'' Feynman diagram is the value of
 \begin{align*}
 (-1)^3 p \circ m_2 \big([\psi, -] \otimes \theta^*\big) \circ \big( \iota \otimes \theta \partial_x \circ m_2 ([\psi, -] \otimes \theta^*)\big( \iota \otimes \theta x [\psi, -] \iota \big)\big)
 \end{align*}
-on the input state $\Psi$, which may be checked is $-1 \in \mathscr{B}$.
+on the input state $\Psi$. Usually when evaluating such an expression we would pay attention to Koszul signs from commuting the input $\psi^*$'s into position (see Definition \ref{??}). Ignoring all signs, the amplitude is
+\begin{align*}
+\pm \; & p \circ m_2 \big([\psi, -] \otimes \theta^*\big) \circ \big( \iota \otimes \theta \partial_x \circ m_2 ([\psi, -] \otimes \theta^*)\big( \iota \otimes \theta x [\psi, -] \iota \big)\big)\Big( \Psi \Big)\\
+&= \pm \; p \circ m_2 \big([\psi, \psi^*] \otimes \theta^* \theta \partial_x \circ m_2 ([\psi, \psi^*] \otimes \theta^* \theta x [\psi, \psi^*] \big)\big)\\
+&= \pm \; p \circ m_2 \big(1 \otimes \theta^* \theta \partial_x \circ m_2 (1 \otimes \theta^* \theta x \big)\big)\\
+&= \pm \; p \circ m_2 \big(1 \otimes \partial_x(x) \big)\\
+&= \pm \; p(1) = \pm \; 1 \in \mathscr{H}\,.
+\end{align*}
 \end{example}
 
-Now we give a precise definition of the Feynman rules. Let $T \in \cat{T}_q$ be a valid plane tree with $q$ inputs and $e_i(T)$ internal edges, and let $A(T)$ be the augmented plane tree. 
+Now we give a precise definition of the Feynman rules. Let $T \in \cat{T}_q$ be a valid plane tree with $q$ inputs and $e_i(T)$ internal edges, and let $A(T)$ be the augmented plane tree. The definitions are all relative to the ambient integer $n$, but for the sake of readability we will not reflect this in the notation.
 
 \begin{definition}\label{defn:config} A \emph{configuration} $C$ of a valid plane tree $T$ consists of the following data, for each non-root vertex $v$ of $A(T)$:
 \begin{itemize}
@@ -402,13 +279,13 @@ Now we give a precise definition of the Feynman rules. Let $T \in \cat{T}_q$ be 
 \[
 ( a_j(v), \gamma_j(v) ) \in \{ 1, \ldots, n \} \times \mathbb{N}^n
 \]
-for each $j \in J(v)$.
+for each $j \in J(v)$, with $\gamma_j(v)_{a_j(v)} \ge 1$.
 \item If $v$ comes from an internal edge of $T$, an integer $t(v) \in \{1,\ldots,n\}$.
 \end{itemize}
 Let $\operatorname{Con}(T)$ denote the set of all configurations.
 \end{definition} 
 
-\begin{remark} The integer $m(v)$ counts \emph{how many} interactions take place at $v$. The set $J(v)$ consists of all $j$-indices appearing in interactions at $v$. The interactions of A-type (at inputs and internal edges) are defined by indices $a_j(v), \gamma_j(v)$ while at each internal edge $e$ of $T$, $t(e)$ is the index of the C-type interaction.
+\begin{remark} The integer $m(v)$ counts how many interactions of type A or C take place at $v$ (there is no point counting B interactions as precisely one occurs at each internal edge). The set $J(v)$ consists of all $j$-indices appearing in interactions at $v$. The interactions of A-type (at inputs and internal edges) are defined by indices $a_j(v), \gamma_j(v)$ while at each internal edge $e$ of $T$, $t(e)$ is the index of the B-type interaction.
 \end{remark}
 
 \begin{definition} Given a tree $T \in \cat{T}_q$ and configuration $C \in \operatorname{Con}(T)$ we define a decoration $D_{T,C}$ of $A(T)$ by the assignment of the modules
@@ -420,12 +297,12 @@ To each vertex $v$ of $A(T)$ we associate an operator $\phi_v$ as follows, writi
 \begin{itemize}
 \item if $v$ is an input, then $\phi_v$ is the linear map $\mathscr{B} \lto \mathscr{H}$ given by
 \be\label{eq:int_input}
-\phi_v = (-1)^m \prod_{j \in J}\Big\{ \frac{(\gamma_j)_a}{|\gamma_j|} W^j( \gamma_j)  \theta_{a_j} x^{\gamma_j - e_{a_j}} \big[ \psi_j, - \big] \Big\} \circ \iota\,.
+\phi_v = (-1)^m \prod_{j \in J}\Big\{ (\gamma_j)_{a_j} W^j( \gamma_j)  \theta_{a_j} x^{\gamma_j - e_{a_j}} \big[ \psi_j, - \big] \Big\} \circ \iota\,.
 \ee
-Note that the operator under the product is even, so the order is irrelevant.
+Note that the operator under the product is even, so the order is irrelevant. If $J(v)$ is empty then the product is interpreted to be the identity operator.
 \item if $v$ comes from an internal edge of $T$, then
 \be\label{eq:int_intedge}
-\phi_v = (-1)^m \prod_{j \in J} \Big\{ \frac{(\gamma_j)_a}{|\gamma_j|} W^j( \gamma_j)  \theta_{a_j} x^{\gamma_j - e_{a_j}} \big[ \psi_j, - \big] \Big\} \circ \theta_t \partial_t\,.
+\phi_v = (-1)^m \prod_{j \in J} \Big\{ (\gamma_j)_{a_j} W^j( \gamma_j)  \theta_{a_j} x^{\gamma_j - e_{a_j}} \big[ \psi_j, - \big] \Big\} \circ \theta_t \partial_t\,.
 \ee
 \item if $v$ comes from an internal vertex of $T$, then
 \be\label{eq:int_intvert}
@@ -436,28 +313,52 @@ which is a map $\mathscr{H}^{\otimes 2} \lto \mathscr{H}$. Here $m_2$ denotes th
 \end{itemize}
 \end{definition}
 
-Finally, there is a symmetry factor.
+The following simple identity is well-known in the literature in connection with soft photons and infrared divergences in quantum field theory, see for instance \cite[Ch 13]{weinberg} and \cite[p.204]{ps}. The amplitudes for our Feynman diagrams will involve a generalisation.
+
+\begin{lemma} Given a sequence $a_1,\ldots,a_m \ge 1$ of integers,
+\be
+\sum_{\sigma \in \mathfrak{S}_m} \frac{1}{a_{\sigma(1)}} \frac{1}{a_{\sigma(1)} + a_{\sigma(2)}} \cdots \frac{1}{a_{\sigma(1)} + \cdots + a_{\sigma(m)}} = \frac{1}{a_1 \cdots a_m}\,.
+\ee
+\end{lemma}
 
 \begin{definition} Given a sequence $a_1,\ldots,a_m \ge 1$ of integers and $a \ge 0$ we define
 \begin{align*}
-\tau(a, a_1, \ldots, a_m) &= a_1 \cdots a_m \sum_{\sigma \in \mathfrak{S}_m} \prod_{i=0}^{m-1} \frac{1}{a + \sum_{j=m-i}^m a_{\sigma(j)}}\\
-&= a_1 \cdots a_m \sum_{\sigma \in \mathfrak{S}_m} \frac{1}{a + a_{\sigma(m)}} \cdots \frac{1}{a + a_{\sigma(1)} + \cdots + a_{\sigma(m)}}\,.
+\samp_a(a_1, \ldots, a_m) &= \sum_{\sigma \in \mathfrak{S}_m} \prod_{i=1}^{m} \Big( a + \sum_{j=1}^i a_{\sigma(j)} \Big)^{-1} \\
+&= \sum_{\sigma \in \mathfrak{S}_m} \frac{1}{a + a_{\sigma(1)}} \frac{1}{a + a_{\sigma(1)} + a_{\sigma(2)}} \cdots \frac{1}{a + a_{\sigma(1)} + \cdots + a_{\sigma(m)}}\,.
 \end{align*}
+Clearly this is a symmetric function of the $a_i$ and, by the previous lemma,
+\be
+Z_0(a_1,\ldots,a_m) = \frac{1}{a_1 \cdots a_m}\,.
+\ee
 \end{definition}
 
-\begin{definition} Given $T \in \cat{T}_q, C \in \operatorname{Con}(T)$ and an internal edge $e$ of $T$ we define
+As we have described it above, the Feynman diagrams have as incoming and outgoing particles the fermions $\psi_i^*$'s, while the internal edges involve two kinds of virtual particles, the bosonic $x_i$'s and fermionic $\theta_i$'s. A configuration $C$ gives rise to numerous Feynman diagrams, but it will turn out that all diagrams with nonzero amplitude have the \emph{same} pattern of connections among the virtual particles. This means that to a configuration $C$ and vertex $v$ we may associate the \emph{number} $\traff_C(v)$ of virtual particles traversing $v$.
+
+For the next two definitions we take $T \in \cat{T}_q$ and $C \in \operatorname{Con}(T)$.
+\begin{definition} Given a vertex $v$ of $A(T)$ we define
 \[
-\omega(C, e) = \sum_{e' < e} \sum_{j \in J(e')} | \gamma_j(e') | - \sum_{z < e} m(z)
+\traff_C(v) = \sum_{v' < v} \sum_{j \in J(v')} | \gamma_j(v') | - \sum_{z < v} m(z)
 \]
-where the sum is over all internal edges and input vertices $e'$ above $e$ in $A(T)$ i.e. for each $e$ is on the unique path from $e'$ to the root, and $z$ ranges over internal vertices. 
-
-We define in addition a symmetry factor
-\begin{gather*}
-S(C, e) = \frac{1}{\omega(C,e)} \tau\big( \omega(C,e), \{ |\gamma_j(e)| \}_{j \in J(e)} \big) \in \mathbb{Q}\,,\\
-S(C) = \prod_{e \in E_i(T)} S(C,e)
-\end{gather*}
-where $E_i(T)$ is the set of internal edges $e$ of $T$.
+where $v'$ ranges over all inputs and internal edges of $T$ which are above $v$ in $A(T)$, and $z$ ranges over all internal vertices of $T$ which are above $v$.
 \end{definition}
+% this agrees with w(x) as defined on p.19 of (ainfmf9)
+
+This counts the number of virtual particles passing $v$, since an A-type interaction with indices $a,j,\gamma$ creates $|\gamma|$ virtual particles, a B-type interaction preserves the number of virtual particles, and a C-type interaction decreases the number by one.
+\\
+
+Combinatorially the most important part of the $A_\infty$-products in the minimal model for $W$ is the rational number $Z_C$ in the next definition. We use the following shorthand notation: if $v$ is either an input or internal edge of $T$, assigned by the configuration $C$ the data $m = m(v), J = J(v)$ and $\{ \gamma_j \}_{j \in J}$, then we write
+\be
+\underline{\gamma}(v) = \big( |\gamma_j| \big)_{j \in J} = \big( |\gamma_{j_1}|, \ldots, |\gamma_{j_m}| \big)
+\ee
+for the sequence of total degrees where $J = \{j_1,\ldots,j_m\}$.
+
+\begin{definition} We define
+\begin{gather*}
+\Samp_C = \prod_v \frac{ Z_{\traff_C(v)}\big( \underline{\gamma}(v) \big)}{ \traff_C(v) } \in \mathbb{Q}
+\end{gather*}
+where is the product is over all vertices $v$ of $A(T)$ with $\traff_C(v) \neq 0$ which are either inputs or internal edges of $T$. If $m(v) = 0$ then we take $Z_{\traff_C(v)}(\emptyset) = 1$.
+\end{definition}
+% Note this differs from how we write it in (ainfmf9), because there we only attach numbers to internal edges, and the N_C(v) factors at inputs are swallowed into the operators. To relate the two, note that for v = e an internal edge of T, \traff_C(v) = w(e) and \traff_C(v)^{-1} Z_{\traff_C(v)}( |\gamma(v)| ) is precisely F(e) as defined on p.19 of ainfmf9, divided by the product of all the |\gamma_j|'s for j \in J(v). But that product appears in the operator O(T,C) of ainfmf9.
 
 \begin{definition} Given $T \in \cat{T}_q$ and $C \in \operatorname{Con}(T)$ we define the $k$-linear operator
 \[
@@ -466,18 +367,140 @@ where $E_i(T)$ is the set of internal edges $e$ of $T$.
 to be the denotation $\cat{O}(T,C) = \langle D_{T,C} \rangle$, defined without Koszul signs.
 \end{definition}
 
-\begin{definition} We define $\rho_q: \mathscr{B}[1]^{\otimes q} \lto \mathscr{B}[1]$ by
+\begin{definition} We define $\rho_q: \mathscr{B}[1]^{\otimes q} \lto \mathscr{B}[1]$ of degree $+1$ by
 \[
-\rho_q( \Lambda_1 \otimes \cdots \otimes \Lambda_q ) = \sum_{T \in \cat{T}_q} \sum_{C \in \operatorname{Con}(T)} (-1)^{Q(T, \underline{\Lambda})} S(C) \cdot \cat{O}(T, C)( \Lambda_q \otimes \cdots \otimes \Lambda_1 )\,.
+\rho_q( \Lambda_1, \ldots, \Lambda_q ) = \sum_{T \in \cat{T}_q} \sum_{C \in \operatorname{Con}(T)} (-1)^{Q(T, \underline{\Lambda})} Z_C \cdot \cat{O}(T, C)( \Lambda_q, \ldots, \Lambda_1 )\,.
 \]
 where
 \[
-Q(T, \underline{\Lambda}) = sign\,.
+Q(T, \underline{\Lambda}) = e_i(T) + q + 1 + \sum_{1 \le i < j \le q} \widetilde{\Lambda}_i \widetilde{\Lambda}_j + \sum_{i=1}^q \widetilde{\Lambda}_{q-i+1} P_i
 \]
+where $P_i$ is the number of times the path from the $i$th input to the root enters a trivalent vertex from the right in $T$.
 \end{definition}
+% TODO check the sign here and check agreement with ainfmf9
 
 \begin{theorem} The operators $\rho_q$ satisfy the forward suspended $A_\infty$-constraints, so that $(\mathscr{B}, \{ \rho_q \}_{q \ge 2})$ is an $A_\infty$-algebra, and it is quasi-isomorphic to $\End_k(k^{\stab})$.
 \end{theorem}
+
+\section{Perturbation and Koszul complexes}
+
+Let $k$ be a characteristic zero field, $R =  k[x_1,\ldots,x_n]$ and let $W \in \mf{m}^2$ be a potential with chosen decomposition $W = \sum_{i=1}^n x_i W^i$. To apply the $A_\infty$-minimal model construction to the DG-algebra $\md{A}_W$ from \eqref{eq:defnaw} we would usually begin by finding a $k$-linear homotopy retract of this complex onto its cohomology. However, for our purposes it is better to first enlarge the DG-algebra to $S \otimes \md{A}_W$, where $S$ is the $\nZ_2$-graded vector space
+\be
+S = \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n )
+\ee
+with grading $|\theta_i| = 1$. We make the tensor product $S \otimes \md{A}_W$ into a DG-algebra in the usual way, giving the exterior algebra $S$ the zero differential.
+
+\begin{definition} We define the finite-dimensional $\nZ_2$-graded vector space
+\be\label{eq:defnunderlineend}
+\md{E} = R/\mf{m} \otimes \End_R(k^{\stab}) \cong \End_k\Big( \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n) \Big)
+\ee
+where $\mf{m} = (x_1,\ldots,x_n)$.
+\end{definition}
+
+We will show that $S \otimes \md{A}_W$ is homotopy equivalent to $\md{E}$ viewed as a complex with zero differential (observe that $\md{E}$ does not depend on $W$). The corresponding homotopy retract (see Proposition \ref{prop:he_start} below) is our starting point for the minimal model construction. For this we use the Koszul complex of $x_1,\ldots,x_n$,
+\be\label{eq:defnkoszulK}
+K = \Big( R \otimes \bigwedge( \oplus_{i=1}^n k \theta_i ), \; d_K = \sum_i x_i \theta_i^*\; \Big)
+\ee
+
+\begin{theorem} There is a diagram of $\nZ_2$-graded complexes and homotopy equivalences over $k$
+\be\label{eq:first_he}
+\xymatrix@C+3pc{
+S \otimes \md{A}_W \ar@<1ex>[r]^-{\exp(-\delta)} & K \otimes_R \md{A}_W \ar@<1ex>[l]^-{ \exp(-\delta) } \ar@<1ex>[r]^-{\pi} & \md{E}\,.\ar@<1ex>[l]^-{ \sigma_\infty }
+}
+\ee
+\end{theorem}
+\begin{proof}
+See \cite{murfet}.
+\end{proof}
+
+The notation is as follows:
+\begin{itemize}
+\item The complexes involved here are
+\begin{gather*}
+\big( S \otimes \End_R(k^{\stab}), \; \partial \,\big)\\
+\big( K \otimes_R \End_R(k^{\stab}), \; d_K + \partial\, \big)\\
+\big( \md{E}, 0 \big)\,.
+\end{gather*}
+\item The operator $\psi_j = \psi_j \wedge -$ on $k^{\stab}$ satisfies
+\[
+[ \psi_j, d_{k^{\stab}} ] = \big[ \psi_j, \sum_i x_i \psi_i^* \big] = x_j \cdot 1\,,
+\]
+where $[-,-]$ always denotes the graded commutator. That is, $\psi_j$ is a homotopy for the action of $x_j$ on $k^{\stab}$. It is then easy to check that the odd operator $\alpha \mapsto \psi_j \circ \alpha$ on $\End_R(k^{\stab})$ is also a homotopy for $x_j$, and where it will not cause confusion we will also write $\psi_j$ for this operator of post-composition.
+
+\item Both $S \otimes \md{A}_W$ and $K \otimes_R \md{A}_W$ have the same underlying $\nZ_2$-graded $k$-module, namely
+\be\label{eq:same_underlying}
+R \otimes \bigwedge( \oplus_{i=1}^n k\theta_i ) \otimes \End_k\big( \bigwedge( \oplus_{i=1}^n k \psi_i ) \big)\,.
+\ee
+On this space we define the even operator
+\be
+\delta = \sum_{i=1}^n \psi_i \theta_i^*\,,
+\ee
+where $\psi_i$ is the operator on $\End_R(k^{\stab})$ discussed above, given by $\alpha \mapsto (\psi_i \wedge -) \circ \alpha$, and $\theta_i^*$ acts by contraction on $S$. It is easy to check that $\exp(\delta),\exp(-\delta)$ intertwines the differentials $\partial$ and $d_K + \partial$ and therefore gives an isomorphism between the first two complexes in \eqref{eq:first_he} \cite[Proposition 4.11]{murfet}.
+\item The morphism of complexes $\pi: K \lto R/\mf{m}$ is defined by composing the projection of $K$ onto the submodule $R \cdot 1$ of $\theta$-degree zero forms, with the quotient $R \lto R/\mf{m}$. We also write $\pi$ for the result of tensoring this morphism with $\End_R(k^{\stab})$ to obtain
+\[
+\xymatrix@C+2pc{
+K \otimes_R \End_R(k^{\stab}) \ar[r]^-{\pi \otimes 1} & R/\mf{m} \otimes_R \End_R(k^{\stab}) = \underline{\End}(k^{\stab})\,.
+}
+\]
+This is a morphism of complexes, because the differential on $\End_R(k^{\stab})$ vanishes on the quotient $\underline{\End}(k^{\stab})$ by the hypothesis that $W \in \mf{m}^2$.
+\item The $k$-linear homotopy inverse $\sigma_\infty$ to $\pi$ in \eqref{eq:first_he} is defined in terms of the following ingredients. The first is the $k$-linear connection (viewing $\theta_i$ as a $1$-form)
+\be
+\nabla: K \lto K\,, \qquad \nabla = \sum_i \partial_{x_i} \theta_i
+\ee
+and the degree $-1$ (with respect to the $\theta$-degree) $k$-linear operator
+\be
+H = [d_K, \nabla]^{-1} \nabla\,.
+\ee
+We write $\partial$ for the differential on $\End_R(k^{\stab})$, and $\sigma: k \lto K$ for the map which sends $\lambda \in k$ to $\lambda \cdot 1 \in K$, and define $k$-linear maps
+\begin{align}
+\sigma_\infty = \sum_{m \ge 0} (-1)^m (H \partial)^m \sigma\,,\\
+H_\infty = \sum_{m \ge 0} (-1)^m (H \partial)^m H\,.
+\end{align}
+Here $H_\infty$ is an odd operator on $K \otimes_R \End_R(k^{\stab})$. These maps satisfy:
+\begin{align}
+\pi \sigma_\infty &= 1\,,\\
+ \sigma_\infty \pi &= 1 - [d_K + \partial, H_\infty]\,.
+\end{align}
+\end{itemize}
+
+By inspection of \eqref{eq:first_he}, we therefore have the following:
+
+\begin{proposition}\label{prop:he_start} There is a diagram of morphisms of $\nZ_2$-graded $k$-complexes
+\be\label{eq:he_start}
+\xymatrix@C+5pc{
+S \otimes \md{A}_W \ar@<1ex>[r]^-{\Phi} & \md{E}\ar@<1ex>[l]^-{\Phi^{-1}}
+}
+\ee
+where $\Phi = \pi \exp(-\delta), \Phi^{-1} = \exp(\delta) \sigma_\infty$ and $\widehat{H} = \exp(\delta) H_\infty \exp(-\delta)$ satisfy
+\be
+\Phi \Phi^{-1} = 1\,, \qquad \Phi^{-1} \Phi = 1 - [\partial, \widehat{H}]\,.
+\ee
+Thus, $\Phi$ and $\Phi^{-1}$ are mutually inverse homotopy equivalences over $k$.
+\end{proposition}
+
+The endomorphism algebra $C = \End_k(S)$ is a Clifford algebra generated by the contraction $\theta_i^*$ and wedge product $\theta_i$ operators. It is observed in \cite{murfet} that \eqref{eq:he_start} is an isomorphism of Clifford representations (in the homotopy category) when the complex $\md{E}$ is equipped with the action induced by Atiyah classes:
+
+\begin{definition}
+The Atiyah classes of $\md{A}_W$ are the $R$-linear odd operators
+\[
+\At_i = [\partial, \partial_{x_i}]: \End_R(k^{\stab}) \lto \End_R(k^{\stab})\,,
+\]
+\end{definition}
+
+\begin{lemma} We have
+\[
+\At_i = -[\psi_i^*, -] - \sum_{q=1}^n \partial_{x_i}(W^q) [ \psi_q, - ]\,.
+\]
+\end{lemma}
+\begin{proof}
+By direct calculation:
+\begin{align*}
+\At_i &= \big[ [d_{k^{\stab}},-], \partial_{x_i} \big]\\
+&= \sum_q \big[x_q [\psi_q^*,-], \partial_{x_i}\big] + \sum_q \big[W^q [\psi_q,-], \partial_{x_i}\big]\\
+&= -\sum_q \partial_{x_i}(x_q) [\psi_q^*,-] - \sum_q \partial_{x_i}(W^q) [\psi_q,-]\\
+&= -[\psi_i^*,-] - \sum_q \partial_{x_i}(W^q) [\psi_q, -]\,.
+\end{align*}
+\end{proof}
 
 \section{The minimal model}
 
@@ -536,6 +559,12 @@ N.~Carqueville and D.~Murfet, \textsl{Adjunctions and defects in Landau-Ginzburg
 
 \bibitem{dm1102.2957}
 T.~Dyckerhoff and D.~Murfet, \textsl{Pushing forward matrix factorisations}, Duke Math. J. \textbf{162} (2013), 1249--1311.
+
+\bibitem{weinberg}
+Weinberg, \textsl{The Quantum Theory of Fields Volume 1}.
+
+\bibitem{ps}
+Peskin \& Shroeder, \textsl{An introduction to QFT}.
 
 \end{thebibliography}
 
