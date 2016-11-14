@@ -99,7 +99,7 @@
 \def\sus{\l}
 \def\l{\,|\,}
 \def\sgn{\textup{sgn}}
-\def\samp{Z}
+\def\samp{\zeta}
 \def\Samp{Z}
 \def\traff{N}
 
@@ -130,13 +130,13 @@ These two desiderata, understanding the $A_\infty$-products on $H^*\cat{A}(X,X)$
 
 Suppose $W \in \mf{m}^2$ where $\mf{m} = (x_1,\ldots,x_n)$ and choose a presentation $W = x_1 W^1 + \cdots + x_n W^n$ with $W^i \in \mf{m}$ and consider the following pair
 \begin{equation}\label{eq:kstab}
-k^{\operatorname{stab}} = \Big( k[x] \otimes_k \bigwedge( \oplus_{i=1}^n k\psi_i ), \;d_{k^{\stab}} = \sum_{i=1}^n x_i \psi_i^* + \sum_{i=1}^n W^i \psi_i \Big)
+k^{\operatorname{stab}} = \Big( k[x] \otimes_k \bigwedge\big( \oplus_{i=1}^n k\psi_i \,\big), \;d_{k^{\stab}} = \sum_{i=1}^n x_i \psi_i^* + \sum_{i=1}^n W^i \psi_i \Big)
 \end{equation}
 where $\psi_i^*$ and $\psi_i$ act respectively by contraction and wedge product on the exterior algebra underlying $k^{\stab}$. It is easy to see that $d_{k^{\stab}}^2 = W$, so $k^{\stab}$ is a matrix factorisation. When $k$ is a field and $W$ has an isolated critical point at the origin, $k^{\stab}$ is the representative in the homotopy category of matrix factorisations of the structure sheaf of the singular point at the origin, and was first studied by Dyckerhoff \cite{d0904.4713}. 
 
-The purpose of this paper is to show how to calculate the $A_\infty$-minimal model of the $\nZ_2$-graded differential graded endomorphism algebra of this matrix factorisation
+The purpose of this paper is to show how to calculate the $A_\infty$-minimal model $\mathscr{B}$ of the $\nZ_2$-graded differential graded endomorphism algebra
 \be\label{eq:defnaw}
-\Big( \End_{k[x]}(k^{\operatorname{stab}}), \; \partial = [d_{k^{\stab}},-] \; \Big)\,.
+\mathscr{A} = \Big( \End_{k[x]}(k^{\operatorname{stab}}), \; \partial = [d_{k^{\stab}},-] \; \Big)\,.
 \ee 
 The differential here is (throughout all commutators are graded commutators)
 \begin{align*}
@@ -145,14 +145,14 @@ The differential here is (throughout all commutators are graded commutators)
 \end{align*}
 The minimal model is a finite-dimensional $\nZ_2$-graded vector space $\mathscr{B}$ with a family 
 \[
-\left\{ r_q: \big(\mathscr{B}[1]\big)^{\otimes q} \lto \mathscr{B}[1] \right\}_{q \ge 2}
+\left\{ \rho_q: \big(\mathscr{B}[1]\big)^{\otimes q} \lto \mathscr{B}[1] \right\}_{q \ge 2}
 \]
-of odd $k$-linear maps satisfying the forward suspended $A_\infty$-constraints \cite{lazaroiu}, and having the property that there is an $A_\infty$-quasi-isomorphism $\mathscr{B} \lto \End_{k[x]}(k^{\stab})$.
+of odd $k$-linear maps satisfying the forward suspended $A_\infty$-constraints \cite{lazaroiu}, and having the property that there is an $A_\infty$-quasi-isomorphism $\mathscr{B} \lto \mathscr{A}$.
 
 \section{Feynman diagrams}
 % from p.17 (ainfmf9)
 
-The \emph{tilde grading} is defined by $\widetilde{x} = |x| - 1$. Throughout $\otimes = \otimes_k$. Our reference for general background on Feynman diagrams is \cite[Ch. 6]{weinberg}. The integer $n$ is the number of variables in the ambient ring $R = k[x_1,\ldots,x_n]$. 
+The \emph{tilde grading} is defined by $\widetilde{x} = |x| - 1$. Throughout $\otimes = \otimes_k$. Our reference for general background on Feynman diagrams is \cite[Ch. 6]{weinberg}. The integer $n$ is the number of variables in the ambient ring $R = k[x_1,\ldots,x_n]$. We assume in this section that $W \in \mf{m}^3$.
 
 \begin{definition} Consider the $\nZ_2$-graded algebra defined by the tensor product
 \[
@@ -167,9 +167,9 @@ Here $\psi_i$ denotes the operator $\psi_i \wedge (-)$ on $\bigwedge\big( \oplus
 \big[ \psi_i, \beta \big] = \psi_i \circ \beta - (-1)^{|\beta|} \beta \circ \psi_i\,.
 \]
 We define the $\nZ_2$-graded $k$-module
-\[
+\be\label{defn:B}
 \mathscr{B} = \bigwedge\big( \oplus_{i=1}^n k \psi_i^* \,\big)
-\]
+\ee
 which we view as a submodule
 \[
 \mathscr{B} \subset \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big) \Big)
@@ -231,14 +231,15 @@ Here $m_2$ is the multiplication in $\mathscr{H}$ and, given $\gamma \in \mathbb
 These interactions ``take place'' at vertices of the tree $A(T)$ for some $T \in \cat{T}_q$, and come with the following constraints, which will be formalised below in terms of combinatorial data called \emph{configurations}. We write $f(\gamma)$ for the coefficient of $x^\gamma$ in a polynomial $f \in R$ and recall the chosen decomposition $W = \sum_j x_j W^j$. 
 
 \begin{itemize}
-\item A-type interactions only occur at input vertices and internal edges of $T$.
-\item B-type interactions only occur at internal edges of $T$, and moreover there is \emph{precisely one} at each internal edge.
+\item A-type interactions only occur at input vertices and internal edges of $T$. 
+\item B-type interactions only occur at internal edges of $T$.
 \item C-type interactions only occur at internal vertices of $T$.
+\item There may be arbitrarily many A-type or C-type interactions per vertex, but there is \emph{precisely one} B-type interaction at each internal edge of $T$.
 \item The A-type interaction with indices $a,j, \gamma$ appears with the coefficient
 \be\label{eq:coeff_a}
--\gamma_a W^j( \gamma)\,.
+-\frac{\gamma_a}{|\gamma|} W^j( \gamma)\,.
 \ee
-Each B- and C-type interaction appears with coefficient $(-1)$.
+where $|\gamma| = \sum_{i=1}^n \gamma_i$. Each B- and C-type interaction appears with coefficient $(-1)$.
 \end{itemize}
 
 As we will see, the coefficient \eqref{eq:coeff_a} is the only way that $W$ enters the rules, and thus the definition of the $A_\infty$-products on $\mathscr{B}$. The precise definition of the Feynman rules will be given in Definition \ref{defn:config} below, but first we give an example of a tree with interactions inserted, to illustrate the various ingredients.
@@ -297,12 +298,12 @@ To each vertex $v$ of $A(T)$ we associate an operator $\phi_v$ as follows, writi
 \begin{itemize}
 \item if $v$ is an input, then $\phi_v$ is the linear map $\mathscr{B} \lto \mathscr{H}$ given by
 \be\label{eq:int_input}
-\phi_v = (-1)^m \prod_{j \in J}\Big\{ (\gamma_j)_{a_j} W^j( \gamma_j)  \theta_{a_j} x^{\gamma_j - e_{a_j}} \big[ \psi_j, - \big] \Big\} \circ \iota\,.
+\phi_v = (-1)^m \prod_{j \in J}\Big\{ \frac{1}{|\gamma_j|}(\gamma_j)_{a_j} W^j( \gamma_j)  \theta_{a_j} x^{\gamma_j - e_{a_j}} \big[ \psi_j, - \big] \Big\} \circ \iota\,.
 \ee
 Note that the operator under the product is even, so the order is irrelevant. If $J(v)$ is empty then the product is interpreted to be the identity operator.
 \item if $v$ comes from an internal edge of $T$, then
 \be\label{eq:int_intedge}
-\phi_v = (-1)^m \prod_{j \in J} \Big\{ (\gamma_j)_{a_j} W^j( \gamma_j)  \theta_{a_j} x^{\gamma_j - e_{a_j}} \big[ \psi_j, - \big] \Big\} \circ \theta_t \partial_t\,.
+\phi_v = (-1)^m \prod_{j \in J} \Big\{ \frac{1}{|\gamma_j|}(\gamma_j)_{a_j} W^j( \gamma_j)  \theta_{a_j} x^{\gamma_j - e_{a_j}} \big[ \psi_j, - \big] \Big\} \circ \theta_t \partial_t\,.
 \ee
 \item if $v$ comes from an internal vertex of $T$, then
 \be\label{eq:int_intvert}
@@ -317,48 +318,58 @@ The following simple identity is well-known in the literature in connection with
 
 \begin{lemma} Given a sequence $a_1,\ldots,a_m \ge 1$ of integers,
 \be
-\sum_{\sigma \in \mathfrak{S}_m} \frac{1}{a_{\sigma(1)}} \frac{1}{a_{\sigma(1)} + a_{\sigma(2)}} \cdots \frac{1}{a_{\sigma(1)} + \cdots + a_{\sigma(m)}} = \frac{1}{a_1 \cdots a_m}\,.
+\sum_{\sigma \in \mathfrak{S}_m} \frac{1}{a_{\sigma(1)}(a_{\sigma(1)} + a_{\sigma(2)}) \cdots (a_{\sigma(1)} + \cdots + a_{\sigma(m)})} = \frac{1}{a_1 \cdots a_m}\,.
 \ee
 \end{lemma}
 
 \begin{definition} Given a sequence $a_1,\ldots,a_m \ge 1$ of integers and $a \ge 0$ we define
 \begin{align*}
-\samp_a(a_1, \ldots, a_m) &= \sum_{\sigma \in \mathfrak{S}_m} \prod_{i=1}^{m} \Big( a + \sum_{j=1}^i a_{\sigma(j)} \Big)^{-1} \\
-&= \sum_{\sigma \in \mathfrak{S}_m} \frac{1}{a + a_{\sigma(1)}} \frac{1}{a + a_{\sigma(1)} + a_{\sigma(2)}} \cdots \frac{1}{a + a_{\sigma(1)} + \cdots + a_{\sigma(m)}}\,.
+\samp_a(a_1, \ldots, a_m) &= a_1 \cdots a_m \cdot \sum_{\sigma \in \mathfrak{S}_m} \prod_{i=1}^{m} \Big( a + \sum_{j=1}^i a_{\sigma(j)} \Big)^{-1} \\
+&= \sum_{\sigma \in \mathfrak{S}_m} \frac{a_1 \cdots a_m}{(a + a_{\sigma(1)}) (a + a_{\sigma(1)} + a_{\sigma(2)}) \cdots (a + a_{\sigma(1)} + \cdots + a_{\sigma(m)})}\,.
 \end{align*}
 Clearly this is a symmetric function of the $a_i$ and, by the previous lemma,
 \be
-Z_0(a_1,\ldots,a_m) = \frac{1}{a_1 \cdots a_m}\,.
+\samp_0(a_1,\ldots,a_m) = 1\,.
 \ee
 \end{definition}
 
-As we have described it above, the Feynman diagrams have as incoming and outgoing particles the fermions $\psi_i^*$'s, while the internal edges involve two kinds of virtual particles, the bosonic $x_i$'s and fermionic $\theta_i$'s. A configuration $C$ gives rise to numerous Feynman diagrams, but it will turn out that all diagrams with nonzero amplitude have the \emph{same} pattern of connections among the virtual particles. This means that to a configuration $C$ and vertex $v$ we may associate the \emph{number} $\traff_C(v)$ of virtual particles traversing $v$.
+As we have described it above, the Feynman diagrams have as incoming and outgoing particles the fermions $\psi_i^*$'s, while the internal edges involve two kinds of virtual particles, the bosonic $x_i$'s and fermionic $\theta_i$'s. A configuration $C$ gives rise to numerous Feynman diagrams, but it will turn out that all diagrams with nonzero amplitude have the \emph{same} pattern of connections among the virtual particles. This means that to a configuration $C$ and edge $e$ of $T$ we may associate the \emph{number} $\traff_C(e)$ of virtual particles entering $e$.
 
 For the next two definitions we take $T \in \cat{T}_q$ and $C \in \operatorname{Con}(T)$.
-\begin{definition} Given a vertex $v$ of $A(T)$ we define
+
+\begin{definition} Given an internal edge $e$ of $T$ we define
 \[
-\traff_C(v) = \sum_{v' < v} \sum_{j \in J(v')} | \gamma_j(v') | - \sum_{z < v} m(z)
+\traff_C(e) = \sum_{v < e} \sum_{j \in J(v)} | \gamma_j(v) | - \sum_{z < e} m(z)
 \]
-where $v'$ ranges over all inputs and internal edges of $T$ which are above $v$ in $A(T)$, and $z$ ranges over all internal vertices of $T$ which are above $v$.
+where $v$ ranges over all inputs and internal edges of $T$ which are strictly above $e$ in $A(T)$, and $z$ ranges over all internal vertices of $T$ which are strictly above $e$.
 \end{definition}
 % this agrees with w(x) as defined on p.19 of (ainfmf9)
 
-This counts the number of virtual particles passing $v$, since an A-type interaction with indices $a,j,\gamma$ creates $|\gamma|$ virtual particles, a B-type interaction preserves the number of virtual particles, and a C-type interaction decreases the number by one.
+This counts the number of virtual particles entering $v$ from above, since an A-type interaction with indices $a,j,\gamma$ creates $|\gamma|$ virtual particles, a B-type interaction preserves the number of virtual particles, and a C-type interaction decreases the number by one.
 \\
 
-Combinatorially the most important part of the $A_\infty$-products in the minimal model for $W$ is the rational number $Z_C$ in the next definition. We use the following shorthand notation: if $v$ is either an input or internal edge of $T$, assigned by the configuration $C$ the data $m = m(v), J = J(v)$ and $\{ \gamma_j \}_{j \in J}$, then we write
+Combinatorially the most important part of the $A_\infty$-products in the minimal model for $W$ is the rational number $Z_C$ in the next definition. We use the following shorthand: if $e$ is an internal edge of $T$ assigned by the configuration $C$ the data $m = m(v), J = J(v)$ and $\{ \gamma_j \}_{j \in J}$, then we write
 \be
-\underline{\gamma}(v) = \big( |\gamma_j| \big)_{j \in J} = \big( |\gamma_{j_1}|, \ldots, |\gamma_{j_m}| \big)
+\underline{\gamma}(e) = \big( |\gamma_j| \big)_{j \in J} = \big( |\gamma_{j_1}|, \ldots, |\gamma_{j_m}| \big)
 \ee
-for the sequence of total degrees where $J = \{j_1,\ldots,j_m\}$.
+for the sequence of total degrees where $J = \{j_1,\ldots,j_m\}$. 
 
 \begin{definition} We define
 \begin{gather*}
-\Samp_C = \prod_v \frac{ Z_{\traff_C(v)}\big( \underline{\gamma}(v) \big)}{ \traff_C(v) } \in \mathbb{Q}
+\Samp(T,C) = \prod_{e} \frac{ \samp_{\traff_C(e)}\big( \underline{\gamma}(e) \big)}{ \traff_C(e) } \in \mathbb{Q}
 \end{gather*}
-where is the product is over all vertices $v$ of $A(T)$ with $\traff_C(v) \neq 0$ which are either inputs or internal edges of $T$. If $m(v) = 0$ then we take $Z_{\traff_C(v)}(\emptyset) = 1$.
+where is the product is over all internal edges $e$ of $T$ with $\traff_C(e) \neq 0$. For an edge $e$ with $m(e) = 0$ and thus $\underline{\gamma}(e) = \emptyset$ we take $\samp_{\traff_C(e)}\big( \underline{\gamma}(e) \big) = 1$.
 \end{definition}
 % Note this differs from how we write it in (ainfmf9), because there we only attach numbers to internal edges, and the N_C(v) factors at inputs are swallowed into the operators. To relate the two, note that for v = e an internal edge of T, \traff_C(v) = w(e) and \traff_C(v)^{-1} Z_{\traff_C(v)}( |\gamma(v)| ) is precisely F(e) as defined on p.19 of ainfmf9, divided by the product of all the |\gamma_j|'s for j \in J(v). But that product appears in the operator O(T,C) of ainfmf9.
+
+We note that in the definition of the higher products $\rho_q$ below, any pair $(T,C)$ which has an internal edge $e$ with $N_C(e) = 0$ will not contribute to the sum in any case, so we do not care about $Z(T,C)$ for such configurations.
+
+\begin{example} In the case where $m(e) = 1$ 
+\[
+
+\]
+In the case where $m(e) = 2$
+\end{example}
 
 \begin{definition} Given $T \in \cat{T}_q$ and $C \in \operatorname{Con}(T)$ we define the $k$-linear operator
 \[
@@ -367,15 +378,15 @@ where is the product is over all vertices $v$ of $A(T)$ with $\traff_C(v) \neq 0
 to be the denotation $\cat{O}(T,C) = \langle D_{T,C} \rangle$, defined without Koszul signs.
 \end{definition}
 
-\begin{definition} We define $\rho_q: \mathscr{B}[1]^{\otimes q} \lto \mathscr{B}[1]$ of degree $+1$ by
+\begin{definition} We define the map $\rho_q: \mathscr{B}[1]^{\otimes q} \lto \mathscr{B}[1]$ of degree $+1$ on homogeneous elements $\Lambda_1,\ldots,\Lambda_q \in \mathscr{B}$ by
 \[
-\rho_q( \Lambda_1, \ldots, \Lambda_q ) = \sum_{T \in \cat{T}_q} \sum_{C \in \operatorname{Con}(T)} (-1)^{Q(T, \underline{\Lambda})} Z_C \cdot \cat{O}(T, C)( \Lambda_q, \ldots, \Lambda_1 )\,.
+\rho_q( \Lambda_q, \ldots, \Lambda_1 ) = \sum_{T \in \cat{T}_q} \sum_{C \in \operatorname{Con}(T)} (-1)^{Q(T, \underline{\Lambda})} Z(T,C) \cdot \cat{O}(T, C)( \Lambda_1, \ldots, \Lambda_q )
 \]
-where
+where the sign is given by
 \[
-Q(T, \underline{\Lambda}) = e_i(T) + q + 1 + \sum_{1 \le i < j \le q} \widetilde{\Lambda}_i \widetilde{\Lambda}_j + \sum_{i=1}^q \widetilde{\Lambda}_{q-i+1} P_i
+Q(T, \underline{\Lambda}) = e_i(T) + q + 1 + \sum_{1 \le i < j \le q} \widetilde{\Lambda}_i \widetilde{\Lambda}_j + \sum_{i=1}^q \widetilde{\Lambda}_i C_i\,.
 \]
-where $P_i$ is the number of times the path from the $i$th input to the root enters a trivalent vertex from the right in $T$.
+Here $C_i$ is the number of times the path from the $i$th input to the root enters a trivalent vertex from the left in $T$, $e_i(T)$ is the number of internal edges and $\widetilde{\Lambda} = |\Lambda| - 1$.
 \end{definition}
 % TODO check the sign here and check agreement with ainfmf9
 
@@ -384,28 +395,29 @@ where $P_i$ is the number of times the path from the $i$th input to the root ent
 
 \section{Perturbation and Koszul complexes}
 
-Let $k$ be a characteristic zero field, $R =  k[x_1,\ldots,x_n]$ and let $W \in \mf{m}^2$ be a potential with chosen decomposition $W = \sum_{i=1}^n x_i W^i$. To apply the $A_\infty$-minimal model construction to the DG-algebra $\md{A}_W$ from \eqref{eq:defnaw} we would usually begin by finding a $k$-linear homotopy retract of this complex onto its cohomology. However, for our purposes it is better to first enlarge the DG-algebra to $S \otimes \md{A}_W$, where $S$ is the $\nZ_2$-graded vector space
+Let $k$ be a characteristic zero field, $R =  k[x_1,\ldots,x_n]$ and let $W \in \mf{m}^2$ be a potential with chosen decomposition $W = \sum_{i=1}^n x_i W^i$. To apply the $A_\infty$-minimal model construction to
+\begin{align*}
+\mathscr{A} &= \Big( \End_{R}(k^{\operatorname{stab}}), \; \partial = [d_{k^{\stab}},-] \; \Big)\\
+&= \Big( R \otimes_k \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k\psi_i \,\big) \Big),  \sum_i x_i [\psi_i^*,-] + \sum_i W^i [\psi_i,-] \;\Big)
+\end{align*}
+we first enlarge this DG-algebra to $S \otimes_k \mathscr{A}$, where $S$ is the exterior algebra
 \be
-S = \bigwedge( k\theta_1 \oplus \cdots \oplus k \theta_n )
+S = \bigwedge\big( \oplus_{i=1}^n k\theta_i \,\big)
 \ee
-with grading $|\theta_i| = 1$. We make the tensor product $S \otimes \md{A}_W$ into a DG-algebra in the usual way, giving the exterior algebra $S$ the zero differential.
-
-\begin{definition} We define the finite-dimensional $\nZ_2$-graded vector space
-\be\label{eq:defnunderlineend}
-\md{E} = R/\mf{m} \otimes \End_R(k^{\stab}) \cong \End_k\Big( \bigwedge( k\psi_1 \oplus \cdots \oplus k \psi_n) \Big)
+viewed as a $\nZ_2$-graded DG-algebra with grading $|\theta_i| = 1$ and zero differential. We also need to introduce the $nZ_2$-graded vector space
+\be
+\mathscr{E} = \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k \psi_i \,\big) \Big)
 \ee
-where $\mf{m} = (x_1,\ldots,x_n)$.
-\end{definition}
-
-We will show that $S \otimes \md{A}_W$ is homotopy equivalent to $\md{E}$ viewed as a complex with zero differential (observe that $\md{E}$ does not depend on $W$). The corresponding homotopy retract (see Proposition \ref{prop:he_start} below) is our starting point for the minimal model construction. For this we use the Koszul complex of $x_1,\ldots,x_n$,
+and the Koszul complex of $x_1,\ldots,x_n$,
 \be\label{eq:defnkoszulK}
-K = \Big( R \otimes \bigwedge( \oplus_{i=1}^n k \theta_i ), \; d_K = \sum_i x_i \theta_i^*\; \Big)
+K = \Big( R \otimes \bigwedge\big( \oplus_{i=1}^n k \theta_i \,\big), \; d_K = \sum_i x_i \theta_i^*\; \Big)
 \ee
+Note that $S \otimes_k \mathscr{A}$ has the same underlying $\nZ_2$-graded $k$-module as $K \otimes_R \mathscr{A}$.
 
-\begin{theorem} There is a diagram of $\nZ_2$-graded complexes and homotopy equivalences over $k$
+\begin{theorem} There is a diagram of $k$-linear homotopy equivalences
 \be\label{eq:first_he}
 \xymatrix@C+3pc{
-S \otimes \md{A}_W \ar@<1ex>[r]^-{\exp(-\delta)} & K \otimes_R \md{A}_W \ar@<1ex>[l]^-{ \exp(-\delta) } \ar@<1ex>[r]^-{\pi} & \md{E}\,.\ar@<1ex>[l]^-{ \sigma_\infty }
+\big( S \otimes_k \mathscr{A}, \partial \,\big) \ar@<1ex>[r]^-{\exp(-\delta)} & \big( K \otimes_R \mathscr{A}, d_K + \partial \,\big) \ar@<1ex>[l]^-{ \exp(-\delta) } \ar@<1ex>[r]^-{\pi} & \big( \mathscr{B}, 0 \,\big)\,.\ar@<1ex>[l]^-{ \sigma_\infty }
 }
 \ee
 \end{theorem}
