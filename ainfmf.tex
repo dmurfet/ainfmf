@@ -149,8 +149,16 @@ The minimal model is a finite-dimensional $\nZ_2$-graded vector space $\mathscr{
 \]
 of odd $k$-linear maps satisfying the forward suspended $A_\infty$-constraints \cite{lazaroiu}, and having the property that there is an $A_\infty$-quasi-isomorphism $\mathscr{B} \lto \mathscr{A}$.
 
+\section{Background}
+
+\begin{itemize}
+\item Commutation relations for $[ \psi_i, - ]$.
+\end{itemize}
+
 \section{Feynman diagrams}
 % from p.17 (ainfmf9)
+
+The $A_\infty$-products on the $A_\infty$-algebra $\mathscr{B}$ are defined in terms of Feynman diagrams (see Definition \ref{defn:bainf}). In this section we explain how to enumerate all the relevant diagrams and how to compute their value; in the next section we prove that the maps they give rise to do indeed compute the minimal model of $\mathscr{A}$.
 
 The \emph{tilde grading} is defined by $\widetilde{x} = |x| - 1$. Throughout $\otimes = \otimes_k$. Our reference for general background on Feynman diagrams is \cite[Ch. 6]{weinberg}. The integer $n$ is the number of variables in the ambient ring $R = k[x_1,\ldots,x_n]$. We assume in this section that $W \in \mf{m}^3$.
 
@@ -233,8 +241,8 @@ These interactions ``take place'' at vertices of the tree $A(T)$ for some $T \in
 \begin{itemize}
 \item A-type interactions only occur at input vertices and internal edges of $T$. 
 \item B-type interactions only occur at internal edges of $T$.
-\item C-type interactions only occur at internal vertices of $T$.
-\item There may be arbitrarily many A-type or C-type interactions per vertex, but there is \emph{precisely one} B-type interaction at each internal edge of $T$.
+\item C-type interactions only occur at internal vertices of $T$, and moreover the incoming lines must come from different branches of the tree.
+\item There may be arbitrarily many A-type or C-type interactions per vertex of $A(T)$, but there is \emph{precisely one} B-type interaction at each internal edge of $T$.
 \item The A-type interaction with indices $a,j, \gamma$ appears with the coefficient
 \be\label{eq:coeff_a}
 -\frac{\gamma_a}{|\gamma|} W^j( \gamma)\,.
@@ -244,19 +252,19 @@ where $|\gamma| = \sum_{i=1}^n \gamma_i$. Each B- and C-type interaction appears
 
 As we will see, the coefficient \eqref{eq:coeff_a} is the only way that $W$ enters the rules, and thus the definition of the $A_\infty$-products on $\mathscr{B}$. The precise definition of the Feynman rules will be given in Definition \ref{defn:config} below, but first we give an example of a tree with interactions inserted, to illustrate the various ingredients.
 
-\begin{example} Consider the tree $T \in \cat{T}_3$ whose augmented tree $A(T)$ is depicted below, together with labels for its vertices, where we label by $e$ the vertex corresponding to the internal edge of $T$:
+\begin{example}\label{ex:picture_example} Consider the tree $T \in \cat{T}_3$ whose augmented tree $A(T)$ is depicted below, together with labels for its vertices, where we label by $e$ the vertex corresponding to the internal edge of $T$:
 \begin{center}
 \includegraphics[scale=0.25]{dia7}
 \end{center}
-Set $W = x^3 \in \mathbb{C}[x]$ so that $W^1 = x^2$ and the only A-type interaction has $a = 1, j = 1, \gamma = 2$ and coefficient $1$, as in the diagram (we write $\theta = \theta_1, \psi = \psi_1$)
+Set $W = x^3 \in \mathbb{C}[x]$ so that $W^1 = x^2$ and the only A-type interaction has $a = 1, j = 1, \gamma = 2$ and coefficient $-1$, as in the diagram (we write $\theta = \theta_1, \psi = \psi_1$)
 \begin{center}
 \includegraphics[scale=0.3]{dia5}
 \end{center}
-Consider the input state $\Psi = \psi^* \otimes \psi^* \otimes \psi^*$ in $\mathscr{B}^{\otimes 3}$. One possible pattern of interactions (called a configuration, below) has a single A-type interaction at the input vertex $i_3$, a B-type interaction at $e$, and two C-type interactions at $v_1,v_2$, as shown in
+Consider the input state $\Psi = \psi^* \otimes \psi^* \otimes \psi^*$ in $\mathscr{B}^{\otimes 3}$. One possible pattern of interactions (called a configuration, below) has a single A-type interaction at the input vertex $i_3$, a B-type interaction at $e$, and two C-type interactions at $v_1,v_2$, as shown in the following ``topological'' Feynman diagram
 \begin{center}
 \includegraphics[scale=0.3]{dia6}
 \end{center}
-The amplitude of this ``topological'' Feynman diagram is the value of
+The amplitude of this Feynman diagram is the value of
 \begin{align*}
 (-1)^3 p \circ m_2 \big([\psi, -] \otimes \theta^*\big) \circ \big( \iota \otimes \theta \partial_x \circ m_2 ([\psi, -] \otimes \theta^*)\big( \iota \otimes \theta x [\psi, -] \iota \big)\big)
 \end{align*}
@@ -270,7 +278,7 @@ on the input state $\Psi$. Usually when evaluating such an expression we would p
 \end{align*}
 \end{example}
 
-Now we give a precise definition of the Feynman rules. Let $T \in \cat{T}_q$ be a valid plane tree with $q$ inputs and $e_i(T)$ internal edges, and let $A(T)$ be the augmented plane tree. The definitions are all relative to the ambient integer $n$, but for the sake of readability we will not reflect this in the notation.
+Now we give some more precise definitions. Let $T \in \cat{T}_q$ be a valid plane tree with $q$ inputs and $e_i(T)$ internal edges, and let $A(T)$ be the augmented plane tree. The definitions are all relative to the ambient integer $n$, but for the sake of readability we will not reflect this in the notation.
 
 \begin{definition}\label{defn:config} A \emph{configuration} $C$ of a valid plane tree $T$ consists of the following data, for each non-root vertex $v$ of $A(T)$:
 \begin{itemize}
@@ -314,6 +322,26 @@ which is a map $\mathscr{H}^{\otimes 2} \lto \mathscr{H}$. Here $m_2$ denotes th
 \end{itemize}
 \end{definition}
 
+\begin{definition}\label{defn:otc} Given $T \in \cat{T}_q$ and $C \in \operatorname{Con}(T)$ we define the $k$-linear operator
+\[
+\cat{O}(T, C): \mathscr{B}^{\otimes q} \lto \mathscr{B}
+\]
+to be the denotation $\cat{O}(T,C) = \langle D_{T,C} \rangle$, defined without Koszul signs.
+\end{definition}
+
+\begin{remark} Let us now briefly explain the connection between configurations, the linear map $\cat{O}(T,C)$ and Feynman diagrams, such as the one in Example \ref{ex:picture_example}. Ultimately we will not actually use these diagrams to perform calculations, so we refrain from formulating them too precisely; however, they are very useful as a tool for understanding.
+
+We view $\Psi_1 \otimes \cdots \otimes \Psi_q \in \mathscr{B}^{\otimes q}$ as the result of applying creation operators (meaning wedge products $\psi_i^* \wedge -$) to the vacuum (meaning the identity of the exterior algebra) in the various copies of $\mathscr{B}$. The value $\cat{O}(T,C)$ on $\Psi$ may then be computed by commuting all creation operators acting on $\mathscr{H}$ (that is, the operators $x_i, \theta_i, \psi_i^*$) leftward in the expression, which means \emph{down} the tree. These operators commute with all creation operators and with those annihilation operators which are either of a different type (e.g. $[x_i, \theta_j^*] = 0$) or of same type but with different indices (e.g. $[x_1, \partial_2] = 0$). However, there will be a nonzero commutator every time a creation operator meets an annihilation operator of the same type and index (respectively $\partial_i, \theta_i^*, [\psi_i, -]$). We view such a commutator, e.g.
+\[
+\theta_i \theta_i^* + \theta_i^* \theta_i = [ \theta_i, \theta_i^* ] = 1
+\]
+which arises as the result of commuting the $\theta_i$ leftward to meet the $\theta_i^*$, as generating two diagrams, corresponding to the two summands in $\theta_i^* \theta_i = 1 - \theta_i \theta_i^*$. In the first summand there in an interaction and in the second there is none.
+
+observing that the final $p$ will annihilate with the creation operators $x_i$ and $\theta_i$. The summands which are generated by this calculation can be described by Feynman diagrams.  actually use these diagrams to do calculations, we would have to keep track of crossing of fermion lines (since these contribute signs)
+
+Let $T \in \cat{T}_q, C \in \operatorname{Con}(T)$ and let $I_i \subseteq \{1,\ldots,n\}$ for $1 \le i \le q$ describe the input fermions.
+\end{remark}
+
 The following simple identity is well-known in the literature in connection with soft photons and infrared divergences in quantum field theory, see for instance \cite[Ch 13]{weinberg} and \cite[p.204]{ps}. The amplitudes for our Feynman diagrams will involve a generalisation.
 
 \begin{lemma} Given a sequence $a_1,\ldots,a_m \ge 1$ of integers,
@@ -346,7 +374,15 @@ where $v$ ranges over all inputs and internal edges of $T$ which are strictly ab
 % this agrees with w(x) as defined on p.19 of (ainfmf9)
 
 This counts the number of virtual particles entering $v$ from above, since an A-type interaction with indices $a,j,\gamma$ creates $|\gamma|$ virtual particles, a B-type interaction preserves the number of virtual particles, and a C-type interaction decreases the number by one.
-\\
+
+\begin{example}\label{ex:picture_example_2} The configuration $C$ which is described in Example \ref{ex:picture_example} has $n = 1$ and
+\begin{gather*}
+m(i_3) = m(v_1) = m(v_2) = 1\,,\\
+J(i_3) = J(v_1) = J(v_2) = \{ 1 \}\,,\\
+t(e) = 1\,.
+\end{gather*}
+At $i_3$ we have the pair $a = 1$ and $x^\gamma = x^2$. Consequently $N_C(e) = 1$.
+\end{example}
 
 Combinatorially the most important part of the $A_\infty$-products in the minimal model for $W$ is the rational number $Z_C$ in the next definition. We use the following shorthand: if $e$ is an internal edge of $T$ assigned by the configuration $C$ the data $m = m(v), J = J(v)$ and $\{ \gamma_j \}_{j \in J}$, then we write
 \be
@@ -364,25 +400,22 @@ where is the product is over all internal edges $e$ of $T$ with $\traff_C(e) \ne
 
 We note that in the definition of the higher products $\rho_q$ below, any pair $(T,C)$ which has an internal edge $e$ with $N_C(e) = 0$ will not contribute to the sum in any case, so we do not care about $Z(T,C)$ for such configurations.
 
-\begin{example} In the case where $m(e) = 1$ 
+\begin{example} When $m(e) = 1, J(e) = \{ j \}$ and we write $\gamma = \gamma_j(e), N = \traff_C(e)$, we have
 \[
-
+\samp_{\traff_C(e)}\big( \underline{\gamma}(e) \big) = \frac{|\gamma|}{N + |\gamma|}\,.
 \]
-In the case where $m(e) = 2$
+In the case where $m(e) = 2, J(e) = \{ j, j' \}$ and we write $\gamma = \gamma_j(e), \gamma' = \gamma_{j'}(e)$,
+\[
+\samp_{\traff_C(e)}\big( \underline{\gamma}(e) \big) = \frac{|\gamma||\gamma'|}{N + |\gamma| + |\gamma'|} \left( \frac{1}{N + |\gamma|}  + \frac{1}{N + |\gamma'|}\right)\,.
+\]
+In particular, for the tree and configuration of Examples \ref{ex:picture_example}, \ref{ex:picture_example_2} we only have one internal edge $e$ with $m(e) = 0$, so $Z(T,C) = \frac{1}{N_C(e)} = 1$.
 \end{example}
 
-\begin{definition} Given $T \in \cat{T}_q$ and $C \in \operatorname{Con}(T)$ we define the $k$-linear operator
-\[
-\cat{O}(T, C): \mathscr{B}^{\otimes q} \lto \mathscr{B}
-\]
-to be the denotation $\cat{O}(T,C) = \langle D_{T,C} \rangle$, defined without Koszul signs.
-\end{definition}
-
-\begin{definition} We define the map $\rho_q: \mathscr{B}[1]^{\otimes q} \lto \mathscr{B}[1]$ of degree $+1$ on homogeneous elements $\Lambda_1,\ldots,\Lambda_q \in \mathscr{B}$ by
+\begin{definition}\label{defn:bainf} We define the map $\rho_q: \mathscr{B}[1]^{\otimes q} \lto \mathscr{B}[1]$ of degree $+1$ on homogeneous elements $\Lambda_1,\ldots,\Lambda_q \in \mathscr{B}$ by
 \[
 \rho_q( \Lambda_q, \ldots, \Lambda_1 ) = \sum_{T \in \cat{T}_q} \sum_{C \in \operatorname{Con}(T)} (-1)^{Q(T, \underline{\Lambda})} Z(T,C) \cdot \cat{O}(T, C)( \Lambda_1, \ldots, \Lambda_q )
 \]
-where the sign is given by
+where $\cat{O}(T,C)$ is from Definition \ref{defn:otc} and the sign is given by
 \[
 Q(T, \underline{\Lambda}) = e_i(T) + q + 1 + \sum_{1 \le i < j \le q} \widetilde{\Lambda}_i \widetilde{\Lambda}_j + \sum_{i=1}^q \widetilde{\Lambda}_i C_i\,.
 \]
@@ -390,8 +423,29 @@ Here $C_i$ is the number of times the path from the $i$th input to the root ente
 \end{definition}
 % TODO check the sign here and check agreement with ainfmf9
 
-\begin{theorem} The operators $\rho_q$ satisfy the forward suspended $A_\infty$-constraints, so that $(\mathscr{B}, \{ \rho_q \}_{q \ge 2})$ is an $A_\infty$-algebra, and it is quasi-isomorphic to $\End_k(k^{\stab})$.
+\begin{theorem} The operators $\rho_q$ satisfy the forward suspended $A_\infty$-constraints, so that $(\mathscr{B}, \{ \rho_q \}_{q \ge 2})$ is an $A_\infty$-algebra. Moreover $\mathscr{B}$ is $A_\infty$-quasi-isomorphic to $\mathscr{A}$.
 \end{theorem}
+\begin{proof}
+See Section \ref{??}.
+\end{proof}
+
+\begin{example} Let $W = x^d$ with $d > 2$. Then the $A_\infty$-products on the minimal model
+\[
+\mathscr{B} = \Big( \bigwedge \big( k \psi^* \big), \{ \rho_q \}_{q \ge 2} \; \Big)
+\]
+are given by
+\begin{itemize}
+\item $\rho_2$ is the forward suspension of the usual product in the exterior algebra, that is,
+\[
+\rho_2( x_1 \otimes x_2 ) = (-1)^{\widetilde{x_1} \widetilde{x_2} + \widetilde{x_1} + 1} x_2 x_1\,.
+\]
+\item For $q \notin \{2,d\}$ we have $\rho_q = 0$, and
+\item The tensor product $\mathscr{B}^{\otimes d}$ has dimension $2^d$ with basis $(\psi^*)^{i_0} \otimes \cdots \otimes (\psi^*)^{i_d}$ for $i_j \in \{0,1\}$. The operator $\rho_d$ is zero on all the basis elements except for
+\[
+\rho_d( \psi^* \otimes \psi^* \otimes \cdots \otimes \psi^* ) = (-1)^{d-1}\,.
+\]
+\end{itemize}
+\end{example}
 
 \section{Perturbation and Koszul complexes}
 
