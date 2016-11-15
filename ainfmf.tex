@@ -109,7 +109,7 @@
 \maketitle
 
 \begin{abstract}
-We study $A_\infty$-minimal models of the differential graded algebras obtained from endomorphisms of generators of triangulated categories of matrix factorisations, giving explicit higher products for the cases of simple singularities. 
+We study $A_\infty$-minimal models of the differential graded algebras obtained from endomorphisms of generators of triangulated categories of matrix factorisations.
 \end{abstract}
 
 \section{Introduction}
@@ -118,7 +118,7 @@ Let $k$ be a commutative $\mathbb{Q}$-algebra and $W \in k[x_1,\ldots,x_n]$ a po
 
 When $k$ is a field, the standard minimal model theorem \cite{??} constructs the structure of an $A_\infty$-category on the cohomology $\cat{B} = H^* \cat{A}$ in such a way that $\cat{B}$ is quasi-isomorphic to $\cat{A}$. Moreover, this $A_\infty$-category has finite-dimensional Hom-spaces and is therefore a good finite model of $\cat{A}$. The problem in this case is to have sufficient control over the inputs to the minimal model theorem that the $A_\infty$-products on $H^* \cat{A}(X,X)$ can be reasonably calculated, for a given matrix factorisation $X$. In order to understand deformations of matrix factorisations \cite{??,??,??} it is important to do this for generic $X$, but the special case where $X = k^{\stab}$, the generator of $\cat{A}$ studied by Dyckerhoff in the case of a single isolated singularity at the origin \cite{d0904.4713}, is of particular interest.
 
-Since one of our goals is to understand how matrix factorisation categories vary along unfoldings of singularities, we also need to consider the case where $k$ is not a field. For example take $k = \mathbb{C}[t]$ and $R = \mathbb{C}[x_1,\ldots,x_n, t]$ so that $W = W_t(x)$ is a potential with parameter. In this case we want an $A_\infty$-category $\cat{B}$ quasi-isomorphic to $\cat{A}$ over $k$, with $\cat{B}(a,b)$ a finitely-generated projective $k$-module for each pair of objects $a,b$. 
+Since one of our goals is to understand how matrix factorisation categories vary along unfoldings of singularities, we also want to consider the case where $k$ is not a field. For example take $k = \mathbb{C}[t]$ and $R = \mathbb{C}[x_1,\ldots,x_n, t]$ so that $W = W_t(x)$ is a potential with a parameter $t$. In this case we want an $A_\infty$-category $\cat{B}$ quasi-isomorphic to $\cat{A}$ over $k$, with $\cat{B}(a,b)$ a finitely-generated projective $k$-module for each pair of objects $a,b$. 
 \vspace{0.2cm}
 
 These two desiderata, understanding the $A_\infty$-products on $H^*\cat{A}(X,X)$ for generic $X$, and the case where $k$ is not a field, lead us naturally to a slightly non-standard use of the minimal model theorem. Following the ideas developed in \cite{??,??,??} we prove that, writing $\iota: R \lto R/(\partial_{x_1} W, \ldots, \partial_{x_n} W)$ for the quotient, there is a $k$-linear homotopy retract
@@ -128,11 +128,13 @@ These two desiderata, understanding the $A_\infty$-products on $H^*\cat{A}(X,X)$
 }
 \ee
 
-Suppose $W \in \mf{m}^2$ where $\mf{m} = (x_1,\ldots,x_n)$ and choose a presentation $W = x_1 W^1 + \cdots + x_n W^n$ with $W^i \in \mf{m}$ and consider the following pair
+\subsection{The special case of the generator}
+
+Suppose that $k$ is a field and that the potential $W$ belongs to $\mf{m}^3$ where $\mf{m} = (x_1,\ldots,x_n)$, choose a presentation $W = \sum_i x_i W^i$ with $W^i \in \mf{m}^2$ and consider the following pair
 \begin{equation}\label{eq:kstab}
 k^{\operatorname{stab}} = \Big( k[x] \otimes_k \bigwedge\big( \oplus_{i=1}^n k\psi_i \,\big), \;d_{k^{\stab}} = \sum_{i=1}^n x_i \psi_i^* + \sum_{i=1}^n W^i \psi_i \Big)
 \end{equation}
-where $\psi_i^*$ and $\psi_i$ act respectively by contraction and wedge product on the exterior algebra underlying $k^{\stab}$. It is easy to see that $d_{k^{\stab}}^2 = W$, so $k^{\stab}$ is a matrix factorisation. When $k$ is a field and $W$ has an isolated critical point at the origin, $k^{\stab}$ is the representative in the homotopy category of matrix factorisations of the structure sheaf of the singular point at the origin, and was first studied by Dyckerhoff \cite{d0904.4713}. 
+where $\psi_i^*, \psi_i$ denote respectively the operators of contraction $\psi_i^* \lrcorner (-)$ and wedge product $\psi_i = \psi_i \wedge (-)$ on the exterior algebra. Clearly $(d_{k^{\stab}})^2 = W$ so that $k^{\stab}$ is a matrix factorisation of $W$. When $k$ is a field and $W$ has an isolated critical point at the origin, $k^{\stab}$ is the representative in the homotopy category of matrix factorisations of the structure sheaf of the singular point at the origin, and was first studied by Dyckerhoff \cite{d0904.4713}. If the origin is the only singular point of the zero locus of $W$, or we work with power series instead of the polynomial ring, $k^{\stab}$ is a split generator of the homotopy category of matrix factorisations \cite[Theorem ?]{?}.
 
 The purpose of this paper is to show how to calculate the $A_\infty$-minimal model $\mathscr{B}$ of the $\nZ_2$-graded differential graded endomorphism algebra
 \be\label{eq:defnaw}
@@ -153,14 +155,15 @@ of odd $k$-linear maps satisfying the forward suspended $A_\infty$-constraints \
 
 \begin{itemize}
 \item Commutation relations for $[ \psi_i, - ]$.
+\item The \emph{tilde grading} on a $\nZ_2$-graded $k$-module is defined by $\widetilde{x} = |x| - 1$. 
 \end{itemize}
 
 \section{Feynman diagrams}
 % from p.17 (ainfmf9)
 
-The $A_\infty$-products on the $A_\infty$-algebra $\mathscr{B}$ are defined in terms of Feynman diagrams (see Definition \ref{defn:bainf}). In this section we explain how to enumerate all the relevant diagrams and how to compute their value; in the next section we prove that the maps they give rise to do indeed compute the minimal model of $\mathscr{A}$.
+The $A_\infty$-products on $\mathscr{B}$ are defined in terms of Feynman diagrams (see Definition \ref{defn:bainf}). In this section we explain how to enumerate all the relevant diagrams and how to compute their value; in the next section we prove that the maps they give rise to do indeed compute the minimal model of $\mathscr{A}$. Our reference for general background on Feynman diagrams is \cite[Ch. 6]{weinberg} or \cite[\S 4.4]{ps}, although we need only superficial aspects of the theory there.
 
-The \emph{tilde grading} is defined by $\widetilde{x} = |x| - 1$. Throughout $\otimes = \otimes_k$. Our reference for general background on Feynman diagrams is \cite[Ch. 6]{weinberg}. The integer $n$ is the number of variables in the ambient ring $R = k[x_1,\ldots,x_n]$. We assume in this section that $W \in \mf{m}^3$.
+Throughout $\otimes = \otimes_k$. The integer $n$ is the number of variables in the ambient ring $R = k[x_1,\ldots,x_n]$. We assume in this section that $W \in \mf{m}^3$.
 
 \begin{definition} Consider the $\nZ_2$-graded algebra defined by the tensor product
 \[
@@ -186,7 +189,7 @@ by identifying $\psi_i^* \in \mathscr{B}$ with the operation of contraction $\ps
 \be\label{eq:comm_is_ann}
 \Big[ \psi_j, \iota\big(\psi_{i_1}^* \wedge \cdots \wedge \psi_{i_r}^*\big) \Big] = \sum_{l=1}^r (-1)^{l-1} \delta_{j, i_l} \iota\big(\psi_{i_1}^* \wedge \cdots \wedge \widehat{ \psi_{i_l}^* } \wedge \cdots \wedge \psi_{i_r}^*\big)\,.
 \ee
-We write $p: \mathscr{H} \lto \mathscr{B}$ for the natural projection (todo).
+We write $p: \mathscr{H} \lto \mathscr{B}$ for the projection, which is the tensor product of the $k$-algebra map $R \lto k$ sending every variable to zero in the first position, $\bigwedge$ applied to $\oplus_{i=1}^n k \theta_i \lto 0$ in the second position, and an arbitrary projection of the endomorphism algebra onto $\mathscr{B}$ in the third position (todo: clarify).
 \end{definition}
 
 We view $\mathscr{H}$ as the tensor product of the bosonic Fock space $R$ with creation and annihilation operators $x_i, \partial_i$, fermionic Fock space $\wedge( \oplus_{i=1}^n k \theta_i )$ with creation and annihilation operators $\theta_i, \theta_i^*$ and the third factor, of which the calculations of the $A_\infty$-structure only involve the submodule $\mathscr{B} = \wedge( \oplus_{i=1}^n k \psi_i^* )$ which is another fermionic Fock space. The inputs to the Feynman diagrams are tensor products of states in $\mathscr{B}$, that is, wedge products of $\psi_i^*$'s, on which the $[\psi_i, -]$ act as annihilation operators.
@@ -264,11 +267,11 @@ Consider the input state $\Psi = \psi^* \otimes \psi^* \otimes \psi^*$ in $\math
 \begin{center}
 \includegraphics[scale=0.3]{dia6}
 \end{center}
-The amplitude of this Feynman diagram is the value of
-\begin{align*}
+The \emph{value} of this diagram in $\mathscr{B}$ is the value of the linear map
+\be\label{eq:operator_tree_example}
 (-1)^3 p \circ m_2 \big([\psi, -] \otimes \theta^*\big) \circ \big( \iota \otimes \theta \partial_x \circ m_2 ([\psi, -] \otimes \theta^*)\big( \iota \otimes \theta x [\psi, -] \iota \big)\big)
-\end{align*}
-on the input state $\Psi$. Usually when evaluating such an expression we would pay attention to Koszul signs from commuting the input $\psi^*$'s into position (see Definition \ref{??}). Ignoring all signs, the amplitude is
+\ee
+on the input state $\Psi$. Usually when evaluating such an expression we would pay attention to Koszul signs from commuting the input $\psi^*$'s into position (see Definition \ref{??}). Ignoring all signs, the value is
 \begin{align*}
 \pm \; & p \circ m_2 \big([\psi, -] \otimes \theta^*\big) \circ \big( \iota \otimes \theta \partial_x \circ m_2 ([\psi, -] \otimes \theta^*)\big( \iota \otimes \theta x [\psi, -] \iota \big)\big)\Big( \Psi \Big)\\
 &= \pm \; p \circ m_2 \big([\psi, \psi^*] \otimes \theta^* \theta \partial_x \circ m_2 ([\psi, \psi^*] \otimes \theta^* \theta x [\psi, \psi^*] \big)\big)\\
@@ -329,17 +332,30 @@ which is a map $\mathscr{H}^{\otimes 2} \lto \mathscr{H}$. Here $m_2$ denotes th
 to be the denotation $\cat{O}(T,C) = \langle D_{T,C} \rangle$, defined without Koszul signs.
 \end{definition}
 
+\begin{example}\label{ex:picture_example_2} The configuration $C$ which is described in Example \ref{ex:picture_example} has $n = 1$ and
+\begin{gather*}
+m(i_3) = m(v_1) = m(v_2) = 1\,,\\
+J(i_3) = J(v_1) = J(v_2) = \{ 1 \}\,,\\
+t(e) = 1\,.
+\end{gather*}
+At $i_3$ we have the pair $a = 1$ and $x^\gamma = x^2$. The operator $\cat{O}(T,C)$ is precisely \eqref{eq:operator_tree_example}.
+\end{example}
+
 \begin{remark} Let us now briefly explain the connection between configurations, the linear map $\cat{O}(T,C)$ and Feynman diagrams, such as the one in Example \ref{ex:picture_example}. Ultimately we will not actually use these diagrams to perform calculations, so we refrain from formulating them too precisely; however, they are very useful as a tool for understanding.
 
-We view $\Psi_1 \otimes \cdots \otimes \Psi_q \in \mathscr{B}^{\otimes q}$ as the result of applying creation operators (meaning wedge products $\psi_i^* \wedge -$) to the vacuum (meaning the identity of the exterior algebra) in the various copies of $\mathscr{B}$. The value $\cat{O}(T,C)$ on $\Psi$ may then be computed by commuting all creation operators acting on $\mathscr{H}$ (that is, the operators $x_i, \theta_i, \psi_i^*$) leftward in the expression, which means \emph{down} the tree. These operators commute with all creation operators and with those annihilation operators which are either of a different type (e.g. $[x_i, \theta_j^*] = 0$) or of same type but with different indices (e.g. $[x_1, \partial_2] = 0$). However, there will be a nonzero commutator every time a creation operator meets an annihilation operator of the same type and index (respectively $\partial_i, \theta_i^*, [\psi_i, -]$). We view such a commutator, e.g.
+We view $\Psi_1 \otimes \cdots \otimes \Psi_q \in \mathscr{B}^{\otimes q}$ as the result of applying creation operators (meaning wedge products $\psi_i^* \wedge -$) to the vacuum (meaning the identity of the exterior algebra) in the various copies of $\mathscr{B}$. The value $\cat{O}(T,C)$ on $\Psi$ may then be computed by commuting all creation operators acting on $\mathscr{H}$ (that is, the operators $x_i, \theta_i, \psi_i^*$) leftward in the expression, which means \emph{down} the tree. These operators commute with all creation operators and with those annihilation operators which are either of a different type (e.g. $[x_i, \theta_j^*] = 0$) or of same type but with different indices (e.g. $[x_1, \partial_2] = 0$). However, there will be a nonzero commutator every time a creation operator meets an annihilation operator of the same type and index (respectively $\partial_i, \theta_i^*, [\psi_i, -]$). We view such a commutator, say
 \[
-\theta_i \theta_i^* + \theta_i^* \theta_i = [ \theta_i, \theta_i^* ] = 1
+\theta_i \theta_i^* + \theta_i^* \theta_i = [ \theta_i, \theta_i^* ] = 1\,,
 \]
-which arises as the result of commuting the $\theta_i$ leftward to meet the $\theta_i^*$, as generating two diagrams, corresponding to the two summands in $\theta_i^* \theta_i = 1 - \theta_i \theta_i^*$. In the first summand there in an interaction and in the second there is none.
+which arises as the result of commuting the $\theta_i$ leftward to meet the $\theta_i^*$, as generating two diagrams, corresponding to the two choices of summands in $\theta_i^* \theta_i = 1 - \theta_i \theta_i^*$. Choosing the first summand means there is an interaction (drawn as a line marked $\theta_i$ from the original position of the $\theta_i$ to the position of the $\theta_i^*$ in the tree) while choosing the second summand means there is no interaction (the $\theta_i$ sails on, to meet its partner further down the tree). If a particular series of such choices leads to an $x_i$ or $\theta_i$ meeting the bottom of the tree (that is, $p$) then this diagram does not contribute to $\cat{O}(T,C)(\Psi)$ since $p$ projects out such elements of $\mathscr{H}$. 
 
-observing that the final $p$ will annihilate with the creation operators $x_i$ and $\theta_i$. The summands which are generated by this calculation can be described by Feynman diagrams.  actually use these diagrams to do calculations, we would have to keep track of crossing of fermion lines (since these contribute signs)
+We can depict a series of choices by linking the creation and annihilation operators,
+\begin{center}
+\includegraphics[scale=0.45]{dia8}
+\end{center}
+or by drawing these linkages, marked with the type and index of the ``particle'' on the tree $T$, joining the two positions determined by the configuration as in Example \ref{ex:picture_example}.
 
-Let $T \in \cat{T}_q, C \in \operatorname{Con}(T)$ and let $I_i \subseteq \{1,\ldots,n\}$ for $1 \le i \le q$ describe the input fermions.
+Note that in this example one of the other series of ``choices'' would involve commuting the rightmost $\theta$ past the first $\theta^*$ to meet with the leftmost $\theta^*$. In the corresponding Feynman diagram the $\theta$ fermion would travel from the A-type interaction vertex all the way to the bottom of the tree. However, this diagram gives a zero contribution to $\cat{O}(T,C)(\Psi)$, for at least two reasons: firstly, in the calculation we see parallel identical fermion lines which vanish (since $\theta^2 = 0$), and secondly the leftmost $\theta$ may in this case be commuted left to give zero on $p$, after the ``guard'' $\theta^*$ is cancelled by the other $\theta$.
 \end{remark}
 
 The following simple identity is well-known in the literature in connection with soft photons and infrared divergences in quantum field theory, see for instance \cite[Ch 13]{weinberg} and \cite[p.204]{ps}. The amplitudes for our Feynman diagrams will involve a generalisation.
@@ -375,13 +391,7 @@ where $v$ ranges over all inputs and internal edges of $T$ which are strictly ab
 
 This counts the number of virtual particles entering $v$ from above, since an A-type interaction with indices $a,j,\gamma$ creates $|\gamma|$ virtual particles, a B-type interaction preserves the number of virtual particles, and a C-type interaction decreases the number by one.
 
-\begin{example}\label{ex:picture_example_2} The configuration $C$ which is described in Example \ref{ex:picture_example} has $n = 1$ and
-\begin{gather*}
-m(i_3) = m(v_1) = m(v_2) = 1\,,\\
-J(i_3) = J(v_1) = J(v_2) = \{ 1 \}\,,\\
-t(e) = 1\,.
-\end{gather*}
-At $i_3$ we have the pair $a = 1$ and $x^\gamma = x^2$. Consequently $N_C(e) = 1$.
+\begin{example} In the situation of Example \ref{ex:picture_example_2}, $N_C(e) = 1$.
 \end{example}
 
 Combinatorially the most important part of the $A_\infty$-products in the minimal model for $W$ is the rational number $Z_C$ in the next definition. We use the following shorthand: if $e$ is an internal edge of $T$ assigned by the configuration $C$ the data $m = m(v), J = J(v)$ and $\{ \gamma_j \}_{j \in J}$, then we write
@@ -394,7 +404,7 @@ for the sequence of total degrees where $J = \{j_1,\ldots,j_m\}$.
 \begin{gather*}
 \Samp(T,C) = \prod_{e} \frac{ \samp_{\traff_C(e)}\big( \underline{\gamma}(e) \big)}{ \traff_C(e) } \in \mathbb{Q}
 \end{gather*}
-where is the product is over all internal edges $e$ of $T$ with $\traff_C(e) \neq 0$. For an edge $e$ with $m(e) = 0$ and thus $\underline{\gamma}(e) = \emptyset$ we take $\samp_{\traff_C(e)}\big( \underline{\gamma}(e) \big) = 1$.
+where is the product is over all internal edges $e$ of $T$ with $\traff_C(e) \neq 0$. For an edge $e$ with $m(e) = 0$ and thus $\underline{\gamma}(e) = \emptyset$ we take $\samp_{\traff_C(e)}\big( \underline{\gamma}(e) \big) = 1$. If there are no internal edges then we take $Z(T,C) = 1$.
 \end{definition}
 % Note this differs from how we write it in (ainfmf9), because there we only attach numbers to internal edges, and the N_C(v) factors at inputs are swallowed into the operators. To relate the two, note that for v = e an internal edge of T, \traff_C(v) = w(e) and \traff_C(v)^{-1} Z_{\traff_C(v)}( |\gamma(v)| ) is precisely F(e) as defined on p.19 of ainfmf9, divided by the product of all the |\gamma_j|'s for j \in J(v). But that product appears in the operator O(T,C) of ainfmf9.
 
@@ -429,22 +439,37 @@ Here $C_i$ is the number of times the path from the $i$th input to the root ente
 See Section \ref{??}.
 \end{proof}
 
-\begin{example} Let $W = x^d$ with $d > 2$. Then the $A_\infty$-products on the minimal model
-\[
-\mathscr{B} = \Big( \bigwedge \big( k \psi^* \big), \{ \rho_q \}_{q \ge 2} \; \Big)
-\]
-are given by
+\begin{example} The potential $W = x^d$ for $d > 2$ has the following Feynman rules:
+\begin{center}
+\includegraphics[scale=0.45]{dia9}
+\end{center}
+Let us compute the $A_\infty$-products $\rho_q$ on $\mathscr{B}$:
 \begin{itemize}
-\item $\rho_2$ is the forward suspension of the usual product in the exterior algebra, that is,
+\item For $q = 2$ there is only one tree $T \in \cat{T}_2$, which has no internal edge, and therefore no configuration $C$ containing an A-interaction (that is, $m(v) > 0$ at an input vertex) which contributes to $\rho_2$. So it is clear that
+\be\label{eq:a_type_product}
+\rho_2( \Lambda_2, \Lambda_1 ) = (-1)^{\widetilde{\Lambda_1} \widetilde{\Lambda_2} + \widetilde{\Lambda_1} + 1} \Lambda_1 \cdot \Lambda_2
+\ee
+where $(-) \cdot (-)$ denotes the usual product in the exterior algebra. This is just the forward suspension of the product in the exterior algebra.
+
+\item For $q > 2$ let $C$ be a configuration with $\cat{O}(T,C) \neq 0$. Then $C$ must have at least one A-type interaction, since otherwise the $\partial_x$ in the B-type interactions are applied to $1 \in R$. Moreover, these A-type interactions can only be inserted at input vertices, since at an internal edge \eqref{eq:int_intedge} would contribute $\theta^2 = 0$. In terms of the Feynman diagram, there will be parallel $\theta$-lines and thus a vanishing amplitude.
+
+For the same reason, the $\theta$ coming out of the B-type interaction at an internal edge $e$ must be consumed in a C-type interaction at the vertex $v$ immediately after $e$ on the path to the root: if not, it will annihilate with the $\theta$ emitted at the next internal edge, or, if $v$ is adjacent to the root, it will annihilate with $p$. This means that $e$ must be the second branch at $v$, from which we deduce that $T$ is
+\begin{center}
+\includegraphics[scale=0.3]{dia10}
+\end{center}
+
+It is then clear that there is \emph{precisely} one A-type interaction in $C$, and it takes place at the vertex marked $i_q$ in the diagram. But since $T$ contains $q - 2$ internal edges, if $\cat{O}(T,C) \neq 0$ then we must have $q = d$. That is, $\rho_q = 0$ unless $q \in \{2,d\}$.
+
+\item Finally, let us describe $\rho_d: \mathscr{B}^{\otimes d} \lto \mathscr{B}$ on the basis of tensors $(\psi^*)^{s_0} \otimes \cdots \otimes (\psi^*)^{s_d}$ where $s_j \in \{0,1\}$ for $1 \le j \le d$. We require a copy of $\psi^*$ at each input $i_1,\ldots,i_{q-1}$ in order to meet the $\theta$ emitted at $i_q$ by the A-type interaction and the $\theta$ emitted each internal edge, and we need a $\psi^*$ at $i_q$ to feed the A-type interaction there. Hence $\rho_d$ is zero on all the basis elements except for
 \[
-\rho_2( x_1 \otimes x_2 ) = (-1)^{\widetilde{x_1} \widetilde{x_2} + \widetilde{x_1} + 1} x_2 x_1\,.
+\rho_d( \psi^* \otimes \psi^* \otimes \cdots \otimes \psi^* ) = (-1)^{Q(T, \underline{\Lambda})}\,.
 \]
-\item For $q \notin \{2,d\}$ we have $\rho_q = 0$, and
-\item The tensor product $\mathscr{B}^{\otimes d}$ has dimension $2^d$ with basis $(\psi^*)^{i_0} \otimes \cdots \otimes (\psi^*)^{i_d}$ for $i_j \in \{0,1\}$. The operator $\rho_d$ is zero on all the basis elements except for
-\[
-\rho_d( \psi^* \otimes \psi^* \otimes \cdots \otimes \psi^* ) = (-1)^{d-1}\,.
-\]
+To compute the sign, observe that $e_i(T) = d - 2$ and $\Lambda_i = \psi^*$ is odd so $\widetilde{\Lambda_i}$ is even, whence $Q(T, \underline{\Lambda}) = (d-2) + d + 1 = 1$.
 \end{itemize}
+In summary: the underlying $\nZ_2$-graded $k$-module of $\mathscr{B}$ is the exterior algebra $\bigwedge( k \psi^* )$ and the $A_\infty$-products $\rho_q$ are zero unless $q \in \{ 2, d \}$. The product $\rho_2$ is the forward suspended version of the usual product on the exterior algebra, while
+\[
+\rho_d( \psi^* \otimes \psi^* \otimes \cdots \otimes \psi^* ) = -1\,.
+\]
 \end{example}
 
 \section{Perturbation and Koszul complexes}
