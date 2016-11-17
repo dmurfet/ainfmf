@@ -165,7 +165,7 @@ The $A_\infty$-products on $\mathscr{B}$ are defined in terms of Feynman diagram
 
 Throughout $\otimes = \otimes_k$. The integer $n$ is the number of variables in the ambient ring $R = k[x_1,\ldots,x_n]$. We assume in this section that $W \in \mf{m}^3$.
 
-\begin{definition}\label{defn:handop} Consider the $\nZ_2$-graded algebra defined by the tensor product
+\begin{definition}\label{defn:handop} Consider the $\nZ_2$-graded $k$-algebra defined by the tensor product
 \be
 \mathscr{H} = R \otimes_k \bigwedge\big( \oplus_{i=1}^n k \theta_i \,\big) \otimes_k \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big) \Big)
 \ee
@@ -189,7 +189,7 @@ by identifying $\psi_i^* \in \mathscr{B}$ with the operation of contraction $\ps
 \be\label{eq:comm_is_ann}
 \Big[ \psi_j, \iota\big(\psi_{i_1}^* \wedge \cdots \wedge \psi_{i_r}^*\big) \Big] = \sum_{l=1}^r (-1)^{l-1} \delta_{j, i_l} \iota\big(\psi_{i_1}^* \wedge \cdots \wedge \widehat{ \psi_{i_l}^* } \wedge \cdots \wedge \psi_{i_r}^*\big)\,.
 \ee
-We write $p: \mathscr{H} \lto \mathscr{B}$ for the projection, which is the tensor product of the $k$-algebra map $R \lto k$ sending every variable to zero in the first position, $\bigwedge$ applied to $\oplus_{i=1}^n k \theta_i \lto 0$ in the second position, and an arbitrary projection of the endomorphism algebra onto $\mathscr{B}$ in the third position (todo: clarify).
+We write $p: \mathscr{H} \lto \mathscr{H}$ for the $k$-algebra endomorphism of $\mathscr{H}$ sending $x_i, \theta_i$ to zero for $1 \le i \le n$ and which is the identity on $\End_k( \wedge( \oplus_i k\psi_i ) )$.
 \end{definition}
 
 We view $\mathscr{H}$ as the tensor product of the bosonic Fock space $R$ with creation and annihilation operators $x_i, \partial_i$, fermionic Fock space $\wedge( \oplus_{i=1}^n k \theta_i )$ with creation and annihilation operators $\theta_i, \theta_i^*$ and the third factor, of which the calculations of the $A_\infty$-structure only involve the submodule $\mathscr{B} = \wedge( \oplus_{i=1}^n k \psi_i^* )$ which is another fermionic Fock space. The inputs to the Feynman diagrams are tensor products of states in $\mathscr{B}$, that is, wedge products of $\psi_i^*$'s, on which the $[\psi_i, -]$ act as annihilation operators.
@@ -267,7 +267,7 @@ Consider the input state $\Psi = \psi^* \otimes \psi^* \otimes \psi^*$ in $\math
 \begin{center}
 \includegraphics[scale=0.3]{dia6}
 \end{center}
-The \emph{value} of this diagram in $\mathscr{B}$ is the value of the linear map
+The \emph{value} of this diagram is the value of the linear map
 \be\label{eq:operator_tree_example}
 (-1)^3 p \circ m_2 \big([\psi, -] \otimes \theta^*\big) \circ \big( \iota \otimes \theta \partial_x \circ m_2 ([\psi, -] \otimes \theta^*)\big( \iota \otimes \theta x [\psi, -] \iota \big)\big)
 \ee
@@ -302,8 +302,8 @@ Let $\operatorname{Con}(T)$ denote the set of all configurations.
 
 \begin{definition} Given a tree $T \in \cat{T}_q$ and configuration $C \in \operatorname{Con}(T)$ we define a decoration $D_{T,C}$ of $A(T)$ by the assignment of the modules
 \begin{itemize}
-\item $\mathscr{B}$ to the input at each non-root leaf and the output at the root, and
-\item $\mathscr{H}$ to each edge.
+\item $\mathscr{B}$ to the input at each non-root leaf, and
+\item $\mathscr{H}$ to each edge and the output at the root.
 \end{itemize}
 To each vertex $v$ of $A(T)$ we associate an operator $\phi_v$ as follows, writing $m, J, \{ (a_j, \gamma_j) \}_{j \in J}, t$ for the data associated to $v$ by the configuration $C$:
 \begin{itemize}
@@ -321,9 +321,11 @@ Note that the operator under the product is even, so the order is irrelevant. If
 \phi_v = (-1)^m m_2 \circ \prod_{j \in J} \Big\{ \big[ \psi_j, - \big] \otimes \theta_j^* \Big\}
 \ee
 which is a map $\mathscr{H}^{\otimes 2} \lto \mathscr{H}$. Here $m_2$ denotes the product on $\mathscr{H}$.
-\item if $v = r$ is the root, $\phi_v = p: \mathscr{H} \lto \mathscr{B}$ is the projection defined in \eqref{??}.
+\item if $v = r$ is the root, $\phi_v = p: \mathscr{H} \lto \mathscr{H}$ is the projection of Definition \ref{defn:handop}.
 \end{itemize}
 \end{definition}
+
+The denotation $\langle D_{T,C} \rangle$ of this decoration is \emph{a priori} a linear map $\mathscr{B}^{\otimes q} \lto \mathscr{H}$, but since the only operators in the decoration acting on the third tensor factor of $\mathscr{H}$ in \eqref{eq:defnH} are the commutators $[\psi_i,-]$ under which $\mathscr{B}$ is closed, $\langle D_{T,C} \rangle$ actually has its image contained in the submodule $\mathscr{B} \subseteq \mathscr{H}$. 
 
 \begin{definition}\label{defn:otc} Given $T \in \cat{T}_q$ and $C \in \operatorname{Con}(T)$ we define the $k$-linear operator
 \[
@@ -343,11 +345,11 @@ At $i_3$ we have the pair $a = 1$ and $x^\gamma = x^2$. The operator $\cat{O}(T,
 
 \begin{remark} Let us now briefly explain the connection between configurations, the linear map $\cat{O}(T,C)$ and Feynman diagrams, such as the one in Example \ref{ex:picture_example}. Ultimately we will not actually use these diagrams to perform calculations, so we refrain from formulating them too precisely; however, they are very useful as a tool for understanding.
 
-We view $\Psi_1 \otimes \cdots \otimes \Psi_q \in \mathscr{B}^{\otimes q}$ as the result of applying creation operators (meaning wedge products $\psi_i^* \wedge -$) to the vacuum (meaning the identity of the exterior algebra) in the various copies of $\mathscr{B}$. The value $\cat{O}(T,C)$ on $\Psi$ may then be computed by commuting all creation operators acting on $\mathscr{H}$ (that is, the operators $x_i, \theta_i, \psi_i^*$) leftward in the expression, which means \emph{down} the tree. These operators commute with all creation operators and with those annihilation operators which are either of a different type (e.g. $[x_i, \theta_j^*] = 0$) or of same type but with different indices (e.g. $[x_1, \partial_2] = 0$). However, there will be a nonzero commutator every time a creation operator meets an annihilation operator of the same type and index (respectively $\partial_i, \theta_i^*, [\psi_i, -]$). We view such a commutator, say
+We view $\Psi_1 \otimes \cdots \otimes \Psi_q \in \mathscr{B}^{\otimes q}$ as the result of applying creation operators (meaning wedge products $\psi_i^* \wedge -$) to the vacuum (meaning the identity of the exterior algebra) in the various copies of $\mathscr{B}$. The value of $\cat{O}(T,C)$ on $\Psi$ may be computed by commuting all creation operators acting on $\mathscr{H}$ (that is, the operators $x_i, \theta_i, \psi_i^*$) leftward in the expression, which means \emph{down} the tree. These operators commute with all other creation operators and with those annihilation operators that are either of a different type (e.g. $[x_i, \theta_j^*] = 0$) or of same type but with different indices (e.g. $[x_1, \partial_2] = 0$). However, there will be a nonzero commutator every time a creation operator meets an annihilation operator of the same type and index (respectively $\partial_i, \theta_i^*, [\psi_i, -]$). We view such a commutator, say
 \[
 \theta_i \theta_i^* + \theta_i^* \theta_i = [ \theta_i, \theta_i^* ] = 1\,,
 \]
-which arises as the result of commuting the $\theta_i$ leftward to meet the $\theta_i^*$, as generating two diagrams, corresponding to the two choices of summands in $\theta_i^* \theta_i = 1 - \theta_i \theta_i^*$. Choosing the first summand means there is an interaction (drawn as a line marked $\theta_i$ from the original position of the $\theta_i$ to the position of the $\theta_i^*$ in the tree) while choosing the second summand means there is no interaction (the $\theta_i$ sails on, to meet its partner further down the tree). If a particular series of such choices leads to an $x_i$ or $\theta_i$ meeting the bottom of the tree (that is, $p$) then this diagram does not contribute to $\cat{O}(T,C)(\Psi)$ since $p$ projects out such elements of $\mathscr{H}$. 
+which arises as the result of commuting the $\theta_i$ leftward to meet the $\theta_i^*$, as generating two diagrams, corresponding to the two choices of summands in $\theta_i^* \theta_i = 1 - \theta_i \theta_i^*$. Choosing the first summand means there is an interaction (drawn as a line marked $\theta_i$ from the original position of the $\theta_i$ to the position of the $\theta_i^*$ in the tree) while choosing the second summand means there is no interaction (the $\theta_i$ sails on, to meet its partner further down the tree). If a particular series of choices leads to an $x_i$ or $\theta_i$ meeting the bottom of the tree then this diagram does not contribute to $\cat{O}(T,C)(\Psi)$ since $p$ projects out such elements of $\mathscr{H}$. 
 
 We can depict a series of choices by linking the creation and annihilation operators,
 \begin{center}
@@ -451,18 +453,17 @@ Let us compute the $A_\infty$-products $\rho_q$ on $\mathscr{B}$:
 \ee
 where $(-) \cdot (-)$ denotes the usual product in the exterior algebra. This is just the forward suspension of the product in the exterior algebra.
 
-\item For $q > 2$ let $C$ be a configuration with $\cat{O}(T,C) \neq 0$. Then $C$ must have at least one A-type interaction, since otherwise the $\partial_x$ in the B-type interactions are applied to $1 \in R$. Moreover, these A-type interactions can only be inserted at input vertices, since at an internal edge \eqref{eq:int_intedge} would contribute $\theta^2 = 0$. In terms of the Feynman diagram, there will be parallel $\theta$-lines and thus a vanishing amplitude.
+\item For $q > 2$ let $C$ be a configuration with $\cat{O}(T,C) \neq 0$. Then $C$ must have at least one A-type interaction, since otherwise the $\partial_x$ in the B-type interactions are applied to $1 \in R$. Moreover, these A-type interactions can only be inserted at input vertices, since at an internal edge \eqref{eq:int_intedge} would contribute $\theta^2 = 0$.
 
-For the same reason, the $\theta$ coming out of the B-type interaction at an internal edge $e$ must be consumed in a C-type interaction at the vertex $v$ immediately after $e$ on the path to the root: if not, it will annihilate with the $\theta$ emitted at the next internal edge, or, if $v$ is adjacent to the root, it will annihilate with $p$. This means that $e$ must be the second branch at $v$, from which we deduce that $T$ is
+For the same reason, the $\theta$ coming out of the B-type interaction at an internal edge $e$ must be consumed in a C-type interaction at the vertex $v$ immediately after $e$ on the path to the root: if not, it will annihilate with the $\theta$ emitted at the next internal edge, or, if $v$ is adjacent to the root, it will annihilate with $p$. This means that every edge $e$ must be the right-hand branch at $v$, from which we deduce that $T$ is the tree in which all internal edges lie on the path from the rightmost input to the root:
 \begin{center}
 \includegraphics[scale=0.3]{dia10}
 \end{center}
+This implies that there is \emph{precisely} one A-type interaction in $C$, and it takes place at the vertex marked $i_q$ in the diagram. But since $T$ contains $q - 2$ internal edges, if $\cat{O}(T,C) \neq 0$ then we must have $q = d$. That is, $\rho_q = 0$ unless $q \in \{2,d\}$.
 
-It is then clear that there is \emph{precisely} one A-type interaction in $C$, and it takes place at the vertex marked $i_q$ in the diagram. But since $T$ contains $q - 2$ internal edges, if $\cat{O}(T,C) \neq 0$ then we must have $q = d$. That is, $\rho_q = 0$ unless $q \in \{2,d\}$.
-
-\item Finally, let us describe $\rho_d: \mathscr{B}^{\otimes d} \lto \mathscr{B}$ on the basis of tensors $(\psi^*)^{s_0} \otimes \cdots \otimes (\psi^*)^{s_d}$ where $s_j \in \{0,1\}$ for $1 \le j \le d$. We require a copy of $\psi^*$ at each input $i_1,\ldots,i_{q-1}$ in order to meet the $\theta$ emitted at $i_q$ by the A-type interaction and the $\theta$ emitted each internal edge, and we need a $\psi^*$ at $i_q$ to feed the A-type interaction there. Hence $\rho_d$ is zero on all the basis elements except for
+\item Finally, let us describe $\rho_d: \mathscr{B}^{\otimes d} \lto \mathscr{B}$ on the basis of tensors $(\psi^*)^{s_0} \otimes \cdots \otimes (\psi^*)^{s_d}$ where $s_j \in \{0,1\}$ for $1 \le j \le d$. We require a copy of $\psi^*$ at each input $i_1,\ldots,i_{q-2}$ in order to meet the $\theta$ emitted by B-type interactions, a copy of $\psi^*$ at $i_{q-1}$ to meet the $\theta$ from the A-type interaction and a $\psi^*$ at $i_q$ to initiate that A-type interaction. Hence $\rho_d$ is zero on all the basis elements except for
 \[
-\rho_d( \psi^* \otimes \psi^* \otimes \cdots \otimes \psi^* ) = (-1)^{Q(T, \underline{\Lambda})}\,.
+\rho_d( \psi^* \otimes \psi^* \otimes \cdots \otimes \psi^* ) = (-1)^{Q(T, \underline{\Lambda})} \cdot 1\,.
 \]
 To compute the sign, observe that $e_i(T) = d - 2$ and $\Lambda_i = \psi^*$ is odd so $\widetilde{\Lambda_i}$ is even, whence $Q(T, \underline{\Lambda}) = (d-2) + d + 1 = 1$.
 \end{itemize}
@@ -629,38 +630,34 @@ and
 
 \newpage
 
-In the definition of the Feynman rules we considered operators on the $\nZ_2$-graded $k$-module $\mathscr{H}$ of Definition \ref{defn:handop}. But we observed in Remark \ref{??} that due to the nature of the operators involved, given an initial state $\Psi \in \mathscr{B}$ the value of $\cat{O}(T,C)$ on $\Psi$ for any tree $T$ and configuration $C$ belongs to $\mathscr{B}$.
 
-\label{defn:handop} Consider the $\nZ_2$-graded algebra defined by the tensor product
-\be
-\mathscr{H} = R \otimes_k \bigwedge\big( \oplus_{i=1}^n k \theta_i \,\big) \otimes_k \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big) \Big)
-\ee
-
-We have for $m > 0$
+We have for $m > 0$, as an operator on $\mathscr{H}$
 \begin{align*}
 \big( H \partial )^m &= \prod_{i=1}^m \sum_{j_i = 1}^n H \Big( x_{j_i} [\psi_{j_i}^*,-] + W^{j_i} [\psi_{j_i},-] \Big)\,.
 \end{align*}
-Let us write
+Prior to Definition \ref{defn:otc} we observed that in calculating $\langle D_{T,C} \rangle$ it suffices to consider operators on the smaller $\nZ_2$-graded $k$-module
 \be
-f^u_j = \begin{cases} x_j & u = 0\\ W^j & u = 1 \end{cases}
-\qquad
-\psi^u_j = \begin{cases} \psi_j^* & u = 0\\ \psi_j & u = 1 \end{cases}\,.
+\mathscr{H}' = R \otimes_k \bigwedge\big( \oplus_{i=1}^n k \theta_i \,\big) \otimes_k \mathscr{B}\,.
 \ee
-and for $f \in R$ write $f = \sum_{l \ge 0} f_l$ where $f_l$ is homogeneous of degree $d$. Then
+On this submodule of $\mathscr{H}$ the operators $[\psi_i^*,-]$ act as zero, and so $(H \partial)^m$ takes a simpler form. If $\underline{j}$ ranges over elements in of $\{1,\ldots,n\}^m$ and $\underline{\gamma}$ over elements of $(\mathbb{N}^n)^m$ then
 \begin{align*}
-\big( H \partial )^m &= \sum_{\bold{j}, \bold{u}} \prod_{i=1}^m H \Big( f^{u_i}_{j_i} [ \psi^{u_i}_{j_i}, - ] \Big)\\
-&= \sum_{\bold{j}, \bold{u}, \bold{l}} \prod_{i=1}^m H \Big( f^{u_i}_{j_i, l_i} [ \psi^{u_i}_{j_i}, - ] \Big)\\
-&= \sum_{\bold{j}, \bold{u}, \bold{l}} \prod_{i=1}^m [d_K, \nabla]^{-1} \nabla \Big( f^{u_i}_{j_i, l_i} [ \psi^{u_i}_{j_i}, - ] \Big)\,.
+\big( H \partial )^m \arrowvert_{\mathscr{H}'} &= \sum_{\underline{j}} \prod_{i=1}^m H \Big( W^{j_i} [ \psi_{j_i}, - ] \Big)\\
+&= \sum_{\underline{j}, \underline{\gamma}} \prod_{i=1}^m H \Big( W^{j_i}(\gamma_i) x^{\gamma_i} [ \psi_{j_i}, - ] \Big)\\
+&= \sum_{\underline{j}, \underline{\gamma}} \prod_{i=1}^m [d_K, \nabla]^{-1} \nabla \Big( W^{j_i}(\gamma_i) x^{\gamma_i} [ \psi_{j_i}, - ] \Big)\,.
 \end{align*}
-where $\bold{j}$ ranges over elements in of $\{1,\ldots,n\}^m$, $\bold{u}$ over elements of $\{0,1\}^m$ and $\bold{l}$ ranges over elements of $\mathbb{Z}_{\ge 1}^m$. Note that $W^i$ contains no constant term, since by hypothesis $W \in \mf{m}^2$. Our convention is that products of operators expand from left to right as $i$ increases, so that the rightmost factor in the product is $i = m$.
-
-Recall that $\nabla = \sum_i \partial_i \theta_i$ and $[d_K, \nabla]$ acts on a tensor product $f \otimes \omega$, where $f$ is a homogeneous polynomial and $\omega$ a homogeneous form in the $\theta$s, by
+Note that $W^i$ contains no constant term, since by hypothesis $W \in \mf{m}^2$. Our convention is that products of operators expand from left to right as $i$ increases, so that the rightmost factor in the product is $i = m$. Recall that $\nabla = \sum_i \partial_i \theta_i$ and $[d_K, \nabla]$ acts on a tensor product $f \otimes \omega$, where $f$ and $\omega$ are homogeneous, by
 \[
 [d_K, \nabla]( f \otimes \omega ) = ( |f| + |\omega| ) f \otimes \omega\,.
 \]
-Now suppose we feed into $(H \partial)^m$ a tensor $f \otimes \omega$ as above (to be clear, there may be $\psi^*$'s in this input, but they will not play a role in the following calculation). Each time we multiply with $f^{u_i}_{j_i, l_i}$ we increase the polynomial degree by $l_i$, and each time we apply $\nabla$ we decrease the polynomial degree by one, while increasing the theta-degree by one, so overall there is no change in the sum of the polynomial and $\theta$-degree. 
-
-If we write $a = |f| + |\omega|$ this means the first $[d_K, \nabla]^{-1}$ to act (by which we mean the rightmost one) will act by multiplication with $\frac{1}{a + l_m}$, the second will act as $\frac{1}{a+l_{m-1}+l_m}$ and so on. This leads to an un-symmetrised version of $\zeta$ from Definition \ref{defn:zeta}:
+Now we consider the scalar factors produced by the $[d_K, \nabla]^{-1}$ when we apply $(H \partial)^m$ to a tensor $f \otimes \omega \otimes \Psi$. Observe how the sum of the polynomial and $\theta$-degree changes with each application of $H \partial$. Multiplying with $x^{\gamma_i}$ increases the polynomial degree by $|\gamma_i|$, while applying $\nabla$ decreases the polynomial degree and increases the $\theta$-degree by one, so overall the $i$th copy of $H \partial$ (reading from left to right) increases the sum of the two degrees from
+\[
+|f| + |\omega| + \sum_{t > i} |\gamma_t| \qquad \text{ to } \qquad |f| + |\omega| + \sum_{t \ge i} |\gamma_t|\,.
+\]
+If we write $a = |f| + |\omega|$ then the scalar factor contributed by the copies of $[d_K, \nabla]^{-1}$ in $(H \partial)^m$ applied to $f \otimes \omega \otimes \Psi$ is therefore
+\[
+\frac{1}{(a + |\gamma_m|)(a + |\gamma_m| + |\gamma_{m-1}|) \cdots (a + |\gamma_m| + \cdots + |\gamma_1|)}\,.
+\]
+This leads us to the un-symmetrised version of $\zeta$ from Definition \ref{defn:zeta}:
 
 \begin{definition} Given a sequence $a_1,\ldots,a_m \ge 1$ of integers and $a \ge 0$ we define
 \be
@@ -668,9 +665,14 @@ If we write $a = |f| + |\omega|$ this means the first $[d_K, \nabla]^{-1}$ to ac
 \ee
 \end{definition}
 
+Let $\mathscr{H}'_a \subseteq \mathscr{H}$ denote the submodule of elements of degree $a$, when we take the $\nZ$-grading induced by the usual $\nZ$-grading on $R$ and the exterior algebra in the $\theta$'s (so, the grading does not count $\psi$'s). Then we have computed that
+\be
+(H \partial)^m|_{\mathscr{H}'_a} = \sum_{\underline{j}, \underline{\gamma}} \zeta_{a}( |\gamma_1|, \ldots, |\gamma_m| ) \Big\{ \prod_{i=1}^m \nabla \circ \big( W^{j_i}(\gamma_i)x^{\gamma_i} [ \psi_{j_i}, - ] \big) \Big\} \,.
+\ee
+
 With $\beta \in \{H, \sigma\}$ and using $\nabla^2 = 0, \nabla \sigma =0$ and $[ \nabla, f[ \psi, - ] ] = - \sum_q \partial_q(f) [\psi,-] \theta_q$ this becomes
 \begin{align*}
-\big( H \partial )^m ( f \otimes \omega ) &= \sum_{\bold{j}, \bold{u}, \bold{l}} \zeta_{|f| + |\omega|}( l_1, \ldots, l_m ) \Big\{ \prod_{i=1}^m \nabla \circ \big( f^{u_i}_{j_i,l_i} [ \psi^{u_i}_{j_i}, - ] \big) \Big\} \beta( f \otimes \omega )\\
+\big( H \partial )^m ( f \otimes \omega ) &= \\
 &= \sum_{\bold{j}, \bold{u}, \bold{l}} \zeta_{|f| + |\omega|}( l_1, \ldots, l_m ) \Big\{ \prod_{i=1}^m \Big[ \nabla, f^{u_i}_{j_i,l_i} [ \psi^{u_i}_{j_i}, - ] \Big]\Big\} \beta( f \otimes \omega )\\
 &= \sum_{\bold{j}, \bold{u}, \bold{l}, \bold{z}} (-1)^m \zeta_{|f| + |\omega|}( l_1, \ldots, l_m ) \Big\{\prod_{i=1}^m \partial_{z_i}(f^{u_i}_{j_i,l_i}) [ \psi^{u_i}_{j_i}, - ] \theta_{z_i} \Big\} \beta( f \otimes \omega )
 \end{align*}
