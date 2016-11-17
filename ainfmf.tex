@@ -165,14 +165,14 @@ The $A_\infty$-products on $\mathscr{B}$ are defined in terms of Feynman diagram
 
 Throughout $\otimes = \otimes_k$. The integer $n$ is the number of variables in the ambient ring $R = k[x_1,\ldots,x_n]$. We assume in this section that $W \in \mf{m}^3$.
 
-\begin{definition} Consider the $\nZ_2$-graded algebra defined by the tensor product
-\[
+\begin{definition}\label{defn:handop} Consider the $\nZ_2$-graded algebra defined by the tensor product
+\be
 \mathscr{H} = R \otimes_k \bigwedge\big( \oplus_{i=1}^n k \theta_i \,\big) \otimes_k \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big) \Big)
-\]
+\ee
 with degrees $|\theta_i| = |\psi_i| = 1$. On this space we have the homogeneous operators
-\[
+\be
 x_i\,, \partial_i = \partial_{x_i}\,, \theta_i\,, \theta_i^*\,, \big[\psi_i\,,-\big]\,.
-\]
+\ee
 Here $\psi_i$ denotes the operator $\psi_i \wedge (-)$ on $\bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big)$ and $[ \psi_i, - ]$ the graded commutator with this operator, defined on a homogeneous operator $\beta$ by
 \[
 \big[ \psi_i, \beta \big] = \psi_i \circ \beta - (-1)^{|\beta|} \beta \circ \psi_i\,.
@@ -628,6 +628,13 @@ and
 \end{proposition}
 
 \newpage
+
+In the definition of the Feynman rules we considered operators on the $\nZ_2$-graded $k$-module $\mathscr{H}$ of Definition \ref{defn:handop}. But we observed in Remark \ref{??} that due to the nature of the operators involved, given an initial state $\Psi \in \mathscr{B}$ the value of $\cat{O}(T,C)$ on $\Psi$ for any tree $T$ and configuration $C$ belongs to $\mathscr{B}$.
+
+\label{defn:handop} Consider the $\nZ_2$-graded algebra defined by the tensor product
+\be
+\mathscr{H} = R \otimes_k \bigwedge\big( \oplus_{i=1}^n k \theta_i \,\big) \otimes_k \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big) \Big)
+\ee
 
 We have for $m > 0$
 \begin{align*}
