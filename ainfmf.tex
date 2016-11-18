@@ -1,3 +1,8 @@
+% TODO
+%
+% - Refer to Efimov
+% - Discuss cohomology classes in Dyckerhoff
+
 \documentclass[english,letter paper,12pt,leqno]{article}
 \usepackage{array}
 \usepackage{stmaryrd}
@@ -360,6 +365,11 @@ or by drawing these linkages, marked with the type and index of the ``particle''
 Note that in this example one of the other series of ``choices'' would involve commuting the rightmost $\theta$ past the first $\theta^*$ to meet with the leftmost $\theta^*$. In the corresponding Feynman diagram the $\theta$ fermion would travel from the A-type interaction vertex all the way to the bottom of the tree. However, this diagram gives a zero contribution to $\cat{O}(T,C)(\Psi)$, for at least two reasons: firstly, in the calculation we see parallel identical fermion lines which vanish (since $\theta^2 = 0$), and secondly the leftmost $\theta$ may in this case be commuted left to give zero on $p$, after the ``guard'' $\theta^*$ is cancelled by the other $\theta$.
 \end{remark}
 
+\begin{remark}\label{remark:virtual_part} In the genuine Feynman diagrams of quantum field theory (as compared to the toy version considered here) particle lines labelled by momenta $p$ satisfying Einstein's equation $p^2 = m^2$ with $m$ the mass for the given field are said to be ``on the mass shell'' or simply ``on-shell'' and are called \emph{real} particles. Those lines with momenta that do not satisfy this equation are said to be ``off-shell'' and are called \emph{virtual} particles.
+
+In topological string theory this terminology is used in the following way: the space of states is now a complex $(\mathscr{H}, Q)$ and elements of $\mathscr{H}$ are described as ``off-shell'' while elements of the cohomology of $Q$ are described as ``on-shell'' \cite{sullivan, lazaroiu2}. Following this point of view we think of our Feynman diagrams as having incoming and outgoing states the real particles $\psi_i^*$'s, while the internal edges involve the virtual particles $x_i$ and $\theta_i$. For us this is purely convenient terminology, and is not intended to have any deeper significance. For the experts we note that the $\psi^*_i$'s are not actually cycles; see Remark \ref{remark:virt_part_2}.
+\end{remark}
+
 The following simple identity is well-known in the literature in connection with soft photons and infrared divergences in quantum field theory, see for instance \cite[Ch 13]{weinberg} and \cite[p.204]{ps}. The amplitudes for our Feynman diagrams will involve a generalisation.
 
 \begin{lemma} Given a sequence $a_1,\ldots,a_m \ge 1$ of integers,
@@ -379,7 +389,7 @@ Clearly this is a symmetric function of the $a_i$ and, by the previous lemma,
 \ee
 \end{definition}
 
-As we have described it above, the Feynman diagrams have as incoming and outgoing particles the fermions $\psi_i^*$'s, while the internal edges involve two kinds of virtual particles, the bosonic $x_i$'s and fermionic $\theta_i$'s. A configuration $C$ gives rise to numerous Feynman diagrams, but it will turn out that all diagrams with nonzero amplitude have the \emph{same} pattern of connections among the virtual particles. This means that to a configuration $C$ and edge $e$ of $T$ we may associate the \emph{number} $\traff_C(e)$ of virtual particles entering $e$.
+A configuration $C$ gives rise to numerous Feynman diagrams, but it will turn out that all diagrams with nonzero amplitude have the \emph{same} pattern of connections among the virtual particles. This means that to a configuration $C$ and edge $e$ of $T$ we may associate the \emph{number} $\traff_C(e)$ of virtual particles entering $e$.
 
 For the next two definitions we take $T \in \cat{T}_q$ and $C \in \operatorname{Con}(T)$.
 
@@ -475,7 +485,7 @@ In summary: the underlying $\nZ_2$-graded $k$-module of $\mathscr{B}$ is the ext
 
 \section{Perturbation and Koszul complexes}
 
-Let $k$ be a characteristic zero field, $R =  k[x_1,\ldots,x_n]$ and let $W \in \mf{m}^2$ be a potential with chosen decomposition $W = \sum_{i=1}^n x_i W^i$. To apply the $A_\infty$-minimal model construction to
+Let $k$ be a characteristic zero field, $R =  k[x_1,\ldots,x_n]$ and let $W \in \mf{m}^3$ be a potential with chosen decomposition $W = \sum_{i=1}^n x_i W^i$. We aim to construct the minimal model of the DG-algebra
 \begin{align*}
 \mathscr{A} &= \Big( \End_{R}(k^{\operatorname{stab}}), \; \partial = [d_{k^{\stab}},-] \; \Big)\\
 &= \Big( R \otimes_k \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k\psi_i \,\big) \Big),  \partial = \sum_i x_i [\psi_i^*,-] + \sum_i W^i [\psi_i,-] \;\Big)
@@ -497,7 +507,7 @@ Note that $S \otimes_k \mathscr{A}$ has the same underlying $\nZ_2$-graded $k$-m
 \begin{theorem} There is a diagram of $k$-linear homotopy equivalences
 \be\label{eq:first_he}
 \xymatrix@C+3pc{
-\big( S \otimes_k \mathscr{A}, \partial \,\big) \ar@<1ex>[r]^-{\exp(-\delta)} & \big( K \otimes_R \mathscr{A}, d_K + \partial \,\big) \ar@<1ex>[l]^-{ \exp(-\delta) } \ar@<1ex>[r]^-{\pi} & \big( \mathscr{B}, 0 \,\big)\,.\ar@<1ex>[l]^-{ \sigma_\infty }
+\big( S \otimes_k \mathscr{A}, \partial \,\big) \ar@<1ex>[r]^-{\exp(-\delta)} & \big( K \otimes_R \mathscr{A}, d_K + \partial \,\big) \ar@<1ex>[l]^-{ \exp(-\delta) } \ar@<1ex>[r]^-{\pi} & \big( \mathscr{E}, 0 \,\big)\,.\ar@<1ex>[l]^-{ \sigma_\infty }
 }
 \ee
 \end{theorem}
@@ -594,6 +604,15 @@ By direct calculation:
 \end{align*}
 \end{proof}
 
+\begin{lemma} The induced Clifford algebra structure on $\mathscr{E}$ is given by
+\[
+\gamma_i^\dagger = \At_i = -[\psi_i^*, -]\,, \qquad \gamma_i = -\psi_i\,.
+\]
+\end{lemma}
+
+\begin{lemma} The idempotent $e = \gamma_1^\dagger \cdots \gamma_n^\dagger \gamma_n \cdots \gamma_1$ is the projection onto $\mathscr{B} \subseteq \mathscr{E}$.
+\end{lemma}
+
 We define the even operator $\delta_i = \psi_i \theta_i^*$ on the underlying module $\eqref{eq:same_underlying}$ of $S \otimes \md{A}_W$, so that $\delta = \sum_i \delta_i$. Since $[ \delta_i, \delta_j ] = 0$ for all $i,j$ we have
 \be
 \exp(\pm \delta) = \exp(\pm \delta_1) \cdots \exp(\pm \delta_n)\,.
@@ -629,7 +648,6 @@ and
 \end{proposition}
 
 \newpage
-
 
 We have for $m > 0$, as an operator on $\mathscr{H}$
 \begin{align*}
@@ -669,14 +687,25 @@ Let $\mathscr{H}'_a \subseteq \mathscr{H}$ denote the submodule of elements of d
 \be
 (H \partial)^m|_{\mathscr{H}'_a} = \sum_{\underline{j}, \underline{\gamma}} \zeta_{a}( |\gamma_1|, \ldots, |\gamma_m| ) \Big\{ \prod_{i=1}^m \nabla \circ \big( W^{j_i}(\gamma_i)x^{\gamma_i} [ \psi_{j_i}, - ] \big) \Big\} \,.
 \ee
-
-With $\beta \in \{H, \sigma\}$ and using $\nabla^2 = 0, \nabla \sigma =0$ and $[ \nabla, f[ \psi, - ] ] = - \sum_q \partial_q(f) [\psi,-] \theta_q$ this becomes
+Now let $\Ker(\nabla)$ denote the kernel of $\nabla$ acting on $\mathscr{H}$. Since $\nabla^2 = 0$ and
+\be
+[ \nabla, f[ \psi, - ] ] = - \sum_q \partial_q(f) [\psi,-] \theta_q
+\ee
+we have
 \begin{align*}
-\big( H \partial )^m ( f \otimes \omega ) &= \\
-&= \sum_{\bold{j}, \bold{u}, \bold{l}} \zeta_{|f| + |\omega|}( l_1, \ldots, l_m ) \Big\{ \prod_{i=1}^m \Big[ \nabla, f^{u_i}_{j_i,l_i} [ \psi^{u_i}_{j_i}, - ] \Big]\Big\} \beta( f \otimes \omega )\\
-&= \sum_{\bold{j}, \bold{u}, \bold{l}, \bold{z}} (-1)^m \zeta_{|f| + |\omega|}( l_1, \ldots, l_m ) \Big\{\prod_{i=1}^m \partial_{z_i}(f^{u_i}_{j_i,l_i}) [ \psi^{u_i}_{j_i}, - ] \theta_{z_i} \Big\} \beta( f \otimes \omega )
+\big( H \partial )^m|_{\mathscr{H}'_a \cap \Ker(\nabla)} &= \sum_{\underline{j}, \underline{\gamma}} \zeta_{a}( |\gamma_1|, \ldots, |\gamma_m| ) \Big\{ \prod_{i=1}^m \Big[ \nabla, W^{j_i}(\gamma_i)x^{\gamma_i} [ \psi_{j_i}, - ] \Big]\Big\}\\
+&= \sum_{\underline{j}, \underline{\gamma},\underline{z}} (-1)^m \zeta_{a}( |\gamma_1|, \ldots, |\gamma_m| ) \Big\{\prod_{i=1}^m W^{j_i}(\gamma_i) \partial_{z_i}(x^{\gamma_i}) [ \psi_{j_i}, - ] \theta_{z_i} \Big\}
 \end{align*}
-where $\bold{z}$ ranges over $\{1, \ldots, n\}^m$.
+where $\underline{z}$ ranges over $\{1, \ldots, n\}^m$.
+
+\begin{remark}\label{remark:virt_part_2} Continuing from Remark \ref{remark:virtual_part} we note that in constrast to the the way we usually think about the minimal model construction in the setting of topological string theory \cite{??} the elements $\Psi$ of $\mathscr{B}$ are not immediately identified with cohomology classes of $\mathscr{B}$. 
+
+Of course $\sigma_\infty(\Psi)$ is a cycle for $\partial$, but this is already given by a complicated sum which contributes multiple Feynman diagrams in the calculus of Definition \ref{??}. That is to say, we have found it useful for purposes of calculation to have the incoming states in our Feynman diagrams to be elements of $\mathscr{H}$ that are \emph{not} cycles. Note that as we vary the potential $W$ the elements of $\mathscr{H}$ that are cycles will change - this makes it awkward to take as a starting point the cohomology of $\mathscr{H}$. In our approach the subspace $\mathscr{B}$ remains fixed, and even in the case of quadratic terms it is only the projection to $\mathscr{B}$ that changes.
+\end{remark}
+
+\begin{remark} See ainfmf12 for idempotents.
+\end{remark}
+
 \newpage
 
 \bibliographystyle{amsalpha}
@@ -691,6 +720,9 @@ T.~Dyckerhoff, \textsl{Compact generators in categories of matrix factorizations
   
 \bibitem{lazaroiu}
 C.~I.~Lazaroiu, \textsl{Generating the superpotential on a D-brane category: I}, [arXiv:hep-th/0610120].
+
+\bibitem{lazaroiu2}
+C.~I.~Lazaroiu, \textsl{String field theory and brane superpotentials}.
   
 \bibitem{murfet}
 D.~Murfet, \textsl{Computing with cut systems}, \href{http://arxiv.org/abs/1402.4541}{[arXiv:1402.4541]}.
@@ -706,6 +738,9 @@ Weinberg, \textsl{The Quantum Theory of Fields Volume 1}.
 
 \bibitem{ps}
 Peskin \& Shroeder, \textsl{An introduction to QFT}.
+
+\bibitem{sullivan}
+D.~Sullivan, \textsl{Open and closed string field theory interpreted in classical algebraic topology} London Math. Soc. Lecture Note Series 308 (2004).
 
 \end{thebibliography}
 
