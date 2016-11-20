@@ -1,5 +1,14 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [2][-]{subsection.1.1}{The special case of the generator}{section.1}% 2
 \BOOKMARK [1][-]{section.2}{Background}{}% 3
-\BOOKMARK [1][-]{section.3}{Feynman diagrams}{}% 4
-\BOOKMARK [1][-]{section.4}{Perturbation and Koszul complexes}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Algebra}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Trees and denotations}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.3}{A-algebras and minimal models}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.4}{Matrix factorisations}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{Feynman diagrams}{}% 8
+\BOOKMARK [1][-]{section.4}{The proof}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{The homotopy retract}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Deriving A-type and B-type interactions}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{Deriving C-type interactions}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.4}{Atiyah classes and idempotents}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.5}{Putting it all together}{section.4}% 14

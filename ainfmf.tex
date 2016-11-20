@@ -89,6 +89,7 @@
 \DeclareMathOperator{\Cat}{Cat}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Con}{Con}
 
 \begin{document}
 
@@ -116,6 +117,8 @@
 \begin{abstract}
 We study $A_\infty$-minimal models of the differential graded algebras obtained from endomorphisms of generators of triangulated categories of matrix factorisations.
 \end{abstract}
+
+\tableofcontents
 
 \section{Introduction}
 
@@ -158,23 +161,59 @@ of odd $k$-linear maps satisfying the forward suspended $A_\infty$-constraints \
 
 \section{Background}
 
-\begin{itemize}
-\item Commutation relations for $[ \psi_i, - ]$.
-\item The \emph{tilde grading} on a $\nZ_2$-graded $k$-module is defined by $\widetilde{x} = |x| - 1$. 
-\end{itemize}
+\subsection{Algebra}
+
+Let $k$ be a commutative ring. Given $\nZ_2$-graded $k$-modulea $M, N$ and $\phi \in \Hom_k(M,N)$ we say $\phi$ is \emph{even} (resp. \emph{odd}) if $\phi(M_i) \subseteq N_i$ (resp. $\phi(M_i) \subseteq N_{i+1}$) for all $i \in \nZ_2$. This makes $\Hom_k(M,N)$ into a $\nZ_2$-graded $k$-module, having even maps in degree zero and odd maps in degree one. Given two homogeneous operators $\psi, \phi$ the \emph{graded commutator} is
+\be
+[\phi, \psi] = \phi \psi - (-1)^{|\phi||\psi|} \psi \phi\,.
+\ee
+In this note all operators are given a $\nZ_2$-grading and the commutator always denotes the graded commutator. We often make implicit use of the graded Jacobi identity
+\be\label{eq:graded_jacobi}
+(-1)^{|\alpha||\gamma|}\big[ \alpha, [\beta, \gamma]\big] + (-1)^{|\alpha||\beta|}\big[ \beta, [\gamma, \alpha] \big] + (-1)^{|\gamma||\beta|} \big[ \gamma, [\alpha, \beta] \big] = 0\,.
+\ee
+Among the most important examples are the exterior algebras
+\[
+M = \bigwedge\big( \oplus_{i=1}^r k \varepsilon_i \,\big)
+\]
+where $F = \oplus_{i=1}^r k \varepsilon_i$ denotes a free $k$-module of rank $r$ with basis $\varepsilon_1,\ldots,\varepsilon_r$. We give $F$ a $\nZ_2$-grading by assigning $|\varepsilon_i| = 1$, that is, $F \cong k^{\oplus r}[1]$. The inherited $\nZ_2$-grading on $\bigwedge F$ is the reduction mod $2$ of the usual $\nZ$-grading on the exterior algebra, e.g. $|\varepsilon_1 \varepsilon_2| = 0$.
+
+We define odd operators $\varepsilon_j \wedge (-), \varepsilon_j^* \,\lrcorner\, (-)$ on $\bigwedge F$ by wedge product and contraction, respectively, where contraction is defined by the formula
+\begin{align*}
+\varepsilon_j^* \,\lrcorner\, \Big( \varepsilon_{i_1} \cdots \varepsilon_{i_s} \Big) = \sum_{l=1}^s (-1)^{l-1} \delta_{j, i_l} \varepsilon_{i_1} \wedge \cdots \wedge \widehat{ \varepsilon_{i_l} } \wedge \cdots \wedge \varepsilon_{i_s}\,.
+\end{align*}
+Often we will simply write $\varepsilon_j$ for $\varepsilon_j \wedge (-)$ and $\varepsilon_j^*$ for $\varepsilon_j^* \,\lrcorner\, (-)$. Clearly with this notation, as operators on $\bigwedge F$, we have the commutator
+\be\label{eq:wedge_contract_comm}
+\big[ \varepsilon_i, \varepsilon_j^* \big] = \delta_{ij} \cdot 1\,.
+\ee
+
+\subsection{Trees and denotations}
+
+\subsection{$A_\infty$-algebras and minimal models}
+
+The \emph{tilde grading} on a $\nZ_2$-graded $k$-module is defined by $\widetilde{x} = |x| - 1$. 
+
+\subsection{Matrix factorisations}
 
 \section{Feynman diagrams}
 % from p.17 (ainfmf9)
 
 The $A_\infty$-products on $\mathscr{B}$ are defined in terms of Feynman diagrams (see Definition \ref{defn:bainf}). In this section we explain how to enumerate all the relevant diagrams and how to compute their value; in the next section we prove that the maps they give rise to do indeed compute the minimal model of $\mathscr{A}$. Our reference for general background on Feynman diagrams is \cite[Ch. 6]{weinberg} or \cite[\S 4.4]{ps}, although we need only superficial aspects of the theory there.
 
-Throughout $\otimes = \otimes_k$. The integer $n$ is the number of variables in the ambient ring $R = k[x_1,\ldots,x_n]$. We assume in this section that $W \in \mf{m}^3$.
+Throughout $\otimes = \otimes_k$. The integer $n$ is the number of variables in the ambient ring $R = k[x_1,\ldots,x_n]$. We assume in this section that $W \in \mf{m}^3$. This is not a real restriction, as we will prove in Section \ref{??} that if $W \in \mf{m}^2$ is written in the form
+\be
+W = W'(x_1,\ldots,x_r) + \sum_{i={r+1}}^n \lambda_i x_i^2\,, \quad \text{ with } \quad W' \in \mf{m}^3
+\ee
+and if $\mathscr{B}'$ denotes the minimal model of $W'$ as constructed below, then as $A_\infty$-algebras
+\be
+\mathscr{B} \cong \mathscr{B}' \otimes_k C( Q )
+\ee
+where $C(Q)$ is the Clifford algebra of the quadratic form $Q = \sum_{i=r+1}^n \lambda_i x_i^2$, with no higher products (i.e. viewed simply as a $\nZ_2$-graded algebra). We may therefore restrict without loss of generality to $W \in \mf{m}^3$ in what follows.
 
 \begin{definition}\label{defn:handop} Consider the $\nZ_2$-graded $k$-algebra defined by the tensor product
-\be\label{eq:defn_H_space}
+\be
 \mathscr{H} = R \otimes_k \bigwedge\big( \oplus_{i=1}^n k \theta_i \,\big) \otimes_k \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big) \Big)
 \ee
-with degrees $|\theta_i| = |\psi_i| = 1$. On this space we have the homogeneous operators
+with degrees $|x_i| = 0$ and $|\theta_i| = |\psi_i| = 1$. On this space we have homogeneous operators
 \be
 x_i\,, \partial_i = \partial_{x_i}\,, \theta_i\,, \theta_i^*\,, \big[\psi_i\,,-\big]\,.
 \ee
@@ -186,7 +225,7 @@ We define the $\nZ_2$-graded $k$-module
 \be\label{defn:B}
 \mathscr{B} = \bigwedge\big( \oplus_{i=1}^n k \psi_i^* \,\big)
 \ee
-which we view as a submodule
+with $|\psi_i^*| = 1$ which we view as a graded submodule
 \[
 \mathscr{B} \subset \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k \psi_i \, \big) \Big)
 \]
@@ -302,7 +341,9 @@ for each $j \in J(v)$, with $\gamma_j(v)_{a_j(v)} \ge 1$.
 Let $\operatorname{Con}(T)$ denote the set of all configurations.
 \end{definition} 
 
-\begin{remark} The integer $m(v)$ counts how many interactions of type A or C take place at $v$ (there is no point counting B interactions as precisely one occurs at each internal edge). The set $J(v)$ consists of all $j$-indices appearing in interactions at $v$. The interactions of A-type (at inputs and internal edges) are defined by indices $a_j(v), \gamma_j(v)$ while at each internal edge $e$ of $T$, $t(e)$ is the index of the B-type interaction.
+\begin{remark}\label{remark:config_count} The integer $m(v)$ counts how many interactions of type A or C take place at $v$ (there is no point counting B interactions as precisely one occurs at each internal edge). The set $J(v)$ consists of all $j$-indices appearing in interactions at $v$. The interactions of A-type (at inputs and internal edges) are defined by indices $a_j(v), \gamma_j(v)$ while at each internal edge $e$ of $T$, $t(e)$ is the index of the B-type interaction.
+
+Note that a configuration may contain no A-type or C-type interactions, that is, we may have $m(v) = 0$ for every non-root vertex $v$ of $A(T)$. Then the configuration is just the assignment of an integer $1 \le t(e) \le n$ to every internal edge $e$ of $T$. For the unique tree $T \in \cat{T}_2$ with two inputs, there are no internal edges and precisely one configuration with $m(v) = 0$ for all $v$.
 \end{remark}
 
 \begin{definition} Given a tree $T \in \cat{T}_q$ and configuration $C \in \operatorname{Con}(T)$ we define a decoration $D_{T,C}$ of $A(T)$ by the assignment of the modules
@@ -330,7 +371,7 @@ which is a map $\mathscr{H}^{\otimes 2} \lto \mathscr{H}$. Here $m_2$ denotes th
 \end{itemize}
 \end{definition}
 
-The denotation $\langle D_{T,C} \rangle$ of this decoration is \emph{a priori} a linear map $\mathscr{B}^{\otimes q} \lto \mathscr{H}$, but since the only operators in the decoration acting on the third tensor factor of $\mathscr{H}$ in \eqref{eq:defnH} are the commutators $[\psi_i,-]$ under which $\mathscr{B}$ is closed, $\langle D_{T,C} \rangle$ actually has its image contained in the submodule $\mathscr{B} \subseteq \mathscr{H}$. 
+The denotation $\langle D_{T,C} \rangle$ of this decoration is \emph{a priori} a linear map $\mathscr{B}^{\otimes q} \lto \mathscr{H}$, but since the only operators in the decoration acting on the third tensor factor of $\mathscr{H}$ in \eqref{eq:defn_H_space} are the commutators $[\psi_i,-]$ under which $\mathscr{B}$ is closed, $\langle D_{T,C} \rangle$ actually has its image contained in the submodule $\mathscr{B} \subseteq \mathscr{H}$. 
 
 \begin{definition}\label{defn:otc} Given $T \in \cat{T}_q$ and $C \in \operatorname{Con}(T)$ we define the $k$-linear operator
 \[
@@ -367,7 +408,7 @@ Note that in this example one of the other series of ``choices'' would involve c
 
 \begin{remark}\label{remark:virtual_part} In the genuine Feynman diagrams of quantum field theory (as compared to the toy version considered here) particle lines labelled by momenta $p$ satisfying Einstein's equation $p^2 = m^2$ with $m$ the mass for the given field are ``on the mass shell'' or simply ``on-shell'' and they represent real particles. Those lines with momenta that do not satisfy this equation are ``off-shell'' and are called \emph{virtual} particles.
 
-In topological string theory this terminology is used in the following way: the space of states is now a complex $(\mathscr{H}, Q)$ and elements of $\Ker(Q)$ are described as ``on-shell'' while all other elements are ``off-shell'' \cite{sullivan, lazaroiu2}. Following this point of view we think of our Feynman diagrams as having incoming and outgoing states the real particles $\psi_i^*$'s, while the internal edges involve the virtual particles $x_i$ and $\theta_i$. For us this is purely convenient terminology, and is not intended to have any deeper significance. For the experts we note that the $\psi^*_i$'s are not actually cycles; see Remark \ref{remark:virt_part_2}.
+In topological string theory this terminology is used in the following way: the space of states is now a complex $(\mathscr{H}, Q)$ and elements of $\Ker(Q)$ are described as ``on-shell'' while all other elements are ``off-shell'' \cite{sullivan, lazaroiu2}. Following this point of view we think of our Feynman diagrams as having incoming and outgoing states the real particles $\psi_i^*$'s, while the internal edges involve the virtual particles $x_i$ and $\theta_i$. For us this is purely convenient terminology, and is not intended to have any deeper significance. For the experts we note that the $\psi^*_i$'s are not actually cycles; see Remark \ref{remark:virt_part_2} (todo: weird).
 \end{remark}
 
 The following simple identity is well-known in the literature in connection with soft photons and infrared divergences in quantum field theory, see for instance \cite[Ch 13]{weinberg} and \cite[p.204]{ps}. The amplitudes for our Feynman diagrams will involve a generalisation.
@@ -384,7 +425,7 @@ The following simple identity is well-known in the literature in connection with
 &= \sum_{\sigma \in \mathfrak{S}_m} \frac{a_1 \cdots a_m}{(a + a_{\sigma(1)}) (a + a_{\sigma(1)} + a_{\sigma(2)}) \cdots (a + a_{\sigma(1)} + \cdots + a_{\sigma(m)})}\,.
 \end{align*}
 Clearly this is a symmetric function of the $a_i$ and, by the previous lemma,
-\be
+\be\label{eq:sampzero}
 \samp_0(a_1,\ldots,a_m) = 1\,.
 \ee
 \end{definition}
@@ -457,7 +498,7 @@ See Section \ref{??}.
 \end{center}
 Let us compute the $A_\infty$-products $\rho_q$ on $\mathscr{B}$:
 \begin{itemize}
-\item For $q = 2$ there is only one tree $T \in \cat{T}_2$, which has no internal edge, and therefore no configuration $C$ containing an A-interaction (that is, $m(v) > 0$ at an input vertex) which contributes to $\rho_2$. So it is clear that
+\item For $q = 2$ there is only one tree $T \in \cat{T}_2$. We claim that since $T$ has no internal edge the only configuration $C$ with $\cat{O}(T,C) \neq 0$ is the unique $C$ with no A-type or C-type interactions (see Remark \ref{remark:config_count}). To see this, note that an A-type interaction would create a polynomial $x^{d-2}$ which cannot be eliminated by derivatives at internal edges, and therefore annihilates with $p$. Since there can be no A-type interaction to create a $\theta$, the $\theta^*$ in a C-type interaction will end up acting on the identity in the exterior algebra, and giving zero as well. Since this $C$ is the only contributor to the sum, and $\langle D_{T,C} \rangle = p \circ m_2 \circ (\sigma \otimes \sigma)$, we have
 \be\label{eq:a_type_product}
 \rho_2( \Lambda_2, \Lambda_1 ) = (-1)^{\widetilde{\Lambda_1} \widetilde{\Lambda_2} + \widetilde{\Lambda_1} + 1} \Lambda_1 \cdot \Lambda_2
 \ee
@@ -483,88 +524,281 @@ In summary: the underlying $\nZ_2$-graded $k$-module of $\mathscr{B}$ is the ext
 \]
 \end{example}
 
-\section{Perturbation and Koszul complexes}
+\section{The proof}
 
-Let $k$ be a characteristic zero field, $R =  k[x_1,\ldots,x_n]$ and let $W \in \mf{m}^3$ be a potential with chosen decomposition $W = \sum_{i=1}^n x_i W^i$. We aim to construct the minimal model of the DG-algebra
+\subsection{The homotopy retract}
+
+Let $k$ be a characteristic zero field, $R =  k[x_1,\ldots,x_n]$ and let $W \in \mf{m}^3$ be a potential with chosen decomposition $W = \sum_{i=1}^n x_i W^i$. We aim to construct the minimal model of the following DG-algebra
 \begin{align*}
 \mathscr{A} &= \Big( \End_{R}(k^{\operatorname{stab}}), \; \partial = [d_{k^{\stab}},-] \; \Big)\\
-&= \Big( R \otimes_k \End_k\Big( \bigwedge\big( \oplus_{i=1}^n k\psi_i \,\big) \Big),  \partial = \sum_i x_i [\psi_i^*,-] + \sum_i W^i [\psi_i,-] \;\Big)
+&= \Big( R \otimes_k \End_k\Big( \bigwedge\big( \oplus_i k\psi_i \,\big) \Big),  \partial = \sum_i x_i [\psi_i^*,-] + \sum_i W^i [\psi_i,-] \;\Big)\,.
 \end{align*}
-we first enlarge this DG-algebra to $S \otimes_k \mathscr{A}$, where $S$ is the exterior algebra
-\be
-S = \bigwedge\big( \oplus_{i=1}^n k\theta_i \,\big)
-\ee
-viewed as a $\nZ_2$-graded DG-algebra with grading $|\theta_i| = 1$ and zero differential. The Koszul complex of $x_1,\ldots,x_n$ is given by
+Recall the module $\mathscr{H}$ of Definition \ref{defn:handop} which we recall here for the reader's convenience, writing $F = \oplus_i k \psi_i$ for compactness
+\[
+\mathscr{H} = R \otimes_k \bigwedge\big( \oplus_i k \theta_i \,\big) \otimes_k \End_k\Big( \bigwedge F \Big)\,.
+\]
+If we extend $\mathscr{A}$ by the exterior algebra on the $\theta$'s we get the DG-algebra
+\[
+\mathscr{A} \otimes_k \bigwedge\big( \oplus_i k\theta_i \,\big) = \big( \mathscr{H}, \partial \big)\,.
+\]
+The Koszul complex of the sequence $x_1,\ldots,x_n$ is
 \be\label{eq:defnkoszulK}
-K = \Big( R \otimes \bigwedge\big( \oplus_{i=1}^n k \theta_i \,\big), \; d_K = \sum_i x_i \theta_i^*\; \Big)
+K = \Big( R \otimes_k \bigwedge\big( \oplus_i k \theta_i \,\big), \; d_K = \sum_i x_i \theta_i^*\; \Big)
 \ee
-Note that $S \otimes_k \mathscr{A}$ has the same underlying $\nZ_2$-graded $k$-module as $K \otimes_R \mathscr{A}$, namely the module $\mathscr{H}$ of Definition \ref{eq:defn_H_space}.
+which may be extended by $\End_k\big( \bigwedge F \big)$ to give
+\[
+K \otimes_k \End_k\big( \bigwedge F \big) = \big( \mathscr{H}, d_K \big)\,.
+\]
 
-\begin{theorem} There is a diagram of $k$-linear homotopy equivalences
+\begin{definition} The morphism of complexes $\pi: K \lto R/\mf{m}$ is defined by composing the projection of $K$ onto the submodule $R \cdot 1$ of $\theta$-degree zero forms, with the quotient $R \lto R/\mf{m}$. We also write $\pi$ for the following tensor product
+\[
+\xymatrix@C+2pc{
+\big( \mathscr{H}, d_K + \partial \,\big) \ar[r]^-{\pi \otimes 1} & \Big( \End_k\big( \bigwedge F \big), 0 \,\Big)\,.
+}
+\]
+where we use that $R/\mf{m} \otimes_R \End_R(k^{\stab})$ has zero differential by the hypothesis that $W \in \mf{m}^2$. 
+\end{definition}
+
+\begin{definition} We write $\sigma$ for the inclusion $\End_k\big( \bigwedge F \big) \lto \mathscr{H}$ defined by
+\[
+\sigma( \Phi ) = 1 \otimes 1 \otimes \Phi\,.
+\]
+\end{definition}
+
+\begin{definition}\label{defn:lpsi} Let $L_{\psi_i}$ denote the odd operator on $\End_k\big( \bigwedge F \big)$ defined by
+\[
+L_{\psi_i}( \alpha ) = \psi_i \circ \alpha = (\psi_i \wedge (-)) \circ \alpha\,,
+\]
+so that $L_{\psi_i}(\alpha)(x) = \psi_i \wedge \alpha(x)$.
+\end{definition}
+
+Throughout $\sum_i$ stands for $\sum_{i=1}^n$.
+
+\begin{theorem} Using the following even homogeneous operators on $\mathscr{H}$,
+\be
+\delta = \sum_i L_{\psi_i} \theta_i^*\,, \qquad \sigma_\infty = \sum_{m \ge 0} (-1)^m (H \partial)^m \sigma\,,\label{eq:sigmainftyorig}
+\ee
+and the following odd homogeneous operators
+\begin{gather}
+\partial = \sum_i x_i [\psi_i^*,-] + \sum_i W^i [\psi_i,-]\,,\\
+\nabla = \sum_i \partial_i \theta_i\,, \qquad H = [d_K, \nabla]^{-1} \nabla\,,\label{defn:Horiginal}\\
+H_\infty = \sum_{m \ge 0} (-1)^m (H \partial)^m H\,.\label{eq:hinftyorig}
+\end{gather}
+there is a diagram of $k$-linear homotopy equivalences
 \be\label{eq:first_he}
 \xymatrix@C+3pc{
-\big( \mathscr{H}, \partial \,\big) \ar@<1ex>[r]^-{\exp(-\delta)} & \big( \mathscr{H}, d_K + \partial \,\big) \ar@<1ex>[l]^-{ \exp(-\delta) } \ar@<1ex>[r]^-{\pi} & \Big( \End_k\big( \bigwedge( \oplus_{i=1}^n k \psi_i ) \big), 0 \,\Big)\,.\ar@<1ex>[l]^-{ \sigma_\infty }
+\big( \mathscr{H}, \partial \,\big) \ar@<1ex>[r]^-{\exp(-\delta)} & \big( \mathscr{H}, d_K + \partial \,\big) \ar@<1ex>[l]^-{ \exp(\delta) } \ar@<1ex>[r]^-{\pi} & \Big( \End_k\big( \bigwedge F \big), 0 \,\Big)\,.\ar@<1ex>[l]^-{ \sigma_\infty }
 }
+\ee
+More precisely, $\exp(-\delta), \exp(\delta)$ are mutually inverse as $k$-linear maps, $\pi \circ \sigma_\infty = 1$ and
+\be
+1_{\mathscr{H}} - \big[ d_K + \partial, H_\infty \big] = \sigma_\infty \circ \pi\,.
 \ee
 \end{theorem}
 \begin{proof}
-See \cite{murfet}.
+For the duration of the proof let $\mathscr{E} = \End_k\big( \bigwedge F \big)$. It is easy to check that $\exp(\delta),\exp(-\delta)$ intertwines the differentials $\partial$ and $d_K + \partial$ and therefore gives an isomorphism between the first two complexes in \eqref{eq:first_he} \cite[Proposition 4.11]{murfet}. The operator $\psi_j = \psi_j \wedge -$ on $k^{\stab}$ satisfies
+\[
+[ \psi_j, d_{k^{\stab}} ] = \big[ \psi_j, \sum_i x_i \psi_i^* \big] = x_j \cdot 1\,.
+\]
+That is, $\psi_j$ is a homotopy for the action of $x_j$ on $k^{\stab}$. It is then easy to check that the odd operator $\alpha \mapsto \psi_j \circ \alpha$ on $\End_R(k^{\stab})$ is also a homotopy for $x_j$.
 \end{proof}
 
-The notation is as follows:
+It is the homotopy retract \eqref{eq:first_he} that we will ultimately feed into the minimal model theorem, taking as our DG-algebra $(\mathscr{H}, \partial)$ equipped with the projection $\pi \exp(-\delta)$ injection $\exp(\delta) \sigma_\infty$ and the homotopy $\exp(\delta) H_\infty \exp(-\delta)$. In broad outlines, these operators lead to the three types of Feynman diagram interactions as follows:
 \begin{itemize}
-\item The operator $\psi_j = \psi_j \wedge -$ on $k^{\stab}$ satisfies
-\[
-[ \psi_j, d_{k^{\stab}} ] = \big[ \psi_j, \sum_i x_i \psi_i^* \big] = x_j \cdot 1\,,
-\]
-where $[-,-]$ always denotes the graded commutator. That is, $\psi_j$ is a homotopy for the action of $x_j$ on $k^{\stab}$. It is then easy to check that the odd operator $\alpha \mapsto \psi_j \circ \alpha$ on $\End_R(k^{\stab})$ is also a homotopy for $x_j$, and where it will not cause confusion we will also write $\psi_j$ for this operator of post-composition.
-
-\item We define the following even operator on $\mathscr{H}$
-\be
-\delta = \sum_{i=1}^n \psi_i \theta_i^*\,,
-\ee
-where $\psi_i$ is the operator on $\End_R(k^{\stab})$ discussed above, given by $\alpha \mapsto (\psi_i \wedge -) \circ \alpha$, and $\theta_i^*$ acts by contraction on $S$. It is easy to check that $\exp(\delta),\exp(-\delta)$ intertwines the differentials $\partial$ and $d_K + \partial$ and therefore gives an isomorphism between the first two complexes in \eqref{eq:first_he} \cite[Proposition 4.11]{murfet}.
-\item The morphism of complexes $\pi: K \lto R/\mf{m}$ is defined by composing the projection of $K$ onto the submodule $R \cdot 1$ of $\theta$-degree zero forms, with the quotient $R \lto R/\mf{m}$. We also write $\pi$ for the result of tensoring this morphism with $\End_R(k^{\stab})$ to obtain
-\[
-\xymatrix@C+2pc{
-K \otimes_R \End_R(k^{\stab}) \ar[r]^-{\pi \otimes 1} & R/\mf{m} \otimes_R \End_R(k^{\stab}) = \underline{\End}(k^{\stab})\,.
-}
-\]
-This is a morphism of complexes, because the differential on $\End_R(k^{\stab})$ vanishes on the quotient $\underline{\End}(k^{\stab})$ by the hypothesis that $W \in \mf{m}^2$.
-\item The $k$-linear homotopy inverse $\sigma_\infty$ to $\pi$ in \eqref{eq:first_he} is defined in terms of the following ingredients. The first is the $k$-linear connection (viewing $\theta_i$ as a $1$-form)
-\be
-\nabla: K \lto K\,, \qquad \nabla = \sum_i \partial_{i} \theta_i
-\ee
-and the degree $-1$ (with respect to the $\theta$-degree) $k$-linear operator
-\be
-H = [d_K, \nabla]^{-1} \nabla\,.
-\ee
-We write $\partial$ for the differential on $\End_R(k^{\stab})$, and $\sigma: k \lto K$ for the map which sends $\lambda \in k$ to $\lambda \cdot 1 \in K$, and define $k$-linear maps
-\begin{align}
-\sigma_\infty = \sum_{m \ge 0} (-1)^m (H \partial)^m \sigma\,,\\
-H_\infty = \sum_{m \ge 0} (-1)^m (H \partial)^m H\,.
-\end{align}
-Here $H_\infty$ is an odd operator on $K \otimes_R \End_R(k^{\stab})$. These maps satisfy:
-\begin{align}
-\pi \sigma_\infty &= 1\,,\\
- \sigma_\infty \pi &= 1 - [d_K + \partial, H_\infty]\,.
-\end{align}
+\item A-type interactions arise from $H_\infty$, more precisely the $H \partial$ factors.
+\item B-type interactions arise from the ``odd man out'' $H$ at the right end of $H_\infty$.
+\item C-type interactions arise from $\exp(\pm \delta)$.
 \end{itemize}
+We address each of these in turn before, in Section \ref{??}, finishing the proof.
 
-By inspection of \eqref{eq:first_he}, we therefore have the following:
+\subsection{Deriving A-type and B-type interactions}
 
-\begin{proposition}\label{prop:he_start} There is a diagram of morphisms of $\nZ_2$-graded $k$-complexes
-\be\label{eq:he_start}
-\xymatrix@C+5pc{
-S \otimes \md{A}_W \ar@<1ex>[r]^-{\Phi} & \md{E}\ar@<1ex>[l]^-{\Phi^{-1}}
+The A-type and B-type interactions arise from $\sigma_\infty$ and $H_\infty$ from \eqref{eq:sigmainftyorig},\eqref{eq:hinftyorig}. The main task is to understand $(H \partial)^m$. We have for $m > 0$, as an operator on $\mathscr{H}$
+\begin{align*}
+\big( H \partial )^m &= \prod_{i=1}^m \sum_{j_i = 1}^n H \circ \Big( x_{j_i} [\psi_{j_i}^*,-] + W^{j_i} [\psi_{j_i},-] \Big)\,.
+\end{align*}
+Prior to Definition \ref{defn:otc} we observed that in calculating $\langle D_{T,C} \rangle$ it suffices to consider operators on the $\nZ_2$-graded $k$-module of $\mathscr{H}$ given by
+\be
+\mathscr{H}' = R \otimes_k \bigwedge\big( \oplus_{i=1}^n k \theta_i \,\big) \otimes_k \mathscr{B}\,.
+\ee
+In the next lemma we calculate $(H \partial)^m$ on $\mathscr{H} \cap \Ker(\nabla)$, where $\nabla = \sum_i \partial_i \theta_i$. Before we do this we introduce some notation: in the calculation we use a $\nZ$-grading on $\mathscr{H}'$ defined as follows: $\mathscr{H}'_a$ is the $k$-submodule spanned by tensors of the form
+\begin{align*}
+f \otimes \omega \otimes \kappa \text{ where } f \in R\,, \omega \in \bigwedge( \oplus_i k \theta_i ), \kappa \in \mathscr{B} \text{ and } |f|_{\nZ} + |\omega|_{\nZ} = a\,.
+\end{align*}
+Here $|-|_{\nZ}$ denotes the $\nZ$-grading with $|x_i|_{\nZ} = 1$ and $|\theta_i|_{\nZ} = 1$. To be perfectly clear: we have $|\theta_1 \theta_2|_{\nZ} = 2$, as compared to $| \theta_1 \theta_2 | = 0$ in the $\nZ_2$-grading used elsewhere in the text.
+
+\begin{lemma}\label{lemma:commutator_numberop} If $f \in R$ and $\omega \in \bigwedge( \oplus_{i=1}^n k \theta_i )$ are homogeneous then
+\be
+[d_K, \nabla]( f \otimes \omega ) = ( |f|_{\nZ} + |\omega|_{\nZ} ) f \otimes \omega\,.
+\ee
+\end{lemma}
+
+\begin{proposition}\label{prop:hpartialmrestrict} Restricted to $\mathscr{H}'_a \cap \Ker(\nabla)$, $(H \partial)^m$ is equal to
+\be\label{eq:hpartialmrestrict}
+\sum_{\substack{1 \le j_1 < \cdots < j_m \le n \\ 1 \le z_1 < \cdots < z_m \le n \\ \gamma_1,\ldots,\gamma_m \in \mathbb{N}^n \setminus \{0\}}} \sum_{\nu \in \mathfrak{S}_m} \frac{\zeta_{a}( |\gamma_1|,\ldots,|\gamma_m| )}{|\gamma_1| \cdots |\gamma_m|} \prod_{i=1}^m W^{j_i}(\gamma_i) \partial_{z_{\nu(i)}}(x^{\gamma_i}) \theta_{z_{\nu(i)}} [ \psi_{j_i}, - ]\,.
+\ee
+\end{proposition}
+\begin{proof}
+On this submodule of $\mathscr{H}$ the operators $[\psi_i^*,-]$ act as zero, and so $(H \partial)^m$ takes a simpler form. If $\underline{j}$ ranges over sequences of length $m$ in $\{1,\ldots,n\}^m$ and $\underline{\gamma}$ over sequences of length $m$ in $\mathbb{N}^n$ then
+\begin{align*}
+\big( H \partial )^m \arrowvert_{\mathscr{H}'} &= \sum_{\underline{j}} \prod_{i=1}^m H \circ \Big( W^{j_i} [ \psi_{j_i}, - ] \Big)\\
+&= \sum_{\underline{j}} \prod_{i=1}^m H \circ \Big( \sum_{\gamma_i} W^{j_i}(\gamma_i) x^{\gamma_i} [ \psi_{j_i}, - ] \Big)\\
+&= \sum_{\underline{j}, \underline{\gamma}} \prod_{i=1}^m H \circ \Big( W^{j_i}(\gamma_i) x^{\gamma_i} [ \psi_{j_i}, - ] \Big)\\
+&= \sum_{\underline{j}, \underline{\gamma}} \prod_{i=1}^m [d_K, \nabla]^{-1} \nabla \circ \Big( W^{j_i}(\gamma_i) x^{\gamma_i} [ \psi_{j_i}, - ] \Big)\,.
+\end{align*}
+Note that $W^i$ contains no constant term, since by hypothesis $W \in \mf{m}^2$, so in fact we may assume that all $\gamma_i$ are nonzero. Our convention is that products of operators expand from left to right as $i$ increases. Lemma \ref{lemma:commutator_numberop}
+
+Now we consider the scalar factors produced by the $[d_K, \nabla]^{-1}$ when we apply $(H \partial)^m$ to a tensor $f \otimes \omega \otimes \Psi$. Observe how the sum of the polynomial and $\theta$-degree changes with each application of $H \partial$. Multiplying with $x^{\gamma_i}$ increases the polynomial degree by $|\gamma_i|$, while applying $\nabla$ decreases the polynomial degree and increases the $\theta$-degree by one, so overall the $i$th copy of $H \partial$ (reading from left to right) increases the sum of the two degrees from
+\[
+|f|_{\nZ} + |\omega|_{\nZ} + \sum_{t > i} |\gamma_t| \qquad \text{ to } \qquad |f|_{\nZ} + |\omega|_{\nZ} + \sum_{t \ge i} |\gamma_t|\,.
+\]
+If we write $a = |f| + |\omega|$ then the scalar factor contributed by the copies of $[d_K, \nabla]^{-1}$ in $(H \partial)^m$ applied to $f \otimes \omega \otimes \Psi$ is therefore
+\[
+\frac{1}{(a + |\gamma_m|)(a + |\gamma_m| + |\gamma_{m-1}|) \cdots (a + |\gamma_m| + \cdots + |\gamma_1|)}\,.
+\]
+This leads us to the un-symmetrised version of $\zeta$ from Definition \ref{defn:zeta}: given a sequence $a_1,\ldots,a_m \ge 1$ of integers and $a \ge 0$ we define
+\be\label{defn:zeta_unsym}
+\zeta'_a(a_1,\ldots,a_m) = \frac{1}{(a + a_m)(a + a_{m-1} + a_m) \cdots (a + a_1 + \cdots + a_m)}\,.
+\ee
+Let $\mathscr{H}'_a \subseteq \mathscr{H}'$ denote the submodule of elements of degree $a$, when we take the $\nZ$-grading induced by the usual $\nZ$-grading on $R$ and the exterior algebra in the $\theta$'s (so, the grading does not count $\psi$'s). Then we have computed that
+\be
+(H \partial)^m|_{\mathscr{H}'_a} = \sum_{\underline{j}, \underline{\gamma}} \zeta'_{a}( |\gamma_1|, \ldots, |\gamma_m| ) \prod_{i=1}^m \nabla \circ \big( W^{j_i}(\gamma_i)x^{\gamma_i} [ \psi_{j_i}, - ] \big) \,.
+\ee
+For a $k$-linear operator $T$ and an element $x \in \Ker(\nabla)$ since $\nabla^2 = 0$ we have
+\[
+\nabla T \cdots \nabla T (x) = [\nabla, T] \cdots [\nabla, T](x)\,.
+\]
+Using $[ \nabla, f ] = \sum_q \partial_q(f) \theta_q$ we therefore have
+\begin{align*}
+\big( H \partial )^m|_{\mathscr{H}'_a \cap \Ker(\nabla)} &= \sum_{\underline{j}, \underline{\gamma}} \zeta'_{a}( |\gamma_1|, \ldots, |\gamma_m| ) \prod_{i=1}^m \Big[ \nabla, W^{j_i}(\gamma_i)x^{\gamma_i} [ \psi_{j_i}, - ] \Big]\\
+&= \sum_{\underline{j}, \underline{\gamma},\underline{z}} \zeta'_{a}( |\gamma_1|, \ldots, |\gamma_m| ) \prod_{i=1}^m W^{j_i}(\gamma_i) \partial_{z_i}(x^{\gamma_i}) \theta_{z_i} [ \psi_{j_i}, - ]
+\end{align*}
+where $\underline{j},\underline{z}$ both range over $\{1, \ldots, n\}^m$. Since $[ \psi_j, - ]^2 = 0$ the only nonzero contributions are from sequences $\underline{j} = (j_1,\ldots,j_m)$ without repeats and similarly for $\underline{z}$. Thus
+\begin{align*}
+&= \sum_{\substack{j_1 < \cdots < j_m \\ z_1 < \cdots < z_m}} \sum_{\rho,\nu \in \mathfrak{S}_m} \sum_{\underline{\gamma}} \zeta'_{a}( |\gamma_1|, \ldots, |\gamma_m| ) \prod_{i=1}^m W^{j_{\rho(i)}}(\gamma_i) \partial_{z_{\nu(i)}}(x^{\gamma_i}) \theta_{z_{\nu(i)}} [ \psi_{j_{\rho(i)}}, - ]\\
+&= \sum_{\substack{j_1 < \cdots < j_m \\ z_1 < \cdots < z_m}} \sum_{\rho,\nu \in \mathfrak{S}_m} \sum_{\underline{\gamma}} \zeta'_{a}( |\gamma_1|, \ldots, |\gamma_m| ) \prod_{i=1}^m W^{j_i}(\gamma_{\rho^{-1}(i)}) \partial_{z_{\nu\rho^{-1}(i)}}(x^{\gamma_{\rho^{-1}(i)}}) \theta_{z_{\nu\rho^{-1}(i)}} [ \psi_{j_i}, - ]\\
+&= \sum_{\substack{j_1 < \cdots < j_m \\ z_1 < \cdots < z_m}} \sum_{\rho,\nu \in \mathfrak{S}_m} \sum_{\underline{\gamma}} \zeta'_{a}( |\gamma_{\rho(1)}|, \ldots, |\gamma_{\rho(m)}| ) \prod_{i=1}^m W^{j_i}(\gamma_i) \partial_{z_{\nu(i)}}(x^{\gamma_i}) \theta_{z_{\nu(i)}} [ \psi_{j_i}, - ]\\
+&= \sum_{\substack{j_1 < \cdots < j_m \\ z_1 < \cdots < z_m}} \sum_{\nu \in \mathfrak{S}_m} \sum_{\underline{\gamma}} \frac{\zeta_{a}( |\gamma_1|,\ldots,|\gamma_m| )}{|\gamma_1| \cdots |\gamma_m|} \prod_{i=1}^m W^{j_i}(\gamma_i) \partial_{z_{\nu(i)}}(x^{\gamma_i}) \theta_{z_{\nu(i)}} [ \psi_{j_i}, - ]
+\end{align*}
+%That is, if we write
+%\[
+%Y = \{ ( z, \gamma ) \l 1 \le z \le n\,, \gamma \in \mathbb{N}^m\,, \gamma_z \ge 1 \}
+%\]
+%then
+as claimed.
+\end{proof}
+
+\begin{remark} Since $\nabla \sigma = 0$ and $\nabla^2 = 0$ the proposition applies to calculate $\sigma_\infty, H_\infty$. In the former case we simply append $\sigma$ and use \eqref{eq:sampzero} to see that $(H \partial)^m \sigma$ is given under the same summation over $\underline{j},\underline{z},\underline{\gamma}, \nu$ as in \eqref{eq:hpartialmrestrict} by
+\be
+\sum_{\underline{j},\underline{z},\underline{\gamma},\nu} \frac{1}{|\gamma_1| \cdots |\gamma_m|} \Big\{ \prod_{i=1}^m W^{j_i}(\gamma_i) \partial_{z_{\nu(i)}}(x^{\gamma_i}) \theta_{z_{\nu(i)}} [ \psi_{j_i}, - ] \Big\} \circ \sigma\,.
+\ee
+In the case of $H_\infty$ we observe that $H = [d_K, \nabla]^{-1} \nabla$ sends $\mathscr{H}'_a$ into $\mathscr{H}'_a \cap \Ker(\nabla)$, and we have that $(H \partial)^m H$ on $\mathscr{H}'_a$ is given by
+\be
+\sum_{\underline{j},\underline{z},\underline{\gamma},\nu} \sum_{t = 1}^n \frac{1}{a} \frac{\zeta_{a}( |\gamma_1|,\ldots,|\gamma_m| )}{|\gamma_1| \cdots |\gamma_m|} \Big\{ \prod_{i=1}^m W^{j_i}(\gamma_i) \partial_{z_{\nu(i)}}(x^{\gamma_i}) \theta_{z_{\nu(i)}} [ \psi_{j_i}, - ] \Big\} \circ \partial_t \theta_t\,.
+\ee
+\end{remark}
+
+\begin{remark}\label{remark:virt_part_2} Continuing from Remark \ref{remark:virtual_part} we note that in contrast to the way we usually think about the minimal model construction in the setting of topological string theory \cite{??} the elements $\Psi$ of $\mathscr{B}$ are not immediately identified with cohomology classes of $\mathscr{B}$. 
+
+Of course $\sigma_\infty(\Psi)$ is a cycle for $\partial$, but this is already given by a complicated sum which contributes multiple Feynman diagrams in the calculus of Definition \ref{??}. That is to say, we have found it useful for purposes of calculation to have the incoming states in our Feynman diagrams to be elements of $\mathscr{H}$ that are \emph{not} cycles. Note that as we vary the potential $W$ the elements of $\mathscr{H}$ that are cycles will change - this makes it awkward to take as a starting point the cohomology of $\mathscr{H}$. In our approach the subspace $\mathscr{B}$ remains fixed, and even in the case of quadratic terms it is only the projection to $\mathscr{B}$ that changes.
+\end{remark}
+
+\subsection{Deriving C-type interactions}
+% see ainfmf4
+
+Let us briefly recall some of the notation from earlier: we write $F = \oplus_i k \psi_i$ and use the operators $L_{\psi_i}$ of Definition \ref{defn:lpsi} and $\delta$ of \eqref{eq:sigmainftyorig}. We set $\delta_i = L_{\psi_i} \theta_i^*$ so that $\delta = \sum_i \delta_i$. To be explicit, given $\omega_i \in \bigwedge( \oplus_i k \theta_i )$ and $\kappa_i \in \End_k(\bigwedge F)$
+\[
+\delta_i( \omega \otimes \kappa ) = L_{\psi_i}\big( \theta_i^*( \omega ) \otimes \kappa ) = (-1)^{|\omega| + 1} \theta_i^*(\omega) \otimes \psi_i \circ \kappa\,.
+\]
+
+\begin{lemma}\label{lemma:stratos} For $1 \le i \le n$ there is a commutative diagram
+\be
+\xymatrix@C+3pc@R+1pc{
+\mathscr{H} \otimes_k \mathscr{H} \ar[d]_-{\delta_i \otimes 1 + 1 \otimes \delta_i + [\psi_i,-] \otimes \theta_i^*} \ar[r]^-{m_2} & \mathscr{H} \ar[d]^-{\delta_i}\\
+\mathscr{H} \otimes_k \mathscr{H} \ar[r]_-{m_2} & \mathscr{H}
 }
 \ee
-where $\Phi = \pi \exp(-\delta), \Phi^{-1} = \exp(\delta) \sigma_\infty$ and $\widehat{H} = \exp(\delta) H_\infty \exp(-\delta)$ satisfy
+\end{lemma}
+\begin{proof}
+By direction calculation: given $\omega_j \in \bigwedge( \oplus_i k \theta_i )$ and $\kappa_j \in \bigwedge( \oplus_i k \psi_i )$
+\begin{align*}
+&m_2\big( \delta_i \otimes 1 + 1 \otimes \delta_i \big)( \omega_1 \otimes \kappa_1 \otimes \omega_2 \otimes \kappa_2 )\\
+&= m_2\big( \delta_i( \omega_1 \otimes \kappa_1 ) \otimes \omega_2 \otimes \kappa_2 \big)\\
+&+ m_2\big( \omega_1 \otimes \kappa_1 \otimes \delta_i( \omega_2 \otimes \kappa_2 ) \big)\\
+&= (-1)^{|\omega_1| + 1}m_2\big( \theta_i^*(\omega_1) \otimes \psi_i \circ \kappa_1 \otimes \omega_2 \otimes \kappa_2 )\\
+&+ (-1)^{|\omega_2| + 1}m_2\big( \omega_1 \otimes \kappa_1 \otimes \theta_i^*(\omega_2) \otimes \psi_i \circ \kappa_2 \big)\\
+&= (-1)^{|\omega_1|+1+(|\kappa_1|+1)|\omega_2|} \theta_i^*(\omega_1) \omega_2 \otimes \psi_i \circ \kappa_1 \circ \kappa_2\\
+&+ (-1)^{|\omega_2|+1+(|\omega_2|+1)|\kappa_1|} \omega_1 \theta_i^*(\omega_2) \otimes \kappa_1 \circ \psi_i \circ \kappa_2
+\end{align*}
+Similarly one computes
+\begin{align*}
+&m_2 \big( [\psi_i,-] \otimes \theta_i^* \big)( \omega_1 \otimes \kappa_1 \otimes \omega_2 \otimes \kappa_2 \big)\\
+&= (-1)^{|\kappa_1|} m_2 \big( \omega_1 \otimes [\psi_i, \kappa_1] \otimes \theta_i^*(\omega_2) \otimes \kappa_2 \big)\\
+&= (-1)^{|\kappa_1|+(|\kappa_1|+1)(|\omega_2|+1)} \omega_1 \theta_i^*(\omega_2) \otimes [\psi_i, \kappa_1] \circ \kappa_2\,.
+\end{align*}
+Adding these together yields that $\delta_i \otimes 1 + 1 \otimes \delta_i + [\psi_i,-] \otimes \theta_i^*$ on $\omega_1 \otimes \kappa_1 \otimes \omega_2 \otimes \kappa_2$ is
+\begin{align*}
+&= (-1)^{|\omega_1|+1+(|\kappa_1|+1)|\omega_2|} \theta_i^*(\omega_1) \omega_2 \otimes \psi_i \circ \kappa_1 \circ \kappa_2\\
+&+ (-1)^{|\kappa_1|+(|\kappa_1|+1)(|\omega_2|+1)} \omega_1 \theta_i^*(\omega_2) \otimes \psi_i \circ \kappa_1 \circ \kappa_2\\
+&= (-1)^{|\omega_1|+|\omega_2|+|\kappa_1||\omega_2|+1} \theta_i^*( \omega_1 \omega_2 ) \otimes \psi_i \circ \kappa_1 \circ \kappa_2\\
+&= (-1)^{|\kappa_1||\omega_2|}\delta_i\big( \omega_1 \omega_2 \otimes \kappa_1 \circ \kappa_2 \big)\\
+&= \delta_i \circ m_2\big( \omega_1 \otimes \kappa_1 \otimes \omega_2 \otimes \kappa_2 \big)
+\end{align*}
+as claimed.
+\end{proof}
+
+\begin{definition} We define $\Xi_i = [ \psi_i, - ] \otimes \theta_i^* : \mathscr{H}^{\otimes 2} \lto \mathscr{H}^{\otimes 2}$ and $\Xi = \sum_i \Xi_i$. 
+\end{definition}
+
+\begin{lemma}\label{lemma:somecommt} As operators on $\mathscr{H} \otimes_k \mathscr{H}$, for all $1 \le i,j \le n$
+\begin{align}
+\big[ \delta_i \otimes 1, 1 \otimes \delta_j \big] &= 0\\
+\big[ \delta_i \otimes 1, \Xi_j \big] &= 0\\
+\big[ 1 \otimes \delta_i, \Xi_j \big] &= 0\,.
+\end{align}
+\end{lemma}
+
+\begin{proposition} There is a commutative diagram
 \be
-\Phi \Phi^{-1} = 1\,, \qquad \Phi^{-1} \Phi = 1 - [\partial, \widehat{H}]\,.
+\xymatrix@C+3pc@R+2pc{
+\mathscr{H} \otimes \mathscr{H} \ar[d]_-{\exp(-\delta) \otimes \exp(-\delta)} \ar[r]^-{m_2} & \mathscr{H} \ar[dd]^-{\exp(-\delta)}\\
+\mathscr{H} \otimes \mathscr{H} \ar[d]_-{\exp(-\Xi)}\\
+\mathscr{H} \otimes \mathscr{H} \ar[r]_-{m_2} & \mathscr{H}
+}
 \ee
-Thus, $\Phi$ and $\Phi^{-1}$ are mutually inverse homotopy equivalences over $k$.
 \end{proposition}
+\begin{proof}
+By Lemma \ref{lemma:somecommt} we have
+\[
+\exp\big(-\big[ \delta_i \otimes 1 + 1 \otimes \delta_i + \Xi_i \big]\big) = \exp(-\Xi_i) \circ \big\{ \exp(-\delta_i) \otimes \exp(-\delta_i) \big\}
+\]
+and therefore
+\[
+\exp\big(-\big[ \delta \otimes 1 + 1 \otimes \delta + \Xi \big]\big) = \exp(-\Xi) \circ \big\{ \exp(-\delta) \otimes \exp(-\delta) \big\}\,.
+\]
+By Lemma \ref{lemma:stratos} then
+\begin{align*}
+\exp(-\delta) m_2 &= \sum_{m \ge 0} (-1)^m \frac{1}{m!} \delta^m m_2\\
+&= \sum_{m \ge 0} (-1)^m \frac{1}{m!} m_2 \big\{ \delta \otimes 1 + 1 \otimes \delta + \Xi \big\}^m\\
+&= m_2 \exp\big(-\big[ \delta \otimes 1 + 1 \otimes \delta + \Xi \big] \big)\\
+&= m_2 \exp(-\Xi) \circ \big\{ \exp(-\delta) \otimes \exp(-\delta) \big\}\,,
+\end{align*}
+which completes the proof.
+%Immediately from \eqref{eq:graded_jacobi} and \eqref{eq:wedge_contract_comm} we have
+%\begin{align*}
+%\big[ [ \varepsilon_i^*, -], \varepsilon_j \big] &= \big[ [ \varepsilon_i, - ], \varepsilon_j^* \big] = \delta_{ij} \cdot 1\,.\\
+%\big[[ \varepsilon_i^*, -], \varepsilon_j^* \big] &= \big[[\varepsilon_i, -], \varepsilon_j\big] = 0\,.
+%\end{align*}
+\end{proof}
+
+Observe finally that
+% see ainfmf9 p.14
+\be
+\exp(-\Xi) = \sum_{m \ge 0} (-1)^m \sum_{1 \le j_1 < \cdots < j_m \le n} \prod_{i=1}^m \;[\psi_{j_i},-] \otimes \theta_{j_i}^*\,.
+\ee
+
+\subsection{Atiyah classes and idempotents}
+% ainfmf12
 
 The endomorphism algebra $C = \End_k(S)$ is a Clifford algebra generated by the contraction $\theta_i^*$ and wedge product $\theta_i$ operators. It is observed in \cite{murfet} that \eqref{eq:he_start} is an isomorphism of Clifford representations (in the homotopy category) when the complex $\md{E}$ is equipped with the action induced by Atiyah classes:
 
@@ -599,110 +833,43 @@ By direct calculation:
 \begin{lemma} The idempotent $e = \gamma_1^\dagger \cdots \gamma_n^\dagger \gamma_n \cdots \gamma_1$ is the projection onto $\mathscr{B} \subseteq \mathscr{E}$.
 \end{lemma}
 
-We define the even operator $\delta_i = \psi_i \theta_i^*$ on the underlying module $\eqref{eq:same_underlying}$ of $S \otimes \md{A}_W$, so that $\delta = \sum_i \delta_i$. Since $[ \delta_i, \delta_j ] = 0$ for all $i,j$ we have
-\be
-\exp(\pm \delta) = \exp(\pm \delta_1) \cdots \exp(\pm \delta_n)\,.
-\ee
 
-\begin{lemma} For $1 \le i \le n$ there is a commutative diagram
-\be
-\xymatrix@C+3pc@R+1pc{
-(S \otimes \md{A}_W) \otimes (S \otimes \md{A}_W) \ar[d]_-{\delta_i \otimes 1 + 1 \otimes \delta_i + [\psi_i,-] \otimes \theta_i^*} \ar[r]^-{m_2} & S \otimes \md{A}_W \ar[d]^-{\delta_i}\\
-(S \otimes \md{A}_W) \otimes (S \otimes \md{A}_W) \ar[r]_-{m_2} & S \otimes \md{A}_W
-}
-\ee
-\end{lemma}
+\subsection{Putting it all together}
 
-\begin{definition} We define
-\be
-\Xi_i = [ \psi_i, - ] \otimes \theta_i^* : S \otimes \md{A}_W \lto S \otimes \md{A}_W\,.
-\ee
-and
-\be
-\Xi = \sum_i \Xi_i\,.
-\ee
+
+\begin{definition} Let $\xi_q$ denote the product $\xi_q: \mathscr{E}[1]^{\otimes q} \lto \mathscr{E}$ induced by the homotopy retract \eqref{??} and the minimal model construction, defining an $A_\infty$-structure on $\mathscr{E}$. 
 \end{definition}
 
-\begin{proposition} There is a commutative diagram
-\be
-\xymatrix@C+3pc@R+2pc{
-(S \otimes \md{A}_W) \otimes (S \otimes \md{A}_W) \ar[d]_-{\exp(-\delta) \otimes \exp(-\delta)} \ar[r]^-{m_2} & S \otimes \md{A}_W \ar[dd]^-{\exp(-\delta)}\\
-(S \otimes \md{A}_W) \otimes (S \otimes \md{A}_W) \ar[d]_-{\exp(-\Xi)}\\
-(S \otimes \md{A}_W) \otimes (S \otimes \md{A}_W) \ar[r]_-{m_2} & S \otimes \md{A}_W
-}
-\ee
+\begin{proposition} The linear map $\xi_q$ is the sum over $T \in \cat{T}_q$ of $e_i(T)$ multiplied by the denotation of the decoration of $A(T)$ defined by the assignment of modules
+\begin{itemize}
+\item $\mathscr{E}[1]$ to each leaf including the root, and
+\item $\mathscr{H}[1]$ to each edge.
+\end{itemize}
+To each vertex $v$ of $A(T)$ we associate an operator $\phi_v$ as follows:
+\begin{itemize}
+\item if $v$ is an input, then $\phi_v = \sigma_\infty$.
+\item if $v$ comes from an internal edge of $T$, then $\phi_v = H_\infty$.
+\item if $v$ comes from an internal vertex of $T$, then
+\[
+\phi_v = m_2 \circ \exp(- \Xi)\,.
+\]
+\end{itemize}
 \end{proposition}
 
-\newpage
+By inspection of \eqref{eq:first_he}, we therefore have the following:
 
-We have for $m > 0$, as an operator on $\mathscr{H}$
-\begin{align*}
-\big( H \partial )^m &= \prod_{i=1}^m \sum_{j_i = 1}^n H \circ \Big( x_{j_i} [\psi_{j_i}^*,-] + W^{j_i} [\psi_{j_i},-] \Big)\,.
-\end{align*}
-Prior to Definition \ref{defn:otc} we observed that in calculating $\langle D_{T,C} \rangle$ it suffices to consider operators on the smaller $\nZ_2$-graded $k$-module
-\be
-\mathscr{H}' = R \otimes_k \bigwedge\big( \oplus_{i=1}^n k \theta_i \,\big) \otimes_k \mathscr{B}\,.
+\begin{proposition}\label{prop:he_start} There is a diagram of morphisms of $\nZ_2$-graded $k$-complexes
+\be\label{eq:he_start}
+\xymatrix@C+5pc{
+S \otimes \md{A}_W \ar@<1ex>[r]^-{\Phi} & \md{E}\ar@<1ex>[l]^-{\Phi^{-1}}
+}
 \ee
-On this submodule of $\mathscr{H}$ the operators $[\psi_i^*,-]$ act as zero, and so $(H \partial)^m$ takes a simpler form. If $\underline{j}$ ranges over elements in of $\{1,\ldots,n\}^m$ and $\underline{\gamma}$ over elements of $(\mathbb{N}^n)^m$ then
-\begin{align*}
-\big( H \partial )^m \arrowvert_{\mathscr{H}'} &= \sum_{\underline{j}} \prod_{i=1}^m H \circ \Big( W^{j_i} [ \psi_{j_i}, - ] \Big)\\
-&= \sum_{\underline{j}} \prod_{i=1}^m H \circ \Big( \sum_{\gamma_i} W^{j_i}(\gamma_i) x^{\gamma_i} [ \psi_{j_i}, - ] \Big)\\
-&= \sum_{\underline{j}, \underline{\gamma}} \prod_{i=1}^m H \circ \Big( W^{j_i}(\gamma_i) x^{\gamma_i} [ \psi_{j_i}, - ] \Big)\\
-&= \sum_{\underline{j}, \underline{\gamma}} \prod_{i=1}^m [d_K, \nabla]^{-1} \nabla \circ \Big( W^{j_i}(\gamma_i) x^{\gamma_i} [ \psi_{j_i}, - ] \Big)\,.
-\end{align*}
-Note that $W^i$ contains no constant term, since by hypothesis $W \in \mf{m}^2$. Our convention is that products of operators expand from left to right as $i$ increases, so that the rightmost factor in the product is $i = m$. Recall that $\nabla = \sum_i \partial_i \theta_i$ and $[d_K, \nabla]$ acts on a tensor product $f \otimes \omega$, where $f$ and $\omega$ are homogeneous, by
-\[
-[d_K, \nabla]( f \otimes \omega ) = ( |f| + |\omega| ) f \otimes \omega\,.
-\]
-Now we consider the scalar factors produced by the $[d_K, \nabla]^{-1}$ when we apply $(H \partial)^m$ to a tensor $f \otimes \omega \otimes \Psi$. Observe how the sum of the polynomial and $\theta$-degree changes with each application of $H \partial$. Multiplying with $x^{\gamma_i}$ increases the polynomial degree by $|\gamma_i|$, while applying $\nabla$ decreases the polynomial degree and increases the $\theta$-degree by one, so overall the $i$th copy of $H \partial$ (reading from left to right) increases the sum of the two degrees from
-\[
-|f| + |\omega| + \sum_{t > i} |\gamma_t| \qquad \text{ to } \qquad |f| + |\omega| + \sum_{t \ge i} |\gamma_t|\,.
-\]
-If we write $a = |f| + |\omega|$ then the scalar factor contributed by the copies of $[d_K, \nabla]^{-1}$ in $(H \partial)^m$ applied to $f \otimes \omega \otimes \Psi$ is therefore
-\[
-\frac{1}{(a + |\gamma_m|)(a + |\gamma_m| + |\gamma_{m-1}|) \cdots (a + |\gamma_m| + \cdots + |\gamma_1|)}\,.
-\]
-This leads us to the un-symmetrised version of $\zeta$ from Definition \ref{defn:zeta}:
-
-\begin{definition} Given a sequence $a_1,\ldots,a_m \ge 1$ of integers and $a \ge 0$ we define
+where $\Phi = \pi \exp(-\delta), \Phi^{-1} = \exp(\delta) \sigma_\infty$ and $\widehat{H} = \exp(\delta) H_\infty \exp(-\delta)$ satisfy
 \be
-\zeta'_a(a_1,\ldots,a_m) = \frac{1}{(a + a_m)(a + a_{m-1} + a_m) \cdots (a + a_1 + \cdots + a_m)}\,.
+\Phi \Phi^{-1} = 1\,, \qquad \Phi^{-1} \Phi = 1 - [\partial, \widehat{H}]\,.
 \ee
-\end{definition}
-
-Let $\mathscr{H}'_a \subseteq \mathscr{H}'$ denote the submodule of elements of degree $a$, when we take the $\nZ$-grading induced by the usual $\nZ$-grading on $R$ and the exterior algebra in the $\theta$'s (so, the grading does not count $\psi$'s). Then we have computed that
-\be
-(H \partial)^m|_{\mathscr{H}'_a} = \sum_{\underline{j}, \underline{\gamma}} \zeta_{a}( |\gamma_1|, \ldots, |\gamma_m| ) \prod_{i=1}^m \nabla \circ \big( W^{j_i}(\gamma_i)x^{\gamma_i} [ \psi_{j_i}, - ] \big) \,.
-\ee
-For a $k$-linear operator $T$ and an element $x \in \Ker(\nabla)$ since $\nabla^2 = 0$ we have
-\[
-\nabla T \cdots \nabla T (x) = [\nabla, T] \cdots [\nabla, T](x)\,.
-\]
-Using $[ \nabla, f ] = \sum_q \partial_q(f) \theta_q$ we therefore have
-\begin{align*}
-\big( H \partial )^m|_{\mathscr{H}'_a \cap \Ker(\nabla)} &= \sum_{\underline{j}, \underline{\gamma}} \zeta'_{a}( |\gamma_1|, \ldots, |\gamma_m| ) \prod_{i=1}^m \Big[ \nabla, W^{j_i}(\gamma_i)x^{\gamma_i} [ \psi_{j_i}, - ] \Big]\\
-&= \sum_{\underline{j}, \underline{\gamma},\underline{z}} \zeta'_{a}( |\gamma_1|, \ldots, |\gamma_m| ) \prod_{i=1}^m W^{j_i}(\gamma_i) \partial_{z_i}(x^{\gamma_i}) \theta_{z_i} [ \psi_{j_i}, - ]
-\end{align*}
-where $\underline{j},\underline{z}$ both range over $\{1, \ldots, n\}^m$. Since $[ \psi_j, - ]^2 = 0$ the only nonzero contributions are from sequences $\underline{j} = (j_1,\ldots,j_m)$ without repeats and similarly for $\underline{z}$. Thus
-\begin{align*}
-&= \sum_{\substack{j_1 < \cdots < j_m \\ z_1 < \cdots < z_m}} \sum_{\rho,\nu \in \mathfrak{S}_m} \sum_{\underline{\gamma}} \zeta'_{a}( |\gamma_1|, \ldots, |\gamma_m| ) \prod_{i=1}^m W^{j_{\rho(i)}}(\gamma_i) \partial_{z_{\nu(i)}}(x^{\gamma_i}) \theta_{z_{\nu(i)}} [ \psi_{j_{\rho(i)}}, - ]\\
-&= \sum_{\substack{j_1 < \cdots < j_m \\ z_1 < \cdots < z_m}} \sum_{\rho,\nu \in \mathfrak{S}_m} \sum_{\underline{\gamma}} \zeta'_{a}( |\gamma_1|, \ldots, |\gamma_m| ) \prod_{i=1}^m W^{j_i}(\gamma_{\rho^{-1}(i)}) \partial_{z_{\nu\rho^{-1}(i)}}(x^{\gamma_{\rho^{-1}(i)}}) \theta_{z_{\nu\rho^{-1}(i)}} [ \psi_{j_i}, - ]\\
-&= \sum_{\substack{j_1 < \cdots < j_m \\ z_1 < \cdots < z_m}} \sum_{\rho,\nu \in \mathfrak{S}_m} \sum_{\underline{\gamma}} \zeta'_{a}( |\gamma_{\rho(1)}|, \ldots, |\gamma_{\rho(m)}| ) \prod_{i=1}^m W^{j_i}(\gamma_i) \partial_{z_{\nu(i)}}(x^{\gamma_i}) \theta_{z_{\nu(i)}} [ \psi_{j_i}, - ]\\
-&= \sum_{\substack{j_1 < \cdots < j_m \\ z_1 < \cdots < z_m}} \sum_{\nu \in \mathfrak{S}_m} \sum_{\underline{\gamma}} \zeta_{a}( |\underline{\gamma}| ) \prod_{i=1}^m W^{j_i}(\gamma_i) \partial_{z_{\nu(i)}}(x^{\gamma_i}) \theta_{z_{\nu(i)}} [ \psi_{j_i}, - ]
-\end{align*}
-%That is, if we write
-%\[
-%Y = \{ ( z, \gamma ) \l 1 \le z \le n\,, \gamma \in \mathbb{N}^m\,, \gamma_z \ge 1 \}
-%\]
-%then
-
-\begin{remark}\label{remark:virt_part_2} Continuing from Remark \ref{remark:virtual_part} we note that in constrast to the the way we usually think about the minimal model construction in the setting of topological string theory \cite{??} the elements $\Psi$ of $\mathscr{B}$ are not immediately identified with cohomology classes of $\mathscr{B}$. 
-
-Of course $\sigma_\infty(\Psi)$ is a cycle for $\partial$, but this is already given by a complicated sum which contributes multiple Feynman diagrams in the calculus of Definition \ref{??}. That is to say, we have found it useful for purposes of calculation to have the incoming states in our Feynman diagrams to be elements of $\mathscr{H}$ that are \emph{not} cycles. Note that as we vary the potential $W$ the elements of $\mathscr{H}$ that are cycles will change - this makes it awkward to take as a starting point the cohomology of $\mathscr{H}$. In our approach the subspace $\mathscr{B}$ remains fixed, and even in the case of quadratic terms it is only the projection to $\mathscr{B}$ that changes.
-\end{remark}
-
-\begin{remark} See ainfmf12 for idempotents.
-\end{remark}
+Thus, $\Phi$ and $\Phi^{-1}$ are mutually inverse homotopy equivalences over $k$.
+\end{proposition}
 
 \newpage
 
