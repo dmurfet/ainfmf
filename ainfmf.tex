@@ -188,6 +188,8 @@ Often we will simply write $\varepsilon_j$ for $\varepsilon_j \wedge (-)$ and $\
 
 \subsection{Trees and denotations}
 
+All denotations are evaluated as linear maps, \emph{not} graded linear maps, so there are no Koszul signs.
+
 \subsection{$A_\infty$-algebras and minimal models}
 
 The \emph{tilde grading} on a $\nZ_2$-graded $k$-module is defined by $\widetilde{x} = |x| - 1$. 
@@ -476,13 +478,13 @@ In particular, for the tree and configuration of Examples \ref{ex:picture_exampl
 
 \begin{definition}\label{defn:bainf} We define the map $\rho_q: \mathscr{B}[1]^{\otimes q} \lto \mathscr{B}[1]$ of degree $+1$ on homogeneous elements $\Lambda_1,\ldots,\Lambda_q \in \mathscr{B}$ by
 \[
-\rho_q( \Lambda_q, \ldots, \Lambda_1 ) = \sum_{T \in \cat{T}_q} \sum_{C \in \operatorname{Con}(T)} (-1)^{Q(T, \underline{\Lambda})} Z(T,C) \cdot \cat{O}(T, C)( \Lambda_1, \ldots, \Lambda_q )
+\rho_q( \Lambda_q, \ldots, \Lambda_1 ) = \sum_{T \in \cat{T}_q} \sum_{C \in \operatorname{Con}(T)} (-1)^{Q(T, \Lambda_1, \ldots, \Lambda_q)} Z(T,C) \cdot \cat{O}(T, C)( \Lambda_1, \ldots, \Lambda_q )
 \]
 where $\cat{O}(T,C)$ is from Definition \ref{defn:otc} and the sign is given by
-\[
-Q(T, \underline{\Lambda}) = e_i(T) + q + 1 + \sum_{1 \le i < j \le q} \widetilde{\Lambda}_i \widetilde{\Lambda}_j + \sum_{i=1}^q \widetilde{\Lambda}_i C_i\,.
-\]
-Here $C_i$ is the number of times the path from the $i$th input to the root enters a trivalent vertex from the left in $T$, $e_i(T)$ is the number of internal edges and $\widetilde{\Lambda} = |\Lambda| - 1$.
+\be\label{eq:defnQsign}
+Q(T, \Lambda_1, \ldots, \Lambda_q) = e_i(T) + q + 1 + \sum_{1 \le i < j \le q} \widetilde{\Lambda}_i \widetilde{\Lambda}_j + \sum_{i=1}^q \widetilde{\Lambda}_i C_i\,.
+\ee
+Here $C_i$ is the \emph{left branch parity} of the $i$th input, that is, the number of times the path from the $i$th input to the root enters a trivalent vertex from the left in $T$, $e_i(T)$ is the number of internal edges and $\widetilde{\Lambda} = |\Lambda| - 1$.
 \end{definition}
 % TODO check the sign here and check agreement with ainfmf9
 
@@ -574,7 +576,7 @@ so that $L_{\psi_i}(\alpha)(x) = \psi_i \wedge \alpha(x)$.
 
 Throughout $\sum_i$ stands for $\sum_{i=1}^n$.
 
-\begin{theorem} Using the following even homogeneous operators on $\mathscr{H}$,
+\begin{theorem}\label{theorem:main_retract} Using the following even homogeneous operators on $\mathscr{H}$,
 \be
 \delta = \sum_i L_{\psi_i} \theta_i^*\,, \qquad \sigma_\infty = \sum_{m \ge 0} (-1)^m (H \partial)^m \sigma\,,\label{eq:sigmainftyorig}
 \ee
@@ -758,7 +760,7 @@ as claimed.
 \end{align}
 \end{lemma}
 
-\begin{proposition} There is a commutative diagram
+\begin{proposition}\label{prop:adamant} There is a commutative diagram
 \be
 \xymatrix@C+3pc@R+2pc{
 \mathscr{H} \otimes \mathscr{H} \ar[d]_-{\exp(-\delta) \otimes \exp(-\delta)} \ar[r]^-{m_2} & \mathscr{H} \ar[dd]^-{\exp(-\delta)}\\
@@ -836,16 +838,47 @@ By direct calculation:
 
 \subsection{Putting it all together}
 
+In this section we put together all the earlier elements, and prove the description of the minimal model of $\mathscr{A}$ given in Section \ref{??}. In this section we write
+\[
+\mathscr{E} = \End_k\Big( \bigwedge( \oplus_i k \psi_i ) \Big)\,.
+\]
+The starting point is Theorem \ref{theorem:main_retract}, which gives us a strong deformation retract
+\be\label{eq:ho_retract_for_mm}
+\xymatrix@C+5pc{
+\big( \mathscr{H}, \partial \,\big) \ar@<1ex>[r]^-{\pi\exp(-\delta)} & \big( \mathscr{E}, 0 \big) \ar@<1ex>[l]^-{ \exp(\delta)\sigma_\infty }
+}
+\ee
+with $\pi \exp(-\delta) \circ \exp(\delta) \sigma_\infty = 1$ and
+\[
+\exp(\delta)\sigma_\infty \pi\exp(-\delta) = 1 - \big[ \partial, \exp(\delta) H_\infty \exp(-\delta) \big]\,.
+\]
 
-\begin{definition} Let $\xi_q$ denote the product $\xi_q: \mathscr{E}[1]^{\otimes q} \lto \mathscr{E}$ induced by the homotopy retract \eqref{??} and the minimal model construction, defining an $A_\infty$-structure on $\mathscr{E}$. 
-\end{definition}
-
-\begin{proposition} The linear map $\xi_q$ is the sum over $T \in \cat{T}_q$ of $e_i(T)$ multiplied by the denotation of the decoration of $A(T)$ defined by the assignment of modules
+\begin{definition} Let $\xi_q$ denote the product $\xi_q: \mathscr{E}[1]^{\otimes q} \lto \mathscr{E}[1]$ induced by the homotopy retract \eqref{eq:ho_retract_for_mm} and the minimal model construction, defining an $A_\infty$-structure on $\mathscr{E}$. That is,
+\[
+\xi_q = \sum_{T \in \cat{T}_q} (-1)^{e_i(T)} \langle D_T \rangle
+\]
+where $D_T$ is the decoration given by the assignment of modules
 \begin{itemize}
-\item $\mathscr{E}[1]$ to each leaf including the root, and
-\item $\mathscr{H}[1]$ to each edge.
+\item $\mathscr{E}$ to each leaf including the root, and
+\item $\mathscr{H}$ to each edge.
 \end{itemize}
 To each vertex $v$ of $A(T)$ we associate an operator $\phi_v$ as follows:
+\begin{itemize}
+\item if $v$ is an input, then $\phi_v = \exp(\delta)\sigma_\infty$.
+\item if $v$ comes from an internal edge of $T$, then $\phi_v = \exp(\delta)H_\infty\exp(-\delta)$.
+\item if $v$ comes from an internal vertex of $T$, then $\phi_v = r_2$ where $r_2$ is the forward suspension of the product $m_2$ in $\mathscr{H}$, that is,
+\be\label{eq:r2vsm2}
+r_2( \alpha \otimes \beta ) = (-1)^{\widetilde{\alpha}\widetilde{\beta} + \widetilde{\beta} + 1} m_2( \beta \otimes \alpha )\,.
+\ee
+\item if $v$ is the root, then $\phi_v = \pi \exp(-\delta)$.
+\end{itemize}
+\end{definition}
+
+\begin{proposition} For $q \ge 2$
+\be
+\xi_q( \Lambda_q, \ldots, \Lambda_1 ) = \sum_{T \in \cat{T}_q} (-1)^{Q(T, \Lambda_1, \ldots, \Lambda_q)} \langle D'_T \rangle( \Lambda_1,\ldots,\Lambda_q)
+\ee
+where $Q(T, \Lambda_1, \ldots, \Lambda_q)$ is as in \eqref{eq:defnQsign}, and $D'_T$ is the decoration of $A(T)$ assigning $\mathscr{E}$ to each leaf and $\mathscr{H}$ to each edge, and to each vertex $v$ the operator $\phi_v$ defined as follows:
 \begin{itemize}
 \item if $v$ is an input, then $\phi_v = \sigma_\infty$.
 \item if $v$ comes from an internal edge of $T$, then $\phi_v = H_\infty$.
@@ -853,23 +886,28 @@ To each vertex $v$ of $A(T)$ we associate an operator $\phi_v$ as follows:
 \[
 \phi_v = m_2 \circ \exp(- \Xi)\,.
 \]
+\item if $v$ is the root, then $\phi_v = \pi$.
 \end{itemize}
 \end{proposition}
+\begin{proof}
+The substitution of $m_2$ for $r_2$ incurs some sign factors and reverses the order of the inputs, and we will return to this sign at the end. We prove the proposition by taking the ``extra'' $\exp(-\delta)$ factor at the root and moving it upwards in the tree: at the vertex $v$ adjacent to the root, we use Proposition \ref{prop:adamant} to see that
+\[
+\exp(-\delta) \circ m_2 = m_2 \circ \exp(-\Xi) \circ (\exp(-\delta) \otimes \exp(-\delta))\,,
+\]
+which replaces the $m_2$ at the vertex by $m_2 \circ \exp(-\Xi)$ and propagates the $\exp(-\delta)$ factors to the edges adjacent and above $v$.  internal this extra factor has the effect of
+\[
+\exp(-\delta) \circ \exp(\delta) H_\infty \exp(-\delta) = H_\infty \exp(-\delta)
+\] 
+leaving behind a $H_\infty$ and moving upwards, while in the case of an external edge
+\[
+\exp(-\delta) \circ \exp(\delta) \sigma_\infty = \sigma_\infty
+\]
+we are left with a bare $\sigma_\infty$.
 
-By inspection of \eqref{eq:first_he}, we therefore have the following:
+Now to return to the signs, which come from \eqref{eq:r2vsm2} applied at every internal vertex of $T$, when evaluating $\xi_q( \Lambda_q, \ldots, \Lambda_1 )$. The labels $\exp(\delta) H_\infty \exp(-\delta)$ and $r_2$ on internal edges and vertices have degree $+1$ with respect to the tilde grading, which means that when a $\Lambda_i$ reaches an internal vertex of $T$ it is still carrying the same tilde grading $\widetilde{\Lambda_i}$.
 
-\begin{proposition}\label{prop:he_start} There is a diagram of morphisms of $\nZ_2$-graded $k$-complexes
-\be\label{eq:he_start}
-\xymatrix@C+5pc{
-S \otimes \md{A}_W \ar@<1ex>[r]^-{\Phi} & \md{E}\ar@<1ex>[l]^-{\Phi^{-1}}
-}
-\ee
-where $\Phi = \pi \exp(-\delta), \Phi^{-1} = \exp(\delta) \sigma_\infty$ and $\widehat{H} = \exp(\delta) H_\infty \exp(-\delta)$ satisfy
-\be
-\Phi \Phi^{-1} = 1\,, \qquad \Phi^{-1} \Phi = 1 - [\partial, \widehat{H}]\,.
-\ee
-Thus, $\Phi$ and $\Phi^{-1}$ are mutually inverse homotopy equivalences over $k$.
-\end{proposition}
+It follows that the $\widetilde{\alpha}\widetilde{\beta}$ part of $\eqref{eq:r2vsm2}$ contributes overall $\sum_{i < j} \widetilde{\Lambda_i} \widetilde{\Lambda_j}$ while the $\widetilde{\beta}$ part contributes $\sum_i \widetilde{\Lambda_i} C_i$, and the $1$ contributes $q - 1$, the number of internal vertices.
+\end{proof}
 
 \newpage
 
