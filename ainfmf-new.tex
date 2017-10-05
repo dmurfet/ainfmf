@@ -75,6 +75,7 @@
 \def\nQ{\mathds{Q}}
 \def\nR{\mathds{R}}
 \def\nC{\mathds{C}}
+\def\jac{\operatorname{Jac}_W}
 \DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\End}{End}
@@ -82,6 +83,7 @@
 \DeclareMathOperator{\tot}{Tot}
 \DeclareMathOperator{\ch}{ch}
 \DeclareMathOperator{\str}{str}
+\DeclareMathOperator{\mf}{mf}
 \DeclareMathOperator{\hmf}{hmf}
 \DeclareMathOperator{\HMF}{HMF}
 \DeclareMathOperator{\hf}{HF}
@@ -100,7 +102,6 @@
 \newcommand{\cat}[1]{\mathcal{#1}}
 \newcommand{\lto}{\longrightarrow}
 \newcommand{\xlto}[1]{\stackrel{#1}\lto}
-\newcommand{\mf}[1]{\mathfrak{#1}}
 \newcommand{\md}[1]{\mathscr{#1}}
 \def\sus{\l}
 \def\l{\,|\,}
@@ -109,16 +110,52 @@
 \def\Samp{Z}
 \def\traff{N}
 
-\title{$A_\infty$-minimal models of matrix factorisations}
+\title{$A_\infty$-categories of matrix factorisations}
 \author{Daniel Murfet}
 
 \maketitle
 
 \begin{abstract}
-We study $A_\infty$-minimal models of the differential graded algebras obtained from endomorphisms of generators of triangulated categories of matrix factorisations.
+We study $A_\infty$-categories associated to the DG-category of matrix factorisations.
 \end{abstract}
 
-\tableofcontents
+% \tableofcontents
+
+In this paper we study $A_\infty$-categories of matrix factorizations, obtained from the natural DG-category of matrix factorizations by the minimal model construction. Our point of view diverges from the existing mathematical literature in that we genuinely seek to understand the full $A_\infty$-category and not just the minimal model of the endomorphism DG-algebra of a generator. Our motivation for pursuing this more general, and harder, question is twofold. Firstly, we believe this is the appropriate framework for actually doing calculations in the context of deformations of singularities and of matrix factorizations, as it is often inconvenient to explicitly present a given matrix factorization as a twisted complex over the generator. Secondly, there is interesting work in this generality in the physics literature, which deserve further study.
+
+Our approach is based on the techniques introduced in [?] and developed in [?,?]. We adjoin to the DG-category $\md{C} = \mf(R,W)$ of finite-rank matrix factorizations of a potential $W \in k[x_1,\ldots,x_n]$ over an arbitrary base ring $k$ a number of odd supercommuting variables $\theta_1,\ldots,\theta_n$ and complete along the the critical locus to obtain the DG-category
+\[
+\md{C}_\theta = \bigwedge F_\theta \otimes_k \md{C} \otimes_R \widehat{R}\,,
+\]
+where $F_\theta$ is the $\nZ_2$-graded $k$-module $\oplus_{i=1}^n k \theta_i$ which is concentrated in odd degree.
+
+It turns out that while there is no obvious strict deformation retract on $\md{C}$, the DG-category $\md{C}_\theta$ can be equipped with a natural strict deformation retract which arises from differentiating in the normal directions to the critical locus (since the critical locus may not be reduced, this is admittedly a strange form of differentiation). The strict deformation retract puts $\md{C}_\theta$ in homotopy equivalence with the tensor product
+\be\label{eq:tensor_introa}
+\md{C} \otimes_R \jac
+\ee
+viewed as a collection of $\nZ_2$-graded complexes of finitely-generated free $k$-modules, and the usual $A_\infty$-minimal model construction equips this collection of graded modules with an $A_\infty$-structure $\{m_n\}_n$, the $m_1$ and $m_2$ of which are the differential and product that is given by interpreting \eqref{eq:tensor_introa} as a tensor product of DG-categories, with $\jac$ given the zero differential and its usual algebra structure.
+
+Not all minimal models are created equal, since without a good grasp on the combinatorics of the homotopy which is part of the strict deformation retract, it is hopeless to try and understand the higher products which are produced. However, the strict deformation retract involved in the above construction is of a standard kind, so that the higher products may be described by a small collection of local ``Feynman rules''. 
+
+The final step is to obtain a minimal $A_\infty$-category quasi-isomorphic to $\md{C}$ from the $A_\infty$-structure on $\md{C} \otimes_R \jac$. For this we observe that the algebra morphism 
+\[
+\bigwedge F_\theta \lto k \cdot 1 \lto \bigwedge F_\theta
+\]
+which projects onto the identity by sending all $\theta$-forms of nonzero degree to zero, gives rise to a strictly idempotent DG-functor
+\[
+e: \md{C}_\theta \lto \md{C}_\theta
+\]
+and thus by transfer to a homotopy idempotent $A_\infty$-functor
+\[
+\widetilde{e}: \md{C} \otimes_R \jac \lto \md{C} \otimes_R \jac\,.
+\]
+A minimal model for $\md{C}$ exists over $k$ (which we recall, is not a field) if and only if this idempotent splits, and so the algorithm for splitting this idempotent is an algorithm for producing the minimal model. In some sense the tuple $(\md{C} \otimes_R \jac, \{m_n\}_{n \ge 1}, \widetilde{e})$ presents the minimal model of $\md{C}$ in terms of polynomial functions of the input data - namely, the differentials in all the matrix factorizations of $W$.
+
+Calculating beyond this point involves, for say $k$ a field, Gaussian eliminations and thus regular functions of the input data - the output and nature of the cohomology classes varies across strata defined by the vanishing of the denominators in such functions. In particular, the cohomology $H^*( \md{C} \otimes_R \jac )$, the induced $A_\infty$ structure on this cohomology, and the splitting of the induced (strictly) idempotent $A_\infty$-functor $H^*(\widetilde{e})$ cannot typically be presented by universal formulas which are polynomial in the entries of the twisted differentials. 
+
+Nonetheless these calculations may be done and $A_\infty$ minimal models of $\md{C}$ (or particularly interesting DG-subcategories of $\md{C}$) may be computed. This paper is the first in a series, and presents only the general theory with no concrete examples. In the second paper together with Patrick Elliott we will present examples, both of the minimal models of the DG-algebra $\End(k^{\stab})$ for the case of an isolated singularity and the generator, minimal models of DG-modules of the form $\Hom(k^{\stab}, X)$, and other examples involving the versal deformation of $A_n$-singularities and minimal models of DG-algebras $\End(X)$ for some interesting examples of matrix factorizations (and bifactorisations, such as the permutation defects of [?]).
+
+\newpage
 
 \section{Introduction}
 
