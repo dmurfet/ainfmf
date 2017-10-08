@@ -121,21 +121,21 @@ We study $A_\infty$-categories associated to the DG-category of matrix factorisa
 
 % \tableofcontents
 
-In this paper we study $A_\infty$-categories of matrix factorizations, obtained from the natural DG-category of matrix factorizations by the minimal model construction. Our point of view diverges from the existing mathematical literature in that we genuinely seek to understand the full $A_\infty$-category and not just the minimal model of the endomorphism DG-algebra of a generator. Our motivation for pursuing this more general, and harder, question is twofold. Firstly, we believe this is the appropriate framework for actually doing calculations in the context of deformations of singularities and of matrix factorizations, as it is often inconvenient to explicitly present a given matrix factorization as a twisted complex over the generator. Secondly, there is interesting work in this generality in the physics literature, which deserve further study.
+In this paper we study those $A_\infty$-categories which are obtained from DG-categories of matrix factorizations by the minimal model construction. This problem has been studied in various forms by several authors, including Seidel \cite{??}, Dyckerhoff \cite{??}, Efimov \cite{??} and Sheridan \cite{??}. Our point of view diverges the existing literature in that we genuinely seek to understand the full $A_\infty$-category of matrix factorisations and not just the minimal model of the endomorphism DG-algebra of a generator. Our motivation for pursuing the problem in this generality is twofold. Firstly, this is a convenient framework for studying simultaneous deformations of singularities and their matrix factorizations, as it is often inconvenient to explicitly present a given matrix factorization as a twisted complex over the generator (essentially due to the role of idempotents). Secondly, there is interesting work in this generality in the physics literature, which deserves further study.
 
 Our approach is based on the techniques introduced in [?] and developed in [?,?]. We adjoin to the DG-category $\md{C} = \mf(R,W)$ of finite-rank matrix factorizations of a potential $W \in k[x_1,\ldots,x_n]$ over an arbitrary base ring $k$ a number of odd supercommuting variables $\theta_1,\ldots,\theta_n$ and complete along the the critical locus to obtain the DG-category
 \[
 \md{C}_\theta = \bigwedge F_\theta \otimes_k \md{C} \otimes_R \widehat{R}\,,
 \]
-where $F_\theta$ is the $\nZ_2$-graded $k$-module $\oplus_{i=1}^n k \theta_i$ which is concentrated in odd degree.
+where $F_\theta$ is the $\nZ_2$-graded $k$-module $\oplus_{i=1}^n k \theta_i$ which is concentrated in odd degree. The differential on the DG-category $\md{C}_\theta$ is just the one inherited from $\mathscr{C}$.
 
-It turns out that while there is no obvious strict deformation retract on $\md{C}$, the DG-category $\md{C}_\theta$ can be equipped with a natural strict deformation retract which arises from differentiating in the normal directions to the critical locus (since the critical locus may not be reduced, this is admittedly a strange form of differentiation). The strict deformation retract puts $\md{C}_\theta$ in homotopy equivalence with the tensor product
+While there is no obvious strong deformation retract on $\md{C}$ which would allow one to run the minimal model construction, the DG-category $\md{C}_\theta$ can be equipped with a natural strong deformation retract which arises from differentiating in the normal directions to the critical locus (since the critical locus may not be reduced, this is admittedly a strange form of differentiation). This puts $\md{C}_\theta$ in homotopy equivalence with the tensor product
 \be\label{eq:tensor_introa}
-\md{C} \otimes_R \jac
+\md{C} \otimes_R \jac = \Big\{ \Hom_R(X,Y) \otimes_R \jac \big| X,Y \in \mathscr{C} \Big\}
 \ee
-viewed as a collection of $\nZ_2$-graded complexes of finitely-generated free $k$-modules, and the usual $A_\infty$-minimal model construction equips this collection of graded modules with an $A_\infty$-structure $\{m_n\}_n$, the $m_1$ and $m_2$ of which are the differential and product that is given by interpreting \eqref{eq:tensor_introa} as a tensor product of DG-categories, with $\jac$ given the zero differential and its usual algebra structure.
+viewed as a collection of $\nZ_2$-graded complexes of finitely-generated free $k$-modules. The usual $A_\infty$-minimal model construction equips this collection of graded modules with an $A_\infty$-structure $\{m_n\}_n$, the $m_1$ and $m_2$ of which are the differential and product that is given by interpreting \eqref{eq:tensor_introa} as a tensor product of DG-categories, with $\jac$ given the zero differential and its usual algebra structure.
 
-Not all minimal models are created equal, since without a good grasp on the combinatorics of the homotopy which is part of the strict deformation retract, it is hopeless to try and understand the higher products which are produced. However, the strict deformation retract involved in the above construction is of a standard kind, so that the higher products may be described by a small collection of local ``Feynman rules''. 
+Not all minimal models are created equal, since without a good grasp on the combinatorics of the homotopy which is part of the strong deformation retract, it is hopeless to try and understand the higher products which are produced. However, the strong deformation retract involved in the above construction is of a standard kind, so that the higher products may be described by a small collection of local ``Feynman rules''. 
 
 The final step is to obtain a minimal $A_\infty$-category quasi-isomorphic to $\md{C}$ from the $A_\infty$-structure on $\md{C} \otimes_R \jac$. For this we observe that the algebra morphism 
 \[
@@ -149,29 +149,135 @@ and thus by transfer to a homotopy idempotent $A_\infty$-functor
 \[
 \widetilde{e}: \md{C} \otimes_R \jac \lto \md{C} \otimes_R \jac\,.
 \]
-A minimal model for $\md{C}$ exists over $k$ (which we recall, is not a field) if and only if this idempotent splits, and so the algorithm for splitting this idempotent is an algorithm for producing the minimal model. In some sense the tuple $(\md{C} \otimes_R \jac, \{m_n\}_{n \ge 1}, \widetilde{e})$ presents the minimal model of $\md{C}$ in terms of polynomial functions of the input data - namely, the differentials in all the matrix factorizations of $W$.
+A minimal model for $\md{C}$ exists over $k$ (which we recall, is not a field) if and only if this idempotent splits, and so the algorithm for splitting this idempotent is an algorithm for producing the minimal model. In some sense the tuple $(\md{C} \otimes_R \jac, \{m_n\}_{n \ge 1}, \widetilde{e})$ presents the minimal model of $\md{C}$ in terms of polynomial functions of the input data - namely, the differentials in all the matrix factorizations of $W$. Calculating beyond this point involves Gaussian eliminations and thus regular functions of the input data - the output and nature of the cohomology classes varies across strata defined by the vanishing of the denominators in such functions. 
 
-Calculating beyond this point involves, for say $k$ a field, Gaussian eliminations and thus regular functions of the input data - the output and nature of the cohomology classes varies across strata defined by the vanishing of the denominators in such functions. In particular, the cohomology $H^*( \md{C} \otimes_R \jac )$, the induced $A_\infty$ structure on this cohomology, and the splitting of the induced (strictly) idempotent $A_\infty$-functor $H^*(\widetilde{e})$ cannot typically be presented by universal formulas which are polynomial in the entries of the twisted differentials. 
+In particular, the cohomology $H^*( \md{C} \otimes_R \jac )$, the induced $A_\infty$ structure on this cohomology, and the splitting of the induced (strictly) idempotent $A_\infty$-functor $H^*(\widetilde{e})$ cannot typically be presented by universal formulas which are polynomial in the entries of the twisted differentials. 
 
 Nonetheless these calculations may be done and $A_\infty$ minimal models of $\md{C}$ (or particularly interesting DG-subcategories of $\md{C}$) may be computed. This paper is the first in a series, and presents only the general theory with no concrete examples. In the second paper together with Patrick Elliott we will present examples, both of the minimal models of the DG-algebra $\End(k^{\stab})$ for the case of an isolated singularity and the generator, minimal models of DG-modules of the form $\Hom(k^{\stab}, X)$, and other examples involving the versal deformation of $A_n$-singularities and minimal models of DG-algebras $\End(X)$ for some interesting examples of matrix factorizations (and bifactorisations, such as the permutation defects of [?]).
 
 \newpage
 
-\section{Introduction}
+\section{Background}
 
-Let $k$ be a commutative $\mathbb{Q}$-algebra and $W \in k[x_1,\ldots,x_n]$ a polynomial which is a potential over $k$ in the sense of \cite[\S 2.2]{lgdual}. For example, $k = \mathbb{C}$ and $W$ has isolated critical points. The $\nZ_2$-graded DG-category $\cat{A} = \operatorname{mf}(R, W)$ has for its objects finite-rank matrix factorisations of $W$ over $R = k[x_1,\ldots,x_n]$. In this paper we study the minimal model problem for $\cat{A}$, the aim being to produce models that are finitely-generated and projective over $k$.
+\subsection{Potentials and connections}
 
-When $k$ is a field, the standard minimal model theorem \cite{??} constructs the structure of an $A_\infty$-category on the cohomology $\cat{B} = H^* \cat{A}$ in such a way that $\cat{B}$ is quasi-isomorphic to $\cat{A}$. Moreover, this $A_\infty$-category has finite-dimensional Hom-spaces and is therefore a good finite model of $\cat{A}$. The problem in this case is to have sufficient control over the inputs to the minimal model theorem that the $A_\infty$-products on $H^* \cat{A}(X,X)$ can be reasonably calculated, for a given matrix factorisation $X$. In order to understand deformations of matrix factorisations \cite{??,??,??} it is important to do this for generic $X$, but the special case where $X = k^{\stab}$, the generator of $\cat{A}$ studied by Dyckerhoff in the case of a single isolated singularity at the origin \cite{d0904.4713}, is of particular interest.
+In this section we recall the definition of quasi-regular sequences and potentials, and explain the geometric content of the connections which play a crucial role in the construction of strong deformation retracts in the body of the paper. For more on the theory of quasi-regular sequences see \cite{matsumura}, \cite[Chapitre $0$ \S 15.1]{EGA4} and \cite[Section\,10.68]{stacks_project}.
 
-Since one of our goals is to understand how matrix factorisation categories vary along unfoldings of singularities, we also want to consider the case where $k$ is not a field. For example take $k = \mathbb{C}[t]$ and $R = \mathbb{C}[x_1,\ldots,x_n, t]$ so that $W = W_t(x)$ is a potential with a parameter $t$. In this case we want an $A_\infty$-category $\cat{B}$ quasi-isomorphic to $\cat{A}$ over $k$, with $\cat{B}(a,b)$ a finitely-generated projective $k$-module for each pair of objects $a,b$. 
-\vspace{0.2cm}
+\begin{definition} A sequence $t_1,\ldots,t_n$ in a commutative ring $R$ is \emph{quasi-regular} if, writing $I = (t_1,\ldots,t_n)$, the morphism of $R/I$-algebras
+\begin{gather*}
+\phi: R/I[z_1,\ldots,z_n] \lto \operatorname{gr}_I R = \bigoplus_{i \ge 0} I^i / I^{i+1}\\
+\phi(z_i) = \overline{t_i} \in I/I^2
+\end{gather*}
+is an isomorphism. In particular, this means that $I/I^2 \cong \bigoplus_{i=1}^n R/I \cdot \overline{t_i}$.
+\end{definition}
 
-These two desiderata, understanding the $A_\infty$-products on $H^*\cat{A}(X,X)$ for generic $X$, and the case where $k$ is not a field, lead us naturally to a slightly non-standard use of the minimal model theorem. Following the ideas developed in \cite{??,??,??} we prove that, writing $\iota: R \lto R/(\partial_{x_1} W, \ldots, \partial_{x_n} W)$ for the quotient, there is a $k$-linear homotopy retract
-\be\label{eq:intro_he}
-\xymatrix@C+4pc{
-\iota^* \cat{A} \ar@<0.7ex>[r] & \cat{A} \otimes_k \bigwedge\big( k^{\oplus n}[1] \big) \ar@<0.7ex>[l]\,.
+We briefly recall the motivation for this definition from algebraic geometry.
+
+\begin{remark} Let $Y$ be a noetherian scheme and let $i: X \lto Y$ be a closed subscheme with ideal sheaf $\mathscr{I}$. As in differential geometry the first-order deformations of $X$ in $Y$ are controlled \cite[Theorem VI-29]{eisenbudharris} by the normal sheaf
+\[
+\mathscr{N}_{X/Y} = \Hom_{\cat{O}_X}(\mathscr{I}/\mathscr{I}^2, \cat{O}_X).
+\]
+However, to correctly describe the space of normal directions to $X$ in $Y$ beyond first-order requires more than just the normal sheaf. The correct approach is to start with the blowup $\pi$ of $Y$ along $X$ which is described by a universal property, and then look at the closed subscheme of that blowup induced by $X$ as in the diagram:
+\[
+\xymatrix@C+2pc{
+\operatorname{Proj}_X( \oplus_{i \ge 0} \mathscr{I}^i/\mathscr{I}^{i+1} ) \ar[r]^-j\ar[d] & \operatorname{Proj}_Y( \oplus_{i \ge 0} \mathscr{I} ) \ar[d]^-{\pi}\\
+X \ar[r]_-{i} & Y\,.
 }
+\]
+The closed subscheme $j$ of the blowup (called the strict transform of $X$) is given by the relative Proj of the sheaf of graded algebras $\oplus_{i \ge 0} \mathscr{I}^i/\mathscr{I}^{i+1}$ on $X$, and its points give the correct notion of a point on $X$ together with a normal direction in $Y$. For this reason the scheme $C_X(Y) = \Spec_X( \oplus_{i \ge 0} \mathscr{I}^i / \mathscr{I}^{i+1} )$, whose projectivisation is the strict transform of $X$ in the blowup, is often called the \emph{normal cone} of $X$ in $Y$ \cite{??,??}.
+\end{remark}
+
+Thus, to say that a sequence $t_1,\ldots,t_n$ is quasi-regular is to say that the projectivised normal cone of $X = \Spec(R/I)$ in $Y = \Spec(R)$ is the space of lines in the normal bundle, since the definition of quasi-regularity gives 
+\begin{align*}
+\Spec_{Y}( \operatorname{Sym}( \mathscr{N}^*_{X/Y} ) ) &\cong \Spec( \operatorname{Sym}_{R/I}( I/I^2 ) )\\
+&= \Spec( R/I[z_1,\ldots,z_n] )\\
+&\cong \Spec( \operatorname{gr}_ I R)\\
+&= C_X(Y)\,.
+\end{align*}
+Suppose we have a smooth manifold $Y$, a submanifold $X \subseteq Y$ and a smooth function $f$ on a neighborhood of $X$. We can define the derivative of $f$ in the directions normal to $X$, by putting a suitable connection on the restriction of the sheaf of smooth functions $\cat{O}_Y^\infty$ to a suitable open neighborhood of $X$. This connection can be produced by taking a tubular neighborhood, which allows us to identify a neighborhood of the zero section $X \lto N_{X/Y}$ of the normal bundle with an open neighborhood of $X$ in $Y$. 
+
+There is no direct analogue of this identification of neighborhoods for a closed immersion $i: X \lto Y$ of schemes, even if we are in the good situation where $I = (t_1,\ldots,t_n)$ is generated by a quasi-regular sequence. To ask for such an identification, even at the level of infinitesimal neighborhoods of $X$ in the normal cone $C_X(Y)$ and $Y$ respectively, would be to task in the affine case above for an isomorphism of topological rings
+\[
+R/I\llbracket z_1,\ldots,z_n \rrbracket \lto \widehat{R}
+\]
+where $\widehat{R}$ is the $I$-adic completion. It easy to produce examples where this fails:
+
+\begin{example} Let $k$ be a field, $R = k[x]$ and $I = (x^d)$ for $d > 1$. Since the $I$-adic topology is the same as the $(x)$-adic topology, 
+\[
+R/I\llbracket z \rrbracket = k[x]/(x^d) \llbracket z \rrbracket \neq k\llbracket x \rrbracket = \widehat{R}\,,
+\]
+since one ring is reduced while the other is not.
+\end{example}
+
+The good news is that if we only want to define a connection on the ring of functions which differentiates in the directions normal to $X$, we do not need to identify infinitesimal neighborhoods of $X$ in $C_X(Y)$ and $Y$, as the following weaker property will do:
+
+\begin{lemma}[Lipman] Let $R$ be a $k$-algebra. Suppose $t_1,\ldots,t_n$ is quasi-regular in $R$ and that $R/I$ is a finitely-generated projective $k$-module. Then any $k$-linear section $\sigma$ of the quotient $\pi: R \lto R/I$ induces an isomorphism of $k\llbracket z_1,\ldots,z_n \rrbracket$-modules
+\[
+\sigma^*: R/I \otimes_k k\llbracket z_1,\ldots,z_n \rrbracket \lto \widehat{R}
+\]
+where $\widehat{R}$ denotes the $I$-adic completion.
+\end{lemma}
+\begin{proof}
+See \cite{??}.
+\end{proof}
+
+Recall from \cite{??} the notion of a $T$-linear connection on an $S$-module $M$, where $S$ is a $T$-algebra. As alluded to above, we can use the isomorphism of Lemma \ref{??} to produce connections on $\widehat{R}$:
+
+\begin{lemma} Associated to any $k$-linear section $\sigma$ is a $k$-linear connection
+\be
+\nabla_\sigma: \widehat{R} \lto \widehat{R} \otimes_{k[\bold{z}]} \Omega^1_{k[\bold{z}]/k}\,.
 \ee
+\end{lemma}
+
+The functions $f \in \widehat{R}$ which are ``constant'' in the normal directions according to this connection, that is, which satisfy $\nabla_\sigma(f) = 0$, are precisely those in the image of the section $\sigma$. There is no ``intrinsic'' derivative of $f$ which is independent of choices, but the various algebraic constructions we perform using the connection $\nabla_\sigma$ will be independent of the choice of section $\sigma$ up to homotopy, nonetheless.
+
+From the point of view of homological algebra, the Koszul complex 
+\[
+K(R, \bold{t}) = \Big( \bigwedge( k \theta_1 \oplus \cdots \oplus k \theta_n ) \otimes_k R, \,\,\sum_i t_i \theta_i^* \Big)
+\]
+is a a projective resolution of the $R$-algebra $R/I$ in the world of DG-$R$-algebras. Once we complete in the $I$-adic topology the relationship between these two DG-algebras becomes even stronger: there is a $k$-linear \emph{homotopy equivalence}
+\[
+K(\widehat{R}, \bold{t}) \lto \widehat{R}/I\widehat{R} = R/I\,.
+\]
+A connection of the form $\nabla_\sigma$ is the only natural way of writing down the data which defines this homotopy equivalence. This homotopy equivalence gives us a much more flexible model of $R/I$, which may be used for example in the setting of the perturbation lemma.
+
+Let $k$ be a commutative ring. We recall from \cite{lgdual} the definition of a potential:
+
+\begin{definition}\label{defn:potential} A polynomial $W \in k[x_1,\ldots,x_n]$ is a \textsl{potential} if (we write $t_i = \partial_{x_i} W$)
+\begin{itemize}
+\item[(i)] $t_1,\ldots,t_n$ is a quasi-regular sequence;
+\item[(ii)] $k[x_1,\ldots,x_n]/(t_1,\ldots,t_n)$ is a finitely generated free $k$-module;
+\item[(iii)] the Koszul complex of $t_1,\ldots,t_n$ is exact except in degree zero.
+\end{itemize}
+\end{definition}
+
+A typical example is a polynomial $W \in \mathbb{C}[x_1,\ldots,x_n]$ with isolated critical points \cite[Example ??]{lgdual}. As shown in \cite{lgdual}, these hypotheses on a potential are sufficient to produce all the properties relevant to two-dimensional topological field theory (e.g. nondegenerate pairings, adjoints, etc.). We will see in Remark \ref{??} below why the hypothesis (iii) is necessary for our methods. In any case, if $k$ is noetherian then (iii) follows from (i).
+
+The overall approach of the paper is to complete the DG-category $\mathscr{C} = \mf(R,W)$ along the critical locus, and then use connections of the form $\nabla_\sigma$ to rewrite the data in terms of a DG-category over $k$ made up of finitely generated modules over the Jacobi ring $\jac$.
+
+Conceptually, identifying the completion $\widehat{R}$ with an infinitesimal neighborhood $\widehat{Y}_X$ of $X = \Spec(R/I)$ in $Y = \Spec(R)$ and thinking in terms of the tubular neighborhood, we use the nonexistent formal isomorphism between $\widehat{Y}_X$ and the total space of the normal bundle $\mathscr{N}_{X/Y}$ to turn $\mathscr{C}$ (viewed as some collection of bundles with structure maps over $\widehat{Y}_X$) into a collection of bundles with structure maps over $N_{X/Y}$ ($t_i$ vanishing up to homopty vs on the nose).
+
+\begin{lemma} Let $W \in R$ be a potential. The DG-functor
+\[
+F: \mf(R,W) \lto \mf(R, W) \otimes_R \widehat{R}
+\]
+\end{lemma}
+is a $k$-linear homotopy equivalence.
+\begin{proof}
+This uses hypothesis (iii) in the definition of a potential.
+\end{proof}
+
+\begin{itemize}
+- Present perturbation
+- State theorem about existence of strong deformation retract, with a description of $H, \sigma_\infty$ etc.
+- Give $\mathscr{H}, \mathscr{K}$ with relevant operators
+- Give the overall picture diagram from our lectures
+- Recalculate tree based on A, B, C interactions
+- Present Feynman rules
+- Switch to $k^stab$ and do calculation
+\end{itemize}
+
+\newpage
 
 \subsection{The special case of the generator}
 
@@ -222,14 +328,6 @@ Often we will simply write $\varepsilon_j$ for $\varepsilon_j \wedge (-)$ and $\
 \be\label{eq:wedge_contract_comm}
 \big[ \varepsilon_i, \varepsilon_j^* \big] = \delta_{ij} \cdot 1\,.
 \ee
-
-\subsection{Trees and denotations}
-
-All denotations are evaluated as linear maps, \emph{not} graded linear maps, so there are no Koszul signs.
-
-\subsection{$A_\infty$-algebras and minimal models}
-
-The \emph{tilde grading} on a $\nZ_2$-graded $k$-module is defined by $\widetilde{x} = |x| - 1$. 
 
 \subsection{Matrix factorisations}
 
@@ -984,6 +1082,20 @@ D.~Sullivan, \textsl{Open and closed string field theory interpreted in classica
 
 \bibitem{qftstring}
 P.~Deligne et al, \textsl{Quantum fields and strings}
+
+\bibitem{EGA4}
+A.~Grothendieck, \textsl{\'{E}l\'ements de g\'eom\'etrie alg\'ebrique. {IV}. \'{E}tude
+  locale des sch\'emas et des morphismes de sch\'emas}, Inst.~Hautes \'Etudes
+  Sci.~Publ.~Math.~(1964), no.~20.
+
+\bibitem{stacks_project}
+The Stacks Project, \href{http://stacks.math.columbia.edu/}{http://stacks.math.columbia.edu}.
+
+\bibitem{matsumura}
+Matsumura, \emph{book}.
+
+\bibitem{eisenbudharris}
+Eisenbud, David, and Joe Harris. The geometry of schemes. Vol. 197. Springer Science \& Business Media, 2006.
 
 \end{thebibliography}
 
