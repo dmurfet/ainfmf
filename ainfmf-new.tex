@@ -159,7 +159,36 @@ Nonetheless these calculations may be done and $A_\infty$ minimal models of $\md
 
 \section{Background}
 
-\subsection{Potentials and connections}
+\subsection{Notation}
+
+Throughout $k$ is a commutative $\mathbb{Q}$-algebra. If $\bold{x} = (x_1,\ldots,x_n)$ is a sequence of formal variables then $k[\bold{x}]$ denotes $k[x_1,\ldots,x_n]$ and similarly for power series rings. Given $M \in \mathbb{N}^n$ we write $x^M$ for $x_1^{M_1} \cdots x_n^{M_n}$.
+
+\subsection{Algebra}
+
+Let $R$ be a commutative ring. Given finite-rank free $\nZ_2$-graded $R$-modules $M, N$ and $\phi \in \Hom_R(M,N)$ we say that $\phi$ is \emph{even} (resp. \emph{odd}) if $\phi(M_i) \subseteq N_i$ (resp. $\phi(M_i) \subseteq N_{i+1}$) for all $i \in \nZ_2$. This makes $\Hom_R(M,N)$ into a $\nZ_2$-graded $R$-module. Given two homogeneous operators $\psi, \phi$ the \emph{graded commutator} is
+\be
+[\phi, \psi] = \phi \psi - (-1)^{|\phi||\psi|} \psi \phi\,.
+\ee
+In this note all operators are given a $\nZ_2$-grading and the commutator always denotes the graded commutator. We often make implicit use of the graded Jacobi identity
+\be\label{eq:graded_jacobi}
+(-1)^{|\alpha||\gamma|}\big[ \alpha, [\beta, \gamma]\big] + (-1)^{|\alpha||\beta|}\big[ \beta, [\gamma, \alpha] \big] + (-1)^{|\gamma||\beta|} \big[ \gamma, [\alpha, \beta] \big] = 0\,.
+\ee
+Among the most important examples are the exterior algebras
+\[
+M = \bigwedge \bigoplus_{i=1}^r R \varepsilon_i
+\]
+where $F = \bigoplus_{i=1}^r k \varepsilon_i$ denotes a free $R$-module of rank $r$ with basis $\varepsilon_1,\ldots,\varepsilon_r$. We give $F$ a $\nZ_2$-grading by assigning $|\varepsilon_i| = 1$, that is, $F \cong R^{\oplus r}[1]$. The inherited $\nZ_2$-grading on $\bigwedge F$ is the reduction mod $2$ of the usual $\nZ$-grading on the exterior algebra, e.g. $|\varepsilon_1 \varepsilon_2| = 0$.
+
+We define odd operators $\varepsilon_j \wedge (-), \varepsilon_j^* \,\lrcorner\, (-)$ on $\bigwedge F$ by wedge product and contraction, respectively, where contraction is defined by the formula
+\begin{align*}
+\varepsilon_j^* \,\lrcorner\, \Big( \varepsilon_{i_1} \cdots \varepsilon_{i_s} \Big) = \sum_{l=1}^s (-1)^{l-1} \delta_{j, i_l} \varepsilon_{i_1} \wedge \cdots \wedge \widehat{ \varepsilon_{i_l} } \wedge \cdots \wedge \varepsilon_{i_s}\,.
+\end{align*}
+Often we will simply write $\varepsilon_j$ for $\varepsilon_j \wedge (-)$ and $\varepsilon_j^*$ for $\varepsilon_j^* \,\lrcorner\, (-)$. Clearly with this notation, as operators on $\bigwedge F$, we have the commutator
+\be\label{eq:wedge_contract_comm}
+\big[ \varepsilon_i, \varepsilon_j^* \big] = \delta_{ij} \cdot 1\,.
+\ee
+
+\subsection{Quasi-regular sequences and connections}
 
 In this section we recall the definition of quasi-regular sequences and potentials, and explain the geometric content of the connections which play a crucial role in the construction of strong deformation retracts in the body of the paper. For more on the theory of quasi-regular sequences see \cite{matsumura}, \cite[Chapitre $0$ \S 15.1]{EGA4} and \cite[Section\,10.68]{stacks_project}.
 
@@ -209,27 +238,57 @@ R/I\llbracket z \rrbracket = k[x]/(x^d) \llbracket z \rrbracket \neq k\llbracket
 since one ring is reduced while the other is not.
 \end{example}
 
-The good news is that if we only want to define a connection on the ring of functions which differentiates in the directions normal to $X$, we do not need to identify infinitesimal neighborhoods of $X$ in $C_X(Y)$ and $Y$, as the following weaker property will do:
+The good news is that if we only want to define a connection on the ring of functions which differentiates in the directions normal to $X$, we do not need to identify infinitesimal neighborhoods of $X$ in $C_X(Y)$ and $Y$, as the weaker statement in the following proposition will do.
 
-\begin{lemma}[Lipman] Let $R$ be a $k$-algebra. Suppose $t_1,\ldots,t_n$ is quasi-regular in $R$ and that $R/I$ is a finitely-generated projective $k$-module. Then any $k$-linear section $\sigma$ of the quotient $\pi: R \lto R/I$ induces an isomorphism of $k\llbracket z_1,\ldots,z_n \rrbracket$-modules
+\begin{setup} For the rest of this section let $R$ be a $k$-algebra, and let $t_1,\ldots,t_n$ be a quasi-regular sequence in $R$ such that, writing $I = (t_1,\ldots,t_n)$ the quotient $R/I$ is a finitely generated projective $k$-module.
+\end{setup}
+
+\begin{proposition}[Lipman]\label{prop_algtube} Any $k$-linear section $\sigma$ of the quotient $\pi: R \lto R/I$ induces an isomorphism of $k\llbracket z_1,\ldots,z_n \rrbracket$-modules
 \[
 \sigma^*: R/I \otimes_k k\llbracket z_1,\ldots,z_n \rrbracket \lto \widehat{R}
 \]
 where $\widehat{R}$ denotes the $I$-adic completion.
-\end{lemma}
+\end{proposition}
 \begin{proof}
-See \cite{??}.
+See \cite{??}. Given a section $\sigma$ the map $\sigma^*(s \otimes z^M) = \sigma(s) t^M$ is induced by extension of scalars, making $\widehat{R}$ a $k\llbracket \bold{z} \rrbracket$-module by making $z_i$ act as multiplication by $t_i$. The main point is that every $r \in \widehat{R}$ has a \emph{unique} representation as a power series
+\be\label{eq:uniq_decompr}
+r = \sum_{M \in \mathbb{N}^n} \sigma(r_M) t^M
+\ee
+for elements $r_M \in R/I$, and the inverse to $\sigma^*$ sends $r$ to $\sum_M r_M z^M$.
 \end{proof}
 
-Recall from \cite{??} the notion of a $T$-linear connection on an $S$-module $M$, where $S$ is a $T$-algebra. As alluded to above, we can use the isomorphism of Lemma \ref{??} to produce connections on $\widehat{R}$:
+Recall from \cite{??} the notion of a $k$-linear connection on a module over a $k$-algebra. As alluded to above, we can use the isomorphism of Lemma \ref{??} to produce connections.
 
-\begin{lemma} Associated to any $k$-linear section $\sigma$ is a $k$-linear connection
+\begin{corollary} Associated to any $k$-linear section $\sigma$ is a $k$-linear connection
 \be
-\nabla_\sigma: \widehat{R} \lto \widehat{R} \otimes_{k[\bold{z}]} \Omega^1_{k[\bold{z}]/k}\,.
+\nabla_\sigma: \widehat{R} \lto \widehat{R} \otimes_{k[\bold{z}]} \Omega^1_{k[\bold{z}]/k}
 \ee
-\end{lemma}
-
+on $\widehat{R}$ as a $k[\bold{z}]$-module.
+\end{corollary}
+\begin{proof}
+The usual partial derivatives give a $k$-linear connection on $k\llbracket \bold{z} \rrbracket$ as a $k[\bold{z}]$-module which extends, by Propositon \ref{prop_algtube}, to a connection on $\widehat{R}$. In terms of the power series representation \eqref{eq:uniq_decompr} it is given by
+\be
+\nabla_\sigma(r) = \sum_{j=1}^n \sum_{M \in \mathbb{N}^n} M_j \sigma(r_M) t^{M - e_j} \otimes dz_j\,.
+\ee
+\end{proof}
 The functions $f \in \widehat{R}$ which are ``constant'' in the normal directions according to this connection, that is, which satisfy $\nabla_\sigma(f) = 0$, are precisely those in the image of the section $\sigma$. There is no ``intrinsic'' derivative of $f$ which is independent of choices, but the various algebraic constructions we perform using the connection $\nabla_\sigma$ will be independent of the choice of section $\sigma$ up to homotopy, nonetheless.
+
+\begin{remark} With a section $\sigma$ fixed, we will typically abuse notation and write $\nabla$ for the associated connection. We also introduce $k$-linear operators $\frac{\partial}{\partial z_i}: \widehat{R} \lto \widehat{R}$ by the identity
+\[
+\nabla = \sum_{j=1}^n \frac{\partial}{\partial z_i} dz_j \,.
+\]
+Typically we write $\partial_{z_i}$ for these operators. In practice we think of this operator as $\frac{\partial}{\partial t_i}$, and this notation, while misleading, is helpful.
+\end{remark}
+
+\begin{example} Let $k$ be a field, $R = k[x]$ and $I = (x^d)$, with $t = x^d$. Choose the $k$-linear section
+\[
+\sigma: R/I \lto R\,, \qquad \sigma(x^i) = x^i \quad 0 \le i \le d - 1\,,
+\]
+and let $\nabla_\sigma$ be the associated connection. Then
+\[
+\frac{\partial}{\partial z}( x^2 + x^{d+1} ) = \frac{\partial}{\partial z}( x^2 \cdot 1 + x \cdot x^d ) = x\,.
+\]
+\end{example}
 
 From the point of view of homological algebra, the Koszul complex 
 \[
@@ -241,7 +300,96 @@ K(\widehat{R}, \bold{t}) \lto \widehat{R}/I\widehat{R} = R/I\,.
 \]
 A connection of the form $\nabla_\sigma$ is the only natural way of writing down the data which defines this homotopy equivalence. This homotopy equivalence gives us a much more flexible model of $R/I$, which may be used for example in the setting of the perturbation lemma.
 
-Let $k$ be a commutative ring. We recall from \cite{lgdual} the definition of a potential:
+\begin{definition} A \emph{strong deformation retract} over a commutative ring $S$ is a pair of morphisms of $\mathbb{Z}_2$-graded complexes of $S$-modules $\pi, \sigma$ as in the diagram
+\begin{equation}\label{eq:defn_sdr}
+\xymatrix@C+3pc{
+(M,d) \ar@<-1ex>[r]_\sigma & (A,d)\,, \ar@<-1ex>[l]_\pi
+}\quad \phi
+\end{equation}
+together with an odd $S$-linear operator $\phi: A \lto A$ satisfying
+\begin{itemize}
+\item[(i)] $\pi \sigma = 1_M$,
+\item[(ii)] $\sigma \pi = 1_A - [d, \phi]$,
+\item[(iii)] $\phi^2 = 0$,
+\item[(iv)] $\phi \sigma = 0$,
+\item[(v)] $\pi \phi = 0$.
+\end{itemize}
+\end{definition}
+
+We adopt the following notation going forwards:
+\be
+F_\theta = k\theta_1 \oplus \cdots \oplus k \theta_n\,,
+\ee
+where we make $F_\theta$ a $\mathbb{Z}_2$-graded $k$-module by taking $|\theta_i| = 1$.
+
+\begin{proposition} There is a strong deformation retract
+\begin{equation}\label{eq:defn_sdr}
+\xymatrix@C+3pc{
+(R/I,0) \ar@<-1ex>[r]_-\sigma & \Big( \bigwedge F_\theta \otimes_k \widehat{R}, \,\,d_K = \sum_i t_i \theta_i^*\, \Big)\,, \ar@<-1ex>[l]_-\pi
+}\quad H_\sigma
+\end{equation}
+where
+\begin{itemize}
+\item $\sigma$ is the section $R/I \lto \widehat{R}$ followed by the inclusion,
+\item $\pi$ is the quotient map 
+\item $H_\sigma = [\nabla, d_K]^{-1} d_K$.
+\end{itemize}
+\end{proposition}
+
+\subsection{DG-categories and $A_\infty$-categories}
+
+In this section we review standard material on DG-categories and $A_\infty$-categories, including the statement of the minimal model theorem. Our primary reference is \cite{lazaroiu}.
+
+\begin{definition} If $\mathscr{C}, \mathscr{D}$ are DG-categories then $\mathscr{C} \otimes_k \cat{D}$ is a DG-category with
+\begin{gather*}
+\operatorname{ob}( \mathscr{C} \otimes_k \mathscr{D} ) = \operatorname{ob}(\mathscr{C}) \times \operatorname{ob}(\mathscr{D})\,,\\
+\big( \mathscr{C} \otimes_k \mathscr{D} \big)( (C_1, D_1), (C_2, D_2) ) = \mathscr{C}(C_1, C_2) \otimes_k \mathscr{D}(D_1, D_2)
+\end{gather*}
+with the obvious composition. In particular if $\Lambda$ is a $\mathbb{Z}_2$-graded $k$-algebra (not necessarily commutative) then $\mathscr{C} \otimes_k R$ is a DG-category with the same objects as $\mathscr{C}$ and
+\[
+\big( \mathscr{C} \otimes_k R \big)( C_1, C_2 ) = \mathscr{C}(C_1, C_2) \otimes_k \Lambda\,.
+\]
+\end{definition}
+
+\begin{definition} An \emph{$A_\infty$-category} $\mathscr{A}$ consists of the following data:
+\begin{itemize}
+\item a class $\operatorname{ob}(\mathscr{A})$ of objects,
+\item for every pair of objects $a,b \in \operatorname{ob}(\mathscr{A})$ a $\mathbb{Z}_2$-graded $k$-module $\mathscr{A}(a,b)$, and
+\item for any sequence $a_0,\ldots,a_n$ of objects with $n \ge 0$ a $k$-linear map
+\[
+\mu_{a_n,\ldots,a_0}: \mathscr{A}(a_{n-1}, a_n) \otimes_k \cdots \otimes_k \mathscr{A}(a_0, a_1) \lto \mathscr{A}(a_0,a_n)
+\]
+of degree $2 - n$. If it will not cause confusion we write $\mu_n$ for $\mu_{a_n,\ldots,a_0}$.
+\end{itemize}
+This data is subject to the following \emph{$A_\infty$-constraints}:
+\begin{align*}
+\sum_{\substack{i \ge 0, j \ge 1 \\ 1 \le i + j \le n }} (-1)^{ij + i + j + n} \mu_{n-j+1}\Big( x_n \otimes \cdots \otimes x_{i+j+1} \otimes \mu_j\big( x_{i+j} \otimes \cdots \\
+\cdots \otimes x_{i+1} \big) \otimes x_i \otimes \cdots \otimes x_1 \Big) = 0
+\end{align*}
+which has to hold for all $n \ge 1$ and composable homogeneous morphisms $x_1,\ldots,x_n$.
+\end{definition}
+
+There is an equivalent definition which is often easier to work with. Instead of the linear maps $\mu_{a_n,\ldots,a_0}$ of degree $2-n$ we take the data of degree $1$ linear maps
+\be
+r_{a_0,\ldots,a_n}: \mathscr{A}(a_0,a_1)[1] \otimes_k \cdots \otimes_k \mathscr{A}(a_{n-1},a_n)[1] \lto \mathscr{A}(a_0,a_n)[1]
+\ee
+which are subject to the \emph{forward suspended $A_\infty$-constraints}, written this time in terms of an equality of linear maps:
+\be
+\sum_{\substack{i \ge 0, j \ge 1 \\ 1 \le i + j \le n }} r_{n-j+1}\Big( \operatorname{id}^{\otimes i} \otimes r_j \otimes \operatorname{id}^{\otimes n - i - j} \Big) = 0
+\ee
+
+\begin{itemize}
+\item Definition
+\item Suspended forward
+\item Strict units
+\item Trees and denotations
+\item Minimal model theorem
+\item Variant with units
+\end{itemize}
+
+\subsection{Matrix factorisations}
+
+We recall from \cite{lgdual} the definition of a potential:
 
 \begin{definition}\label{defn:potential} A polynomial $W \in k[x_1,\ldots,x_n]$ is a \textsl{potential} if (we write $t_i = \partial_{x_i} W$)
 \begin{itemize}
@@ -252,10 +400,17 @@ Let $k$ be a commutative ring. We recall from \cite{lgdual} the definition of a 
 \end{definition}
 
 A typical example is a polynomial $W \in \mathbb{C}[x_1,\ldots,x_n]$ with isolated critical points \cite[Example ??]{lgdual}. As shown in \cite{lgdual}, these hypotheses on a potential are sufficient to produce all the properties relevant to two-dimensional topological field theory (e.g. nondegenerate pairings, adjoints, etc.). We will see in Remark \ref{??} below why the hypothesis (iii) is necessary for our methods. In any case, if $k$ is noetherian then (iii) follows from (i).
+\\
 
-The overall approach of the paper is to complete the DG-category $\mathscr{C} = \mf(R,W)$ along the critical locus, and then use connections of the form $\nabla_\sigma$ to rewrite the data in terms of a DG-category over $k$ made up of finitely generated modules over the Jacobi ring $\jac$.
+Let $W \in R = k[x_1,\ldots,x_n]$ be a potential. 
 
-Conceptually, identifying the completion $\widehat{R}$ with an infinitesimal neighborhood $\widehat{Y}_X$ of $X = \Spec(R/I)$ in $Y = \Spec(R)$ and thinking in terms of the tubular neighborhood, we use the nonexistent formal isomorphism between $\widehat{Y}_X$ and the total space of the normal bundle $\mathscr{N}_{X/Y}$ to turn $\mathscr{C}$ (viewed as some collection of bundles with structure maps over $\widehat{Y}_X$) into a collection of bundles with structure maps over $N_{X/Y}$ ($t_i$ vanishing up to homopty vs on the nose).
+\begin{definition} The DG-category $\mathscr{C} = \mf(R,W)$ has as objects \emph{matrix factorisations} of $W$ over $R$, that is, the pairs $(X, d_X)$ consisting of a $\mathbb{Z}_2$-graded finite free $R$-module $X$ and an odd $R$-linear operator $d_X: X \lto X$ satisfying $d_X^2 = W \cdot 1_X$. We define
+\begin{gather*}
+\mathscr{C}(X,Y) = \big( \Hom_R(X,Y) \,, d_{\mathscr{C}(X,Y)} \big)\,,\\
+d_{\mathscr{C}(X,Y)}(\alpha)  = d_Y \circ \alpha - (-1)^{|\alpha|} \alpha \circ d_X\,.
+\end{gather*}
+The composition is the usual composition of linear maps.
+\end{definition}
 
 \begin{lemma} Let $W \in R$ be a potential. The DG-functor
 \[
@@ -267,15 +422,55 @@ is a $k$-linear homotopy equivalence.
 This uses hypothesis (iii) in the definition of a potential.
 \end{proof}
 
+\section{The strong deformation retract on $\mathscr{C}_\theta$}
+
+From now on $k$ is a $\mathbb{Q}$-algebra and $W \in R = k[x_1,\ldots,x_n]$ is a potential. We fix a full sub-DG-category $\mathscr{C}$ of $\mf(R,W)$ and a quasi-regular sequence $t_1,\ldots,t_n$ in $R$ such that $t_i$ acts null-homotopically on $\mathscr{C}(X,Y)$ for every $X,Y \in \operatorname{ob}(\mathscr{C})$. We set $I = (t_1,\ldots,t_n)$ and we have chosen a $k$-linear section $\sigma$ of the quotient $R \lto R/I$.
+
+The overall approach of the paper is to complete the DG-category $\mathscr{C} = \mf(R,W)$ along the critical locus, and then use connections of the form $\nabla_\sigma$ to rewrite the data in terms of a DG-category over $k$ made up of finitely generated modules over the Jacobi ring $\jac$.
+
+Conceptually, identifying the completion $\widehat{R}$ with an infinitesimal neighborhood $\widehat{Y}_X$ of $X = \Spec(R/I)$ in $Y = \Spec(R)$ and thinking in terms of the tubular neighborhood, we use the nonexistent formal isomorphism between $\widehat{Y}_X$ and the total space of the normal bundle $\mathscr{N}_{X/Y}$ to turn $\mathscr{C}$ (viewed as some collection of bundles with structure maps over $\widehat{Y}_X$) into a collection of bundles with structure maps over $N_{X/Y}$ ($t_i$ vanishing up to homopty vs on the nose).
+
+Let $\lambda_i$ denote an odd $R$-linear operator on $\mathscr{C}(X,Y)$ with the property that
+\[
+[ d_{\mathscr{C}(X,Y)}, \lambda_i ] = t_i \cdot 1_{\mathscr{C}(X,Y)}\,.
+\]
+Then we define
+\[
+\delta = \sum_{i=1}^n \lambda_i \theta_i^*\,.
+\]
+\begin{equation}
+\xymatrix@C+3pc@R+3pc{
+\Big( \bigwedge F_\theta \otimes_k \mathscr{C}(X,Y) \otimes_R \widehat{R}, \,\, d_{\mathscr{C}(X,Y)}\, \Big) \ar@<-2ex>[d]_-{\exp(-\delta)}\\
+\Big( \bigwedge F_\theta \otimes_k \mathscr{C}(X,Y) \otimes_R \widehat{R}, \,\, d_{\mathscr{C}(X,Y)} + d_K\, \Big) \ar@<-2ex>[u]_-{\exp(\delta)} \ar@<-2ex>[d]_-{\pi} \\
+\Big( \mathscr{C}(X,Y) \otimes_R \jac, \,\, d_{\mathscr{C}(X,Y)} \otimes 1 \Big) \ar@<-2ex>[u]_-{\sigma_\infty}
+}
+\end{equation}
+
+
+\newpage
+
 \begin{itemize}
-- Present perturbation
-- State theorem about existence of strong deformation retract, with a description of $H, \sigma_\infty$ etc.
-- Give $\mathscr{H}, \mathscr{K}$ with relevant operators
-- Give the overall picture diagram from our lectures
-- Recalculate tree based on A, B, C interactions
-- Present Feynman rules
-- Switch to $k^stab$ and do calculation
+\item Present perturbation
+\item State theorem about existence of strong deformation retract, with a description of $H, \sigma_\infty$ etc.
+\item Give $\mathscr{H}, \mathscr{K}$ with relevant operators
+\item Give the overall picture diagram from our lectures
+\item Recalculate tree based on A, B, C interactions
+\item Present Feynman rules
+\item Switch to $k^stab$ and do calculation
 \end{itemize}
+
+\newpage
+
+Let us summarise the above, in the special case where $k$ is a field:
+\[
+\xymatrix@C+3pc@R+2pc{
+\End_R(k^{\stab}) \ar[d] \ar[rr] & & \big( H^*\End_R(k^{\stab}), \{ m_k \}_{k \ge 2} \big) \ar[d]\\
+\mathscr{C} \ar[d] \ar@{.>}[rr] & & \big( H^*\mathscr{C}, \{ m_k \}_{k \ge 2} \big) \ar[dd]\\
+\mathscr{C} \otimes_R \widehat{R} \ar[d]\\
+\mathscr{C}_\theta \ar[r] & \big( \mathscr{C} \otimes_R \jac, \{ m_k \}_{k \ge 1} \big) & \big( H^*( \mathscr{C} \otimes_R \jac ), \{ m_k \}_{k \ge 2} \big) \ar[l]
+}
+\]
+In the left hand vertical column are DG-algebras and DG-categories, with all vertical arrows inclusions of DG-categories. The rows represent minimal models
 
 \newpage
 
@@ -303,33 +498,6 @@ The minimal model is a finite-dimensional $\nZ_2$-graded vector space $\mathscr{
 of odd $k$-linear maps satisfying the forward suspended $A_\infty$-constraints \cite{lazaroiu}, and having the property that there is an $A_\infty$-quasi-isomorphism $\mathscr{B} \lto \mathscr{A}$.
 
 \section{Background}
-
-\subsection{Algebra}
-
-Let $k$ be a commutative ring. Given $\nZ_2$-graded $k$-modulea $M, N$ and $\phi \in \Hom_k(M,N)$ we say $\phi$ is \emph{even} (resp. \emph{odd}) if $\phi(M_i) \subseteq N_i$ (resp. $\phi(M_i) \subseteq N_{i+1}$) for all $i \in \nZ_2$. This makes $\Hom_k(M,N)$ into a $\nZ_2$-graded $k$-module, having even maps in degree zero and odd maps in degree one. Given two homogeneous operators $\psi, \phi$ the \emph{graded commutator} is
-\be
-[\phi, \psi] = \phi \psi - (-1)^{|\phi||\psi|} \psi \phi\,.
-\ee
-In this note all operators are given a $\nZ_2$-grading and the commutator always denotes the graded commutator. We often make implicit use of the graded Jacobi identity
-\be\label{eq:graded_jacobi}
-(-1)^{|\alpha||\gamma|}\big[ \alpha, [\beta, \gamma]\big] + (-1)^{|\alpha||\beta|}\big[ \beta, [\gamma, \alpha] \big] + (-1)^{|\gamma||\beta|} \big[ \gamma, [\alpha, \beta] \big] = 0\,.
-\ee
-Among the most important examples are the exterior algebras
-\[
-M = \bigwedge\big( \oplus_{i=1}^r k \varepsilon_i \,\big)
-\]
-where $F = \oplus_{i=1}^r k \varepsilon_i$ denotes a free $k$-module of rank $r$ with basis $\varepsilon_1,\ldots,\varepsilon_r$. We give $F$ a $\nZ_2$-grading by assigning $|\varepsilon_i| = 1$, that is, $F \cong k^{\oplus r}[1]$. The inherited $\nZ_2$-grading on $\bigwedge F$ is the reduction mod $2$ of the usual $\nZ$-grading on the exterior algebra, e.g. $|\varepsilon_1 \varepsilon_2| = 0$.
-
-We define odd operators $\varepsilon_j \wedge (-), \varepsilon_j^* \,\lrcorner\, (-)$ on $\bigwedge F$ by wedge product and contraction, respectively, where contraction is defined by the formula
-\begin{align*}
-\varepsilon_j^* \,\lrcorner\, \Big( \varepsilon_{i_1} \cdots \varepsilon_{i_s} \Big) = \sum_{l=1}^s (-1)^{l-1} \delta_{j, i_l} \varepsilon_{i_1} \wedge \cdots \wedge \widehat{ \varepsilon_{i_l} } \wedge \cdots \wedge \varepsilon_{i_s}\,.
-\end{align*}
-Often we will simply write $\varepsilon_j$ for $\varepsilon_j \wedge (-)$ and $\varepsilon_j^*$ for $\varepsilon_j^* \,\lrcorner\, (-)$. Clearly with this notation, as operators on $\bigwedge F$, we have the commutator
-\be\label{eq:wedge_contract_comm}
-\big[ \varepsilon_i, \varepsilon_j^* \big] = \delta_{ij} \cdot 1\,.
-\ee
-
-\subsection{Matrix factorisations}
 
 \section{Feynman diagrams}
 % from p.17 (ainfmf9)
