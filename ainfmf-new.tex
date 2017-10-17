@@ -127,7 +127,7 @@ Our approach is based on the techniques introduced in [?] and developed in [?,?]
 \[
 \md{C}_\theta = \bigwedge F_\theta \otimes_k \md{C} \otimes_R \widehat{R}\,,
 \]
-where $F_\theta$ is the $\nZ_2$-graded $k$-module $\oplus_{i=1}^n k \theta_i$ which is concentrated in odd degree. The differential on the DG-category $\md{C}_\theta$ is just the one inherited from $\mathscr{C}$.
+where $F_\theta$ is the $\nZ_2$-graded $k$-module $\bigoplus_{i=1}^n k \theta_i$ which is concentrated in odd degree. The differential on the DG-category $\md{C}_\theta$ is the one inherited from $\mathscr{C}$. As we explain in Section \ref{??}, one is supposed to think of $F_\theta$ as the normal bundle to the critical locus of $W$.
 
 While there is no obvious strong deformation retract on $\md{C}$ which would allow one to run the minimal model construction, the DG-category $\md{C}_\theta$ can be equipped with a natural strong deformation retract which arises from differentiating in the normal directions to the critical locus (since the critical locus may not be reduced, this is admittedly a strange form of differentiation). This puts $\md{C}_\theta$ in homotopy equivalence with the tensor product
 \be\label{eq:tensor_introa}
@@ -154,8 +154,17 @@ A minimal model for $\md{C}$ exists over $k$ (which we recall, is not a field) i
 In particular, the cohomology $H^*( \md{C} \otimes_R \jac )$, the induced $A_\infty$ structure on this cohomology, and the splitting of the induced (strictly) idempotent $A_\infty$-functor $H^*(\widetilde{e})$ cannot typically be presented by universal formulas which are polynomial in the entries of the twisted differentials. 
 
 Nonetheless these calculations may be done and $A_\infty$ minimal models of $\md{C}$ (or particularly interesting DG-subcategories of $\md{C}$) may be computed. This paper is the first in a series, and presents only the general theory with no concrete examples. In the second paper together with Patrick Elliott we will present examples, both of the minimal models of the DG-algebra $\End(k^{\stab})$ for the case of an isolated singularity and the generator, minimal models of DG-modules of the form $\Hom(k^{\stab}, X)$, and other examples involving the versal deformation of $A_n$-singularities and minimal models of DG-algebras $\End(X)$ for some interesting examples of matrix factorizations (and bifactorisations, such as the permutation defects of [?]).
+\\
 
-\newpage
+This paper is part of a series of works \cite{??,??} exploring the idea of \emph{algorithmic} topological field theory. For concreteness, let us consider two-dimensional defect TFT \cite{??,??}. An \emph{algorithmic} TFT of this kind consists not only of a symmetric monoidal functor
+\[
+Z: \operatorname{Bord}_{2,1}^{D_1,D_2} \lto \operatorname{Vect}_k
+\]
+but of a Turing machine $\mathscr{U}_Z$ which, given an encoding on its input tape of an object or morphism of $\operatorname{Bord}_{2,1}^{D_1,D_2}$ (including, in the case of morphisms, an encoding of all the defect conditions) halts in finite time with an encoding of $Z(M)$ on its output tape. In a sense, $\mathscr{U}_Z$ serves as a kind of universal Turing machine for which bordisms are algorithms.
+
+The problem of constructing $\mathscr{U}_Z$ can be approached on an ad hoc basis, but at least for those TFTs whose algebraic data arises from homological algebra, there is a principled approach similar to the one espoused for constructive algebraic topology in \cite{constructat}. The idea is to arrange for every homological object which appears in the calculation of $Z(M)$ from $M$ to be paired with a finite model via a strong deformation retract; such pairings are referred to as \emph{objects with effective homology} in \cite{constructat, constructat2}. %Since all steps in calculating $Z(M)$ will naturally construct new finite models and new strong deformation retracts, the execution of $\mathscr{U}_Z$ may be modelled as a series of reductions in the sense of \cite{constructat}.
+
+In typical cases of geometric origin, for instance topological Landau-Ginzburg models, the morphisms $M$ in the bordism category may be smoothly varied - for instance, if the defect conditions arise in continuous families. It is natural, therefore, to ask about the derivatives of the functor $Z$ with respect to these parameters. One way to make sense of this problem is via $A_\infty$-categories and differential linear logic \cite{??,??}, and for the particular case of Landau-Ginzburg models, this paper provides the relevant effective models.
 
 \section{Background}
 
@@ -188,9 +197,9 @@ Often we will simply write $\varepsilon_j$ for $\varepsilon_j \wedge (-)$ and $\
 \big[ \varepsilon_i, \varepsilon_j^* \big] = \delta_{ij} \cdot 1\,.
 \ee
 
-\subsection{Quasi-regular sequences and connections}
+\subsection{Formal tubular neighborhoods}
 
-In this section we recall the definition of quasi-regular sequences and potentials, and explain the geometric content of the connections which play a crucial role in the construction of strong deformation retracts in the body of the paper. For more on the theory of quasi-regular sequences see \cite{matsumura}, \cite[Chapitre $0$ \S 15.1]{EGA4} and \cite[Section\,10.68]{stacks_project}.
+In this section we introduce the geometric content of the strong deformation retract which forms the basis of this paper, based on the idea of a formal tubular neighborhood \cite{cuntzquillen, lipman}. We begin with a brief introduction to quasi-regular sequences, for more on which see \cite{matsumura}, \cite[Chapitre $0$ \S 15.1]{EGA4} and \cite[Section\,10.68]{stacks_project}.
 
 \begin{definition} A sequence $t_1,\ldots,t_n$ in a commutative ring $R$ is \emph{quasi-regular} if, writing $I = (t_1,\ldots,t_n)$, the morphism of $R/I$-algebras
 \begin{gather*}
@@ -200,20 +209,20 @@ In this section we recall the definition of quasi-regular sequences and potentia
 is an isomorphism. In particular, this means that $I/I^2 \cong \bigoplus_{i=1}^n R/I \cdot \overline{t_i}$.
 \end{definition}
 
-We briefly recall the motivation for this definition from algebraic geometry.
+We recall the motivation for this definition from algebraic geometry.
 
-\begin{remark} Let $Y$ be a noetherian scheme and let $i: X \lto Y$ be a closed subscheme with ideal sheaf $\mathscr{I}$. As in differential geometry the first-order deformations of $X$ in $Y$ are controlled \cite[Theorem VI-29]{eisenbudharris} by the normal sheaf
+\begin{remark} Let $Y$ be a noetherian scheme and let $i: X \lto Y$ be a closed subscheme with ideal sheaf $\mathscr{I}$. The first-order deformations of $X$ in $Y$ are controlled \cite[Theorem VI-29]{eisenbudharris} by the normal sheaf
 \[
 \mathscr{N}_{X/Y} = \Hom_{\cat{O}_X}(\mathscr{I}/\mathscr{I}^2, \cat{O}_X).
 \]
-However, to correctly describe the space of normal directions to $X$ in $Y$ beyond first-order requires more than just the normal sheaf. The correct approach is to start with the blowup $\pi$ of $Y$ along $X$ which is described by a universal property, and then look at the closed subscheme of that blowup induced by $X$ as in the diagram:
+In general, the full description of the space of normal directions to $X$ in $Y$ requires more than just the normal sheaf. The correct approach is to start with the blowup $\pi$ of $Y$ along $X$ (which is described by a universal property) and then look at the closed subscheme of that blowup induced by $X$, as in the diagram:
 \[
 \xymatrix@C+2pc{
 \operatorname{Proj}_X( \oplus_{i \ge 0} \mathscr{I}^i/\mathscr{I}^{i+1} ) \ar[r]^-j\ar[d] & \operatorname{Proj}_Y( \oplus_{i \ge 0} \mathscr{I} ) \ar[d]^-{\pi}\\
 X \ar[r]_-{i} & Y\,.
 }
 \]
-The closed subscheme $j$ of the blowup (called the strict transform of $X$) is given by the relative Proj of the sheaf of graded algebras $\oplus_{i \ge 0} \mathscr{I}^i/\mathscr{I}^{i+1}$ on $X$, and its points give the correct notion of a point on $X$ together with a normal direction in $Y$. For this reason the scheme $C_X(Y) = \Spec_X( \oplus_{i \ge 0} \mathscr{I}^i / \mathscr{I}^{i+1} )$, whose projectivisation is the strict transform of $X$ in the blowup, is often called the \emph{normal cone} of $X$ in $Y$ \cite{??,??}.
+The closed subscheme $j$ of the blowup (called the strict transform of $X$) is given by the relative Proj of the sheaf of graded algebras $\oplus_{i \ge 0} \mathscr{I}^i/\mathscr{I}^{i+1}$ on $X$, and its points give the correct notion of a point on $X$ together with a normal direction in $Y$. For this reason the scheme $C_X(Y) = \Spec_X( \oplus_{i \ge 0} \mathscr{I}^i / \mathscr{I}^{i+1} )$, whose projectivisation is the strict transform of $X$ in the blowup, is called the \emph{normal cone} of $X$ in $Y$ \cite{fulton}.
 \end{remark}
 
 Thus, to say that a sequence $t_1,\ldots,t_n$ is quasi-regular is to say that the projectivised normal cone of $X = \Spec(R/I)$ in $Y = \Spec(R)$ is the space of lines in the normal bundle, since the definition of quasi-regularity gives 
@@ -223,38 +232,40 @@ Thus, to say that a sequence $t_1,\ldots,t_n$ is quasi-regular is to say that th
 &\cong \Spec( \operatorname{gr}_ I R)\\
 &= C_X(Y)\,.
 \end{align*}
-Suppose we have a smooth manifold $Y$, a submanifold $X \subseteq Y$ and a smooth function $f$ on a neighborhood of $X$. We can define the derivative of $f$ in the directions normal to $X$, by putting a suitable connection on the restriction of the sheaf of smooth functions $\cat{O}_Y^\infty$ to a suitable open neighborhood of $X$. This connection can be produced by taking a tubular neighborhood, which allows us to identify a neighborhood of the zero section $X \lto N_{X/Y}$ of the normal bundle with an open neighborhood of $X$ in $Y$. 
+Recall that in differential geometry if we are given a submanifold $X$ of a smooth manifold $Y$ the tubular neighborhood theorem \cite[\S 4.5]{hirsch} identifies an open neighborhood of the zero section of the normal bundle $N_{X/Y} \lto X$ with an open neighborhood of $X$ in $Y$. 
 
-There is no direct analogue of this identification of neighborhoods for a closed immersion $i: X \lto Y$ of schemes, even if we are in the good situation where $I = (t_1,\ldots,t_n)$ is generated by a quasi-regular sequence. To ask for such an identification, even at the level of infinitesimal neighborhoods of $X$ in the normal cone $C_X(Y)$ and $Y$ respectively, would be to task in the affine case above for an isomorphism of topological rings
-\[
+There is no direct analogue of this identification of neighborhoods for a general closed immersion $i: X \lto Y$ of schemes. Let us discuss what such an identification would mean at the level of formal neighborhoods in the affine case, assuming that $I = (t_1,\ldots,t_n)$ is generated by a quasi-regular sequence. Completing the normal cone $C_X(Y)$ along the zero section means completing $R/I[z_1,\ldots,z_n]$ in the $(z_1,\ldots,z_n)$-adic topology, while completing $Y$ along $X$ means taking the $I$-adic completion of $R$, so that such an identification would amount to an isomorphism of topological rings
+\be\label{eq:formaltubular}
 R/I\llbracket z_1,\ldots,z_n \rrbracket \lto \widehat{R}
-\]
-where $\widehat{R}$ is the $I$-adic completion. It easy to produce examples where this fails:
+\ee
+where $\widehat{R}$ denotes the $I$-adic completion. It easy to produce examples where this fails:
 
-\begin{example} Let $k$ be a field, $R = k[x]$ and $I = (x^d)$ for $d > 1$. Since the $I$-adic topology is the same as the $(x)$-adic topology, 
+\begin{example}\label{eq:example_nontub} Let $k$ be a field, $R = k[x]$ and $I = (x^d)$ for $d > 1$. Since the $I$-adic topology is the same as the $(x)$-adic topology, 
 \[
 R/I\llbracket z \rrbracket = k[x]/(x^d) \llbracket z \rrbracket \neq k\llbracket x \rrbracket = \widehat{R}\,,
 \]
 since one ring is reduced while the other is not.
 \end{example}
 
-The good news is that if we only want to define a connection on the ring of functions which differentiates in the directions normal to $X$, we do not need to identify infinitesimal neighborhoods of $X$ in $C_X(Y)$ and $Y$, as the weaker statement in the following proposition will do.
+However, if $R/I$ is smooth \cite[Definition 28.D]{matsumura}, so that we are in a situation more resembling the one in differential geometry, there is indeed an isomorphism of topological rings of the form \eqref{eq:formaltubular}. This \emph{formal tubular neighborhood theorem} has been exploited in the noncommutative setting by Cuntz-Quillen \cite[Theorem 2]{cuntzquillen}. 
 
-\begin{setup} For the rest of this section let $R$ be a $k$-algebra, and let $t_1,\ldots,t_n$ be a quasi-regular sequence in $R$ such that, writing $I = (t_1,\ldots,t_n)$ the quotient $R/I$ is a finitely generated projective $k$-module.
+In our applications, however, Example \ref{eq:example_nontub} is more typical, as $I$ is generated by the partial derivatives of a potential $W$ and the critical locus $R/I$ of a potential is rarely smooth. Nonetheless, while we cannot expect a strong analogue of the tubular neighborhood theorem in the sense of an isomorphism of topological algebras, Lipman proves in \cite{lipman} there is nonetheless an isomorphism of \textsl{$k\llbracket z_1,\ldots,z_n \rrbracket$-modules} in the necessary generality.
+
+\begin{setup} For the rest of this section let $R$ be a $k$-algebra, and let $t_1,\ldots,t_n$ be a quasi-regular sequence in $R$ such that, writing $I = (t_1,\ldots,t_n)$, the quotient $R/I$ is a finitely generated projective $k$-module.
 \end{setup}
 
-\begin{proposition}[Lipman]\label{prop_algtube} Any $k$-linear section $\sigma$ of the quotient $\pi: R \lto R/I$ induces an isomorphism of $k\llbracket z_1,\ldots,z_n \rrbracket$-modules
+\begin{theorem}[Lipman]\label{prop_algtube} Any $k$-linear section $\sigma$ of the quotient $\pi: R \lto R/I$ induces an isomorphism of $k\llbracket z_1,\ldots,z_n \rrbracket$-modules
 \[
 \sigma^*: R/I \otimes_k k\llbracket z_1,\ldots,z_n \rrbracket \lto \widehat{R}
 \]
-where $\widehat{R}$ denotes the $I$-adic completion.
-\end{proposition}
+where $\widehat{R}$ denotes the $I$-adic completion. If further $R/I$ is smooth over $k$ then there exists a section $\sigma$ such that $\sigma^*$ is an isomorphism of topological $k$-algebras.
+\end{theorem}
 \begin{proof}
 See \cite{??}. Given a section $\sigma$ the map $\sigma^*(s \otimes z^M) = \sigma(s) t^M$ is induced by extension of scalars, making $\widehat{R}$ a $k\llbracket \bold{z} \rrbracket$-module by making $z_i$ act as multiplication by $t_i$. The main point is that every $r \in \widehat{R}$ has a \emph{unique} representation as a power series
 \be\label{eq:uniq_decompr}
 r = \sum_{M \in \mathbb{N}^n} \sigma(r_M) t^M
 \ee
-for elements $r_M \in R/I$, and the inverse to $\sigma^*$ sends $r$ to $\sum_M r_M z^M$.
+for elements $r_M \in R/I$, and the inverse to $\sigma^*$ sends $r$ to $\sum_M r_M z^M$. If $R/I$ is smooth then by a standard argument \cite{matsumura} we can produce a section $\sigma: R/I \lto \widehat{R}$ which is a morphism of $k$-algebras. It is clear then that $\sigma^*$ is an isomorphism of topological algebras.
 \end{proof}
 
 Recall from \cite{??} the notion of a $k$-linear connection on a module over a $k$-algebra. As alluded to above, we can use the isomorphism of Lemma \ref{??} to produce connections.
@@ -266,39 +277,96 @@ Recall from \cite{??} the notion of a $k$-linear connection on a module over a $
 on $\widehat{R}$ as a $k[\bold{z}]$-module.
 \end{corollary}
 \begin{proof}
-The usual partial derivatives give a $k$-linear connection on $k\llbracket \bold{z} \rrbracket$ as a $k[\bold{z}]$-module which extends, by Propositon \ref{prop_algtube}, to a connection on $\widehat{R}$. In terms of the power series representation \eqref{eq:uniq_decompr} it is given by
-\be
+The usual partial derivatives give a $k$-linear connection on $k\llbracket \bold{z} \rrbracket$ as a $k[\bold{z}]$-module which extends, by Propositon \ref{prop_algtube}, to a connection on $\widehat{R}$, see \cite{??}. In terms of the power series representation \eqref{eq:uniq_decompr} it is given by
+\be\label{eq:explicit_connection}
 \nabla_\sigma(r) = \sum_{j=1}^n \sum_{M \in \mathbb{N}^n} M_j \sigma(r_M) t^{M - e_j} \otimes dz_j\,.
 \ee
 \end{proof}
-The functions $f \in \widehat{R}$ which are ``constant'' in the normal directions according to this connection, that is, which satisfy $\nabla_\sigma(f) = 0$, are precisely those in the image of the section $\sigma$. There is no ``intrinsic'' derivative of $f$ which is independent of choices, but the various algebraic constructions we perform using the connection $\nabla_\sigma$ will be independent of the choice of section $\sigma$ up to homotopy, nonetheless.
 
 \begin{remark} With a section $\sigma$ fixed, we will typically abuse notation and write $\nabla$ for the associated connection. We also introduce $k$-linear operators $\frac{\partial}{\partial z_i}: \widehat{R} \lto \widehat{R}$ by the identity
 \[
 \nabla = \sum_{j=1}^n \frac{\partial}{\partial z_i} dz_j \,.
 \]
-Typically we write $\partial_{z_i}$ for these operators. In practice we think of this operator as $\frac{\partial}{\partial t_i}$, and this notation, while misleading, is helpful.
+The operators $\frac{\partial}{\partial z_i}$ depend on the choice of section $\sigma$, but typically we will abuse notation and use one of two alternative notations for this operator
+\[
+\partial_{t_i} = \frac{\partial}{\partial t_i} := \frac{\partial}{\partial z_i}\,.
+\]
 \end{remark}
 
-\begin{example} Let $k$ be a field, $R = k[x]$ and $I = (x^d)$, with $t = x^d$. Choose the $k$-linear section
+\begin{definition} The Koszul complex of the sequence $t_1,\ldots,t_n$ over $\widehat{R}$ is
 \[
-\sigma: R/I \lto R\,, \qquad \sigma(x^i) = x^i \quad 0 \le i \le d - 1\,,
+(K, d_K) = \Big( \bigwedge( k \theta_1 \oplus \cdots \oplus k \theta_n ) \otimes_k \widehat{R}, \,\,\sum_i t_i \theta_i^* \Big)\,.
 \]
-and let $\nabla_\sigma$ be the associated connection. Then
+By identifying $\theta_i$ with $dz_i$ we identify $K$ with $\widehat{R} \otimes_{k[\bold{z}]} \Omega^*_{k[\bold{z}]/k}$.
+\end{definition}
+
+For the remainder of the section we fix a section $\sigma$ and associated connection $\nabla = \nabla_\sigma$. We have the following $k$-linear operator on $\widehat{R}$:
 \[
-\frac{\partial}{\partial z}( x^2 + x^{d+1} ) = \frac{\partial}{\partial z}( x^2 \cdot 1 + x \cdot x^d ) = x\,.
+d_K \nabla_\sigma = \sum_i t_i \frac{\partial}{\partial t_i}\,.
+\]
+Using \eqref{eq:explicit_connection}, this operator can be written explicitly:
+\[
+d_K \nabla_\sigma(r) = \sum_{M \in \mathbb{N}^n} |M| \sigma(r_M) t^M
+\]
+where $|M| = \sum_{j=1}^n M_j$.
+
+\begin{lemma} If $R/I$ is smooth, $\sigma$ may be chosen such that $d_K \nabla_\sigma$ is a derivation of $\widehat{R}$.
+\end{lemma}
+\begin{proof}
+Suppose $\sigma: R/I \lto \widehat{R}$ is an algebra morphism. Then for $r,s \in R$ we have
+\[
+\sum_M (rs)_M z^M = \sum_M \sum_{A + B = M} r_As_B z^M\,,
+\]
+and hence $(rs)_M = \sum_{A+B = M} r_A s_B$. From this the claim follows.
+\end{proof}
+
+Recall that for a smooth manifold $Y$ and submanifold $X \subseteq Y$, any tubular neighborhood $f: N_{X/Y} \lto Y$ determines an open neighborhood $U = f(N_{X/Y})$ of $X$ and on this open set a vector field $\mathscr{F} = f_*(\mathscr{E})$ induced by the Euler field $\mathscr{E}$ on $N_{X/Y}$, which is the infinitesimal generator of the scaling action of $\mathbb{R}$ in the fibers. In local coordinates $\mathscr{E} = \sum_i x_i \frac{\partial}{\partial x_i}$ where $x_i$ are the coordinates in the fiber directions. Conversely, the integral curves of this vector field determine the tubular neighborhood $f$ \cite[\S 2.3]{burs} and, in particular, $\mathscr{F}$ gives rise to a deformation retract of $U$ onto $X$.
+
+When $R/I$ is smooth, the derivation $d_K \nabla_\sigma$ is clearly analogous to $\mathscr{F}$. In general $d_K \nabla_\sigma$ will \emph{not} be a derivation, but nonetheless the operators $d_K, \nabla_\sigma$ still give rise to a deformation retract of $\widehat{R}$ onto $R/I$ in a sense that we will make precise below.
+
+\begin{example} Let $k$ be a field, $R = k[x]$ and $I = (x^d)$, with $t = x^d$. Choose the $k$-linear section $\sigma: R/I \lto R$ defined by $\sigma(x^i) = x^i$ for $0 \le i \le d - 1$. Then
+\[
+\frac{\partial}{\partial t}( x^2 + x^{d+1} ) = \frac{\partial}{\partial t}( x^2 \cdot 1 + x \cdot x^d ) = x\,.
+\]
+Observe that $d_K \nabla = t \frac{\partial}{\partial t}$ is \emph{not} a derivation, as for example $t\frac{\partial}{\partial t}( x^d ) = t$ but
+\[
+x d_K \nabla(x^{d-1}) + d_K \nabla(x) x^{d-1} = 0\,.
 \]
 \end{example}
 
-From the point of view of homological algebra, the Koszul complex 
+A deformation retract is a special kind of homotopy idempotent; let us now examine the way in which, in the smooth setting, the vector field $\mathscr{F}$ gives rise to idempotents. The Lie derivative $[-, \mathscr{F}]$ gives rise to an idempotent linear operator on the bundle $TY|_X$ which is a splitting of the exact sequence 
 \[
-K(R, \bold{t}) = \Big( \bigwedge( k \theta_1 \oplus \cdots \oplus k \theta_n ) \otimes_k R, \,\,\sum_i t_i \theta_i^* \Big)
+0 \lto TY \lto TX|_Y \lto N_{X,Y} \lto 0\,.
 \]
-is a a projective resolution of the $R$-algebra $R/I$ in the world of DG-$R$-algebras. Once we complete in the $I$-adic topology the relationship between these two DG-algebras becomes even stronger: there is a $k$-linear \emph{homotopy equivalence}
+While the Lie derivative with $\mathscr{F}$ gives an idempotent operator on vector fields, it is not idempotent on smooth functions. However, a rescaling of its action on smooth functions does give an idempotent, the corresponding algebra being the following:
+
+\begin{remark} Consider the following diagram of $k$-linear operators
+\be
+\xymatrix@C+3pc@R+2pc{
+\widehat{R} \otimes_{k[\bold{z}]} \Omega^2_{k[\bold{z}]/k} \ar@<0.8ex>[r]^-{d_K} &
+\widehat{R} \otimes_{k[\bold{z}]} \Omega^1_{k[\bold{z}]/k} \ar@<0.8ex>[l]^-{\nabla^1_\sigma}\ar@<0.8ex>[r]^-{d_K} & \widehat{R} \ar@<0.8ex>[l]^-{\nabla^0_\sigma} \ar@<0.8ex>[d]^-{\pi} \\
+& & R/I \ar@<0.8ex>[u]^-{\sigma}
+}
+\ee
+where $\pi$ is the quotient map, and $\nabla^*_\sigma$ denotes the extension of $\nabla_\sigma$ to an operator on $\widehat{R} \otimes_{k[\bold{z}]} \Omega^*_{k[\bold{z}]/k}$. It is easy to check that
+\be
+\left( d_K \nabla^1_\sigma + \nabla^0_\sigma d_K \right)\left( \sum_N \sigma(s_N)t^N \otimes dz_j \right) = \sum_N (1 + |N|) \sigma(s_N) t^N \otimes dz_j\,,
+\ee
+and hence
+\begin{align*}
+d_K \left( d_K \nabla^1_\sigma + \nabla^0_\sigma d_K \right)^{-1} \nabla^0_\sigma(r) &= r - \sigma(r_0)\,.
+\end{align*}
+So while $d_K \nabla^0_\sigma$ is not an idempotent operator on $\widehat{R}$, the rescaled operator
 \[
-K(\widehat{R}, \bold{t}) \lto \widehat{R}/I\widehat{R} = R/I\,.
+d_K \left( d_K \nabla^1_\sigma + \nabla^0_\sigma d_K \right)^{-1} \nabla^0_\sigma
 \]
-A connection of the form $\nabla_\sigma$ is the only natural way of writing down the data which defines this homotopy equivalence. This homotopy equivalence gives us a much more flexible model of $R/I$, which may be used for example in the setting of the perturbation lemma.
+is an idempotent, which splits $\widehat{R}$ as a $k$-linear direct sum
+\[
+\widehat{R} \cong R/I \oplus I\,.
+\]
+\end{remark}
+
+
 
 \begin{definition} A \emph{strong deformation retract} over a commutative ring $S$ is a pair of morphisms of $\mathbb{Z}_2$-graded complexes of $S$-modules $\pi, \sigma$ as in the diagram
 \begin{equation}\label{eq:defn_sdr}
@@ -322,7 +390,7 @@ F_\theta = k\theta_1 \oplus \cdots \oplus k \theta_n\,,
 \ee
 where we make $F_\theta$ a $\mathbb{Z}_2$-graded $k$-module by taking $|\theta_i| = 1$.
 
-\begin{proposition} There is a strong deformation retract
+\begin{proposition} There is a strong deformation retract over $k$
 \begin{equation}\label{eq:defn_sdr}
 \xymatrix@C+3pc{
 (R/I,0) \ar@<-1ex>[r]_-\sigma & \Big( \bigwedge F_\theta \otimes_k \widehat{R}, \,\,d_K = \sum_i t_i \theta_i^*\, \Big)\,, \ar@<-1ex>[l]_-\pi
@@ -332,7 +400,7 @@ where
 \begin{itemize}
 \item $\sigma$ is the section $R/I \lto \widehat{R}$ followed by the inclusion,
 \item $\pi$ is the quotient map 
-\item $H_\sigma = [\nabla, d_K]^{-1} d_K$.
+\item $H_\sigma = [\nabla, d_K]^{-1} \nabla$.
 \end{itemize}
 \end{proposition}
 
@@ -1263,7 +1331,25 @@ The Stacks Project, \href{http://stacks.math.columbia.edu/}{http://stacks.math.c
 Matsumura, \emph{book}.
 
 \bibitem{eisenbudharris}
-Eisenbud, David, and Joe Harris. The geometry of schemes. Vol. 197. Springer Science \& Business Media, 2006.
+D.~Eisenbud and J.~Harris, \textsl{The geometry of schemes}, Vol. 197. Springer Science \& Business Media, 2006.
+
+\bibitem{cuntzquillen}
+J. Cuntz and D. Quillen, \textsl{Algebra extensions and nonsingularity}, Journal of the AMS \textbf{8}, No. 2 (1995).
+
+\bibitem{lipman}
+J. Lipman, \textsl{The residues book}.
+
+\bibitem{burs}
+Burszytn et al, \textsl{Splitting theorems for Poisson and related structures}.
+
+\bibitem{hirsch}
+Hirsch, \textsl{Differential topology}.
+
+\bibitem{constructat}
+J.~Rubio and F.~Sergeraert, \textsl{Constructive algebraic topology}, Bulletin des Sciences Math\'ematiques 126.5 (2002), 389--412.
+
+\bibitem{constructat2}
+J.~Rubio and F.~Sergeraert, \textsl{Constructive homological algebra and applications}, arXiv preprint arXiv:1208.3816 (2012).
 
 \end{thebibliography}
 
