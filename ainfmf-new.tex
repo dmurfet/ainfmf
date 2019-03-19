@@ -150,10 +150,9 @@ To explain in more detail, let $\AA = \mfdg(R,W)$ be the DG-category of finite-r
 \[
 \HH_{\AA} = \bigoplus_{X,Y} \AA(X,Y)
 \]
-equipped with some $R$-linear structure, namely, the differential $\mu_1$ and composition operator $\mu_2$. Let $\varphi: k \lto R$ denote the inclusion of constants. We can ask if the restriction of scalars $\varphi_*( \HH_{\AA} )$ is $A_\infty$-homotopy equivalent over $k$ to an $A_\infty$-category which is Hom-finite over $k$, and can such a finite model be described constructively? This is related to the problem of pushforwards considered in \cite{pushforward} and, there as here, it is unclear that in general a \emph{direct} construction of the finite pushforward exists.
+equipped with some $R$-linear structure, namely, the differential $\mu_1$ and composition operator $\mu_2$. Let $\varphi: k \lto R$ denote the inclusion of constants. We can ask if the restriction of scalars $\varphi_*( \HH_{\AA} )$ is $A_\infty$-homotopy equivalent over $k$ to an $A_\infty$-category which is Hom-finite over $k$, and can such a finite model be described constructively? This is related to the problem of pushforwards considered in \cite{pushforward} and, here as there, it is unclear that in general a \emph{direct} construction of the finite pushforward exists.
 
 Instead, following \cite{pushforward} the conceptual approach we adopt here is to seek an algorithm which constructs both a larger object $\mathcal{B}$ which is a Hom-finite $A_\infty$-category over $k$ together with an idempotent $E: \mathcal{B} \lto \mathcal{B}$ which splits to $\AA$. More precisely, the larger object is obtained by adjoining to $\AA$ a number of odd supercommuting variables $\theta_1,\ldots,\theta_n$ and completing along the the critical locus of $W$ to obtain the DG-category
-% The usual prescription for computing minimal models when $k$ is a field is to somehow choose an collection of splittings of short exact sequences to define a homotopy equivalence between $H^*(\AA)$ and $\AA$. From our point of view the main drawback of this approach is that the minimal model thus obtained is not constructive: the higher operations on $H^*(\AA)$ depend on choosing representative cocycles for a basis of the cohomology and these choices cannot be made constructively from the input data (by which we mean the coefficients of the potential and the differentials of the matrix factorisations involved).\footnote{Well when $k$ is a field you can use Gr\"obner basis methods to compute a basis, of course, so you could argue there \emph{is} an algorithm, and moreover many of the existing methods just take a matrix factorisation as input then compute cohomology and so on. So we need to be more precise here. It's something like: in the Gr\"obner basis algorithm you essentially invert certain coefficients, so you only get rational functions on the set of potentials and matrix factorisations whereas our construction is polynomial.}
 \[
 \AA_\theta = \bigwedge F_\theta \otimes_k \AA \otimes_R \widehat{R}\,,
 \]
@@ -187,20 +186,6 @@ of the completion $\AA \otimes_R \widehat{R}$, which we show is homotopy equival
 
 \textbf{Acknowledgements.} Thanks to Nils Carqueville for introducing me to $A_\infty$-categories, Calin Lazaroiu for encouragement and the opportunity to present the results at the workshop ``String Field Theory of Landau-Ginzburg models'' at the IBS Center for Geometry and Physics in Pohang. The author was supported by the ARC grant DP180103891.
 
-% Note that as in Weinberg we group certain sums of creation and annihilation operators together as $\psi(x)$ rather than splitting it into summands and calling each one an interaction vertex. There are many presentations.
-
-%\begin{remark} Here is a novel model of cut
-%\[
-%W \lto V \lto U
-%\]
-%begin with $X$, a $\cat{A}_V$-$\cat{A}_W$-bimodule, $Y$ a $\cat{A}_U$-$\cat{A}_V$-bimodule. Turn these into MFs
-%\begin{align*}
-%|X| = k^{\stab}_{V - W} \otimes X\\
-%|Y| = k^{\stab}_{U - V} \otimes Y
-%\end{align*}
-%That is, execute the algorithms. Then tensor $|Y| \otimes |X|$. Then go back again, to compute the minimal model.
-%\end{remark}
-
 \section{Background}
 
 Throughout $k$ is a commutative $\mathbb{Q}$-algebra and unless specified otherwise $\otimes$ means $\otimes_k$. If $\bold{x} = (x_1,\ldots,x_n)$ is a sequence of formal variables then $k[\bold{x}]$ denotes $k[x_1,\ldots,x_n]$ and similarly for power series rings. Given $M \in \mathbb{N}^n$ we write $x^M$ for $x_1^{M_1} \cdots x_n^{M_n}$. 
@@ -217,11 +202,11 @@ where $F_\xi = \bigoplus_{i=1}^r k \xi_i$ denotes a free $k$-module of rank $r$ 
 
 We define odd operators $\xi_j \wedge (-), \xi_j^* \,\lrcorner\, (-)$ on $\bigwedge F_\xi$ by wedge product and contraction, respectively, where contraction is defined by the formula
 \begin{align*}
-\xi_j^* \,\lrcorner\, \Big( \xi_{i_1} \cdots \xi_{i_s} \Big) = \sum_{l=1}^s (-1)^{l-1} \delta_{j, i_l} \xi_{i_1} \wedge \cdots \wedge \widehat{ \xi_{i_l} } \wedge \cdots \wedge \xi_{i_s}\,.
+\xi_j^* \,\lrcorner\, \Big( \xi_{i_1} \wedge \cdots \wedge \xi_{i_s} \Big) = \sum_{l=1}^s (-1)^{l-1} \delta_{j, i_l} \xi_{i_1} \wedge \cdots \wedge \widehat{ \xi_{i_l} } \wedge \cdots \wedge \xi_{i_s}\,.
 \end{align*}
 Often we will simply write $\xi_j$ for $\xi_j \wedge (-)$ and $\xi_j^*$ for $\xi_j^* \,\lrcorner\, (-)$. Clearly with this notation, as operators on $\bigwedge F_\xi$, we have the commutator (as always, graded)
 \be\label{eq:wedge_contract_comm}
-\big[ \xi_i, \xi_j^* \big] = \xi_i \xi_j^* + \xi_j^* \xi_i = \delta_{ij} \cdot 1\,.
+\big[ \xi_i, \xi_j^* \big] = \xi_i \xi_j^* + \xi_j^* \xi_i = \delta_{ij} \cdot 1
 \ee
 and also $[ \xi_i, \xi_j ] = [\xi_i^*, \xi_j^*] = 0$.
 
@@ -278,20 +263,14 @@ equipped with the induced $\nZ_2$-grading. Let $Q$ be the commutative associativ
 \ee
 with the obvious $Q$-bimodule structure involving the values of $a_0, a_n$, so that the forward suspended product $r_n$ is an odd $Q$-bilinear map from $\HH_{\AA}[1]^{\otimes_Q n} \lto \HH_{\AA}[1]$.
 
-%\subsection{Homological perturbation}
-
-%We will not give a full exposition of the homological perturbation lemma here, but we do need to fix some notation. What we call a \emph{deformation retract} in \cite{cut} is called a \emph{strict deformation retract} in \cite[\S 3.3]{lazaroiu}, with $P = \pi \sigma$.
-
-%Explain the connection to minimal models etc. Just reference Lazaroiu for the homological perturbation construction (also Seidel) but explain the branch denotation.
-
 \section{The idempotent finite model}\label{section:the_model}
 
 Throughout $k$ is a commutative $\mathbb{Q}$-algebra and all $A_\infty$-categories are $k$-linear.
 
-\begin{definition} An $A_\infty$-category $\mathcal{C}$ is called \emph{Hom-finite} if for every pair $X,Y$ of objects the underlying $k$-module of $\mathcal{C}(X,Y)$ is a finitely generated and projective $k$-module
+\begin{definition} An $A_\infty$-category $\mathcal{C}$ is called \emph{Hom-finite} if for every pair $a,b$ of objects the underlying $k$-module of $\mathcal{C}(a,b)$ is a finitely generated and projective $k$-module.
 \end{definition}
 
-\begin{definition} An \emph{idempotent finite $A_\infty$-model} of a DG-category $\AA$ is a pair $(\BB, E)$ consisting of a Hom-finite $A_\infty$-category $\BB$, an $A_\infty$-functor $E: \BB \lto \BB$, and a diagram
+\begin{definition} An \emph{idempotent finite $A_\infty$-model} of a DG-category $\AA$ is a pair $(\BB, E)$ consisting of a Hom-finite $A_\infty$-category $\BB$ and $A_\infty$-functor $E: \BB \lto \BB$, and a diagram
 \[
 \xymatrix@C+3pc{
 \AA \ar@<1ex>[r]^I & \BB \ar@(ur,dr)^E \ar@<1ex>[l]^P
@@ -312,7 +291,7 @@ We recall from \cite{lgdual} the definition of a potential:
 
 A typical example is a polynomial $W \in \mathbb{C}[x_1,\ldots,x_n]$ with isolated critical points \cite[Example 2.5]{lgdual}. As shown in \cite{lgdual}, these hypotheses on a potential are sufficient to produce all the properties relevant to two-dimensional topological field theory, even if $k$ is not a field. If $k$ is Noetherian then (iii) follows from (i).
 
-\begin{definition} Given a potential $W \in R = k[x_1,\ldots,x_n]$ the DG-category $\AA = \mfdg(R,W)$ has as objects \emph{matrix factorisations} of $W$ over $R$ \cite{EisenbudMF}, that is, the pairs $(X, d_X)$ consisting of a $\mathbb{Z}_2$-graded free $R$-module $X$ of finite rank and an odd $R$-linear operator $d_X: X \lto X$ satisfying $d_X^2 = W \cdot 1_X$. We define
+\begin{definition} Given a potential $W \in R = k[x_1,\ldots,x_n]$ the DG-category $\AA = \mfdg(R,W)$ has as objects \emph{matrix factorisations} of $W$ over $R$ \cite{EisenbudMF} that is, the pairs $(X, d_X)$ consisting of a $\mathbb{Z}_2$-graded free $R$-module $X$ of finite rank and an odd $R$-linear operator $d_X: X \lto X$ satisfying $d_X^2 = W \cdot 1_X$. We define
 \begin{gather*}
 \AA(X,Y) = \big( \Hom_R(X,Y) \,, d_{\Hom} \big)\,,\\
 d_{\Hom}(\alpha)  = d_Y \circ \alpha - (-1)^{|\alpha|} \alpha \circ d_X\,.
@@ -357,11 +336,11 @@ At the moment this has no additional structure: it is just a module, not an $A_\
 \item $F_\theta = \bigoplus_{i=1}^n k\theta_i$ is a free $\mathbb{Z}_2$-graded $k$-module of rank $n$, with $|\theta_i| = 1$.
 \item $t_1,\ldots,t_n$ is a quasi-regular sequence in $R$, such that with $I = (t_1,\ldots,t_n)$
 \begin{itemize}
-\item $R/I$ is a finitely generated free $k$-module, and
-\item each $t_i$ acts null-homotopically on $\AA(X,Y)$ for $X,Y \in \AA$
+\item $R/I$ is a finitely generated free $k$-module
+\item each $t_i$ acts null-homotopically on $\AA(X,Y)$ for all $X,Y \in \AA$
 \item the Koszul complex of $t_1,\ldots,t_n$ over $R$ is exact except in degree zero.
 \end{itemize}
-\item We choose a $k$-linear section $\sigma: R/I \lto R$ of the quotient map $R \lto R/I$ and as in Section \ref{section:formaltub} we write $\nabla$ for the associated connection with components $\partial_{t_i}$, the existence of which is explained in Appendix \ref{section:formaltub}.
+\item We choose a $k$-linear section $\sigma: R/I \lto R$ of the quotient map $R \lto R/I$ and as in Appendix \ref{section:formaltub} we write $\nabla$ for the associated connection with components $\partial_{t_i}$.
 \item $\lambda_i^X$ is a null-homotopy for the action of $t_i$ on $\AA(X,X)$ for each $X \in \AA, 1 \le i \le n$.
 \item We choose for $X \in \AA$ an isomorphism of $\nZ_2$-graded $R$-modules
 \[
@@ -374,7 +353,7 @@ where $\coeff{X}$ is a finitely generated free $\nZ_2$-graded $k$-module. Hence
 \end{itemize}
 \end{setup}
 
-\begin{remark} By the hypothesis that $W$ is a potential, the sequence $\bold{t} = (\partial_{x_1} W, \ldots, \partial_{x_n} W)$ satisfies the hypotheses and we may choose $\lambda_i^X$ to be the operator $\partial_{x_i}(d_X)$ defined by choosing a homogeneous basis for $X$ and differentiating entry-wise the matrix $d_X$ in that basis. However some choices of $\bold{t}$ and the $\lambda$'s may be better than others, in the sense that they lead to simpler Feynman rules.% (for example if $\AA$ has a single object $k^{\stab}$, the standard generator, we should take $\bold{t} = (x_1,\ldots,x_n)$).
+\begin{remark} By the hypothesis that $W$ is a potential, the sequence $\bold{t} = (\partial_{x_1} W, \ldots, \partial_{x_n} W)$ satisfies the hypotheses and we may choose $\lambda_i^X$ to be the operator $\partial_{x_i}(d_X)$ defined by choosing a homogeneous basis for $X$ and differentiating entry-wise the matrix $d_X$ in that basis. However some choices of $\bold{t}$ and the $\lambda_i^X$ may be better than others, in the sense that they lead to simpler Feynman rules.% (for example if $\AA$ has a single object $k^{\stab}$, the standard generator, we should take $\bold{t} = (x_1,\ldots,x_n)$).
 \end{remark}
 
 To explain the construction of the higher operations on $\BB$, it is convenient to switch to an alternative presentation of the spaces $\AA(X,Y), \BB(X,Y)$. Consider the following $\nZ_2$-graded $k$-modules, where the grading comes only from $\bigwedge F_\theta$ and the Hom-space:
@@ -384,19 +363,20 @@ To explain the construction of the higher operations on $\BB$, it is convenient 
 \BB'(X,Y) = R/I \otimes \Hom_k(\widetilde{X},\widetilde{Y})\,.
 \end{gather*}
 %where $|\theta_i| = 1$, and elements of $R/I, k \llbracket \bold{t} \rrbracket$ have degree zero. 
-By Lemma \ref{prop_algtube} there is a $k\llbracket \bold{t} \rrbracket$-linear isomorphism $\sigmastar: R/I \otimes k \llbracket \bold{t} \rrbracket \lto \widehat{R}$ and combined with \eqref{eq:chosenCiso} this induces an isomorphism of $\nZ_2$-graded $k\llbracket \bold{t} \rrbracket$-modules
+Using \eqref{eq:chosenCiso} there is an isomorphism of $\nZ_2$-graded $R$-modules $\BB'(X,Y) \cong \BB(X,Y)$. By Lemma \ref{prop_algtube} there is a $k\llbracket \bold{t} \rrbracket$-linear isomorphism $\sigmastar: R/I \otimes k \llbracket \bold{t} \rrbracket \lto \widehat{R}$ and combined with \eqref{eq:chosenCiso} this induces an isomorphism of $\nZ_2$-graded $k\llbracket \bold{t} \rrbracket$-modules
 \be\label{eq:transfer_iso_intro}
 \xymatrix@C+2pc{
 \sigmastar: R/I \otimes \Hom_k(\coeff{Y},\coeff{X}) \otimes k\llbracket \bold{t} \rrbracket \ar[r]^-{\cong} & 
 \Hom_R(Y,X) \otimes_R \widehat{R}
 }
 \ee
-which induces isomorphisms
-\begin{gather*}
-\sigmastar: \AA'(X,Y) \lto \AA(X,Y)\,,\\
-\sigmastar: \BB'(X,Y) \lto \BB(X,Y)\,.
-\end{gather*}
-There are induced isomorphisms $\HH_{\AA'} \cong \HH_{\AA}, \HH_{\AA'_\theta} \cong \HH_{\AA_\theta}$ and $\HH_{\BB} \cong \HH_{\BB'}$ of the total spaces defined as in Section \ref{section:ainfcat}. Using these identifications we transfer operators on $\AA,\AA_\theta,\BB$ to their primed cousins, usually without a change in notation. For example we write $d_\AA$ for
+which induces an isomorphism of $\nZ_2$-graded $k\llbracket \bold{t} \rrbracket$-modules
+\[
+\xymatrix@C+2pc{
+\AA'_\theta(X,Y) \ar[r]_-{\cong}^{\sigmastar} & \AA_\theta(X,Y)
+}\,.
+\]
+Hence there are induced isomorphisms $\HH_{\AA'_\theta} \cong \HH_{\AA_\theta}$ and $\HH_{\BB} \cong \HH_{\BB'}$. Using these identifications we transfer operators on $\AA_\theta,\BB$ to their primed cousins, usually without a change in notation. For example we write $d_\AA$ for
 \[
 \xymatrix@C+2pc{
 \HH_{\AA'_\theta} \ar[r]^-{\sigmastar}_-{\cong} & \HH_{\AA_\theta} \ar[r]^-{d_{\AA}} & \HH_{\AA_\theta} \ar[r]^-{(\sigmastar)^{-1}}_-{\cong} & \HH_{\AA'_\theta}
@@ -406,7 +386,7 @@ This map is the differential in a $k\llbracket \bold{t} \rrbracket$-linear DG-ca
 \[
 \xymatrix@C+2pc{
 \HH_{\AA'_\theta}[1] \otimes_Q \HH_{\AA'_\theta}[1] \ar[r]^-{\cong} & \HH_{\AA_\theta}[1] \otimes_Q \HH_{\AA_\theta}[1] \ar[r]^-{r_2} & \HH_{\AA_\theta}[1] \ar[r]^-{\cong} & \HH_{\AA'_{\theta}}[1]
-}\,.
+}
 \]
 where the unlabelled isomorphisms are $\sigmastar \otimes \sigmastar$ and $(\sigmastar)^{-1}$. Going forward when we refer to $\AA'_\theta$ as a DG-category this structure is understood. Finally the tensor product of the inclusions $k \subset \bigwedge F_\theta$ and $k \subset k\llbracket \bold{t} \rrbracket$, respectively the projections $\bigwedge F_\theta \lto k$ and $k \llbracket \bold{t} \rrbracket \lto k$ define $k$-linear maps $\sigma$ and $\pi$ as in the diagram
 \[
@@ -530,10 +510,10 @@ and by definition $E = I \circ P$.
 %\]
 \end{proof}
 
-At a cohomological level the pushforward of matrix factorisations is expressed in terms of residues and null-homotopies $\lambda$, see for example the results in \cite[\S 11.2]{pushforward} on Chern characters. These residues can be understood as traces of products of commutators with the connection $\nabla$ \cite[Proposition B.4]{pushforward}. The results just stated extend this ``closed sector'' or cohomological level analysis of pushforwards via residues to the ``open sector'' or categorical level, where the supertraces are removed and the higher operations of the idempotent finite model $\BB$ are described directly in terms of the commutators $\vAt_{\AA} = [d_{\AA}, \nabla]$ and homotopies $\lambda$. Moreover, these formulas arise from homological perturbation applied to a kind of tubular neighborhood of the critical locus, so it seems natural to interpret $(\BB, E)$ as a kind of ``$A_\infty$-categorical residue'' of $\AA$.
+At a cohomological level the pushforward of matrix factorisations is expressed in terms of residues and null-homotopies $\lambda$, see for example the results in \cite[\S 11.2]{pushforward} on Chern characters. These residues can be understood as traces of products of commutators with the connection $\nabla$ \cite[Proposition B.4]{pushforward}. The results just stated extend this ``closed sector'' or cohomological level analysis of pushforwards via residues to the ``open sector'' or categorical level, where the supertraces are removed and the higher operations of the idempotent finite model $\BB$ are described directly in terms of the commutators $\vAt_{\AA} = [d_{\AA}, \nabla]$ and homotopies $\lambda$. Moreover, these formulas arise from homological perturbation applied to a kind of tubular neighborhood of the critical locus, so it seems natural to interpret $(\BB, E)$ as a kind of ``$A_\infty$-categorical residue'' of $\AA$ along the subscheme $\Spec(R/I)$.
 \vspace{0.2cm}
 
-Recall that the purpose of the idempotent $E$ is that it encodes the information necessary to ``locate'' $\AA$ within the larger object $\BB$. The information in the lowest piece $E_1$ of this $A_\infty$-idempotent is the simplest, as it simply locates $\AA$ as a subcomplex within $\BB$. 
+Recall that the purpose of the idempotent $E$ is that it encodes the information necessary to ``locate'' $\AA$ within the larger object $\BB$. The information in the lowest piece $E_1$ of this $A_\infty$-idempotent is the simplest, as it locates $\AA$ as a subcomplex within $\BB$. 
 
 \begin{definition}\label{defn:gamma_anddagger} Let $\gamma_i, \gamma_i^\dagger$ be the $k$-linear cochain maps
 \begin{gather*}
@@ -553,7 +533,7 @@ E_1 \simeq \gamma_n \cdots \gamma_1 \gamma_1^\dagger \cdots \gamma_n^\dagger
 \ee
 and $k$-linear homotopies $\gamma_i \simeq \vAt_i$ and
 \be
-\gamma_i^\dagger \simeq -\lambda_i - \sum_{m \ge 1} \sum_{q_1,\ldots,q_m} \frac{1}{(m+1)!} \big[ \lambda_{q_m}\,, \big[ \lambda_{q_{m-1}}, \big[ \cdots [ \lambda_{q_1}, \lambda_i ] \cdots \big] \At_{q_1} \cdots \At_{q_m}\,.
+\gamma_i^\dagger \simeq -\lambda_i - \sum_{m \ge 1} \sum_{q_1,\ldots,q_m} \frac{1}{(m+1)!} \big[ \lambda_{q_m}\,, \big[ \lambda_{q_{m-1}}, \big[ \cdots [ \lambda_{q_1}, \lambda_i ] \cdots \big] \At_{q_1} \cdots \At_{q_m}
 \ee
 where $\vAt_i = [ d_{\AA}, \partial_{t_i} ]$ denotes the $i$th component of the Atiyah class $\vAt_{\AA}$, viewed as an odd closed $k$-linear operator on $\HH_{\BB'}$.
 \end{theorem}
@@ -563,7 +543,7 @@ This is essentially immediate from \cite{cut}, see Appendix \ref{section:proofs}
 
 \subsection{Algorithms}\label{section:the_algorithms}
 
-When $k$ is a field, there are algorithms which compute the $A_\infty$-functors $I, P, E$ and the higher $A_\infty$-products $\rho$ in the sense that once we choose a $k$-basis for $R/I$ and homogeneous $R$-bases for the matrix factorisations, for each fixed $k$ there is an algorithm computing the coefficients in the matrices $I_k, P_k, E_k, \rho_k$. We explain this algorithm in detail only for $\rho_k$, as the algorithms for $I_k, P_k, E_k$ are variations on the same theme using \cite{markl_transfer}.
+When $k$ is a field there are algorithms which compute the $A_\infty$-functors $I, P, E$ and the higher $A_\infty$-products $\rho$ in the sense that once we choose a $k$-basis for $R/I$ and homogeneous $R$-bases for the matrix factorisations, for each fixed $k \ge 1$ there is an algorithm computing the coefficients in the matrices $I_k, P_k, E_k, \rho_k$. We explain this algorithm in detail only for $\rho_k$ as the algorithms for $I_k, P_k, E_k$ are variations on the same theme using \cite{markl_transfer}.
 
 The algorithm is implicit in the presentation of $\rho_k$ as the sum of denotations of operator decorated trees, provided we have algorithms for computing the section $\sigma$, Atiyah classes $\vAt_{\AA}$ and homotopies $\lambda_i$ as operators on $\HH_{\AA'_\theta}$. If $k$ is a field, then by choosing a Gr\"obner basis of the ideal $I$ we obtain such algorithms; see Remark \ref{remark:compute_rdelta} and Remark \ref{remark:grobner}. Over the course of Section \ref{section:towards} and Section \ref{section:feynman_diagram} we present the details of this algorithm in the case where the matrix factorisations are of Koszul type, using Feynman diagrams.
 
@@ -576,8 +556,6 @@ The algorithm is implicit in the presentation of $\rho_k$ as the sum of denotati
 \section{Towards Feynman diagrams}\label{section:towards}
 
 In this section we collect some technical lemmas needed in the presentation of the Feynman rules, in the next section. Throughout the conventions of Setup \ref{setup:overall} remain in force. See Appendix \ref{section:trees} for our conventions on trees, decorations and denotations. Given a binary plane tree $T$ we denote by $T'$ the \emph{mirror} of $T$, which is obtained by exchanging the left and right branch at every vertex. Associated to a decoration $D$ of $T$ is a mirror decoration $D'$ of $T'$. Given a plane tree $T$ decorated by $D$ as explained in Theorem \ref{theorem:main_ainfty_products} let $\operatorname{eval}_{D'}$ be the mirror decoration evaluated without Koszul signs (Definition \ref{defn:evaluation_tree}).
-
-%On the one hand, the forward suspended multiplication $r_2$ involves awkward signs that complicate a diagrammatic presentation, so it is better to switch to the ordinary multiplication $\mu_2$. Moreover, at the moment the Feynman rules involve operators on the completion $\widehat{R}$ which is a complicated object. However, we know from Theorem \ref{prop_algtube} how to rewrite this in terms of simpler objects. 
 
 \begin{lemma}\label{prop:replacer2} We have
 \be\label{eq:proprhoT}
@@ -792,7 +770,7 @@ Once this is done we can represent the operator \eqref{eq:contrib_feynman} as th
 \item In Section \ref{section:koszul_mf} we represent $\HH$ as suggested above.
 \item In Section \ref{section:fenyman_diagram_1} we treat $\vAt_{\AA}, \delta$.
 \item In Section \ref{section:fenyman_diagram_2} we treat $\zeta$.
-\item In Section \ref{section:feynman_diagram_3} we treat $r_2$.
+\item In Section \ref{section:feynman_diagram_3} we treat $\mu_2$.
 \end{itemize}
 Finally, in Section \ref{section:feynman_diagram_4} we give the Feynman rules and explain the whole process of computing with Feynman diagrams in an example.
 
@@ -812,7 +790,7 @@ and then define
 X &= \big( \widetilde{X} \otimes R, \sum_{i=1}^r f_i \xi_i^* + \sum_{i=1}^r g_i \xi_i \big)\,,\label{eq:defn_X_tilde}\\
 Y &= \big( \widetilde{Y} \otimes R, \sum_{j=1}^s u_j \eta_j^* + \sum_{j=1}^s v_j \eta_j \big)\,.\label{eq:defn_Y_tilde}
 \end{align}
-We ultimately want to give a graphical representation of operators on the $k$-module \eqref{eq:hhalt_koszul}, for which relevant operators are polynomials in creation and annihilation operators. It is therefore convenient to rewrite $\Hom_k( \widetilde{Y}, \widetilde{X} )$ in the form of an exterior algebra.
+We ultimately want to give a graphical representation of operators on the $k$-module \eqref{eq:hhalt_koszul}, for which relevant operators are polynomials in creation and annihilation operators. It is therefore convenient to rewrite $\Hom_k( \widetilde{X}, \widetilde{Y} )$ in the form of an exterior algebra.
 
 % see (ainfmf34)
 \begin{lemma}\label{lemma:iso_nu} There is an isomorphism of $\nZ_2$-graded $k$-modules
@@ -874,7 +852,7 @@ where the coefficients $r_{(m,\alpha)} \in k$ are as in Definition \ref{defn:rsh
 \be\label{eq:partial_derivative_op}
 \partial_{t_k}(r) = \sum_{h=1}^\mu \sum_{l=1}^\mu \sum_{\delta \in \mathbb{N}^n} \Big[ \sum_{\alpha + \beta = \delta } \sum_{m=1}^\mu r_{(m,\alpha)} \Gamma^{mh}_{l\beta} \Big] z_l \partial_{t_k}(t^\delta) z_h^*\,.
 \ee
-Next we have to describe the operators $\delta = \sum_{k=1}^n \lambda^\bullet_k \theta_k^*$ and for this we need to describe a particular choice of homotopy $\lambda^Y_k: Y \lto Y$ with $[ \lambda^Y_k, d_Y ] = t_k \cdot 1_Y$. Recall that $t_1,\ldots,t_n$ is a quasi-regular sequence satisfying some hypotheses satisfied in particular by the partial derivatives of the potential $W$, but other choices are possible. We assume here that our homotopies $\lambda^Y_k$ are chosen to be of the form
+Next we describe the operators $\delta = \sum_{k=1}^n \lambda^\bullet_k \theta_k^*$ and for this we need to choose a particular homotopy $\lambda^Y_k: Y \lto Y$ with $[ \lambda^Y_k, d_Y ] = t_k \cdot 1_Y$. Recall that $t_1,\ldots,t_n$ is a quasi-regular sequence satisfying some hypotheses satisfied in particular by the partial derivatives of the potential $W$, but other choices are possible. We assume here that our homotopies $\lambda^Y_k$ are chosen to be of the form
 \be\label{eq:formula_lambdak_koszul}
 \lambda^Y_k = \sum_{j=1}^s F_{kj} \eta_j^* + \sum_{j=1}^s G_{kj} \eta_j
 \ee
@@ -1060,10 +1038,7 @@ We refer to the vertices \eqref{eq:a1vertex}-\eqref{eq:a4vertex} arising from th
 %\]
  
 \item Following standard conventions bosons (commuting generators) are denoted by wiggly or dashed lines, and fermions (anticommuting generators) by solid lines \cite[\S 4.7]{ps} (perhaps doubled). For simplicity we distinguish the $\xi$ and $\eta$ lines only by their labels and we write $h$ for a line labelled $z_h$. Strictly speaking a squiggly line labelled $t^\delta$ should be interpreted as $\delta_i$ lines labelled $t_i$ for $1 \le i \le n$. We use the orientation on a fermion line to determine whether it should be read as a creation or annihilation operator for $\xi$ (downward) or for $\Bar{\xi}$ (upward).
-% all particles are represented by lines, with straight lines representing fermions and wavy lines representing bosons (except for the Higgs boson, which is usually represented by a dashed line, and gluons, which are usually represented by loops). 
-%\item A standard convention Feynman diagrams is that external lines represent particles ``on the mass shell'' \cite[\S 6.4]{weinberg} which we interpret as meaning the vectors lie in $\HH_{\BB} \subseteq \HH$. This is the case for Feynman diagrams that span the entire tree, where lines entering from the leaves and leaving the root are constrainted to lie in $\HH_{\BB}$. However, it is also standard to consider Feynman diagrams `off the mass shell' where the external lines are unconstrained.
 
-%\item The superscript $\nu$ is a reminder that this presentation of $\vAt_{\AA}, \delta$ depends on the choice of isomorphism $\nu$ (we will see an alternative choice $\rho$ below).
 \item Each vertex above actually represents a family indexed by possible choices of indices. If we wish to speak about a specific instance we use subscripts, for example $(\textup{B})_{k=2}$ is the interaction vertex with an incoming $t_2$ and outgoing $\theta_2$.\footnote{Depending on the matrix factorisations involved, some families of A or C-type interaction vertex may be \emph{infinite}. For example, if $(f_i)_{(m, \alpha)}$ is nonzero for infinitely many $\alpha$ there may be infinitely many $(A.3)^{\nu}$ vertices with nonzero coefficients. However only finitely many distinct types of interaction vertices can contribute for any particular tree $T$. If $T$ has $k$ leaves there are $k - 2$ internal edges and hence $k - 2$ occurrences of $\nabla$ in the associated operator. In terms of Feynman diagrams, that means there are precisely $k - 2$ B-type interactions. Since each $t_i$ that is generated in a Feynman diagram must eventually annihilate with a $\partial_{t_i}$ at a B-type interaction vertex, and each interaction vertex with indices $\alpha, \beta$ generates either $|\delta|$ or $|\delta| - 1$ copies of the $t_i$'s, only coefficients with $|\alpha|, |\beta| \le k - 2$ contribute. In short, larger trees can support more ``virtual bosons'' and more complex interactions.}
 \end{itemize}
 \end{remark}
@@ -1083,7 +1058,7 @@ where on the right hand $\xi_i, \xi_j^*$ denote the usual operators $\xi_i = \xi
 %This is a basic result in the theory of Clifford algebras, see \cite{??}.
 %\end{proof}
 
-\begin{remark}\label{remark_rhoisoalg} Let $C$ be the $\nZ_2$-graded algebra generated by odd $\xi_i, \Bar{\xi}_i$ for $1 \le i \le r$ subject to the relations $[ \xi_i, \xi_j ] = [ \Bar{\xi}_i, \Bar{\xi}_j ] = 0$ and $[ \xi_i, \Bar{\xi}_j ] = \delta_{ij}$. We denote multiplication in this Clifford algebra by $\bullet$. Then there is an isomorphism of $\nZ_2$-graded $k$-modules
+\begin{remark}\label{remark_rhoisoalg} Let $C$ be the $\nZ_2$-graded algebra generated by odd $\xi_i, \Bar{\xi}_i$ for $1 \le i \le r$ subject to the relations $[ \xi_i, \xi_j ] = [ \Bar{\xi}_i, \Bar{\xi}_j ] = 0$ and $[ \xi_i, \Bar{\xi}_j ] = \delta_{ij}$. We denote multiplication in this Clifford algebra by $\bullet$. There is an isomorphism of $\nZ_2$-graded $k$-modules
 \begin{gather*}
 \bigwedge F_\xi \otimes \bigwedge F_{\Bar{\xi}} \lto C\\
 \xi_{i_1} \wedge \cdots \wedge \xi_{i_a} \otimes \Bar{\xi}_{j_1} \wedge \cdots \wedge \Bar{\xi}_{j_b} \mapsto \xi_{i_1} \bullet \cdots \bullet \xi_{i_a} \bullet \Bar{\xi}_{j_1} \bullet \cdots \bullet \Bar{\xi}_{j_b}\,.
@@ -1303,7 +1278,6 @@ There is also an occurrence of $\zeta$ as $\zeta \nabla$ in $\phi_\infty$, which
 \be\label{eq:diagram_for_zeta_eq_b}
 \frac{1}{a} \frac{1}{a + |\delta_1|} \frac{1}{a + |\delta_1| + |\delta_3|} \cdots \frac{1}{a + |\delta_1| + \cdots + |\delta_m|}\,.
 \ee
-%In good cases many Feynman diagams can be collected together, and the $Z^{\,\rightarrow}$ factors replaced as in Lemma \ref{lemma:technical_antic} by the symmetrised $Z$, see Remark \ref{??}.
 
 \subsection{Diagrams for $\mu_2$}\label{section:feynman_diagram_3}
 
@@ -1324,7 +1298,7 @@ underlying a Koszul matrix factorisation $Z = \widetilde{X} \otimes R$.
 \end{gather*}
 \end{lemma}
 
-First we explain how to represent $\alpha \circ \beta$ diagramatically. %Recall $\nu$ from Lemma \ref{lemma:iso_nu} and the ``bar convention'' of Definition \ref{defn:bar_convention}.
+First we explain how to represent $\alpha \circ \beta$ diagrammatically. The following lemmas are proven by straightforward direct calculations, which we omit.
 
 \begin{lemma}\label{lemma:mixedr2_0} The diagram
 \be
@@ -1476,24 +1450,24 @@ Since we apply $\pi$ and $1^*$ at the bottom of our diagrams, we do not change t
 where $\cat{F}$ is some index set. Hence $C_\tau = \sum_{F \in \cat{F}} C_{\tau, F}$.
 \\
 
-\textbf{Stage three: drawing the diagram.} The information in an index $F \in \cat{F}$ is the information of a sequence of binary choices made at each nontrivial step of the rewrite algorithm: for example, the choice to replace $\omega^* \omega$ by either $\pm \omega \omega^*$ or $1$, where $\omega$ is one of $\theta, t, \xi, \Bar{\xi}$. Each such choice is associated with a $(\lambda, 1^*, \psi, 1)$, and this tuple has a unique ancestor among the tuples in $\cat{D}$ at the end of stage one. In that ancestor tuple, the creation operator $\omega$ is associated with a particular monomial $P$ inserted at a location on $T'$, and the annihilation operator $\omega^*$ is associated with a monomial $P'$ at some other location. By construction $P'$ occurs lower on the tree than $P$. These monomials are precisely the \emph{interaction vertices} to which we have assigned names and diagrams above.
+\textbf{Stage three: drawing the diagram.} An index $F \in \cat{F}$ contains the information of a sequence of binary choices made at each nontrivial step of the rewrite process: for example, the choice to replace $\omega^* \omega$ by either $\pm \omega \omega^*$ or $1$, where $\omega$ is one of $\theta, t, \xi, \Bar{\xi}$. The tuple $(\lambda, 1^*, \psi, 1)$ to which this choice refers has a unique ancestor among the tuples in $\cat{D}$ at the end of stage one. In that ancestor tuple, the creation operator $\omega$ is associated with a particular monomial $P$ inserted at a location on $T'$, and the annihilation operator $\omega^*$ is associated with a monomial $P'$ at some other location. By construction $P'$ occurs lower on the tree than $P$. These monomials are precisely the \emph{interaction vertices} to which we have assigned names and diagrams above.
 
-To encode the information in $F$ diagrammatically, we draw all the interaction vertices (in the unique ancestor of the tuple $(C_{\tau, F}, 1^*, \psi_{final}, 1)$ among the tuples of stage one) at the location they occur in the decoration of $T'$. Each incoming line labelled $\omega$ to such an interaction vertex is uniquely associated by the choices in $F$ with an outgoing line labelled $\omega$ at some vertex higher up the tree, namely, the first and only creation operator for which $F$ chooses $1$ rather than $\pm \omega \omega^*$ during a rewriting process involving the annihilation operator $\omega^*$ whose ancestor is the chosen incoming line. We connect the two interaction vertices by joining them with a line labelled $\omega$. The resulting diagrammatic representation of $F$ is called a \emph{Feynman diagram}, see Figure \ref{fig:feynman_1} for an example.
+To encode the information in $F$ diagrammatically, we draw all the interaction vertices (in the unique ancestor of the tuple $(C_{\tau, F}, 1^*, \psi_{final}, 1)$ among the tuples of stage one) at the location that they occur in the decoration of $T'$. Each incoming line labelled $\omega$ to such an interaction vertex is uniquely associated by the choices in $F$ with an outgoing line labelled $\omega$ at some vertex higher up the tree, namely, the first and only creation operator where $F$ chooses $1$ rather than $\pm \omega \omega^*$ for the annihilation operator $\omega^*$ whose ancestor is the chosen incoming line. We connect the two interaction vertices by joining them with a line labelled $\omega$. The resulting diagrammatic representation of $F$ is called a \emph{Feynman diagram}, see Figure \ref{fig:feynman_1} for an example.
 \\
 
 In summary, we have the following Feynman rules for enumerating Feynman diagrams $F$ and computing their coefficient $C_{\tau, F}$. See \cite[\S 6.1]{weinberg} for real Feynman rules in QFT.
 
 \begin{definition}[(Feynman rules)]\label{defn:feynman_rules} The coefficient $C_\tau$ is a sum $\sum_{F \in \cat{F}} C_{\tau, F}$ of coefficients $C_{\tau, F}$ associated to Feynman diagrams $F$. To enumerate the possible Feynman diagrams, first draw $\beta_k,\ldots,\beta_1$ in order on the input leaves and $\tau$ on the root of $T'$, as sequences of incoming and outgoing particle lines. Then choose for each
 \begin{itemize}
-\item \textbf{input} a sequence of A-type vertices, followed by a sequence of C-type vertices (the order corresponds to evaluation order of operators, or diagrammatically, what is higher or lower on the tree, with the C-type vertices being evaluated \emph{after} the A-type vertices and thus lower on the tree).
+\item \textbf{input} a sequence of A-type vertices, then a sequence of C-type vertices (from $e^{\delta} \sigma_\infty$). %The order corresponds to evaluation order of operators, or diagrammatically, what is higher or lower on the tree, with the C-type vertices being evaluated \emph{after} the A-type vertices and thus lower on the tree.
 \item \textbf{internal vertex} a sequence of vertices of type (D.1),(D.2) and exactly one (D.3) vertex (this arising from multiplication in $R/I$).
-\item \textbf{internal edge} a sequence of C-type vertices, followed by a single B-type vertex, followed by a sequence of A-type vertices and a sequence of C-type vertices.
-\item and for the \textbf{outgoing edge} a sequence of C-type vertices.
+\item \textbf{internal edge} a sequence of C-type vertices, then a single B-type vertex, then a sequence of A-type vertices and a sequence of C-type vertices (from $e^{\delta} \phi_\infty e^{-\delta}$).
+\item and for the \textbf{outgoing edge} a sequence of C-type vertices (from $\pi e^{-\delta}$).
 \end{itemize}
-Draw the chosen interaction vertices in order, and choose a way of connecting outgoing lines at vertices to incoming lines of the same type lower down the tree. Since the only lines incident with the incoming and outgoing boundary of the tree are those arising from the $\beta_i$ and $\tau$ no ``virtual particles'' ($t$'s or $\theta$'s) may enter or leave the diagram. In each case the number of A, C, D-type vertices chosen may be zero, but every internal edge has precisely one B-type vertex. These choices parametrise a finite set of Feynman diagrams $\cat{F}$. The coefficient $C_{\tau, F}$ contributed by the Feynman diagram $F$ is the product of
+Draw the chosen interaction vertices on the thickened tree and choose a way of connecting outgoing lines at vertices to incoming lines of the same type lower down the tree. Since the only lines incident with the incoming and outgoing boundary of the tree are those arising from the $\beta_i$ and $\tau$ no ``virtual particles'' ($t$'s or $\theta$'s) may enter or leave the diagram. In each case the number of A, C, D-type vertices chosen may be zero, but every internal edge has precisely one B-type vertex. These choices parametrise a finite set of Feynman diagrams $\cat{F}$. The coefficient $C_{\tau, F}$ contributed by the Feynman diagram $F$ is the product of the following five contributing factors:
 \begin{itemize}
 \item[(i)] The coefficients associated to each A,C-type interaction vertex as given above (for example the vertex $(A.1)^{\nu}$ has coefficient $\sum_{\alpha + \beta = \delta } \sum_{m=1}^\mu (u_j)_{(m,\alpha)} \Gamma^{m h}_{l \beta}$ multiplied by the scalar arising from the partial derivative $\partial_{t_k}(t^\delta)$).
-\item[(ii)] For each sequence of $m$ C-type vertices a factorial $\frac{1}{m!}$ and if the sequence immediately preceedes a B-type vertex or the exist node, a sign $(-1)^m$ (from $e^{-\delta}$ versus $e^\delta$).
+\item[(ii)] For each sequence of $m$ C-type vertices a factorial $\frac{1}{m!}$ and if the sequence immediately preceedes a B-type vertex or the root, a sign $(-1)^m$ (from $e^{-\delta}$ versus $e^\delta$).
 \item[(iii)] $Z^{\,\rightarrow}$ factors from $\zeta$ operators (see Section \ref{section:fenyman_diagram_2}).
 \item[(iv)] For each time two fermion lines cross, a factor of $-1$.
 \item[(v)] For each A-type vertex a factor of $-1$ (from the $(-1)^m$ in $\sigma_\infty,\phi_\infty$).
@@ -1518,7 +1492,7 @@ Y &= \big( \bigwedge(k \eta) \otimes k[x], x^3 \eta^* + \frac{1}{5} x^2 \eta \bi
 so $f = x^2, u = x^3, g = \frac{1}{5}x^3, v = \frac{1}{5} x^2$. We set $t = \partial_x W = x^4$ and choose our connection $\nabla$ and operators $\partial_t$ as in Example \ref{example:dt_xd} with $d = 4$. For the homotopies $\lambda^Y, \lambda^X$ we use the default choices of Remark \ref{remark:default_homotopies}, so that
 \begin{align*}
 \lambda^X &= \partial_x( d_X ) = 2 x \xi^* + \frac{3}{5} x^2 \xi && F^X = 2x, \quad G^X = \frac{3}{5} x^2\\
-\lambda^Y &= \partial_x( d_Y ) = 3 x \eta^* + \frac{2}{5} x \eta && F^Y = 3x, \quad G^Y = \frac{2}{5} x
+\lambda^Y &= \partial_x( d_Y ) = 3 x \eta^* + \frac{2}{5} x \eta && F^Y = 3x, \quad G^Y = \frac{2}{5} x\,.
 \end{align*}
 To compute the coefficients associated to all the interaction vertices, we need to compute for various $r \in R$ the coefficients $r_{(m,\alpha)}$ (see Definition \ref{defn:rsharp}) as well as the tensor $\Gamma$. This involves fixing the $k$-basis $R/I = k[x]/x^4 = k1 \oplus kx \oplus kx^2 \oplus kx^3$ that is, $z_h = x^h$ for $0 \le h \le 3$, and the section $\sigma(x^i) = x^i$. Then for example
 \[
@@ -1843,11 +1817,11 @@ on an input tensor
 \[
 x^2 \xi \otimes x \eta \Bar{\xi} \otimes x^3 \Bar{\eta} = z_2 \xi \otimes z_1 \eta \Bar{\xi} \otimes z_3 \Bar{\eta}\,.
 \]
-There are contributions to the output from each of the two trees with three leaves, and we examine one Feynman diagram contributed by our standard tree $T$ of Figure \ref{eq:explicit_tree_operator}. We are in the situation examined in the proof of Lemma \ref{prop:replacer2}, with
+We examine one Feynman diagram contributed by our standard tree $T$ of Figure \ref{eq:explicit_tree_operator}. We are in the situation examined in the proof of Lemma \ref{prop:replacer2}, with
 \[
 \rho_T( z_2 \xi, z_1 \eta \Bar{\xi}, z_3 \Bar{\eta} ) = \pi e^{-\delta} \mu_2\Big\{ e^{\delta} \phi_\infty e^{-\delta} \mu_2\Big( e^\delta \sigma_\infty( z_3 \Bar{\eta} ) \otimes e^\delta \sigma_\infty( z_1 \eta \Bar{\xi} ) \Big) \otimes e^\delta\sigma_\infty( z_2 \xi ) \Big\}\,.
 \]
-Next we expand the exponentials and $\phi_\infty, \sigma_\infty$, among the summands is the tensor
+Next we expand the exponentials and $\phi_\infty, \sigma_\infty$, among the summands is
 \begin{align*}
 \pi \mu_2\Big\{ \delta \zeta \nabla (-\delta) \mu_2\Big( z_3 \Bar{\eta} \otimes (-\zeta \vAt_{\AA})( z_1\eta \Bar{\xi} ) \Big) \otimes \delta (-\zeta \vAt_{\AA})( z_2 \xi ) \Big\}\,.
 \end{align*}
@@ -1875,22 +1849,10 @@ The corresponding Feynman diagram $F$ with outgoing state $\tau = z_2 \Bar{\xi}$
 \caption{Example of a Feynman diagram, where blue lines denote $\eta$ and green lines $\xi$.}\label{fig:feynman_1}
 \end{figure}
 \end{example}
-%\[
-%\xymatrix@R+2pc{
-%R/I \otimes \bigwedge( F_\eta \oplus F_\eta^* ) \otimes R/I \otimes \bigwedge( F_\eta \oplus F_\xi^* ) \otimes R/I \otimes \bigwedge( F_\xi \oplus F_\xi^* ) \ar[d]\\
-%R/I \otimes \bigwedge( F_\eta \oplus F_\xi^* )
-%}
-%\]
-
-%\begin{remark} Comment on the possible pictures in the $m_2$ case. The way to think about these diagrams is a kind of ``off-shell'' extension of the pictures for 2D defect TQFT, where you would also draw this kind of picture for $m_2 \circ (m_2 \otimes 1)$ as a composition map, once you go to cohomology. But there is information in the DG-category that does not survive in the cohomology (e.g. Borromean rings) and this additional structure is recorded in these additional states and their interactions, that give rise to the higher products. This additional information can be interpreted in terms of deformations of potentials, matrix factorisations, and the interaction between the two.
-%\end{remark}
-
-%\begin{remark} In special cases there are simplifications: e.g. the $\exp(\delta)$ issues, we can easily identify the kernel of the $e$, etc.
-%\end{remark}
 
 \section{The stabilised residue field}\label{section:generator}
 
-In this section we sketch how our approach recovers the usual $A_\infty$-minimal model \cite{seidel_hms, d0904.4713, efimov, sheridan} of $\AA(k^{\stab},k^{\stab})$ when $k$ is a field, as an illustration of an example where $E$ may be split by hand. Full details and examples will appear elsewhere. Let $k$ be a characteristic zero field, $W \in k[x_1,\ldots,x_n]$ a potential and $\AA$ the DG-category with the single object
+In this section we sketch how our approach recovers the usual $A_\infty$-minimal model \cite{seidel_hms, d0904.4713, efimov, sheridan} of $\AA(k^{\stab},k^{\stab})$ when $k$ is a field, as an illustration of an example where $E$ may be split by hand. Let $k$ be a characteristic zero field, $W \in k[x_1,\ldots,x_n]$ a potential and $\AA$ the DG-category with the single object
 \[
 k^{\stab} = \big( \bigwedge F_\xi \otimes R, \sum_{i=1}^n x_i \xi_i^* + \sum_{i=1}^n W^i \xi_i \big)
 \]
@@ -1898,7 +1860,7 @@ for some chosen decomposition $W = \sum_{i=1}^n x_i W^i$ where $F_\xi = \bigoplu
 \be
 \AA(k^{\stab}, k^{\stab}) = \Big( \End_k\big(\bigwedge F_\xi\big) \otimes R, \sum_{i=1}^n x_i [\xi_i^*,-] + \sum_{i=1}^n W^i [\xi_i,-] \Big)\,.
 \ee
-This Koszul matrix factorisation is a classical generator of the homotopy category of matrix factorisations over $k\llbracket \bold{x} \rrbracket$ as was shown first by Schoutens in the setting of maximal Cohen-Macaulay modules \cite{schoutens} and then rediscovered by Orlov \cite{orlov}, Seidel \cite{seidel_hms}, Dyckerhoff \cite{d0904.4713} and others \cite[Proposition A.2]{keller}. For the choices in Setup \ref{setup:overall} we take:
+This Koszul matrix factorisation is a classical generator of the homotopy category of matrix factorisations over $k\llbracket \bold{x} \rrbracket$ as was shown first by Schoutens in the setting of maximal Cohen-Macaulay modules \cite{schoutens} and then rediscovered by Orlov \cite{orlov} (see \cite[Lemma 12.1]{seidel_hms}) Dyckerhoff \cite[Corollary 5.3]{d0904.4713} and others \cite[Proposition A.2]{keller}. In Setup \ref{setup:overall} we take:
 \begin{itemize}
 \item $\bold{t} = (x_1,\ldots,x_n)$ so $R/I = k$.
 \item $\lambda = \xi_i$ meaning as usual $\xi_i \wedge (-)$.
@@ -1926,7 +1888,7 @@ Together with $\gamma_j^\dagger = - \xi_j$ these Atiyah classes form a represent
 \[
 \operatorname{Im}(E_1) = \bigcap_{i=1}^n \Ker(\gamma_i) = \bigwedge F_W \subseteq \bigwedge F_\xi \otimes \bigwedge F_{\Bar{\xi}}\,.
 \]
-For example, if $W \in (x_1,\ldots,x_n)^3$ so that $\gamma_j = - \xi_j^*$ then $\bigwedge F_W = \bigwedge F_{\Bar{\xi}}$. This subspace is closed under the higher operations on $\BB$ since neither $\vAt_{\AA}$ nor $\Xi$ can introduce $\xi_i$. It follows that $\bigwedge F_{\Bar{\xi}}$ equipped with the restricted operations is a minimal $A_\infty$-category which splits the idempotent $E$.%, and which is consequently a minimal model of $\AA(k^{\stab},k^{\stab})$. %For $W$ with quadratic terms a more detailed analysis is necessary.
+For example, if $W \in (x_1,\ldots,x_n)^3$ so that $\gamma_j = - \xi_j^*$ then $\bigwedge F_W = \bigwedge F_{\Bar{\xi}}$. This subspace is closed under the higher operations on $\BB$ since neither $\vAt_{\AA}$ nor $\Xi$ can introduce a $\xi_i$. It follows that $\bigwedge F_{\Bar{\xi}}$ equipped with the restricted operations is a minimal $A_\infty$-category which splits the idempotent $E$.
 
 \appendix
 
